@@ -93,14 +93,14 @@ randomly chosen adjecent vertices $v\in R$. This model is interesting
 not for its expressive power but because of its simplicity.  It is
 easy to analyze and also motivates the analysis of richer models.
 
-In Section~\ref{gnmp}, we generalize the fixed degree model to the
-$G_{l,r,p}$ model where every pair of vertices is related with a fixed
-probability.  In Section~\ref{hierarchy}, we analyze the {\em
-  hierarchical tree model} which aims to model recommendation trees
-that arise from relationships in a product hierarchy. Finally, in
-Section~\ref{cartesian} we study the {\em cartesian product model}
-which aims to model recommendation graphs which arise from combining
-the relevancy advice of several different algorithms.
+In Section \ref{weighted}, we generalize the fixed degree model to a
+model where the graph is fixed and the edges can weights. In Section
+\ref{hierarchy}, we analyze the {\em hierarchical tree model} which
+aims to model recommendation trees that arise from relationships in a
+product hierarchy. Finally, in Section~\ref{cartesian} we study the 
+{\em cartesian product model} which aims to model recommendation 
+graphs which arise from combining the relevancy advice of several 
+different algorithms.
 
 \section{Results}
 \subsection{Fixed Degree Model}
@@ -378,38 +378,59 @@ approximation guarantee in expectation we obtained above using
 gradient descent or some other first order method prior to running the
 recommendation algorithm to increases the quality of the solution.
 
-%%%%% SUBSECTION:G_NMP PRODUCT MODEL %%%%%
-\subsection{$G_{l,r,p}$ model}
-\label{gnmp}
-The fixed degree model of Section \ref{fixed-degree} is a simple and convenient model, but the assumption that all the given $u\in L$ are related to exactly $d$ vertices in $R$ is unrealistic. We can relax this fixed degree requirement by assuming that each edge $uv$ is included in $G$ with some fixed probability $p$, i.e. $G$ is sampled from the distribution $G_{l,r,p}$. From $G$ we can obtain $H$ by uniformly sampling $c$ neighbors for each $u\in L$. If we assume that $c\geq\frac{1}{2}rp$ and let $S$ be the set of vertices in $R$ such that $\deg_H(v)\geq 1$ we can show the following.
+
+\subsection{Weighted Model}
+\label{weighted}
+The fixed degree model of Section \ref{fixed-degree} is a simple and
+convenient model, but the assumption that all recommendations hold the
+same weight is unrealistic. This motivates fixing the graph to be the
+complete bipartite graph $K_{l,r}$, and giving the edges i.i.d weights
+with mean $\mu$. We modify the objective function accordingly, so that
+we count only the vertices in $R$ which have weight $\geq 1$. If we
+assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$, then 
+naive the solution sampling solution we outlined in Section \ref{fixed-degree}
+still performs exceptionally well. Letting $S$ be the size of the 
+solution produced by this algorithm we have:
 
 \begin{thm}
-With $S,G$ and $H$ defined as above:
-\[ \E[S] \geq r - r\left(1-p\left(1-\exp\left(-\frac{c}{4}\right)\right)\left(1-\exp\left(-\frac{c}{r}\right)\right)\right)^l\]
-where the expectation is over $G$ and $H$.
+Let $G=K_{l,r}$ be a bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$, then
+\[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{thm}
+
 \begin{proof}
-Let $X_{uv}$ be the indicator variable for the event that $uv\in H$. 
-We can union bound the probability that $X_{uv}=0$. With probability 
-$p$, $uv\in G$. The expected degree of $u$ in $G$ is sum of $r$
- independent bernoulli variables and has mean $rp$. Therefore, with 
-probability $1-\exp(-rp/8) \geq 1 - \exp(-c/4)$, $v$ has degree at
-least $c$. Assuming that the degree of $v$ in $G$ is at least $c$,
-the probability that $uv$ is picked by $H$ is at least 
-$1-\left(1-\frac{1}{r}\right)^c$. Putting all three of these pieces 
-of information together gives the following bound:
-\begin{align*}
-\Pr[X_{uv}=1] &\geq p\left(1-\exp\left(-\frac{c}{4}\right)\right)\left(1-\left(1-\frac{1}{r}\right)^c\right) \\
-              &\geq p\left(1-\exp\left(-\frac{c}{4}\right)\right)\left(1-\exp\left(-\frac{c}{r}\right)\right)
-\end{align*}
+For each edge $uv\in G$, let $W_{uv}$ be its random weight, $Y_{uv}$ be
+the indicator for the event $uv\in H$ and define $X_{uv} = Y_{uv}
+W_{uv}$. Since weights and edges are sampled by independent processes,
+we have $\E[X_{uv}] = \E[W_{uv}]\E[Y_{uv}]$ for all edges. Since $c$
+edges out of $r$ are picked for each vertex, $\E[Y_{uv}] = \frac{c}{r}$
+, so $\E[X_{uv}] = \frac{c}{r}\mu$. Therefore, the expected weight
+coming into a vertex $v\in R$ would be 
 
-Now letting $X_v$ be the indicator variable of the event 
-$\deg_H(v) \geq 1$ we can calculate:
-\[ \Pr[X_v=0] \leq \left(1-p\left(1-\exp\left(-\frac{c}{4}\right)\right)\left(1-\exp\left(-\frac{c}{r}\right)\right)\right)^l \]
+\[ \E[X_v] = \sum_{u\in L} \E[X_{uv}] = \frac{cl\mu}{r} = ck\mu\]
 
-Finally, by linearity of expectation, we obtain
-\[ \E[S] \geq r - r\left(1-p\left(1-\exp\left(-\frac{c}{4}\right)\right)\left(1-\exp\left(-\frac{c}{r}\right)\right)\right)^l\]
+However, $X_{uv}$ for each $u$ are i.i.d random variables. Since by
+assumption $ck\mu = 1+\epsilon$, by a Hoeffding bound we can obtain:
+
+\[ \Pr[X_v \leq 1] = \Pr[X_v - \E[X_v] \geq \epsilon] \leq \exp\left(-\frac{2l\epsilon^2}{b^2}\right) \]
+
+By linearity of expectation we can now get the result in the theorem
+
+\[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{proof}
+
+There are two things to note about this variant. The first is that
+since the variables $X_v$ are negatively correlated, our results in
+\ref{worst-vs-avg} can be readily extended to the results of this
+section. The second is that the condition that $W_{uv}$ are i.i.d
+is not necessary to obtain the full effect of the analysis. Indeed,
+the only place in the proof where the fact that $W_{uv}$ are i.i.d
+is when we argued that $X_{uv}$ is large with high probability by a
+Hoeffding bound. For the bound to apply, it's sufficient to assume
+that $W_{uv}$ for all $v$ are independent. In particular, it's 
+possible that $W_{uv}$ for all $u$ are inter-dependent. This allows
+us to assume an weight distribution that depends on the strength of 
+the recommender and the relevance of the recommendation separately.
+
 
 \section{Worst-Case Approximation}
 The results in the previous section concentrated on producing nearly
@@ -475,6 +496,7 @@ represents the best we can do with minimal effort. Finally, we can use
 this worst case approximation algorithm to benchmark the random
 sampling algorithms we described in the previous section.
 
+\label{worst-vs-avg}
 \section{Comparing the Worst-Case and Average-Case Approximations}
 In this section, we show that the the results of Section
 \ref{fixed-degree} that hold in expectation also hold in the worst
