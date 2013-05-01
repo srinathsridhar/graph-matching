@@ -47,6 +47,51 @@ def greedy_algorithm(g, c, a):
 
   return solution
 
+def karp_sipser(g, c, a):
+  gg = g.copy()
+  left_vertices  = (u for u in gg if gg.node[u]["bipartite"]=="left")
+  right_vertices = (v for v in gg if gg.node[v]["bipartite"]=="right")
+  
+  left_used_degree = defaultdict(int)
+  right_rem_degree = defaultdict(set)
+  for v in right_vertices:
+    if gg.degree(v) >= a:
+      right_rem_degree[gg.degree(v)].add(v)
+
+  solution = []
+  try:
+    min_degree = min(d for d in right_rem_degree if len(right_rem_degree[d])>0)
+  except:
+    min_degree = 0
+
+  while min_degree >= a:
+    # pick vertex on the right with lowest degree and remove it
+    v = sample(right_rem_degree[min_degree],1)[0]
+    right_rem_degree[min_degree].remove(v)
+    eligible_neighbors = gg.neighbors(v)
+    gg.remove_node(v)
+
+    # pick a neighbors. if they become saturated, remove them
+    for u in eligible_neighbors[:a]:
+      left_used_degree[u] += 1
+      if left_used_degree[u] == c:
+        second_neighbors = gg.neighbors(u)
+        for vv in second_neighbors:
+          prev_degree = gg.degree(vv)
+          if prev_degree < a: continue
+
+          right_rem_degree[prev_degree].remove(vv)
+          if prev_degree > a:
+            right_rem_degree[prev_degree-1].add(vv)
+        gg.remove_node(u)
+
+    solution.append(v)
+    degrees = [d for d in right_rem_degree if len(right_rem_degree[d])>0]
+    if len(degrees)==0: break
+    min_degree = min(degrees)
+
+  return solution  
+
 # parameters
 trials = 10
 l      = 10000
@@ -60,8 +105,10 @@ for a in range(1,10):
       g = rand_fixed_degree_graph(l, r, d)
       s1 = sampling_algorithm(g, c, a)
       s2 = greedy_algorithm(g, c, a)
+      s3 = karp_sipser(g, c, a)
       print "c = %d, a = %d" % (c, a)
-      print "Sampling: %d" % (len(s1))
-      print "Greedy  : %d" % (len(s2))
-      print "Optimal : %d" % (optimal)
+      print "Sampling    : %d" % (len(s1))
+      print "Greedy      : %d" % (len(s2))
+      print "Karp-Sipser : %d" % (len(s3))
+      print "Optimal     : %d" % (optimal)
       print 
