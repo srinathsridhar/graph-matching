@@ -1,4 +1,5 @@
 import networkx as nx
+from time import *
 from random import *
 from collections import *
 
@@ -47,7 +48,7 @@ def greedy_algorithm(g, c, a):
 
   return solution
 
-def karp_sipser(g, c, a):
+def karp_sipser(g, c, a, greedier=False):
   gg = g.copy()
   left_vertices  = (u for u in gg if gg.node[u]["bipartite"]=="left")
   right_vertices = (v for v in gg if gg.node[v]["bipartite"]=="right")
@@ -69,6 +70,8 @@ def karp_sipser(g, c, a):
     v = sample(right_rem_degree[min_degree],1)[0]
     right_rem_degree[min_degree].remove(v)
     eligible_neighbors = gg.neighbors(v)
+    if greedier:
+      eligible_neighbors.sort(key = lambda u: -left_used_degree[u])
     gg.remove_node(v)
 
     # pick a neighbors. if they become saturated, remove them
@@ -93,22 +96,30 @@ def karp_sipser(g, c, a):
   return solution  
 
 # parameters
-trials = 10
-l      = 10000
-r      = 100000
-d      = 10
+trials = 1
+l      = 100
+r      = 1000
+d      = 30
 
-for a in range(1,10):
-  for c in range(1,10):
-    optimal = min(r, c*l/a)
+for c in range(1,10):
+  for a in range(1,10):
     for _ in xrange(trials):
-      g = rand_fixed_degree_graph(l, r, d)
+      start = time()
+
+      g  = rand_fixed_degree_graph(l, r, d)
+      right_vertices = [v for v in g if g.node[v]["bipartite"]=="right"]
+      eligible_right = len([v for v in right_vertices if g.degree(v) >= a])
+      optimal = min(eligible_right, c*l/a)
+
       s1 = sampling_algorithm(g, c, a)
       s2 = greedy_algorithm(g, c, a)
       s3 = karp_sipser(g, c, a)
+      s4 = karp_sipser(g, c, a, greedier = True)
       print "c = %d, a = %d" % (c, a)
-      print "Sampling    : %d" % (len(s1))
-      print "Greedy      : %d" % (len(s2))
-      print "Karp-Sipser : %d" % (len(s3))
-      print "Optimal     : %d" % (optimal)
+      print "Sampling     : %d" % (len(s1))
+      print "Greedy       : %d" % (len(s2))
+      print "Karp-Sipser  : %d" % (len(s3))
+      print "Karp-Sipser2 : %d" % (len(s4))
+      print "Optimal      : %d" % (optimal)
+      print time()-start
       print 
