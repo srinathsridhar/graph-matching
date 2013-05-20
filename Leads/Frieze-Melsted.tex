@@ -1,0 +1,32 @@
+\documentclass[]{letter}
+\newcommand{\E}{\text{E}}
+\usepackage{fullpage, amsmath, amsthm}
+
+\usepackage{caption}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{rem}{Remark}
+\begin{document}
+
+This write-up is about a different combining Frieze Meltsted and our $G_{l,r,p}$ algorithm to beat the 1/3 approximation barrier we had for $a=2$ in expectation. 
+
+\begin{thm}
+Let $G=(L,R,E)$ be a $d$-out random bipartite graph. If $|R| > 1.57|L|$ and $dk^2 > 0.7$ where $k = |L|/|R|$, then with probability 1, we can find a $(2,2)$-graph recommendation subgraph in $G$ of size $|L|(1-\exp(2d^2k^4))$ in polynomial time.
+\end{thm}
+
+\begin{proof}
+Frieze-Melsted shows that if $r > 1.57l$ and $d>3$, then as $l,r \to \infty$, there exists a matching that perfectly matches $L$ into $R$. So let $G'$ be the subgraph of $G$ that's obtained by uniformly sampling $3$ vertices out each vertex in $L$. Then $G$ is a randomly drawn 3-out graph and with probability 1, there exists a perfect matching in this graph. Let $R'$ be the right handside of this matching.
+
+We now restrict $G\backslash G'$ to $(L,R')$ and call the result $G''$. Since edge $R'$ is a uniformly random subset of $R$, each edge in $G\backslash G'$ has probability $dl/r = dk$ of existing in $G''$. This means that $G''$ is an instance of $G_{l,l,dk}$. We will not apply a single round of our random sampling algorithm to find a matching in $G''$ and therefore a (2,2)-graph recommendation subgraph in $G$. Note that we can consider $G''$ to be a $K_{n,n}$ with edge weights drawn from a distribution that assigns an edge the weight 1 with probability $dk$, and 0 with probability $1-dk$. This means that the expected weight of an edge is $dk/(l-1)$. 
+
+It follows that our random sampling algorithm with $c=1$, and $\epsilon = dk^2/(l-1)$ produces an expected matching of size at least $l(1-\exp(2l\epsilon^2)) \geq l(1-\exp(-2d^2k^4))$. Therefore, our expected ratio is at least $1-\exp(2d^2k^4)$ with probability 1. Rearranging this shows that when $dk^2 > 0.7$, we beat our worst case algorithm in expectance which gives a $1/3$-approximation guarantee.
+
+Note that it's crucial to use an actual perfect matching algorithm in the first round. This means that we won't get a linear algorithm, even if we use our own linear algorithm in the second round
+\end{proof}
+
+There are two issues we need to overcome to extend this to different $a$ and different $c$. The first is that once we do the first round, $R'$ is already the same size as $L$, so we can't do another round. We can however, use Frieze-Melstead to reduce an $(a,c)$-graph recommendation problem to a $(a-1,c-1)$ recommendation problem in a smaller graph.
+
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass[]{letter}
+\newcommand{\E}{\text{E}}
+\usepackage{fullpage, amsmath, amsthm}
+
+\usepackage{caption}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{rem}{Remark}
+\begin{document}
+
+This write-up is about a different algorithm that operates from the left side of the bipartite graph $G=(L,R,E)$ that is amenable to Markov chain analysis. In the left side algorithms that we have considered so far, we have always traversed the vertices in $L$ in arbitrary order, and then uniformly sampled the $c$ neighbors for each $u\in L$. We then analyzed these algorithms using Chernoff type bounds.
+
+Since our algorithms haven't generalized to larger $a$ well and they were all oblivious to the state of the partially constructed subgraph, it's instructive to consider an algorithm that takes into account the fact that not all vertices on the left are equally  good to inspect next given a partial solution. When $a=2$, and our solution has already picked an edge between $u\in L$ and $v\in R$, it's better to next pick a vertex $u'\in L$ that's also incident on $v$ because this would increase the size of our solution by 1 while another vertex might just make pointless progress on other vertices. Therefore, instead of picking vertices from $L$ in an arbitrary order, we can instead pick a vertex $u$ that's incident on the maximum number of vertices in $R$ that already have an edge incident on them. 
+
+\textbf{Observation 1:} Note that in this way, we can represent our graph by a Markov chain where the states are made up of a 3-tuple: $(v_0,v_1,v_2)$ where the first second and third components are the number of vertices in $R$ that have degree 0, 1 and 2 respectively. This indeed is a Markov chain because our algorithm doesn't care which vertices in particular have these degrees, only the number of vertices of each degree, therefore the state of the graph is completely captured by this triple. Locally, the expected number of degree 0, 1 and 2 vertices some $u\in L$ is incident on is still the same in expectance, the choice the our algorithm makes will be in favor of clearing out degree 1 vertices instead of just choosing randomly.
+
+\textbf{Observation 2:} The reason Karp-Sipser was hard to analyze is because the analysis would depend on the complicated conditioning introduced by the previous steps. This would require us to encode the entire graph in a Markov chain. By considering an algorithm that works on the left vertices, we avoid this trap and can work in a fashion similar to vertex martingale proofs.
+
+\textbf{Observation 3:} This algorithm can be implemented to run in approximately linear time. In particular, we can keep the vertices on the right in a heap ordered lexicographically by the number of degree 1, 0 and 2 vertices they are incident on. After each sampling step, some degree 0 vertices will become degree 1 and some degree 1 vertices become degree 2. We can simply update keys for the vertices in the left that are incident on these vertices. Only $c$ vertices on the right are effected which in turn effect only $c^2k$ vertices on the left. Since all heap operations can be done in $\log(r)$ time, this gives us a $O(l \log(l) c^2k)$ complexity, which is only marginally worse than linear if we consider $c^2 k$ as a constant. 
+
+\end{document}
