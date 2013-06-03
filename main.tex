@@ -78,10 +78,15 @@ Our main contributions are the following:
 \item We also show that a simple linear time greedy algorithm can
   approximate the problem to a constant factor in the worst case.
 
+\item We prove that optimal recommendation subgraphs that satisfy the
+  most trivial upper bounds exist with high probability even in random
+  bipartite graphs with logarithmic average degree.
+
 \item We show that the models described in the problem can describe
   real-life recommendation graphs and that the random sampling
   algorithms we describe find near optimal solutions to the graph
   recommendation problem.
+
 \end{enumerate}
 
 \section{Models}
@@ -564,6 +569,77 @@ algorithm significantly when $k$ and more importantly $c$ gets larger.
 \caption{Approximation ratios when $k$=0.2}
 \end{minipage}
 \end{figure}
+
+
+\section{Existance of Optimal Solutions}
+In this section we will prove a sufficient condition for optimal $(c,c)$-recommendation subgraphs to exist in a bipartite graph sampled from $G_{n,n,p}$. Our result, hinges on the following characterization of optimal recommendation subgraphs due to Egawa, Enomoto and Saito:
+
+\begin{thm}
+Let $G=(L,R,E)$ be a bipartite graph such that $|L|=|R|=n$ and let $\lambda = a - 1 + 1/a$. Then an optimal $(a,a)$-recommendation subgraph exists if 
+
+\begin{itemize}
+\item for every set $S\subseteq R$ such that $|S| < n/\lambda$, $|N(S)| > \lambda|S|$
+\item for every set $S\subseteq R$ such that $|S| \geq n/\lambda$, $N(S) = L$
+\end{itemize}
+\end{thm}
+ 
+This theorem in essence shows that the existence of a recommendation graph is related to how good an expander the underlying graph is. We will show that for any $\lambda$, there exists a constant $c(\lambda)$ such that a random graph sampled from $G_{n,n,p}$ where $p=c(\lambda) \ln(n)/n$ satisfies this expansion property with probability 1 as $n\to \infty$. In order to do this, we will first show that small sets expand with high probability/
+
+\begin{thm}[Small set expansion] 
+Let $\lambda$ be a constant, and let $G=(L,R,E)$ be a bipartite graph with $|L|=|R|=n$ drawn from $G_{n,n,p}$. There exists a $c$ that only depends on $\lambda$ such that if $p=c\ln(n)/n$, every set $S\subseteq L$ with $|S| \leq n/2\lambda$ satisfies $|N(S)|\geq \lambda|S|$ with probability 1 as $n\to\infty$.
+\end{thm}
+
+\begin{proof}
+By a union bound, the probability that some subset $S$ of size $s$ doesn't expand into a set of size $\lambda s$ is at most:
+
+\begin{align*}
+       \Pr[\bigvee_{|S|\leq n/2\lambda} \text{S fails to expand}]
+\leq&  \sum_{s=1}^{n/2\lambda} \binom{n}{s}\binom{n}{s\lambda}(1-p)^{s(n-s\lambda)} \\
+\leq&  \sum_{s=1}^{n/2\lambda} \left(\frac{ne}{s}\right)^s \left(\frac{ne}{\lambda s}\right)^{\lambda s} \exp\left(-ps(n-s\lambda)\right) \\
+\leq&  \frac{1}{\lambda^\lambda} \sum_{s=1}^{n/2\lambda} \left(\frac{ne}{s}\right)^{s(\lambda+1)} \exp\left(-\ln(n^c)s(1-s\lambda/n)\right)
+\end{align*}
+
+But note that within the bounds of our sum we have $1-s\lambda/n \geq 1/2$, so
+
+\[
+\Pr[\bigvee_{|S|\leq n/2\lambda} \text{S fails to expand}]
+\leq \frac{1}{\lambda^\lambda} \sum_{s=1}^{n/2\lambda} \left(\frac{ne}{s}\right)^{s(\lambda+1)} n^{-cs/2}
+\]
+
+It's now obvious that if we take $c=3\lambda$, then this sum becomes $o(1)$ as $n\to\infty$.  
+\end{proof}
+
+We next prove that big sets expand as well as the small sets. In the previous theorem, it was enough to consider the probability that there were no edges going out to vertices outside of a set of size $s\lambda$. For larger sets this approach is not enough to get a small enough probability since the possible number of edges that can go outside of a set of size $s\lambda$ is not large when $s$ is large. Therefore, we need to use a different estimate for sets $S$ that have more than $n/2\lambda$ elements.
+
+\begin{thm}[Large set expansion] 
+Let $\lambda$ be a constant, and let $G=(L,R,E)$ be a bipartite graph with $|L|=|R|=n$ drawn from $G_{n,n,p}$. There exists a $c$ that only depends on $\lambda$ such that if $p=c\ln(n)/n$, every set $S\subseteq L$ with $|S| \geq n/2\lambda$ satisfies $|N(S)|\geq \lambda|S|$ with probability 1 as $n\to\infty$.
+\end{thm}
+
+\begin{proof}
+First note that if we take $p=c\ln(n)/n$, then the degree of each vertex is distributed like $Binom(n,p)$ will have mean $c\ln(n)$. Therefore, by a union bound and any concentration bound such as Chernoff's, we can assume that as $n\to\infty$, the degree of every vertex is at least $k$ for any constant $k$ with probability $o(1)$.
+
+Now we union bound over all pairs of sets $S\subseteq R$ and $T\subseteq L$ such that $|T| = \lambda |S|$. We require that there be at least $ks$ edges present between $S$ and $T$, but no edges between $S$ and $L\backslash T$. We can write this as:
+
+\begin{align*}
+       \Pr[\bigvee_{|S|\leq n/2\lambda} \text{S fails to expand}]
+\leq&  \sum_{s=n/2\lambda}^{n/\lambda} \binom{n}{s} \binom{n}{\lambda s} \binom{s\cdot \lambda s}{sk} p^{ks} (1-p)^{s(n-\lambda s)} \\
+\leq&  \sum_{s=n/2\lambda}^{n/\lambda} \binom{n}{s} \binom{n}{\lambda s} \binom{s\cdot \lambda s}{sk} p^{ks} (1-p)^{s(n-\lambda s)} \\
+\leq&  \sum_{s=n/2\lambda}^{n/\lambda} \left(\frac{ne}{s}\right)^s \left(\frac{ne}{\lambda s}\right)^{\lambda s}  \left( \frac{\ln(n^c)}{n}\right)^{ks} \exp\left(-ps(n-\lambda s)\right) \\
+\leq&  \sum_{s=n/2\lambda}^{n/\lambda} \left(\frac{e^{\lambda+k+1}\lambda^{k-\lambda}}{k^k}\frac{n^{\lambda+1-k}}{s^{\lambda+1-k}} \ln(n^c)^k \frac{1} {n^{c(1-s\lambda/n)}}\right)^s
+\end{align*}
+
+Now we can set $k=2\lambda$ and note that there exists a setting of $c$ large enough that makes this quantity $o(1)$ as $n\to\infty$.
+\end{proof}
+
+Having proved the small and large set expansion theorems, we can finally state our final theorem.
+
+\begin{thm}
+For any integer $a$, there exists a $c$ such that a bipartite graph randomly drawn from $G_{n,n,p}$ with $p=c\ln(n)/n$ has an $(a,a)$-recommendation subgraph with probability $1-o(1)$. Furthermore, the setting of $c$ only depends on $a$.
+\end{thm}
+
+\begin{proof}
+Let $\lambda_a = a - 1 + 1/a$. The small and large set expansion theorems show the existence of $c_1$ and $c_2$ so that these sized sets expand as required. Furthermore these constants only depend on $\lambda_a$. Setting $c = \max(c_1,c_2)$ gives us the constant that only depends on $a$ that satisfies the claims of Theorem 12.
+\end{proof}
 
 \section{Future Directions}
 In this paper we proposed several different models for explaining how
