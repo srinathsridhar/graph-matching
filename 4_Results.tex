@@ -143,16 +143,18 @@ and $R$ are the leaf sets of two full binary trees $T_L$ and $T_R$ of
 depth $D$ where there is a one-to-one correspondence between the
 subtrees of these two trees. We also assume that each branching in
 both $T_L$ and $T_R$ splits the nodes evenly into the two
-subtrees. By abuse of notation, we will use a subtree and its leaf set
-interchangeably. The trees are fixed in advance, but $G$ is generated
-probabilistically according to the following procedure. Let $u\in L$
-and $T_L^0, \ldots T^{D-1}_L$ be the subtrees it belongs at depths
-$0,\ldots, D-1$. Also, let $T_R^0,\ldots, T_R^{D-1}$ be the subtrees
-on the right that correspond to these trees on the left. We let $u$
-make an edge to $d_{D-1}$ of the vertices in $T_{R}^{D-1}$, $d_{D-2}$
-edges to the vertices in $T_{R}^{D-1} \backslash T_{R}^{D-2}$ and so
-on. Each vertex is chosen with uniform probability and we let $d =
-d_{0} + \ldots + d_{D-1}$.\vs
+subtrees. As in the previous sections, we set $|L|/|R|=k$, but we also
+note that this ratio still holds if we take any subtree on the left 
+and its corresponding subtree on the right. By abuse of notation, we 
+will use a subtree and its leaf set interchangeably. The trees are
+fixed in advance, but $G$ is generated probabilistically according to
+the following procedure. Let $u\in L$ and $T_L^0, \ldots T^{D-1}_L$ be
+the subtrees it belongs at depths $0,\ldots, D-1$. Also, let 
+$T_R^0,\ldots, T_R^{D-1}$ be the subtrees on the right that correspond
+to these trees on the left. We let $u$ make an edge to $d_{D-1}$ of
+the vertices in $T_{R}^{D-1}$, $d_{D-2}$ edges to the vertices in 
+$T_{R}^{D-1} \backslash T_{R}^{D-2}$ and so on. Each vertex is chosen
+with uniform probability and we let $d = d_{0} + \ldots + d_{D-1}$.\vs
 
 \begin{figure}[h]
 \centering
@@ -162,12 +164,11 @@ d_{0} + \ldots + d_{D-1}$.\vs
 \end{minipage}
 \end{figure}
 
-Our goal now is to find a $b-$matching in this graph that is close to
+Our goal now is to find a $b$-matching in this graph that is close to
 optimal in expectation. That is, our degree upper bound on vertices in
 $L$ is $c$ and the degree lower bound on vertices in $L$ is 1. Let $c
-= c_0 + \ldots + c_{D-1}$ where the fractions $d_{i}/c_{i}$ are all
-equal to some constant $k$. For simplicity assume that $k$ is an
-integer. To combine the analysis of the randomness of the algorithm
+= c_0 + \ldots + c_{D-1}$ similarly to how we defined $d$. 
+To combine the analysis of the randomness of the algorithm
 and the randomness of the graph, the algorithm will pick $c_{i}$ edges
 uniformly from among the $d_{i}$ edges going to each level of the
 subtree. This enables us to think of the subgraph our algorithm
@@ -197,7 +198,7 @@ the probability that $v$ does not receive any edges at all is at most
 \begin{align*}
 	      \Pr[\lnot X_v] 
 	&=    \left(1-\frac{1}{r_{D-1}}\right)^{c_0l_{D-1}}\prod_{i=1}^{D-1}\left(1 - \frac{1}{r_i}\right)^{c_{D-i} l_i} \\
-	&\leq \exp\left(-\frac{l_{D-1}}{r_{D-1}}c_0\right)\prod_{i=1}^{D-1} \exp\left(\frac{l_i}{r_i}c_{D-i}\right) \\
+	&\leq \exp\left(-\frac{l_{D-1}}{r_{D-1}}c_0\right)\prod_{i=1}^{D-1} \exp\left(-\frac{l_i}{r_i}c_{D-i}\right) \\
 	&=    \exp\left(-(c_0 + \ldots + c_{D-1})k\right) \\
 	&=    \exp(-ck)
 \end{align*}
