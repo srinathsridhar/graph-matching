@@ -1,0 +1,49 @@
+\section{Introduction}
+As the amount of data a service collects and indexes increases, the
+problem of surfacing relevant content arises and may companies face
+this challenge today. Netflix needs to recommend similar movies,
+Amazon and Bloomreach need to recommend similar products, Facebook
+needs to recommend pages or friends. This recommendation problem is
+hard to solve and often critical to the success of these services. For
+example, when a user signs up for the first time, Facebook needs to
+recommend them to as many people relevant as possible very quickly
+because if a user does not need reach a certain friend count, his the
+probability of retaining that user decreases rapidly. Similarly,
+Amazon may want to surface an undersold product on more commonly
+visited product pages, but the revenue gain will not be significant
+enough unless a certain number of pages recommend the said
+product. What makes this problem difficult is that you can only show
+so many recommendations in high value spots without overwhelming the
+user. So the number of recommendations a high traffic user or product
+can make is limited, and these need to be allocated efficiently. This
+motivates modeling the problem as a an optimization problem on graphs
+as follows. \vs
+
+We let $L$ and $R$ be sets of products or users. We model the
+relationship between these sets of products or users by a bipartite
+graph $G=(L,R,E)$ where there is an edge between between a $u\in L$
+and $v\in R$ if they are related in some way. Our goal is to find
+a subgraph $H\subseteq G$ such that $\deg_{H}(u) \leq c$ for all $u\in
+L$ and the number of vertices $u\in L$ with $\deg_{G}(u) \geq
+a$ is maximized. We will call this problem the $(c,a)$-graph
+recommendation problem.\vs
+
+This problem can capture all the examples described above. In the case
+of Netflix $L$ is a set of movies and $R$ is a set of users. In the
+case of Facebook $L$ is a set of active users and $R$ is a set of new
+users who need friends. In Amazon and Bloomreach's case $L$ is a set
+of high traffic/revenue products and $R$ is a set of products whose
+exposure we seek to increase. \vs
+
+There are special cases of the graph recommendation problem that can
+be solved to optimality in polynomial time. In particular if $a=1$
+then the problem is simply a maximum cardinality $b$-matching
+problem. However, implementing the algorithms that solve $b$-matchings
+such as the blossom algorithm in general graphs is tricky as they
+involve a good deal of bookkeeping. Furthermore they take $O(v^{2.5})$
+time at best and are memory-intensive. With web-scale sizes of the
+problems encountered in practice, any solution that requires
+superlinear time is unlikely to be practical. In this paper we
+develop several linear time algorithms that operate locally and
+therefore use very little memory, but still output solutions
+that are near optimal in the average-case and worst case.

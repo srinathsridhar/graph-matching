@@ -1,0 +1,26 @@
+\section{Future Directions}
+In this paper we proposed several different models for explaining how
+recommendation subgraphs arise probabilistically and how optimization 
+problems on these graphs can be solved, but there is much more that
+can be done.
+
+\begin{enumerate}
+
+\item In practice, there might exist several different
+  recommendation subgraphs based on different features. For example,
+  two people might be related because they went to the same 
+  school, or because they live in the same city, or because they
+  would complete a large number of triangles, etc. It's worthwhile
+  to investigate how such graphs can be combined into one, or how
+  an optimization problem can be solved using all such 
+  recommendation subgraphs simultaneously.
+
+\item We should devise metrics that can evaluate how well a
+  recommendation subgraph fits a given model and conduct some parameter
+  fitting experiments to see how well actual recommendation subgraphs
+  which arise in practice fit our models.
+
+\item We should implement the sampling and the greedy algorithms
+  given in the paper to see if they can solve to near optimality
+  the graph recommendation problems that arise in practice.
+\end{enumerate}
