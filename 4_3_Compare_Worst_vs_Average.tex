@@ -1,22 +1,11 @@
-\section{Comparing the Worst-Case and Average-Case Approximations}
+\subsection{Comparing the Worst-Case and Average-Case Approximations}
 In this section, we show that the the results of Section
 \ref{fixed-degree} that hold in expectation also hold in the worst
-case with high probability using concentration bounds.
-
-We can convert the expectation results to a lower bound that holds
-with high probability in two ways. First, recall that Markov's
-inequality states that for any non-negative random variable $X$ and
-any $a\geq 1$, we have $\Pr[X \geq a\E[X]] \leq \frac{1}{a}$. We can
-apply this to the random variable $r-S$ with $a=\frac{1}{2}$ to
-obtain:
-
-\begin{thm}
-The random sampling algorithm produces a solution of size at least $r(1-2\exp(-ck))$ with probability at least $1/2$, 
-\end{thm}
-
-While this gives us a lower bound, we can do better using Chernoff
-bounds. While Chernoff bounds are usually stated for independent
-variables, the bound bound below holds for non-positively correlated
+case with high probability using concentration bounds. We can convert 
+the expectation results to a lower bound that holds with high
+probability using concentration results like Chernoff bounds. While
+Chernoff bounds are usually stated for independent variables, the 
+variant below holds for any number pairwise non-positively correlated
 variables.
 
 \begin{thm}

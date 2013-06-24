@@ -1,9 +1,9 @@
-\section{Worst-Case Approximation}
+\subsection{Worst-Case Approximation}
 The results in the previous section concentrated on producing nearly
 optimal solutions in expectation. In this section, we will show that
 it is possible to obtain good solutions regardless of the model that
 generated the recommendation subgraph. As usual we let $G=(L,R,E)$ be a
-bipartite graph on which we would like to solve the (c,a)-graph
+bipartite graph on which we would like to solve the $(c,a)$-graph
 recommendation problem and consider the following greedy
 algorithm. Consider each vertex in $R$ in some arbitrary order and if
 there is some $v \in R$ that has $a$ neighbors in $L$ all of which
@@ -48,18 +48,12 @@ vertices to the solution.
 \end{minipage}
 \end{figure}
 
-There are several things to note about this algorithm. The first is
+There are twp things to note about this algorithm. The first is
 that the solution the greedy algorithm outputs is dependent on the
 order the vertices in $R$ are processes. It may be possible to improve
 the expected approximation ratio by permuting these vertices randomly
 before the algorithm runs. The second is that this approximation
 guarantee is as good as we can expect. In particular, if we set $a=1$
-then we obtain the familiar $1/2$-approximation for matchings. It
-might be possible that some or even all the cases of the graph
-recommendation problem admit $(1+\epsilon)$ approximations in
-$O(n\cdot \text{polylog}(n))$ time, but this greedy algorithm likely
-represents the best we can do with minimal effort. Finally, we can use
-this worst case approximation algorithm to benchmark the random
-sampling algorithms we described in the previous section.
+then we obtain the familiar $1/2$-approximation for matchings.
 
 \label{worst-vs-avg}
