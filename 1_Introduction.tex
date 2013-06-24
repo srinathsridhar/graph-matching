@@ -1,49 +1,85 @@
+\begin{abstract}
+
+In this paper, we study the problem of graph recommendations as 
+variants of bipartite matching problems. We consider the problem
+of solving such matching problems in practice at web-scale. To acheive
+this we introduce several models to simulate underlying input graph
+structures. We then analyze the conditions under which a random sample 
+of edges using constant memory already suffices to be a 
+'good' recommendation algorithm as opposed the cases when we may consider
+the more classical and involved linear memory polynomial time algorithms. 
+We also show how to select the number of recommendations per item while 
+building a website so that there exists a 'perfect' graph recommendation.
+
+\end{abstract}
+
 \section{Introduction}
-As the amount of data a service collects and indexes increases, the
-problem of surfacing relevant content arises and may companies face
-this challenge today. Netflix needs to recommend similar movies,
-Amazon and Bloomreach need to recommend similar products, Facebook
-needs to recommend pages or friends. This recommendation problem is
-hard to solve and often critical to the success of these services. For
-example, when a user signs up for the first time, Facebook needs to
-recommend them to as many people relevant as possible very quickly
-because if a user does not need reach a certain friend count, his the
-probability of retaining that user decreases rapidly. Similarly,
-Amazon may want to surface an undersold product on more commonly
-visited product pages, but the revenue gain will not be significant
-enough unless a certain number of pages recommend the said
-product. What makes this problem difficult is that you can only show
-so many recommendations in high value spots without overwhelming the
-user. So the number of recommendations a high traffic user or product
-can make is limited, and these need to be allocated efficiently. This
-motivates modeling the problem as a an optimization problem on graphs
-as follows. \vs
 
-We let $L$ and $R$ be sets of products or users. We model the
-relationship between these sets of products or users by a bipartite
-graph $G=(L,R,E)$ where there is an edge between between a $u\in L$
-and $v\in R$ if they are related in some way. Our goal is to find
-a subgraph $H\subseteq G$ such that $\deg_{H}(u) \leq c$ for all $u\in
-L$ and the number of vertices $u\in L$ with $\deg_{G}(u) \geq
-a$ is maximized. We will call this problem the $(c,a)$-graph
-recommendation problem.\vs
+Recommendations are an integral part of several popular websites. Specifically
+websites that are highly engaging and typical user behavior involves that
+of long browsing sessions almost always contain a recommendation system. For 
+e.g., YouTube recommends a set of videos on the right for every video watched
+by a user, Quora recommends a set of questions on every question page, Amazon 
+recommends similar products on every product page etc. For the rest of this Section,
+we will use YouTube as a running example although these observations apply to 
+all websites and recommendation systems.
 
-This problem can capture all the examples described above. In the case
-of Netflix $L$ is a set of movies and $R$ is a set of users. In the
-case of Facebook $L$ is a set of active users and $R$ is a set of new
-users who need friends. In Amazon and Bloomreach's case $L$ is a set
-of high traffic/revenue products and $R$ is a set of products whose
-exposure we seek to increase. \vs
+Note that these recommendations are so critical that one could argue that the YouTube
+would not be the website it is today if it had no recommendations. A seamless
+browse experience that transitions the user from one YouTube video to another directly
+dictates the amount of time a user spends on the site and is therefore directly correlated
+to both user satisfaction and revenue. 
 
-There are special cases of the graph recommendation problem that can
-be solved to optimality in polynomial time. In particular if $a=1$
-then the problem is simply a maximum cardinality $b$-matching
-problem. However, implementing the algorithms that solve $b$-matchings
-such as the blossom algorithm in general graphs is tricky as they
-involve a good deal of bookkeeping. Furthermore they take $O(v^{2.5})$
-time at best and are memory-intensive. With web-scale sizes of the
-problems encountered in practice, any solution that requires
-superlinear time is unlikely to be practical. In this paper we
-develop several linear time algorithms that operate locally and
-therefore use very little memory, but still output solutions
-that are near optimal in the average-case and worst case.
+While recommendations are important, its implementation is performed by finding related
+items at runtime. That is, when a user lands on an item the recommendation systems
+decide online the set of other items to display. Such systems have the problem that
+a global analysis of the performance of the recommendations are hard. For e.g., one
+can simply ask if there are an item that was not recommended by even one other item? 
+
+This motivates solving the recommendation problem offline where we can precompute
+the set of recommendations for every item. Such a system can be built in two stages. 
+A first stage decides on recommendations for each item purely based on relevance and
+retrieves $d$ items to show. The second stages prunes it to $c < d$ items such that
+globally we optimize to ensure that the resulting recommendation graph is `good'. For 
+e.g., we might want to ensure that the resulting graph minimizes the number of items
+that was not recommended by a single other video. 
+
+We can represent this notion of recommendations by using a directed graph. A vertex is simply
+an item and a directed edge $(u, v)$ is a recommendation from $u$ to $v$. Under this graph
+recommendation, for the above problem, if $c=1$ and we require
+the graph be strongly connected then our problem reduces to Hamilton cycle, an NP-complete problem.
+
+We can generalize the above graph recommendation problem by using a directed bipartite graph. 
+Website owners might not be interested on all the items on their site. We can use one partition $U$
+to represent the set of items for which we need recommendations. We can use the other partition $V$
+to represent the set of items that are recommended. Note that a single item can be represented in 
+both $U$ and $V$ if needed. For our main results we will use this representation. Now the input
+to the problem is this directed graph $G$ where each vertex has $d$ recommendations (thanks to the
+first stage of the above described backend system). The output that we need is a subgraph $G'$
+where each vertex has $c < d$ recommendations. The goal is simply to minimize the number of vertices
+that have in-degree less than $a$. Again, note that if $a=c=1$ this is simply the problem of
+maximum bipartite matching\cite{}. If $a=1$ and $c > 1$, this is the problem of fractional
+matching\cite{}. Both these problems have well-studied polynomial time algorithms\cite{}. For the
+rest of the paper, we call this the $(c, a)$-graph recommendation problem.
+
+In practice, the authors have implemented several algorithms in cutting-edge web-technology companies
+including Google, Facebook and BloomReach. There are a couple of massive hurdles in the practicality
+of backend systems. First is just simplicity. Software and systems need to be simple for it to be
+maintainable. It is a nightmare to maintain a complicated system and is avoided almost always
+in practice unless absolutely needed. Second is scale. Systems need to scale gracefully and easily. Matching
+algorithms require linear memory and super-linear run-time neither of which scales. Facebook graph has
+a billion vertices\cite{} and hundreds of billions of edges\cite{}, 
+YouTube has XXX videos and YYY recommendations\cite{} etc. Even an ecommerce website with 100M product
+pages and 10 recommendations per product would require 100+GB in main memory to run these algorithms. Since
+using clusters of single machines with such high memory is prohibitively expensive, map-reduce\cite{} jobs
+are needed to solve these problems. Map-reduce for graph problems are firstly notoriously hard and secondly
+we are back into building a complicated system. 
+
+The above reasons motivated the authors to study the problem of recommendations as a graph matching
+problem and analyze the cases when a simple set of recommendations would suffice and produce near optimal
+solutions. Our goal is to find simple relationships between the parameters of the problem and compute
+thresholds that dictate the need for the different algorithms. In practice, this would immediately imply 
+that a very simple backend system can be built in many cases without the need for a complicated algorithm. 
+If the thresholds provided by our analysis are insufficient in quality, 
+then the designer can consider implementing the classical algorithms.
+
