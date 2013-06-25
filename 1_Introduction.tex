@@ -22,19 +22,19 @@ e.g., YouTube recommends a set of videos on the right for every video watched
 by a user, Quora recommends a set of questions on every question page, Amazon 
 recommends similar products on every product page etc. For the rest of this Section,
 we will use YouTube as a running example although these observations apply to 
-all websites and recommendation systems.
+all websites and recommendation systems. \vs
 
 Note that these recommendations are so critical that one could argue that the YouTube
 would not be the website it is today if it had no recommendations. A seamless
 browse experience that transitions the user from one YouTube video to another directly
 dictates the amount of time a user spends on the site and is therefore directly correlated
-to both user satisfaction and revenue. 
+to both user satisfaction and revenue. \vs
 
 While recommendations are important, its implementation is performed by finding related
 items at runtime. That is, when a user lands on an item the recommendation systems
 decide online the set of other items to display. Such systems have the problem that
 a global analysis of the performance of the recommendations are hard. For e.g., one
-can simply ask if there are an item that was not recommended by even one other item? 
+can simply ask if there are an item that was not recommended by even one other item? \vs
 
 This motivates solving the recommendation problem offline where we can precompute
 the set of recommendations for every item. Such a system can be built in two stages. 
@@ -42,12 +42,12 @@ A first stage decides on recommendations for each item purely based on relevance
 retrieves $d$ items to show. The second stages prunes it to $c < d$ items such that
 globally we optimize to ensure that the resulting recommendation graph is `good'. For 
 e.g., we might want to ensure that the resulting graph minimizes the number of items
-that was not recommended by a single other video. 
+that was not recommended by a single other video. \vs
 
 We can represent this notion of recommendations by using a directed graph. A vertex is simply
 an item and a directed edge $(u, v)$ is a recommendation from $u$ to $v$. Under this graph
-recommendation, for the above problem, if $c=1$ and we require
-the graph be strongly connected then our problem reduces to Hamilton cycle, an NP-complete problem.
+recommendation, for the above problem, if $c=1$ and we require the graph be strongly
+connected then our problem reduces to Hamilton cycle, an NP-complete problem. \vs
 
 We can generalize the above graph recommendation problem by using a directed bipartite graph. 
 Website owners might not be interested on all the items on their site. We can use one partition $U$
@@ -60,7 +60,7 @@ where each vertex has $c < d$ recommendations. The goal is simply to minimize th
 that have in-degree less than $a$. Again, note that if $a=c=1$ this is simply the problem of
 maximum bipartite matching\cite{}. If $a=1$ and $c > 1$, this is the problem of fractional
 matching\cite{}. Both these problems have well-studied polynomial time algorithms\cite{}. For the
-rest of the paper, we call this the $(c, a)$-graph recommendation problem.
+rest of the paper, we call this the $(c, a)$-graph recommendation problem. \vs
 
 In practice, the authors have implemented several algorithms in cutting-edge web-technology companies
 including Google, Facebook and BloomReach. There are a couple of massive hurdles in the practicality
@@ -73,7 +73,7 @@ YouTube has XXX videos and YYY recommendations\cite{} etc. Even an ecommerce web
 pages and 10 recommendations per product would require 100+GB in main memory to run these algorithms. Since
 using clusters of single machines with such high memory is prohibitively expensive, map-reduce\cite{} jobs
 are needed to solve these problems. Map-reduce for graph problems are firstly notoriously hard and secondly
-we are back into building a complicated system. 
+we are back into building a complicated system. \vs
 
 The above reasons motivated the authors to study the problem of recommendations as a graph matching
 problem and analyze the cases when a simple set of recommendations would suffice and produce near optimal
