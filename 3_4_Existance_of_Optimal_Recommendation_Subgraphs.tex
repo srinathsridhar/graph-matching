@@ -3,7 +3,7 @@ Let $G=(L,R,E)$ be a bipartite graph. We define a \emph{perfect} $(c,a)$-recomme
 
 \label{random_matching_threshold}
 \begin{thm}
-Let $G=(L,R,E)$ be a bipartite graph with $|L| = |R| = n$ and suppose that each edge is sampled uniformly and independently with probability $p$. If $p \geq (\log(n) - \log\log(n))>n$, then $\Pr[\text{G has a perfect matching}] \to 1$ as $n\to\infty$.
+Let $G=(L,R,E)$ be a bipartite graph with $|L| = |R| = n$ and suppose that each edge is sampled uniformly and independently with probability $p$. If $p \geq (\log(n) - \log\log(n))/n$, then $\Pr[\text{G has a perfect matching}] \to 1$ as $n\to\infty$.
 \end{thm}
 
 We will prove that a perfect $(c,a)$-recommendation subgraph exists with high probability by building it up from $a$ matchings which must exists with high probability if $p$ is sufficiently high. In the next theorem, we show that $p$ only needs to be taken $\Theta(\log(n))$ for this plan of attack to succeed. Furthermore, this decomposition into matchings motivates a an algorithm that can return a solution that comes within $(1-\epsilon)$ of the optimal solution and can be run in almost linear time. We will state the theorem for the case when $c<a$, but it applies equally well to the $a<c$ case by swapping the roles of $L$ and $R$ in the proof.
