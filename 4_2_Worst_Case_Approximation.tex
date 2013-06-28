@@ -1,3 +1,4 @@
+%\input{4_2_Worst_Case_Approximation.tex}
 \subsection{Worst-Case Approximation}
 The results in the previous section concentrated on producing nearly
 optimal solutions in expectation. In this section, we will show that
@@ -48,7 +49,7 @@ vertices to the solution.
 \end{minipage}
 \end{figure}
 
-There are twp things to note about this algorithm. The first is
+There are two things to note about this algorithm. The first is
 that the solution the greedy algorithm outputs is dependent on the
 order the vertices in $R$ are processes. It may be possible to improve
 the expected approximation ratio by permuting these vertices randomly
@@ -56,4 +57,29 @@ before the algorithm runs. The second is that this approximation
 guarantee is as good as we can expect. In particular, if we set $a=1$
 then we obtain the familiar $1/2$-approximation for matchings.
 
-\label{worst-vs-avg}
+However, in reality, this algorithm fares much better when we put give
+it the same expectation treatment we have given the sampling algorithm.
+
+\begin{thm}
+Greedy gives sublinear error for $G_{n,n,p}$ if $pn$ is an arbitrarily slow growing function.
+\end{thm}
+\begin{proof}
+Note that if edges are generated uniformly, then we can consider the
+graph as being revealed to us one vertex at a time as the greedy
+algorithm runs. In particular, consider the event $X_i$ that the 
+greedy algorithm matches the $(i+1)^{th}$ vertex it inspects. While,
+$X_{i+1}$ is dependent on $X_1,\ldots, X_i$, the worst condition for
+$X_{i+1}$ is when all the previous $i$ vertices were by the same
+vertices in $L$, which are now not available for matching the 
+$(i+1)^{th}$ vertex. The maximum number of such invalidated vertices
+is at most $\lceil i/c \rceil$. Therefore, the probability that none
+of the $n-\lceil i/c \rceil $ vertices have an edge to this vertex is
+at most $(1-p)^{n-i/c}$. Summing over all the $X_i$ and using the 
+linearity of expectation, we obtain the following inequality:
+
+\[
+\sum_{i=0}^{n-1} \E[\lnot X_m] \leq \sum_{i=0}^{n-1} \left(1-p\right)^{n- i-1} \leq \sum_{j=0}^{n-1} \left(1-p\right)^j \leq\sum_{j=0}^{\infty} \left(1-p\right)^j = \frac{1}{p}
+\]
+
+That is, the expected size of the solution found by the greedy algorithm is $n-1/p$.
+\end{proof}
