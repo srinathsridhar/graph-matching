@@ -1,27 +1,34 @@
 \begin{abstract}
 
-In this paper, we study the problem of graph recommendations as 
+In this paper, we study the problem of graph recommendations as
 variants of bipartite matching problems. We consider the problem
 of solving such matching problems in practice at web-scale. To acheive
 this we introduce several models to simulate underlying input graph
-structures. We then analyze the conditions under which a random sample 
-of edges using constant memory already suffices to be a 
+structures. We then analyze the conditions under which a random sample
+of edges using constant memory already suffices to be a
 'good' recommendation algorithm as opposed the cases when we may consider
-the more classical and involved linear memory polynomial time algorithms. 
-We also show how to select the number of recommendations per item while 
+the more classical and involved linear memory polynomial time algorithms.
+We also show how to select the number of recommendations per item while
 building a website so that there exists a 'perfect' graph recommendation.
 
 \end{abstract}
 
 \section{Introduction}
 
+- Develop a model to explain the "unreasonable effectiveness of heuristics". Contrast with other models of random graphs such as affiliation networks where the goal is to build a generative model that has the same properties as networks found in real-life; Here we are building a random model that might explain why implemented methods are so effective. We also generalize our models to take into account more practical features of the graphs such as the products being within a hierarchical product classification tree etc.
+
+- Compare with work on how heuristic algorithms or SAT are very effective for random 3SAT formulas except at thresholds where number of clauses is linear in the number of variables. We do a similar analysis for parameter values of randomness where the heuristics are far from optimal both in terms of their theoretical bound as well as in practice
+
+- Write about relation to work on both generalizing Hall's conditions and expansion properties of random bipartite graphs. Both provide good theoretical foundations for finding better bounds on the performance of the heuristic methods deployed in practice.
+
+
 Recommendations are an integral part of several popular websites. Specifically
 websites that are highly engaging and typical user behavior involves that
-of long browsing sessions almost always contain a recommendation system. For 
+of long browsing sessions almost always contain a recommendation system. For
 e.g., YouTube recommends a set of videos on the right for every video watched
-by a user, Quora recommends a set of questions on every question page, Amazon 
+by a user, Quora recommends a set of questions on every question page, Amazon
 recommends similar products on every product page etc. For the rest of this Section,
-we will use YouTube as a running example although these observations apply to 
+we will use YouTube as a running example although these observations apply to
 all websites and recommendation systems. \vs
 
 Note that these recommendations are so critical that one could argue that the YouTube
@@ -37,10 +44,10 @@ a global analysis of the performance of the recommendations are hard. For e.g., 
 can simply ask if there are an item that was not recommended by even one other item? \vs
 
 This motivates solving the recommendation problem offline where we can precompute
-the set of recommendations for every item. Such a system can be built in two stages. 
+the set of recommendations for every item. Such a system can be built in two stages.
 A first stage decides on recommendations for each item purely based on relevance and
 retrieves $d$ items to show. The second stages prunes it to $c < d$ items such that
-globally we optimize to ensure that the resulting recommendation graph is `good'. For 
+globally we optimize to ensure that the resulting recommendation graph is `good'. For
 e.g., we might want to ensure that the resulting graph minimizes the number of items
 that was not recommended by a single other video. \vs
 
@@ -49,10 +56,10 @@ an item and a directed edge $(u, v)$ is a recommendation from $u$ to $v$. Under 
 recommendation, for the above problem, if $c=1$ and we require the graph be strongly
 connected then our problem reduces to Hamilton cycle, an NP-complete problem. \vs
 
-We can generalize the above graph recommendation problem by using a directed bipartite graph. 
+We can generalize the above graph recommendation problem by using a directed bipartite graph.
 Website owners might not be interested on all the items on their site. We can use one partition $U$
 to represent the set of items for which we need recommendations. We can use the other partition $V$
-to represent the set of items that are recommended. Note that a single item can be represented in 
+to represent the set of items that are recommended. Note that a single item can be represented in
 both $U$ and $V$ if needed. For our main results we will use this representation. Now the input
 to the problem is this directed graph $G$ where each vertex has $d$ recommendations (thanks to the
 first stage of the above described backend system). The output that we need is a subgraph $G'$
@@ -68,7 +75,7 @@ of backend systems. First is just simplicity. Software and systems need to be si
 maintainable. It is a nightmare to maintain a complicated system and is avoided almost always
 in practice unless absolutely needed. Second is scale. Systems need to scale gracefully and easily. Matching
 algorithms require linear memory and super-linear run-time neither of which scales. Facebook graph has
-a billion vertices\cite{} and hundreds of billions of edges\cite{}, 
+a billion vertices\cite{} and hundreds of billions of edges\cite{},
 YouTube has XXX videos and YYY recommendations\cite{} etc. Even an ecommerce website with 100M product
 pages and 10 recommendations per product would require 100+GB in main memory to run these algorithms. Since
 using clusters of single machines with such high memory is prohibitively expensive, map-reduce\cite{} jobs
@@ -78,8 +85,8 @@ we are back into building a complicated system. \vs
 The above reasons motivated the authors to study the problem of recommendations as a graph matching
 problem and analyze the cases when a simple set of recommendations would suffice and produce near optimal
 solutions. Our goal is to find simple relationships between the parameters of the problem and compute
-thresholds that dictate the need for the different algorithms. In practice, this would immediately imply 
-that a very simple backend system can be built in many cases without the need for a complicated algorithm. 
-If the thresholds provided by our analysis are insufficient in quality, 
+thresholds that dictate the need for the different algorithms. In practice, this would immediately imply
+that a very simple backend system can be built in many cases without the need for a complicated algorithm.
+If the thresholds provided by our analysis are insufficient in quality,
 then the designer can consider implementing the classical algorithms.
 
