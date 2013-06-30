@@ -1,19 +1,19 @@
-\subsection{Worst-Case Approximation}
+\subsection{The Greedy Algorithm}
+\label{greedy}
 The results in the previous section concentrated on producing nearly
 optimal solutions in expectation. In this section, we will show that
 it is possible to obtain good solutions regardless of the model that
 generated the recommendation subgraph. As usual we let $G=(L,R,E)$ be a
 bipartite graph on which we would like to solve the $(c,a)$-graph
-recommendation problem and consider the following greedy
-algorithm. Consider each vertex in $R$ in some arbitrary order and if
-there is some $v \in R$ that has $a$ neighbors in $L$ all of which
-have degree $< c$, add the edges to these neighbors to $H$. If there
+recommendation problem. 
+
+We analyze the following natural greedy algorithm. Consider each vertex in $R$ in some arbitrary order and if there is some $v \in R$ that has $a$ neighbors in $L$ all of which have degree $< c$, add the edges to these neighbors to $H$. If there
 are any ties about the nodes to be picked either in the selection of
-$v$ or its neighbors, we can break ties arbitrarily. This algorithm
-has the following approximation guarantee
+$v$ or its neighbors, we can break ties arbitrarily. 
 
 \begin{thm}
-The greedy algorithm described above achieves a $1/(a+1)$-approximation ratio.
+The greedy algorithm achieves a $1/(a+1)$-approximation ratio for the $(c,a)$-graph
+recommendation problem.
 \end{thm}
 \begin{proof}
 Let $R_{GREEDY}, R_{OPT}\subseteq R$ be the set of vertices that have
@@ -50,35 +50,38 @@ vertices to the solution.
 
 There are two things to note about this algorithm. The first is
 that the solution the greedy algorithm outputs is dependent on the
-order the vertices in $R$ are processes. It may be possible to improve
+order the vertices in $R$ are processed. It may be possible to improve
 the expected approximation ratio by permuting these vertices randomly
 before the algorithm runs. The second is that this approximation
 guarantee is as good as we can expect. In particular, if we set $a=1$
-then we obtain the familiar $1/2$-approximation for matchings.
+then we obtain the familiar $1/2$-approximation of the greedy algorithm for matchings.
 
-However, in reality, this algorithm fares much better when we put give
-it the same expectation treatment we have given the sampling algorithm.
+%However, in reality, this algorithm fares much better when we put give it the same expectation treatment we have given the sampling algorithm.
 
+%Arda: Please add the description here of the example with L1, L2, R1, R2 with all edges except between L2 and R2 and the greedy edges preferring the neighbors in L having OPT=n but even a random permutation loses a constant factor. The online matching paper by Karp, Vazirani & Vazirani has som eversion of this example - Cite if it is relevant: there is a more recent Birnbaum-Mathieu reference of this result.
+
+
+%Arda: Clean up and make the below formal.
 \begin{thm}
 Greedy gives sublinear error for $G_{n,n,p}$ if $pn$ is an arbitrarily slow growing function.
 \end{thm}
 \begin{proof}
 Note that if edges are generated uniformly, then we can consider the
 graph as being revealed to us one vertex at a time as the greedy
-algorithm runs. In particular, consider the event $X_i$ that the 
+algorithm runs. In particular, consider the event $X_i$ that the
 greedy algorithm matches the $(i+1)^{th}$ vertex it inspects. While,
 $X_{i+1}$ is dependent on $X_1,\ldots, X_i$, the worst condition for
 $X_{i+1}$ is when all the previous $i$ vertices were by the same
-vertices in $L$, which are now not available for matching the 
+vertices in $L$, which are now not available for matching the
 $(i+1)^{th}$ vertex. The maximum number of such invalidated vertices
 is at most $\lceil i/c \rceil$. Therefore, the probability that none
 of the $n-\lceil i/c \rceil $ vertices have an edge to this vertex is
-at most $(1-p)^{n-i/c}$. Summing over all the $X_i$ and using the 
+at most $(1-p)^{n-i/c}$. Summing over all the $X_i$ and using the
 linearity of expectation, we obtain the following inequality:
 
 \[
-\sum_{i=0}^{n-1} \E[\lnot X_m] \leq \sum_{i=0}^{n-1} \left(1-p\right)^{n- i-1} \leq \sum_{j=0}^{n-1} \left(1-p\right)^j \leq\sum_{j=0}^{\infty} \left(1-p\right)^j = \frac{1}{p}
+\sum_{i=0}^{n-1} \E[\lnot X_i] \leq \sum_{i=0}^{n-1} \left(1-p\right)^{n- i-1} = \sum_{j=0}^{n-1} \left(1-p\right)^j \leq\sum_{j=0}^{\infty} \left(1-p\right)^j = \frac{1}{p}
 \]
 
 That is, the expected size of the solution found by the greedy algorithm is $n-1/p$.
-\end{proof}
+\end{proof} 
