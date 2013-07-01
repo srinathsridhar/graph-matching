@@ -1,15 +1,21 @@
 \section{More Expressive Models of Recommmendation Graphs}
 
 Having described the fixed-degree model in detail above, we can now
-use it as a template for the analysis of three more richer and more
-expressive models. In Section \ref{weighted}, we generalize the fixed
-degree model to a model where the graph is fixed and the edges can 
-weights. In Section \ref{hierarchy}, we analyze the 
-{\em hierarchical tree model} which aims to model recommendation trees
-that arise from relationships in a product hierarchy. Finally, in 
-Section~\ref{cartesian} we study the {\em cartesian product model}
-which aims to model recommendation graphs which arise from combining
-the relevancy advice of several different algorithms.
+use it as a template for the analysis of three more richer, more
+expressive and realistic models. In practice, websites can not pick
+edges uniformly at random from all the other pages on the site. There
+are natural clusters of pages so that pages within the clusters are
+more closely related than those outside. 
+
+This is the motivation to extend our previous analysis to the cases
+when the underlying graph has substructure.  In
+Section~\ref{hierarchy}, we analyze the {\em hierarchical tree model}
+which models graphs that contain natural tree like clusters.  In
+Section~\ref{weighted}, we generalize to the {\em cartesian product model}
+where edge density may vary across different pairs of
+categories. Finally, in Section~\ref{weighted} we study the {\em
+  weighted model} which assigns weights to the graph so that we can
+incorprate traffic patterns across a website.
 
 \subsection{Hierarchical Tree Model}
 \label{hierarchy}
