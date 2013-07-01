@@ -54,16 +54,16 @@ order the vertices in $R$ are processed. It may be possible to improve
 the expected approximation ratio by permuting these vertices randomly
 before the algorithm runs. The second is that this approximation
 guarantee is as good as we can expect. In particular, if we set $a=1$
-then we obtain the familiar $1/2$-approximation of the greedy algorithm for matchings.
+then we obtain the familiar $1/2$-approximation of the greedy
+algorithm for matchings.
 
 %However, in reality, this algorithm fares much better when we put give it the same expectation treatment we have given the sampling algorithm.
 
 %Arda: Please add the description here of the example with L1, L2, R1, R2 with all edges except between L2 and R2 and the greedy edges preferring the neighbors in L having OPT=n but even a random permutation loses a constant factor. The online matching paper by Karp, Vazirani & Vazirani has som eversion of this example - Cite if it is relevant: there is a more recent Birnbaum-Mathieu reference of this result.
 
-
-%Arda: Clean up and make the below formal.
 \begin{thm}
-Greedy gives sublinear error for $G_{n,n,p}$ if $pn$ is an arbitrarily slow growing function.
+Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
+\[ \E[S] \geq r - \frac{a(lp)^{r-1}}{p}\]
 \end{thm}
 \begin{proof}
 Note that if edges are generated uniformly, then we can consider the
@@ -74,14 +74,19 @@ $X_{i+1}$ is dependent on $X_1,\ldots, X_i$, the worst condition for
 $X_{i+1}$ is when all the previous $i$ vertices were by the same
 vertices in $L$, which are now not available for matching the
 $(i+1)^{th}$ vertex. The maximum number of such invalidated vertices
-is at most $\lceil i/c \rceil$. Therefore, the probability that none
-of the $n-\lceil i/c \rceil $ vertices have an edge to this vertex is
-at most $(1-p)^{n-i/c}$. Summing over all the $X_i$ and using the
-linearity of expectation, we obtain the following inequality:
+is at most $\lceil i/c \rceil$. Therefore, the probability that fewer
+than $a$ of the of the at least $l-\lceil i/c \rceil $ available 
+vertices have an edge to this vertex is at most $\Pr[Binomial(l-i/c,p) < a]$.
+Using the crude approximation that
+$\Pr[Binomial(l-ia/c,p) < a] \leq a(1-p)^{l-ia/c-a}(lp)^{a-1}$ and
+Summing over all the $X_i$ using the linearity of expectation,
+we obtain the following inequality:
 
-\[
-\sum_{i=0}^{n-1} \E[\lnot X_i] \leq \sum_{i=0}^{n-1} \left(1-p\right)^{n- i-1} = \sum_{j=0}^{n-1} \left(1-p\right)^j \leq\sum_{j=0}^{\infty} \left(1-p\right)^j = \frac{1}{p}
-\]
-
-That is, the expected size of the solution found by the greedy algorithm is $n-1/p$.
+\begin{align*}
+      \E[S]
+&\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
+&\geq r - \sum_{i=0}^{r-1} \Pr[Binomial(l-ia/c,p) < a] \\
+&\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-ia/c-a}((l-ia/c)p)^{r-1} \\
+&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-ia/c-a} \geq r - \frac{a(lp)^{r-1}}{p}\\
+\end{align*}
 \end{proof} 
