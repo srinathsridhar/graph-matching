@@ -1,36 +1,38 @@
 \subsection{Existance of Optimal Recommendation Subgraphs}
 Let $G=(L,R,E)$ be a bipartite graph. We define a \emph{perfect} $(c,a)$-recommendation on $G$ to be a subgraph $H$ such that $deg_H(u)\leq c$ for all $u\in L$ and $deg_H(v)=a$ for $\min(|R|,|L|c/a)$ of the $v\in R$. In this section we will prove a sufficient condition for perfect $(a,a)$-recommendation subgraphs to exist in a bipartite graph where edges are sampled uniformly and independently with probability $p$. Our result relies on a well-known characterization of perfect matchings \cite{Janson2011}:
 
-\label{random_matching_threshold}
 \begin{thm}
+\label{random_matching_threshold}
 Let $G=(L,R,E)$ be a bipartite graph with $|L| = |R| = n$ and suppose that $G$ is drawn from $G_{n,n,p}$. If $p \geq (\log(n) - \log\log(n))/n$, then $\lim_{n\to\infty}\Pr[\text{G has a perfect matching}] \to 1$.
 \end{thm}
 
-We will prove that a perfect $(c,a)$-recommendation subgraph exists in random graphs with high probability by building it up from $a$ matchings which must exists with high probability if $p$ is sufficiently high. In the next theorem, we show that $p$ only needs to be taken $\Theta(\log(n))$ for this plan of attack to succeed. Furthermore, this decomposition into matchings motivates a an algorithm that can return a solution that comes within $(1-\epsilon)$ of the optimal solution and can be run in almost linear time. While the theorem is stated for the case when $c<a$, but it applies equally well to the $a<c$ case by swapping the roles of $L$ and $R$ in the proof.
+We will prove that a perfect $(c,a)$-recommendation subgraph exists in random graphs with high probability by building it up from $a$ matchings which must exists with high probability if $p$ is sufficiently high. In the next theorem, we show that $p$ only needs to be taken $\Theta(\log(n))$ for this plan of attack to succeed. Furthermore, this decomposition into matchings motivates a an algorithm that can return a solution that comes within $(1-\epsilon)$ of the optimal solution and can be run in almost linear time. While the theorem is stated for the case when $a \leq c$, but it applies equally well to the $a > c$ case by partitioning $L$ instead of $R$ in the following proof.
 
 \begin{thm}
-Let $G=(L,R,E)$ be a random graph and let $|L|=l$, $|R|=r$ and $k=l/r$. If each edge of $G$ is sampled with probability $p\geq c(\log(l)-\log\log(l))/l$ and $kc \geq a$, then 
+Let $G=(L,R,E)$ be a random graph and let $|L|=l$, $|R|=r$ and $k=l/r$. If is drawn from $G_{l,r,p}$ with $p\geq a(\log(l)-\log\log(l))/l$ and $kc \geq a$, then 
 \[ \Pr[\text{G has a perfect $(c,a)$-recommendation subgraph}] \to 1\]
 as $l,r\to\infty$ together.
 \end{thm}
 
 \begin{proof}
-Note that given the size and the degree constraints of $L$, at most $lc/a$ vertices in $R$ can obtain degree $a$ in a $(c,a)$-recommendation subgraph. We can therefore restrict $R$ to an arbitrary subset $R'$ of itself of size $lc/a$. Next, we pick an enumeration of the vertices in $L=\{u_0,\ldots, u_{l-1}\}$ put these vertices into $a$ subsets by defining $L_i = \{u_{(i-1)l/a}, \ldots, u_{(i+c)l/a-1}\}$ for each $1\leq i\leq a$. Note both $R'$ and all of the $L_i$ have size $lc/a$. \vs
+Note that given the size and the degree constraints of $L$, at most $lc/a$ vertices in $R$ can obtain degree $a$ in a $(c,a)$-recommendation subgraph. We can therefore restrict $R$ to an arbitrary subset $R'$ of itself of size $lc/a$. Next, we pick an enumeration of the vertices in $R'=\{v_0,\ldots, v_{lc/a-1}\}$ and put these vertices into $a$ subsets by defining $R_i = \{v_{(i-1)l/a}, \ldots, v_{(i-1)l/a+l}\}$ for each $1\leq i\leq c$ where arithmetic in the indices is done modulo $lc/a$. Note both $R_i$ and all of the $L_i$ have size $l$. \vs
 
-Using these new sets we defined, we define the graphs $G_i$ on the bipartitions given by $(L_i, R')$. Since the sets $L_i$ are intersecting, we cannot define the graphs $G_i$ to be induced subgraphs. However, note that each vertex $u\in L$ falls into exactly $c$ of these subsets. Therefore, we can uniformly assign each edge in $G$ to one of $c$ graphs among $\{G_1,\ldots, G_a\}$ it can fall into, and make each of those graphs a random graph. In fact, while the different $G_i$s are coupled, taken in isolation we can consider any single $G_i$ to be drawn from the distribution $G_{lc/a,lc/a,p/c}$ since $G$ itself was drawn from $G_{l,r,p}$.
+Using these new sets we defined, we define the graphs $G_i$ on the bipartitions given by $(L, R_i)$. Since the sets $R_i$ are intersecting, we cannot define the graphs $G_i$ to be induced subgraphs. However, note that each vertex $v\in R$ falls into exactly $a$ of these subsets. Therefore, we can uniformly assign each edge in $G$ to one of $a$ graphs among $\{G_1,\ldots, G_c\}$ it can fall into, and make each of those graphs a random graph. In fact, while the different $G_i$s are coupled, taken in isolation we can consider any single $G_i$ to be drawn from the distribution $G_{l,l,p/a}$ since $G$ was drawn from $G_{l,r,p}$. \vs
 
-Since $c/a < 1$ and $p/c \geq (\log(l)-\log\log(l))/l$ by assumption, we can now say that 
+Since $p/a \geq (\log(l)-\log\log(l))/l$ by assumption, we can now say that by Theorem \ref{random_matching_threshold} that
+
 \[ \Pr[\text{$G_i$ has no perfect matching}] = o(1) \]
-Considering $a$ to be fixed, by a union bound we can now conclude that except for a $o(1)$ probability, each one of the $G_i$s has a perfect matching. By superimposing all of these perfect matchings, we can see that every vertex in $R'$ gets degree $a$. Since each vertex in $L$ is in exactly $c$ of the $L_i$s, each vertex in $L$ gets a degree $a$. It follows that except for a $o(1)$ probability, there exists an $(c,a)$-recommendation subgraph in $G$.
+
+Considering $c$ to be fixed, by a union bound we can now conclude that except for a $o(1)$ probability, each one of the $G_i$s has a perfect matching. By superimposing all of these perfect matchings, we can see that every vertex in $R'$ gets degree $a$. Since each vertex in $L$ is in exactly $c$ matchings, each vertex in $L$ gets a degree $c$. It follows that except for a $o(1)$ probability, there exists an $(c,a)$-recommendation subgraph in $G$.
 \end{proof}
 
 Using this result, we can come up with an approximation algorithm that can deliver an $(1-\epsilon)$ approximation to the $(c,a)$-recommendation problem almost linear time in randomly sampled dense graphs.
 
 \begin{thm}
-Let $G=(L,R,E)$ be a graph where the edges are independently and uniformly with probability at least $p \geq (\log(|L|)-\log\log(|L|))/|L|$.   There exists an algorithm that can with high probability output a $(1-\epsilon)$-approximation in $O(|E|a^2/\epsilon)$ time.
+Let $G=(L,R,E)$, $|L|=l$, $|R|=r$, and suppose that $G$ is drawn from $G_{l,r,p}$ where $p \geq a(\log(l)-\log\log(l))/l$. Then there exists an algorithm that can output a $(1-\epsilon)$-approximation in $O(|E|c^2/\epsilon)$ time with probability $1-o(1)$.
 \end{thm}
 \begin{proof}
-As in the proof of the previous theorem, we can arbitrarily restrict $R$ to a subset of size $|L|c/a$ and divide $L$ into sets $L_1,\ldots,L_a$ such that each vertex in $L$ is contained in exactly $c$ of the sets. Using the previous theorem, we know that each of the graphs $G_i$ has a perfect matching with high probability. These perfect matchings can be approximated to a $1-\epsilon/a$ factor by finding matchings that don't have augmenting paths of length $\geq 2a/\epsilon$. This can be done for each $G_i$ in $O(|E|a/\epsilon)$ time. Furthermore, the union of unmatched vertices makes up an at most $a\cdot(\epsilon/a)$ fraction of $R'$. This proves the result. 
+As in the proof of the previous theorem, we can arbitrarily restrict $R$ to a subset of size $|L|c/a$ and divide $R$ into sets $R_1,\ldots,R_c$ such that each vertex in $R$ is contained in exactly $a$ of the sets. Using the previous theorem, we know that each of the graphs $G_i$ has a perfect matching with high probability. These perfect matchings can be approximated to a $1-\epsilon/c$ factor by finding matchings that don't have augmenting paths of length $\geq 2c/\epsilon$. This can be done for each $G_i$ in $O(|E|c/\epsilon)$ time. Furthermore, the union of unmatched vertices makes up an at most $c\cdot(\epsilon/c)$ fraction of $R'$. This proves the result. 
 \end{proof}
 
 While this result is a heavier weight solution, rephrasing the problem in terms of matchings enables us to take advantage of the well-understood combinatorial properties of matchings.
