@@ -36,7 +36,7 @@ not actually have to be aware of the structure of optimal solution for
 this type of bookkeeping to go through.) Therefore, at each step of
 the greedy algorithm, we have to remove at most $a+1$ vertices from
 the candidate pool. Since our candidate pool has size $OPT$, the
-greedy algorithm cannot stop before it has added $|OPT|/(a+1)$
+greedy algorithm cannot stop before it has added $OPT/(a+1)$
 vertices to the solution.
 \end{proof}
 
@@ -71,7 +71,7 @@ could match $v_1$ to $u_{i,1}$ for each $2\leq i\leq a+1$, producing
 a solution of size $a+1$. As in matchings, randomizing the order in
 which the vertices are processed still leaves a constant factor gap
 in the size of the solution as in the matchings case.
-\cite[KarpVaziraniVazirani1990]
+\cite{KarpVaziraniVazirani1990}
 
 %Arda: Please add the description here of the example with L1, L2, R1, R2 with all edges except between L2 and R2 and the greedy edges preferring the neighbors in L having OPT=n but even a random permutation loses a constant factor. The online matching paper by Karp, Vazirani & Vazirani has som eversion of this example - Cite if it is relevant: there is a more recent Birnbaum-Mathieu reference of this result.
 
