@@ -1,17 +1,19 @@
 \begin{abstract}
 
 Recommendations are central to the utility of many of the popular websites such
-as YouTube, Facebook, and Quora, as well as many e-commerce store catalog sites.
+as YouTube, Facebook and Quora, as well as many e-commerce store websites.
 Such sites usually have a large list of candidate pages that could serve as
 recommendations from the current page based on relevance. If every page is a
-node, these candidate recommendations can be denoted as directed edges. The 
-recommendation subgraph problem is loosely to choose a subgraph of bounded
-outdegree (denoting the limited page space to display the recommendations) that
-allows `efficient' navigation using the subgraph links over the whole site.
+node, these candidate recommendations can be denoted as directed
+edges. We introduce the recommendation subgraph problem which
+informally attempts to choose a subgraph of bounded
+outdegree (denoting the limited page space to display the
+recommendations) such that the resulting graph and the website
+can be traversed `efficiently.'
 
-In a simplification of the problem, the set of pages is divided into the few
-popular pages into which surfers arrive at the site, and the remaining large
-number of unknown pages that can be potentially recommended from the popular
+In a generalization of the problem, the set of pages can be divided
+into a few popular pages where surfers arrive and the remaining large
+number of pages that can be potentially recommended from the popular
 pages. The resulting natural bipartite graph of recommendations from the popular
 to the undiscovered pages is the candidate supergraph, from which a subgraph that
 has bounded outdegree on the popular pages must be chosen. The objective of
@@ -20,7 +22,7 @@ the subgraph leads to a variant of bipartite matching.
 %Maximizing the number of pages that are recommended by at least two or more popular pages leads to a much harder problem.
 
 %We describe our work in solving such recommendation subgraph problems in practice at web scale. 
-To solve these problems optimally at web-scale, implementations would involve
+To solve these problems optimally at web-scale graph sizes, implementations would involve
 writing distributed matching algorithms. Instead, in this work, we study the
 effectiveness of a natural greedy method that would be proposed by a lazy
 engineer. We investigate the cases when the candidate supergraph is a random
@@ -28,9 +30,9 @@ subgraph under two variations: the ``$d$-out" or fixed-degree version where
 every node on the left has exactly $d$ random neighbors on the right, as well as
 the standard Erd\"os-Renyi model with expected degree $d$ on the left hand side.
 We show that for most reasonable cases of the input, the lazy method gives
-solutions with value very close to optimal, and hence delineate the parameter
-ranges when it pays for the engineer not to be lazy. We also extend the analysis
-to generalizations of the input super-graph. 
+solutions with value very close to optimal. We also delineate the parameter
+ranges when such a lazy solution would not work. We finally extend the analysis
+to more generalized random models of the input graph. 
 
 %We then extend the fixed-degree random graph model in many directions: one where the
 %pages are situated in a natural hierarchical taxonomy (such as a topic ontology in Quora, or a product hierarchy in a store catalog), another where varying %densities are allowed between different subgraphs, and a third where the recommendation edges are weighted (typically according to the traffic that the %particular link is likely to generate) and the degree constraints are on the weighted degree. In all these cases, we identify conditions under which the lazy %engineer is very effective. We conclude with web-scale experimental results that motivate and validate our proposed models, as well as compare the %effectiveness of various heuristic methods that the lazy engineer would have then thought up in his freed up time.
@@ -52,6 +54,38 @@ building a website so that there exists a 'perfect' graph recommendation.
 
 \section{Introduction}
 
+<<<<<<< HEAD
+One of the great benefits of the web as a useful source of hyperlinked
+information comes from the careful choices made in crafting the recommendations
+that link a given page to closely related pages. Even though this advantage was
+identified well before the www was in place by Bush~\cite{Bush45}, it continues
+to persist even in Web 2.0 systems that generate web pages of combined
+information, where smooth navigation is enabled by carefully chosen
+recommendations to closely related pages. Thus, the presence of recommendations
+is an integral feature of several popular websites that are known to have high
+user engagement as reflected in long user sessions. Examples range from 
+entertainment sites like YouTube that recommend a set of videos on the right
+for every video watched by a user, information sites like Quora that recommend
+a set of related questions on every question page, to retail sites like Amazon
+that recommend similar products on every product page. \vs
+
+While recommendations are important, they are implemented typically by finding
+related items to display at runtime. That is, when a user lands on an item the
+recommendation systems decide online the set of other items to display. Such
+systems have the problem that a global analysis of the performance of the
+recommendations are hard. E.g., it is almost impossible to know if there is an
+item that was not recommended by even one other item. As the size of the
+repository grows, doing such a real-time computation becomes less feasible and
+might lead to deterioration in the quality of the recommended pages.  This
+motivates the strategy of solving the recommendation problem off-line, where we
+pre-compute the set of recommendations for every item. Such a system can be
+built in two stage: the first stage decides on recommendations for each item
+purely based on relevance and retrieves a large candidate set of $d$ items to
+show. The second stages prunes it to $c < d$ items such that globally we ensure
+that the resulting recommendation graph is `good'. For instance, we might want
+to ensure that the resulting graph minimizes the number of items that was not
+recommended by any other item. \vs
+=======
 One of the great benefits of the web as a useful source of hyperlinked
 information comes from the careful choices made in crafting the recommendations
 that link a given page to closely related pages. Even though this advantage was
@@ -82,6 +116,7 @@ show. The second stages prunes it to $c < d$ items such that globally we ensure
 that the resulting recommendation graph is `good'. For instance, we might want
 to ensure that the resulting graph minimizes the number of items that was not
 recommended by a single other item. \vs
+>>>>>>> 09e5909dcb1d0b3ebdd1f82d8ac20bfe087f40db
 
 We can represent this notion of recommendations by using a directed graph. A
 vertex is simply an item and a directed edge $(u, v)$ is a recommendation from
@@ -126,11 +161,19 @@ graph problems are notoriously hard and we are back to building a complicated
 system. \vs
 
 %Sri: Check out the para below and modify - add any figure/graph if you can justify these numbers here.
+<<<<<<< HEAD
+Our work with real-life web systems suggest that typical values for $c$ range
+from 5 to 20, while the requirement $a$ is typically one, and sometimes slightly
+larger in the range 2 to 5. The ratio of the size of undiscovered pages on the
+right to the popular pages on the left is of the order of ten to hundred. It is
+instructive to check the performance of the analyzed algorithms for these
+=======
 Our work with real-life web systems suggest that typical values for $c$ range
 from 5 to 20, while the requirement $a$ is typically one, and sometimes slightly
 larger in the range 2 to 5. The ratio of the size of undiscovered pages on the
 right to the popular pages on the left is of the order of ten to hundred. it is
 instructive to check the performance of the analyzed algorithms for these
+>>>>>>> 09e5909dcb1d0b3ebdd1f82d8ac20bfe087f40db
 typical values of these parameters.
 
 \subsection{Algorithms and Analyses}
@@ -179,6 +222,18 @@ or lazy algorithm, as a basis for our later computational comparisons in a
 similar vein. \vs
 
 {\bf Optimal Recommendation Subgraphs}
+<<<<<<< HEAD
+Finally we turn to the question of whether the maximum number of nodes allowed
+by the degree constraints can be covered (at least $a$ times) by a recommendation
+subgraph: we say that there is an perfect $(c,a)$-recommendation subgraph in this
+case. Under the usual Erd\"os-Renyi model, we use existing results on the
+existence of a perfect matching to characterize the edge probability over which
+there exist such optimal recommendation subgraphs, by using a subset partitioning
+method for the analysis. By relaxing the condition of optimality of matching (i.e.
+perfect matchings) to disallowing short augmenting paths in these methods, we also
+turn the above results into $(1-\epsilon)$-approximation algorithms trading off
+the running time, for appropriately dense random graphs as before. \vs
+=======
 Finally we turn to the question of whether all nodes on the right can be covered
 (at least $a$ times) by a recommendation subgraph: we say that there is a
 perfect $(c,a)$-recommendation subgraph in this case. Under the usual
@@ -190,6 +245,7 @@ analysis. By relaxing the condition of optimality of matching (i.e. perfect
 matchings) to disallowing short augmenting paths in these methods, we also turn
 the above results into $(1-\epsilon)$-approximation algorithms trading off the
 running time, for appropriately dense random graphs as before. \vs
+>>>>>>> 09e5909dcb1d0b3ebdd1f82d8ac20bfe087f40db
 
 \subsection{New Recommendation Graph Models}
 The analysis of the various algorithms suggests that there may be more general
@@ -201,11 +257,19 @@ disjoint categories and varying density of connections between different
 categories, and (iii) a weighting of the edges of the recommendation supergraph
 based on the traffic generated along each of these links. \vs
 
+<<<<<<< HEAD
+{\bf A Hierarchical Model} 
+Most information sources organize their pages according to a natural taxonomy
+such as an ontology of topics, or a classification of retail products or
+information records according to their types. In this generalization, we assume
+that there is such a natural hierarchy classifying the nodes in both sides of
+=======
 {\bf A Hierarchical Model.} 
 Most information sources organize their pages according to a natural taxonomy
 such as an ontology of topics, or a classification of retail products or
 information records according to their types. In this generalization, we assume
 that there is such a natural hierarchy classifying the nodes in both sides of
+>>>>>>> 09e5909dcb1d0b3ebdd1f82d8ac20bfe087f40db
 the bipartite recommendation supergraph. 
 %Sri: You could put the charts for a typical product hierarchy from a website here to motivate the model
 

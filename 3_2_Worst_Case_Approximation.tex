@@ -5,11 +5,14 @@ optimal solutions in expectation. In this section, we will show that
 it is possible to obtain good solutions regardless of the model that
 generated the recommendation subgraph. As usual we let $G=(L,R,E)$ be a
 bipartite graph on which we would like to solve the $(c,a)$-graph
-recommendation problem. 
+recommendation problem. \vs
 
-We analyze the following natural greedy algorithm. Consider each vertex in $R$ in some arbitrary order and if there is some $v \in R$ that has $a$ neighbors in $L$ all of which have degree $< c$, add the edges to these neighbors to $H$. If there
-are any ties about the nodes to be picked either in the selection of
-$v$ or its neighbors, we can break ties arbitrarily. 
+We analyze the following natural greedy algorithm. Consider each vertex
+in $R$ in some arbitrary order and if there is some $v \in R$ that has
+$a$ neighbors in $L$ all of which have degree $< c$, add the edges to
+these neighbors to $H$. If there are any ties about the nodes to be
+picked either in the selection of $v$ or its neighbors, we can break
+ties arbitrarily. 
 
 \begin{thm}
 The greedy algorithm achieves a $1/(a+1)$-approximation ratio for the $(c,a)$-graph

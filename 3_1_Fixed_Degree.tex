@@ -39,7 +39,7 @@ Note that $S = \sum_{v\in R} X_v$. Applying linearity of expectation, we get
 While this shows a lower bound in absolute terms, we must compare it to the best possible solution {\em OPT}. The follow theorem proves the approximation ratio to {\em OPT}.
 
 \begin{thm}
-The above sampling algorithm gives a $1-1/e$ factor approximation to the $(c,1)$-graph recommendation problem in expectation.
+The above sampling algorithm gives a $\left(1-\frac1e\right)$-factor approximation to the $(c,1)$-graph recommendation problem in expectation.
 \end{thm}
 \begin{proof}
 The size of the optimal solution is bounded above by both the number
@@ -70,7 +70,7 @@ function of $ck$.\vs
 \end{figure}
 
 Now suppose that $G$ is generated and $H$ is sampled using the same
-processes as described above. In the next theorem, we extend the above
+processes as described above. The next theorem, extends the above
 bounds to the $(c,a)$-graph recommendation problem where $a>1$.
 %In particular if we set $a=1$, we will obtained the estimate from the original analysis.
 
@@ -80,6 +80,7 @@ Let $S$ be the random variable denoting the number of vertices $v \in R$ such th
 where the expectation is over the randomness of $G$ and $H$.
 \end{thm}
 
+%Appendix this proof later.
 \begin{proof}
 Let $X_{uv}$ be the indicator variable of the event that the edge $uv$
 (note that $u\in L$ and $v\in R$) is in the subgraph that we picked
@@ -88,7 +89,7 @@ random degree of the vertex $v$ in our subgraph. Because our algorithm
 uniformly subsamples a uniformly random selection of edges, we can
 assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. So $X_{uv}$ is a
-bernoulli random variable. Using the trivial bound $\binom{n}{i}
+Bernoulli random variable. Using the trivial bound $\binom{n}{i}
 \leq n^i$ on binomial coefficients we get:
 \begin{align*}
       \Pr[X_v < a]
@@ -111,21 +112,24 @@ need $ck$ to get larger than before to be close to optimal. This
 is in comparison to the trivial estimate of $cl$. For a fixed $a$, a
 random solution gets better as $ck$ increases because the decrease in
 $e^{-ck}$ more than compensates for the polynomial in $ck$ next to
-it. However, in the more realistic case $ck<a$, we need to use the trivial estimate of $ckr/a$, and the analysis from the previous section does not extend
-here. \\
-
-
+it. However, in the more realistic case $ck<a$, we need to use the
+trivial estimate of $ckr/a$, and the analysis from the previous
+section does not extend here. \vs
 
 In both this analysis and the previous one, $ck$ is the average degree
-of a vertex $v\in R$ in our chosen subgraph. The original analysis showed that if $ck>1$, then the sampling algorithm will probably cover every vertex in $R$ since the expected degree of each vertex is large. On the other hand if $ck$ is small ($ck < 1$) then the best possible solution is obtained when none of the vertices
-in $R$ has degree greater than 1. 
+of a vertex $v\in R$ in our chosen subgraph. The original analysis
+showed that if $ck>1$, then the sampling algorithm will probably cover
+every vertex in $R$ since the expected degree of each vertex is large.
+On the other hand if $ck$ is small ($ck < 1$) then the best possible
+solution is obtained when none of the vertices in $R$ has degree
+greater than 1. \vs
 
 If $ck<1$, then we do not cover very
 many vertices in $R$, but we also do not cover many vertices more than
 once. Since the optimal solution in this case was correspondingly low,
 our solution was good in the $a=1$ case. However, when $a<1$, the fact
 that our edges are well-dispersed only hurts our solution because we
-need to concentrate the edges on particular nodes in $R$ that will
+need to concentrate the edges on specific nodes in $R$ that will
 eventually count in the objective. The following table shows how large 
 $ck$ needs to be for the solution to be 95\% optimal for different
 values of $a$.
