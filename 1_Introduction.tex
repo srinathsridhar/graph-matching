@@ -55,7 +55,7 @@ We study this model in Section~\ref{fixed-degree}. Our main result identifies th
 
 
 {\bf The Greedy Algorithm}
-While the lazy algorithm chooses any set of $c$ recommendations, the natural greedy algorithm will need some work: scanning the nodes on the right that must be discovered, we look to see if there are $a$ neighbors from the left that have not exhausted their bound of $c$ edges in the subgraph, and if so, use them to add this node to the discovered set. We study this algorithm in Section~\ref{greedy}. We show the easy result that Greedy gives a $\frac{1}{a+1}$-approximation, and also do an average case analysis. Hwever, we use the usual Erd\"os-Renyi model rather than the fixed-degree model for this analysis.
+While the lazy algorithm chooses any set of $c$ recommendations, the natural greedy algorithm will need some work: scanning the nodes on the right that must be discovered, we look to see if there are $a$ neighbors from the left that have not exhausted their bound of $c$ edges in the subgraph, and if so, use them to add this node to the discovered set. We study this algorithm in Section~\ref{greedy}. We show the easy result that Greedy gives a $\frac{1}{a+1}$-approximation, and also do an average case analysis. However, we use the usual Erd\"os-Renyi model rather than the fixed-degree model for this analysis.
 
 In the subsequent Section~\ref{worst-vs-avg}, we compare and plot the worst-case performance of Greedy against the average case expected performance of the random or lazy algorithm, as a basis for our later computational comparisons in a similar vein.
 

@@ -59,11 +59,25 @@ algorithm for matchings.
 
 %However, in reality, this algorithm fares much better when we put give it the same expectation treatment we have given the sampling algorithm.
 
+Similar to the case with matchings, it's not hard to see that this
+approximation ratio is tight for the greedy algorithm. Suppose, that
+there are $a+1$ vertices $v_1,\ldots,v_{a+1}$ in $R$ and $(a+1)a$ 
+vertices $u_{i,j}$ for $1\leq i\leq a+1$ and $1\leq j \leq a$ in $L$.
+We add an edge between $u_{i,j}$ and $v_{i}$ for each $i$ and $j$.
+We also add edges between $v_1$ and every other vertex. The optimal
+$(1,a)$-recommendation subgraph simply matches each $v_i$ to each
+$u_{i,j}$, and has size $a+1$. However, the greedy algorithm
+could match $v_1$ to $u_{i,1}$ for each $2\leq i\leq a+1$, producing
+a solution of size $a+1$. As in matchings, randomizing the order in
+which the vertices are processed still leaves a constant factor gap
+in the size of the solution as in the matchings case.
+\cite[KarpVaziraniVazirani1990]
+
 %Arda: Please add the description here of the example with L1, L2, R1, R2 with all edges except between L2 and R2 and the greedy edges preferring the neighbors in L having OPT=n but even a random permutation loses a constant factor. The online matching paper by Karp, Vazirani & Vazirani has som eversion of this example - Cite if it is relevant: there is a more recent Birnbaum-Mathieu reference of this result.
 
 \begin{thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
-\[ \E[S] \geq r - \frac{a(lp)^{r-1}}{p}\]
+\[ \E[S] \geq r - \frac{a(lp)^{a-1}}{p}\]
 \end{thm}
 \begin{proof}
 Note that if edges are generated uniformly, then we can consider the
@@ -76,17 +90,17 @@ vertices in $L$, which are now not available for matching the
 $(i+1)^{th}$ vertex. The maximum number of such invalidated vertices
 is at most $\lceil i/c \rceil$. Therefore, the probability that fewer
 than $a$ of the of the at least $l-\lceil i/c \rceil $ available 
-vertices have an edge to this vertex is at most $\Pr[Binomial(l-i/c,p) < a]$.
+vertices have an edge to this vertex is at most $\Pr[Y\sim (l-i/c,p): Y < a]$.
 Using the crude approximation that
-$\Pr[Binomial(l-ia/c,p) < a] \leq a(1-p)^{l-ia/c-a}(lp)^{a-1}$ and
-Summing over all the $X_i$ using the linearity of expectation,
+\[ \Pr[Y\sim Bin(l-ia/c,p): Y < a] \leq a(1-p)^{l-ia/c-a}(lp)^{a-1}\]
+and summing over all the $X_i$ using the linearity of expectation,
 we obtain the following inequality:
 
 \begin{align*}
       \E[S]
 &\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
-&\geq r - \sum_{i=0}^{r-1} \Pr[Binomial(l-ia/c,p) < a] \\
+&\geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-ia/c,p): Y < a] \\
 &\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-ia/c-a}((l-ia/c)p)^{r-1} \\
-&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-ia/c-a} \geq r - \frac{a(lp)^{r-1}}{p}\\
+&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-ia/c-a} \geq r - \frac{a(lp)^{a-1}}{p}\\
 \end{align*}
 \end{proof} 
