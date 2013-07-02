@@ -92,7 +92,7 @@ is at most $\lceil i/c \rceil$. Therefore, the probability that fewer
 than $a$ of the of the at least $l-\lceil i/c \rceil $ available 
 vertices have an edge to this vertex is at most $\Pr[Y\sim (l-i/c,p): Y < a]$.
 Using the crude approximation that
-\[ \Pr[Y\sim Bin(l-ia/c,p): Y < a] \leq a(1-p)^{l-ia/c-a}(lp)^{a-1}\]
+\[ \Pr[Y\sim Bin(l-ia/c,p): Y < a] \leq a(1-p)^{l-ia/c-a+1}(lp)^{a-1}\]
 and summing over all the $X_i$ using the linearity of expectation,
 we obtain the following inequality:
 
@@ -100,7 +100,7 @@ we obtain the following inequality:
       \E[S]
 &\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
 &\geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-ia/c,p): Y < a] \\
-&\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-ia/c-a}((l-ia/c)p)^{r-1} \\
-&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-ia/c-a} \geq r - \frac{a(lp)^{a-1}}{p}\\
+&\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-ia/c-a+1}((l-ia/c)p)^{r-1} \\
+&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-ia/c-a+1} \geq r - \frac{a(lp)^{a-1}}{p}\\
 \end{align*}
 \end{proof} 

@@ -1,5 +1,9 @@
 \section{Algorithms for Recommendation Subgraphs}
-In this section, we analyze the lazy algorithm of choosing any set of $c$ recommendations, and the slightly more interesting greedy algorithm for finding a $(c,a)$-recommendation subgraph. To do this, we first introduce the fixed-degree random graph model for the candidate supergraph of recommendations. 
+In this section, we analyze the lazy algorithm of choosing any set of
+$c$ recommendations, and the slightly more interesting greedy algorithm
+for finding a $(c,a)$-recommendation subgraph. To do this, we first
+introduce the fixed-degree random graph model for the candidate
+supergraph of recommendations. 
 
 \subsection{Fixed Degree Model}
 \label{fixed-degree}
@@ -41,8 +45,8 @@ The above sampling algorithm gives a $1-1/e$ factor approximation to the $(c,1)$
 The size of the optimal solution is bounded above by both the number
 of edges in the graph and the number of vertices in $R$. The former of
 these is $cl=ckr$ and the latter is $r$, which shows that $OPT \leq
-r\max(ck,1)$. Therefore, by simple case analysis the approximation ratio in
-expectation is at least
+r\max(ck,1)$. Therefore, by simple case analysis the approximation ratio
+in expectation is at least
 \[ \frac{1-\exp(-ck)}{\min(ck,1)} \geq 1-\frac{1}{e} \]
 \end{proof}
 
@@ -121,9 +125,11 @@ many vertices in $R$, but we also do not cover many vertices more than
 once. Since the optimal solution in this case was correspondingly low,
 our solution was good in the $a=1$ case. However, when $a<1$, the fact
 that our edges are well-dispersed only hurts our solution because we
-need to concentrate the edges on particular nodes in $R$ that will eventually 
-count in the objective. The following table shows how large $ck$ needs to be for the
-solution to be 95\% optimal for different values of $a$.
+need to concentrate the edges on particular nodes in $R$ that will
+eventually count in the objective. The following table shows how large 
+$ck$ needs to be for the solution to be 95\% optimal for different
+values of $a$.
+
 \begin{figure}[h]
   \centering
   \begin{tabular}{ |c|c|c|c|c|c| }
