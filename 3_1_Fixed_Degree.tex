@@ -13,7 +13,7 @@ $c$ neighbors are sampled uniformly from set of incident vertices. The
 following theorem derives a lower bound on the expected size $S$ of the
 number $v\in R$ such that $\deg_H(v) \geq 1$.
 
-\begin{thm}
+\begin{thm}\label{original_result}
 Suppose that $G=(L,R,E)$ and $H\subseteq G$ is generated as above. Then
 \[ \E[S] \geq r(1-\exp(-ck))\]
 where the expectation is over the random sampling of $G$ and $H$.
@@ -141,22 +141,28 @@ While Chernoff bounds are usually stated for independent variables, the
 variant below holds for any number of pairwise non-positively correlated
 variables.
 
-%Arda: Add citation below, and add a proof of the next theorem after this
-\begin{thm}~\cite{}
+\begin{thm}\label{negative_corr_chernoff}~\cite{AugerDoerr2011}
 Let $X_1,\ldots, X_n$ be non-positively correlated variables. If $X=\sum_{i=1}^n X_i$, then for any $\delta\geq 0$
 \[ Pr[X \geq (1+\delta)\E[X] ] \leq \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^{\E[X]} \]
 \end{thm}
 
-Now note that the variables $1-X_v$ for each $v\in R$ are
-non-positively correlated. In particular, if $N(v)$ and $N(v')$ are
-disjoint, then $1-X_v$ and $1-X_{v'}$ are independent. Otherwise, $v$
-not claiming any edges can only increase the probability that $v'$
-gets an edge from any vertex $u\in N(v)\cap N(v')$, so the variables
-would be negatively correlated. Setting $\delta=1$ in the
-theorem above now proves the following:
+Using this result, we can convert our expectation result to one that holds
+with high probability as follows:
 
 \begin{thm}
-The random sampling algorithm produces a solution of size at least $r(1-2\exp(-ck))$ with probability at least $1-(e/4)^{r\exp(-ck)}$.
+Let $S$ be the random variable denoting the number of vertices $v \in R$ such that $\deg_{H}(v)\geq a$. Then
+$ S \leq r(1-2\exp(-ck))$ with probability at most $(e/4)^{r(1-\exp(-ck))}$.
 \end{thm}
 
-That is, the probability of producing a constant factor approximation decreases exponentially with $r$.
+\begin{proof}
+We can write $S$ as $\sum_{v\in R} 1-X_v$ where $X_v$ is the indicator
+variable that denotes that $X_v$ is matched. Note that the variables 
+$1-X_v$ for each $v\in R$ are non-positively correlated. In particular,
+if $N(v)$ and $N(v')$ are disjoint, then $1-X_v$ and $1-X_{v'}$ are 
+independent. Otherwise, $v$ not claiming any edges can only increase 
+the probability that $v'$ gets an edge from any vertex
+$u\in N(v)\cap N(v')$, so the variables would be negatively correlated.
+Furthermore, note that the expected size of $S$ is $r(1-\exp(-ck))$ by
+Theorem \ref{original_result}. Therefore, we can apply Theorem 
+\ref{negative_corr_chernoff} with $\delta=1$ and obtain the result.
+\end{proof}
