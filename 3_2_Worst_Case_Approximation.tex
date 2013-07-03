@@ -28,7 +28,7 @@ $R_{GREEDY}$. Each move that the greedy algorithm makes might make
 some of the candidates infeasible, but as long as the candidate pool
 is not depleted, the greedy algorithm can continue adding vertices to
 its solution. Each time the greedy algorithm claims some vertex $v\in
-R$ with edges to $\{u_1,\ldots, u_a\}$, we have obviously have to
+R$ with edges to $\{u_1,\ldots, u_a\}$, we obviously have to
 remove $v$ from the candidate pool. If any $u_i$ was saturated
 (i.e. had degree $c$) in the optimal solution, we would also need to
 remove an arbitrary vertex $v_i\in R$ adjacent to $u_i$ in the optimal
@@ -51,20 +51,11 @@ vertices to the solution.
 \end{minipage}
 \end{figure}
 
-There are two things to note about this algorithm. The first is
-that the solution the greedy algorithm outputs is dependent on the
-order the vertices in $R$ are processed. It may be possible to improve
-the expected approximation ratio by permuting these vertices randomly
-before the algorithm runs. The second is that this approximation
-guarantee is as good as we can expect. In particular, if we set $a=1$
-then we obtain the familiar $1/2$-approximation of the greedy
-algorithm for matchings.
-
-%However, in reality, this algorithm fares much better when we put give it the same expectation treatment we have given the sampling algorithm.
-
-Similar to the case with matchings, it's not hard to see that this
-approximation ratio is tight for the greedy algorithm. Suppose, that
-there are $a+1$ vertices $v_1,\ldots,v_{a+1}$ in $R$ and $(a+1)a$ 
+Note that this approximation guarantee is as good as we can expect.
+In particular, if we set $a=1$ then we obtain the familiar
+$1/2$-approximation of the greedy algorithm for matchings. However,
+it is not hard to construct tight examples for arbitrary $a$. Suppose,
+that there are $a+1$ vertices $v_1,\ldots,v_{a+1}$ in $R$ and $(a+1)a$ 
 vertices $u_{i,j}$ for $1\leq i\leq a+1$ and $1\leq j \leq a$ in $L$.
 We add an edge between $u_{i,j}$ and $v_{i}$ for each $i$ and $j$.
 We also add edges between $v_1$ and every other vertex. The optimal
@@ -76,14 +67,19 @@ which the vertices are processed still leaves a constant factor gap
 in the size of the solution as in the matchings case.
 \cite{KarpVaziraniVazirani1990}
 
-%Arda: Please add the description here of the example with L1, L2, R1, R2 with all edges except between L2 and R2 and the greedy edges preferring the neighbors in L having OPT=n but even a random permutation loses a constant factor. The online matching paper by Karp, Vazirani & Vazirani has som eversion of this example - Cite if it is relevant: there is a more recent Birnbaum-Mathieu reference of this result.
+Despite this result, the greedy algorithm fares much better when we
+give it the same expectation treatment we have given the sampling 
+algorithm. The following theorem shows that just as maximal matchings
+are likely to be close to being maximum in sufficiently dense random
+graphs, so are the maximal $(c,a)$-recommendation subgraphs produced
+by the greedy algorithm.
 
 \begin{thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
 \[ \E[S] \geq r - \frac{a(lp)^{a-1}}{p}\]
 \end{thm}
 \begin{proof}
-Note that if edges are generated uniformly, then we can consider the
+Note that if edges are generated uniformly, we can consider the
 graph as being revealed to us one vertex at a time as the greedy
 algorithm runs. In particular, consider the event $X_i$ that the
 greedy algorithm matches the $(i+1)^{th}$ vertex it inspects. While,
