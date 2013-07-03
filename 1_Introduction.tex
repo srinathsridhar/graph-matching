@@ -84,50 +84,18 @@ recommendation systems decide online the set of other items to display. Such
 systems have the problem that a global analysis of the performance of the
 recommendations are hard. E.g., it is almost impossible to know if there is an
 item that was not recommended by even one other item. As the number of
-pages of a site grows, doing such a real-time computation becomes less feasible and
-might lead to deterioration in the quality of the recommended pages.  This
+pages of a site grows, doing such a real-time computation becomes less ideal 
+globally and might lead to deterioration in the link structure of the site.  This
 motivates the strategy of solving the recommendation problem off-line, where we
 pre-compute the set of recommendations for every item. Such a system can be
-built in two stage: the first stage decides on recommendations for each item
+built in two stage: the first stage decides on candidate recommendations for each item
 purely based on relevance and retrieves a large candidate set of $d$ items to
 show [CITE A LOT OF PAPERS HERE FOR E.G.: Recommender systems in e-commerce
 : http://dl.acm.org/citation.cfm?id=337035]. 
 The second stages prunes it to $c < d$ items such that globally we ensure
-that the resulting recommendation graph is `good'. For instance, we might want
+that the resulting recommendation graph is `efficient' for traversal. For instance, we might want
 to ensure that the resulting graph minimizes the number of items that was not
 recommended by any other item. \vs
-
-One of the great benefits of the web as a useful source of hyperlinked
-information comes from the careful choices made in crafting the recommendations
-that link a given page to closely related pages. Even though this advantage was
-identified well before the www was in place by Bush~\cite{Bush45}, it continues
-to persist even in Web 2.0 systems that generate web pages of combined
-information, where smooth navigation is enabled by carefully chosen
-recommendations to closely related pages. Thus, the presence of recommendations
-is an integral feature of several popular websites that are known to have high
-user engagement as reflected in long user sessions. Examples range from 
-entertainment sites like YouTube that recommend a set of videos on the right
-for every video watched by a user, information sites like Quora that recommend
-a set of related questions on every question page, to retail sites like Amazon
-that recommend similar products on every product page. \vs
-
-
-While recommendations are important, they are implemented typically by finding
-related items to display at runtime. That is, when a user lands on an item the
-recommendation systems decide online the set of other items to display. Such
-systems have the problem that a global analysis of the performance of the
-recommendations are hard. E.g., it is almost impossible to know if there is an
-item that was not recommended by even one other item. As the size of the
-repository grows, doing such a real-time computation becomes less feasible and
-might lead to deterioration in the quality of the recommended pages.  This
-motivates the strategy of solving the recommendation problem off-line, where we
-pre-compute the set of recommendations for every item. Such a system can be
-built in two stage: the first stage decides on recommendations for each item
-purely based on relevance and retrieves a large candidate set of $d$ items to
-show. The second stages prunes it to $c < d$ items such that globally we ensure
-that the resulting recommendation graph is `good'. For instance, we might want
-to ensure that the resulting graph minimizes the number of items that was not
-recommended by a single other item. \vs
 
 We can represent this notion of recommendations by using a directed graph. A
 vertex is simply an item and a directed edge $(u, v)$ is a recommendation from
