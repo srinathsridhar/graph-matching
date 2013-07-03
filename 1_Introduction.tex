@@ -73,14 +73,16 @@ related items to display at runtime. That is, when a user lands on an item the
 recommendation systems decide online the set of other items to display. Such
 systems have the problem that a global analysis of the performance of the
 recommendations are hard. E.g., it is almost impossible to know if there is an
-item that was not recommended by even one other item. As the size of the
-repository grows, doing such a real-time computation becomes less feasible and
+item that was not recommended by even one other item. As the number of
+pages of a site grows, doing such a real-time computation becomes less feasible and
 might lead to deterioration in the quality of the recommended pages.  This
 motivates the strategy of solving the recommendation problem off-line, where we
 pre-compute the set of recommendations for every item. Such a system can be
 built in two stage: the first stage decides on recommendations for each item
 purely based on relevance and retrieves a large candidate set of $d$ items to
-show. The second stages prunes it to $c < d$ items such that globally we ensure
+show [CITE A LOT OF PAPERS HERE FOR E.G.: Recommender systems in e-commerce
+: http://dl.acm.org/citation.cfm?id=337035]. 
+The second stages prunes it to $c < d$ items such that globally we ensure
 that the resulting recommendation graph is `good'. For instance, we might want
 to ensure that the resulting graph minimizes the number of items that was not
 recommended by any other item. \vs
@@ -121,7 +123,8 @@ We can represent this notion of recommendations by using a directed graph. A
 vertex is simply an item and a directed edge $(u, v)$ is a recommendation from
 $u$ to $v$. Under this graph model for the above problem, if $c=1$ and we
 require the chosen recommendation subgraph be strongly connected then our
-problem reduces to Hamilton cycle, an NP-complete problem. \vs
+problem reduces to Hamilton cycle, an NP-complete problem [CITE CLRS
+OR SOMETHING HERE]. \vs
 
 \subsection{Bipartite Recommendation Subgraphs}
 
@@ -139,9 +142,10 @@ subgraph $G'$ where each vertex in $L$ has $c < d$ recommendations. The simplest
 goal is to minimize the number of vertices that have in-degree less than an
 integer quantity $a$. We call this the $(c, a)$-graph recommendation problem.
 Note that if $a=c=1$ this is simply the problem of maximum bipartite matching
-~\cite{LovaszPlummer}. If $a=1$ and $c > 1$, this is still a degree-bounded
+~\cite{LovaszPlummer} [OTHER CITATIONS?]. If $a=1$ and $c > 1$, this is still a degree-bounded
 subgraph problem that can be converted to a polynomial-time solvable matching
-problem. \vs
+problem called fractional matching [CITE FRACTIONAL MATCHING ON GRAPHS
+PAPERS]\vs
 
 Over the past few years, a subset of us have implemented such recommendation
 subgraph algorithms in cutting-edge web-technology companies including Google,
@@ -187,13 +191,14 @@ complicated algorithm. If the thresholds provided by our analysis are
 insufficient in quality, then the designer can consider implementing the
 classical algorithms. \vs
 
-{\bf Recommendation Graph Models}
-The setting for investigating the effectiveness of the lazy engineer is provided
-by using a random graph model for the recommendation supergraph. Since the lazy
-algorithm involves choosing {\em any} set of $c$ recommendations, the natural
-random graph model that permits analysis of this method is the {\em fixed-degree}
-model where every node on the left has recommendations to a random subset of size
-exactly $d$ nodes in the right. 
+{\bf Recommendation Graph Models} The setting for investigating the
+effectiveness of the lazy engineer is provided by using a random graph
+model for the recommendation supergraph. Since the lazy algorithm
+involves choosing {\em any} set of $c$ recommendations, the natural
+random graph model that permits analysis of this method is the {\em
+  fixed-degree} model [CITE PAPERS FOR FIXED DEGREE] where every node
+on the left has recommendations to a random subset of size exactly $d$
+nodes in the right.
 
 We study this model in Section~\ref{fixed-degree}. Our main result identifies
 the range of parameters involving $c,a,l=|L|$ and $r =|R|$ where the lazy
@@ -210,7 +215,7 @@ not exhausted their bound of $c$ edges in the subgraph, and if so, use them to
 add this node to the discovered set. We study this algorithm in Section
 ~\ref{greedy}. We show the easy result that Greedy gives a 
 $\frac{1}{a+1}$-approximation, and also do an average case analysis. However, we
-use the usual Erd\"os-Renyi model rather than the fixed-degree model for this
+use the usual Erd\"os-Renyi model [CITE GNP PAPERS HERE] rather than the fixed-degree model for this
 analysis.
 
 In the subsequent Section~\ref{worst-vs-avg}, we compare and plot the worst-case
@@ -245,7 +250,8 @@ Most information sources organize their pages according to a natural taxonomy
 such as an ontology of topics, or a classification of retail products or
 information records according to their types. In this generalization, we assume
 that there is such a natural hierarchy classifying the nodes in both sides of
-the bipartite recommendation supergraph. 
+the bipartite recommendation supergraph. [MAYBE CITE MY PAPER WITH
+VIJAYA ON BULLS-EYE GRAPHS]
 %Sri: You could put the charts for a typical product hierarchy from a website here to motivate the model
 
 
