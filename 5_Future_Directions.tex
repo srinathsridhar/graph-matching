@@ -1,26 +1,47 @@
-\section{Future Directions}
+\section{Conclusions}
+
 In this paper we proposed several different models for explaining how
-recommendation subgraphs arise probabilistically and how optimization 
+recommendation subgraphs arise probabilistically and how optimization
 problems on these graphs can be solved, but there is much more that
-can be done.
+can be done both on the theoretical and the empirical fronts. On the
+theory side the biggest open problem is the hardness or polynomial
+time algorithm for the general $(c, a)$-recommendation subgraph
+problem. For specific values of $c$ and $a$ we know polynomial time
+algorithms. For e.g., $a=1$ leads to either bipartite matching or
+fractional matching which can be solved in polynomial time but the
+hardness of the general problem remains open. On the empiral side, the
+graph models that we introduced can be made richer. For example, the
+hierarchical graphs require the trees to be balanced and of the same
+size which is constraining. The edge weights on the weighted graph is
+sampled from a distribution as opposed to being arbitrary. We expect
+the research community and our future work to follow-up along both
+directions in the future.
 
-\begin{enumerate}
 
-\item In practice, there might exist several different
-  recommendation subgraphs based on different features. For example,
-  two people might be related because they went to the same 
-  school, or because they live in the same city, or because they
-  would complete a large number of triangles, etc. It's worthwhile
-  to investigate how such graphs can be combined into one, or how
-  an optimization problem can be solved using all such 
-  recommendation subgraphs simultaneously.
+%\begin{enumerate}
 
-\item We should devise metrics that can evaluate how well a
-  recommendation subgraph fits a given model and conduct some parameter
-  fitting experiments to see how well actual recommendation subgraphs
-  which arise in practice fit our models.
+%\item We do not know of a polynomial time algorithm that can solve the
+%  $(c, a)$-recommendation subgraph problem. For specific values of $c, a$ we
+%  know polynomial time algorithms. For e.g., $a=1$ leads to either
+%  bipartite matching or fractional matching which can be solved in
+%  polynomial time. 
 
-\item We should implement the sampling and the greedy algorithms
-  given in the paper to see if they can solve to near optimality
-  the graph recommendation problems that arise in practice.
-\end{enumerate}
+%\item In practice, there might exist several different
+%  recommendation subgraphs based on different features. For example,
+%  two people might be related because they went to the same 
+%  school, or because they live in the same city, or because they
+%  would complete a large number of triangles, etc. It's worthwhile
+%  to investigate how such graphs can be combined into one, or how
+%  an optimization problem can be solved using all such 
+%  recommendation subgraphs simultaneously.
+
+%\item We should devise metrics that can evaluate how well a
+%  recommendation subgraph fits a given model and conduct some parameter
+%  fitting experiments to see how well actual recommendation subgraphs
+%  which arise in practice fit our models.
+
+%\item We should implement the sampling and the greedy algorithms
+%  given in the paper to see if they can solve to near optimality
+%  the graph recommendation problems that arise in practice.
+
+%\end{enumerate}
