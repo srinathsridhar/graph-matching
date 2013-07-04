@@ -68,34 +68,37 @@ One of the great benefits of the web as a useful source of hyperlinked
 information comes from the careful choices made in crafting the recommendations
 that link a given page to closely related pages. Even though this advantage was
 identified well before the www was in place by Bush~\cite{Bush45}, it continues
-to persist even in Web 2.0 systems that generate web pages of combined
-information, where smooth navigation is enabled by carefully chosen
+to persist even tday. Smooth site navigation is enabled by carefully chosen
 recommendations to closely related pages. Thus, the presence of recommendations
 is an integral feature of several popular websites that are known to have high
-user engagement as reflected in long user sessions. Examples range from 
+user engagement as reflected in long sessions. Examples range from 
 entertainment sites like YouTube that recommend a set of videos on the right
 for every video watched by a user, information sites like Quora that recommend
 a set of related questions on every question page, to retail sites like Amazon
 that recommend similar products on every product page. \vs
 
-While recommendations are important, they are implemented typically by finding
-related items to display at runtime. That is, when a user lands on an item the
-recommendation systems decide online the set of other items to display. Such
-systems have the problem that a global analysis of the performance of the
-recommendations are hard. E.g., it is almost impossible to know if there is an
-item that was not recommended by even one other item. As the number of
-pages of a site grows, doing such a real-time computation becomes less ideal 
-globally and might lead to deterioration in the link structure of the site.  This
-motivates the strategy of solving the recommendation problem off-line, where we
-pre-compute the set of recommendations for every item. Such a system can be
-built in two stage: the first stage decides on candidate recommendations for each item
-purely based on relevance and retrieves a large candidate set of $d$ items to
-show [CITE A LOT OF PAPERS HERE FOR E.G.: Recommender systems in e-commerce
-: http://dl.acm.org/citation.cfm?id=337035]. 
-The second stages prunes it to $c < d$ items such that globally we ensure
-that the resulting recommendation graph is `efficient' for traversal. For instance, we might want
-to ensure that the resulting graph minimizes the number of items that was not
-recommended by any other item. \vs
+%While recommendations are important, they are implemented typically by finding
+%related items to display at runtime. That is, when a user lands on an item the
+%recommendation systems decide online the set of other items to display. Such
+%systems have the problem that a global analysis of the performance of the
+%recommendations are hard. E.g., it is almost impossible to know if there is an
+%item that was not recommended by even one other item. As the number of
+%pages of a site grows, doing such a real-time computation becomes less ideal 
+%globally and might lead to deterioration in the link structure of the site.  This
+%motivates the strategy of solving the recommendation problem off-line, where we
+%pre-compute the set of recommendations for every item. 
+
+In this work, we analyze a recommendation system that can be built
+offline in two stages: the first decides on candidate recommendations
+for each item based on relevance and retrieves a large candidate set
+of $d$ items [CITE A LOT OF PAPERS HERE FOR E.G.: Recommender systems
+  in e-commerce : http://dl.acm.org/citation.cfm?id=337035].  The
+second stages prunes it to $c < d$ such that globally we ensure that
+the resulting recommendation subgraph is `efficient' for traversal. 
+
+%For
+%instance, we might want to ensure that the resulting graph minimizes
+%the number of items that was not recommended by any other item. \vs
 
 We can represent this notion of recommendations by using a directed graph. A
 vertex is simply an item and a directed edge $(u, v)$ is a recommendation from
@@ -106,68 +109,81 @@ OR SOMETHING HERE]. \vs
 
 \subsection{Bipartite Recommendation Subgraphs}
 
-We can generalize the above graph recommendation problem by using a directed
-bipartite graph. Website owners might not be interested on all the items on
-their site. We can use one partition $L$ (say, the one in the left) to represent
-the set of items for which we are required  to suggest recommendations. We can
-use the other partition $R$ (on the right) to represent the set of items that
-are potentially recommended. Note that a single item can be represented in both
-$L$ and $R$ if needed. We will use this representation to formulate all our
-results. Now the input to the problem is this directed graph $G$ where each
-vertex has $d$ recommendations (thanks to the first stage of the two-stage
-recommendation back-end system described above). The output required is a
-subgraph $G'$ where each vertex in $L$ has $c < d$ recommendations. The simplest
-goal is to minimize the number of vertices that have in-degree less than an
-integer quantity $a$. We call this the $(c, a)$-graph recommendation problem.
-Note that if $a=c=1$ this is simply the problem of maximum bipartite matching
-~\cite{LovaszPlummer} [OTHER CITATIONS?]. If $a=1$ and $c > 1$, this is still a degree-bounded
-subgraph problem that can be converted to a polynomial-time solvable matching
-problem called fractional matching [CITE FRACTIONAL MATCHING ON GRAPHS
-PAPERS]\vs
+We can generalize the above graph recommendation problem by using a
+directed bipartite graphs. We can use one partition $L$ to represent
+the set of items for which we are required to suggest
+recommendations. We can use the other partition $R$ to represent the
+set of items that are potentially recommended. Note that a single item
+can be represented in both $L$ and $R$ if needed.  Now the input to
+the problem is this directed graph $G$ where each vertex has $d$
+recommendations. The output required is a subgraph $G'$ where each
+vertex in $L$ has $c < d$ recommendations. The simplest goal is to
+minimize the number of vertices that have in-degree less than an
+integer $a$. We call this the $(c, a)$-recommendation subgraph
+problem.  Note that if $a=c=1$ this is simply the problem of maximum
+bipartite matching ~\cite{LovaszPlummer} [OTHER CITATIONS?]. If $a=1$
+and $c > 1$, this is called fractional matching, that can be converted
+to the usual bipartite matching problem. [CITE FRACTIONAL MATCHING ON
+  GRAPHS PAPERS]\vs
 
-Over the past few years, a subset of us have implemented such recommendation
-subgraph algorithms in cutting-edge web-technology companies including Google,
-Facebook and BloomReach. There are two key hurdles in making these
-recommendation subgraph back-end systems practical. The first is that the method
-used must be very simple to implement, debug and deploy. The second is that the
-method must scale gracefully.  Matching algorithms require linear memory and
-super-linear run-time neither of which scale well. Note that the Facebook graph
-has over a billion vertices\cite{} and hundreds of billions of edges\cite{},
-YouTube has XXX videos and YYY recommendations\cite{} etc. Even an e-commerce
-website with 100M product pages and 10 recommendations per product would require
-over 100GB in main memory to run these algorithms. Since using clusters of
-single machines with such high memory is prohibitively expensive, MapReduce
-\cite{} jobs are needed to solve these problems. However, such Map-reduce for
-graph problems are notoriously hard and we are back to building a complicated
+{\bf Implementation Issues} Over the past few years, the second and
+third authors have implemented complex graph algorithms in
+cutting-edge web-technology companies including Google, Facebook and
+BloomReach. There are two key hurdles in making such graph algorithms
+practical. The first is that the method used must be very simple to
+implement, debug and deploy. The second is that the method must scale
+gracefully with larger sizes. \vs
+
+Matching algorithms require linear memory and super-linear run-time
+neither of which scale well. Note that the Facebook graph has over a
+billion vertices\cite{} and hundreds of billions of edges\cite{},
+YouTube has XXX videos and YYY recommendations\cite{} in total. Even an
+e-commerce website with 100M product pages and 100 recommendation candidates per
+product would require easily over 160GB in main memory to run these
+algorithms without using graph compression techniques that add additional technical difficulties
+in development and maintenence. In practice offline problem instances are solved by using
+distributed computing such as map-reduce[CITE GOOGLE MAPREDUCE PAPER HERE]. 
+However, efficient map-reduce algorithms for graph problems
+are notoriously difficult and we are back to building a complicated
 system. \vs
 
-%Sri: Check out the para below and modify - add any figure/graph if you can justify these numbers here.
-Our work with real-life web systems suggest that typical values for $c$ range
-from 5 to 20, while the requirement $a$ is typically one, and sometimes slightly
-larger in the range 2 to 5. The ratio of the size of undiscovered pages on the
-right to the popular pages on the left is of the order of ten to hundred. It is
-instructive to check the performance of the analyzed algorithms for these
-
-Our work with real-life web systems suggest that typical values for $c$ range
-from 5 to 20, while the requirement $a$ is typically one, and sometimes slightly
-larger in the range 2 to 5. The ratio of the size of undiscovered pages on the
-right to the popular pages on the left is of the order of ten to hundred. it is
-instructive to check the performance of the analyzed algorithms for these
-typical values of these parameters.
+%http://www.longtail.com/the_long_tail/faq/
+%The long tail: Why the future of business is selling less of more
+%Growth dynamics of the World-Wide Web. Nature - Long tail by page
+% Analysis of WWW traffic in Cambodia and Ghana - Zipf by page
+% Location and time do matter: A long tail study of website requests: http://public.csusm.edu/ckumar/research/Kumar-etal-online-location-time-DSS.pdf 
+% shows % Zipf with beta=-1.365
+%%
 
 \subsection{Algorithms and Analyses}
 
-{\bf The Lazy Engineer}
-These reasons motivated the authors to investigate the ``lazy" approach of
-choosing a very simple (any) set of recommendation to see if they would produce
-near optimal solutions at least under realistic scenarios in practice. Our
-initial goal was to find simple relationships between the parameters of the
-problem and compute thresholds that dictate the need for different, more
-sophisticated algorithms. In practice, this would immediately imply that a very
-simple back-end system can be built in many cases without the need for a
-complicated algorithm. If the thresholds provided by our analysis are
-insufficient in quality, then the designer can consider implementing the
-classical algorithms. \vs
+{\bf The Lazy Engineer} These reasons motivated the authors to
+investigate the ``lazy" approach of choosing a very simple (almost
+any) set of recommendation to see if they would produce near optimal
+solutions at least under realistic scenarios in practice.  In
+practice, this would immediately imply that a very simple back-end
+system can be built in many cases without the need for a complicated
+algorithm. If the thresholds provided by our analysis are insufficient
+in quality, then the designer can consider implementing the classical
+algorithms. \vs
+
+To be more specific about practical scenarios we briefly describe
+input web graph characteristics to give an idea for the sizes of $L$,
+$R$, $c$ and $a$ to expect. It is well known, and can be verified by
+prior experiences that a small number of `head' pages contribute to a
+significant amount of the traffic while a long tail of the remaining
+pages contribute to the rest[CITE THE ABOVE PAPERS]. For example
+demonstrated by one of the prior measurements~\cite{}[THE LAST PAPER
+  ABOVE] it is not unreasonable to expect that 50\% of the traffic is
+contributed by less than 1\% (a few thousands) of the web pages and a
+large number of tail pages (a few hundreds of thousands) contributing
+the other half of the traffic. This implies that in practice $L$ can
+be up to two orders of magnitude smaller than $R$.  By observing
+recommendations of Quora, Amazon, YouTube and our work in building
+these technologies in practice, typical values for $c$ range from 5 to
+20 recommendations per page. Values of $a$ are the hardest to nail
+down but one can think of it as something that can range from $1$ to
+$10$ roughly.
 
 {\bf Recommendation Graph Models} The setting for investigating the
 effectiveness of the lazy engineer is provided by using a random graph
@@ -178,12 +194,15 @@ random graph model that permits analysis of this method is the {\em
 on the left has recommendations to a random subset of size exactly $d$
 nodes in the right.
 
-We study this model in Section~\ref{fixed-degree}. Our main result identifies
-the range of parameters involving $c,a,l=|L|$ and $r =|R|$ where the lazy
-algorithm is very effective. In addition to showing that it is a $(1-\frac1e)$-
-approximation algorithm in expectation, we also get much better bounds for the
-expected performance for a wide range of realistic parameters and also prove
-high probability bounds on its performance. \vs
+We study this model in Section~\ref{fixed-degree}. Our main result
+identifies the range of parameters involving $c,a,l=|L|$ and $r =|R|$
+where the lazy algorithm is very effective. In addition to showing
+that it is a $(1-\frac1e)$- approximation algorithm in expectation, we
+also get much better bounds for the expected performance for a wide
+range of realistic parameters and also prove high probability bounds
+on its performance. We extend the models later to more realistic
+graphs including a hierarchical, cartesian and weighted graph
+models. \vs
 
 {\bf The Greedy Algorithm}
 While the lazy algorithm chooses any set of $c$ recommendations, the natural
@@ -213,66 +232,66 @@ perfect matchings) to disallowing short augmenting paths in these methods, we al
 turn the above results into $(1-\epsilon)$-approximation algorithms trading off
 the running time, for appropriately dense random graphs as before. \vs
 
-\subsection{New Recommendation Graph Models}
-The analysis of the various algorithms suggests that there may be more general
-settings where the lazy and greedy algorithms perform well. We use our
-experience in working with practical web systems to propose three such models
-that generalize the fixed-degree model by taking into account (i) a natural
-hierarchy in the organization of the pages, (ii) a partition of pages into
-disjoint categories and varying density of connections between different
-categories, and (iii) a weighting of the edges of the recommendation supergraph
-based on the traffic generated along each of these links. \vs
+%\subsection{New Recommendation Graph Models}
+%The analysis of the various algorithms suggests that there may be more general
+%settings where the lazy and greedy algorithms perform well. We use our
+%experience in working with practical web systems to propose three such models
+%that generalize the fixed-degree model by taking into account (i) a natural
+%hierarchy in the organization of the pages, (ii) a partition of pages into
+%disjoint categories and varying density of connections between different
+%categories, and (iii) a weighting of the edges of the recommendation supergraph
+%based on the traffic generated along each of these links. \vs
 
-{\bf A Hierarchical Model} 
-Most information sources organize their pages according to a natural taxonomy
-such as an ontology of topics, or a classification of retail products or
-information records according to their types. In this generalization, we assume
-that there is such a natural hierarchy classifying the nodes in both sides of
-the bipartite recommendation supergraph. [MAYBE CITE MY PAPER WITH
-VIJAYA ON BULLS-EYE GRAPHS]
+%{\bf A Hierarchical Model} 
+%Most information sources organize their pages according to a natural taxonomy
+%such as an ontology of topics, or a classification of retail products or
+%information records according to their types. In this generalization, we assume
+%that there is such a natural hierarchy classifying the nodes in both sides of
+%the bipartite recommendation supergraph. [MAYBE CITE MY PAPER WITH
+%VIJAYA ON BULLS-EYE GRAPHS]
 %Sri: You could put the charts for a typical product hierarchy from a website here to motivate the model
 
 
-%Sri: You might want to rewrite what's below
-For example, a page about random graph models in Quora might be under a cluster
-of pages about graphs in general, which in turn might come under another larger
-superset of pages about general discrete models, giving a two level hierarchy.
-A recommendation from a popular page on, say the fixed-degree model, might go to
-an obscure page on some other graph model, or to an obscure page on discrete
-structures that is not a graph model. Typically, the fraction of recommendations
-going to topics not in one's own cluster will decrease exponentially as we move
-higher up in the taxonomy. In Section~\ref{hierarchy}, we show how the analysis
-of our main result for the fixed-degree model extends to this case as well. \vs
+%%Sri: You might want to rewrite what's below
+%For example, a page about random graph models in Quora might be under a cluster
+%of pages about graphs in general, which in turn might come under another larger
+%superset of pages about general discrete models, giving a two level hierarchy.
+%A recommendation from a popular page on, say the fixed-degree model, might go to
+%an obscure page on some other graph model, or to an obscure page on discrete
+%structures that is not a graph model. Typically, the fraction of recommendations
+%going to topics not in one's own cluster will decrease exponentially as we move
+%higher up in the taxonomy. In Section~\ref{hierarchy}, we show how the analysis
+%of our main result for the fixed-degree model extends to this case as well. \vs
 
-{\bf A Cartesian Product Model.}
-Our second generalization is motivated by the case when the pages are
-partitioned into disjoint categories in both sides of the bipartite graph. The
-density of random recommendations in the supergraph may vary across different
-pairs of categories. To smoothly generalize the results from before, we assume
-that despite the variation, every node in the left has the same final fixed
-degree while this bound can be distributed differently between the various
-categories on the right hand side depending upon which category on the left side
-the node belongs to.  Our analysis in Section~\ref{cartesian} again extends our
-basic result about the effectiveness of the lazy algorithm to this model.\vs
+%{\bf A Cartesian Product Model.}
+%Our second generalization is motivated by the case when the pages are
+%partitioned into disjoint categories in both sides of the bipartite graph. The
+%density of random recommendations in the supergraph may vary across different
+%pairs of categories. To smoothly generalize the results from before, we assume
+%that despite the variation, every node in the left has the same final fixed
+%degree while this bound can be distributed differently between the various
+%categories on the right hand side depending upon which category on the left side
+%the node belongs to.  Our analysis in Section~\ref{cartesian} again extends our
+%basic result about the effectiveness of the lazy algorithm to this model.\vs
 
-{\bf Weighted Links.}
-In the last generalization, we assume that every link in the candidate
-supergraph of recommendations is weighted by a fraction that represents the
-normalized traffic that will be generated by including this link. Assuming that
-we can still direct only a total of $c$ units of normalized traffic from the
-left hand side node, we can still investigate the question of maximizing the
-number of right side nodes that have normalized recommending traffic summing to
-at least one. In Section~\ref{weighted}, we show the parameters under which the
-lazy algorithm is effective for this model. \vs
+%{\bf Weighted Links.}
+%In the last generalization, we assume that every link in the candidate
+%supergraph of recommendations is weighted by a fraction that represents the
+%normalized traffic that will be generated by including this link. Assuming that
+%we can still direct only a total of $c$ units of normalized traffic from the
+%left hand side node, we can still investigate the question of maximizing the
+%number of right side nodes that have normalized recommending traffic summing to
+%at least one. In Section~\ref{weighted}, we show the parameters under which the
+%lazy algorithm is effective for this model. \vs
 
-\subsection{Computational Results}
-We performed extensive computational testing of the two algorithms we analyze:
-the lazy random choice algorithm, and the greedy, as well as some variants where
-the greedy algorithm truncates its search for matching nodes from the left after
-examining a certain small number of neighbors from the left. In all our testing
-that were conducted up to web-scale graph sizes, the greedy algorithm almost
-always outperforms all the other methods, while the lazy method, as predicted by
-our analysis above, are very effective for a large swath of parameter ranges. 
+%\subsection{Computational Results}
+%We performed extensive computational testing of the two algorithms we analyze:
+%the lazy random choice algorithm, and the greedy, as well as some variants where
+%the greedy algorithm truncates its search for matching nodes from the left after
+%examining a certain small number of neighbors from the left. In all our testing
+%that were conducted up to web-scale graph sizes, the greedy algorithm almost
+%always outperforms all the other methods, while the lazy method, as predicted by
+%our analysis above, are very effective for a large swath of parameter ranges. 
 %Sri: add the high-level insight here
 
 
