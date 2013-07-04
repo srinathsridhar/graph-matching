@@ -104,8 +104,7 @@ We can represent this notion of recommendations by using a directed graph. A
 vertex is simply an item and a directed edge $(u, v)$ is a recommendation from
 $u$ to $v$. Under this graph model for the above problem, if $c=1$ and we
 require the chosen recommendation subgraph be strongly connected then our
-problem reduces to Hamilton cycle, an NP-complete problem [CITE CLRS
-OR SOMETHING HERE]. \vs
+problem reduces to Hamilton cycle, an NP-complete problem \cite{CLRS2001}. \vs
 
 \subsection{Bipartite Recommendation Subgraphs}
 
@@ -121,9 +120,9 @@ vertex in $L$ has $c < d$ recommendations. The simplest goal is to
 minimize the number of vertices that have in-degree less than an
 integer $a$. We call this the $(c, a)$-recommendation subgraph
 problem.  Note that if $a=c=1$ this is simply the problem of maximum
-bipartite matching ~\cite{LovaszPlummer} [OTHER CITATIONS?]. If $a=1$
-and $c > 1$, this is called fractional matching, that can be converted
-to the usual bipartite matching problem. [CITE FRACTIONAL MATCHING ON
+bipartite matching ~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$,
+this is called fractional matching, that can be converted to the
+usual bipartite matching problem. [CITE FRACTIONAL MATCHING ON
   GRAPHS PAPERS]\vs
 
 {\bf Implementation Issues} Over the past few years, the second and
@@ -141,15 +140,15 @@ YouTube has XXX videos and YYY recommendations\cite{} in total. Even an
 e-commerce website with 100M product pages and 100 recommendation candidates per
 product would require easily over 160GB in main memory to run these
 algorithms without using graph compression techniques that add additional technical difficulties
-in development and maintenence. In practice offline problem instances are solved by using
-distributed computing such as map-reduce[CITE GOOGLE MAPREDUCE PAPER HERE]. 
+in development and maintenance. In practice offline problem instances are solved by using
+distributed computing such as map-reduce \cite{DeanGhemawat2004}. 
 However, efficient map-reduce algorithms for graph problems
 are notoriously difficult and we are back to building a complicated
 system. \vs
 
-%http://www.longtail.com/the_long_tail/faq/
-%The long tail: Why the future of business is selling less of more
-%Growth dynamics of the World-Wide Web. Nature - Long tail by page
+% http://www.longtail.com/the_long_tail/faq/
+% The long tail: Why the future of business is selling less of more
+% Growth dynamics of the World-Wide Web. Nature - Long tail by page
 % Analysis of WWW traffic in Cambodia and Ghana - Zipf by page
 % Location and time do matter: A long tail study of website requests: http://public.csusm.edu/ckumar/research/Kumar-etal-online-location-time-DSS.pdf 
 % shows % Zipf with beta=-1.365
@@ -172,9 +171,9 @@ input web graph characteristics to give an idea for the sizes of $L$,
 $R$, $c$ and $a$ to expect. It is well known, and can be verified by
 prior experiences that a small number of `head' pages contribute to a
 significant amount of the traffic while a long tail of the remaining
-pages contribute to the rest[CITE THE ABOVE PAPERS]. For example
-demonstrated by one of the prior measurements~\cite{}[THE LAST PAPER
-  ABOVE] it is not unreasonable to expect that 50\% of the traffic is
+pages contribute to the rest \cite{HubermanAdamic1999, DuDemmerBrewer2006}. For example
+demonstrated by one of the prior measurements~\cite{KumarNorrisSun2009}
+it is not unreasonable to expect that 50\% of the traffic is
 contributed by less than 1\% (a few thousands) of the web pages and a
 large number of tail pages (a few hundreds of thousands) contributing
 the other half of the traffic. This implies that in practice $L$ can
@@ -212,8 +211,8 @@ not exhausted their bound of $c$ edges in the subgraph, and if so, use them to
 add this node to the discovered set. We study this algorithm in Section
 ~\ref{greedy}. We show the easy result that Greedy gives a 
 $\frac{1}{a+1}$-approximation, and also do an average case analysis. However, we
-use the usual Erd\"os-Renyi model [CITE GNP PAPERS HERE] rather than the fixed-degree model for this
-analysis.
+use the usual Erd\"os-Renyi model \cite{ErdosRenyi59}
+rather than the fixed-degree model for this analysis.
 
 In the subsequent Section~\ref{worst-vs-avg}, we compare and plot the worst-case
 performance of Greedy against the average case expected performance of the random
