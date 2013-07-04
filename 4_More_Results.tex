@@ -45,7 +45,7 @@ with uniform probability and we let $d = d_{0} + \ldots + d_{D-1}$.\vs
 \end{minipage}
 \end{figure}
 
-Our goal now is to find a $b$-matching~\cite{} [ALGORITHM PAPER FOR FINDING b-MATCHING] in this graph that is close to
+Our goal now is to find a $b$-matching~\cite{Gabow1983} in this graph that is close to
 optimal in expectation. That is, our degree upper and bounds on vertices in
 $L$ is $c$ and 1 respectively. Let $c
 = c_0 + \ldots + c_{D-1}$ similar to how we defined $d$. 
@@ -187,7 +187,8 @@ coming into a vertex $v\in R$ would be
 \[ \E[X_v] = \sum_{u\in L} \E[X_{uv}] = \frac{cl\mu}{r} = ck\mu\]
 
 However, $X_{uv}$ for each $u$ are i.i.d random variables. Since by
-assumption $ck\mu = 1+\epsilon$, by Hoeffding bounds~\cite{} [CITE HOEFFDING BOUNDS] we can obtain
+assumption $ck\mu = 1+\epsilon$, by Hoeffding bounds~\cite{Hoeffding1963} 
+we can obtain
 
 \[ \Pr[X_v \leq 1] = \Pr[X_v - \E[X_v] \geq \epsilon] \leq \exp\left(-\frac{2l\epsilon^2}{b^2}\right) \]
 

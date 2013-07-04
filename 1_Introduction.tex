@@ -91,8 +91,7 @@ that recommend similar products on every product page. \vs
 In this work, we analyze a recommendation system that can be built
 offline in two stages: the first decides on candidate recommendations
 for each item based on relevance and retrieves a large candidate set
-of $d$ items [CITE A LOT OF PAPERS HERE FOR E.G.: Recommender systems
-  in e-commerce : http://dl.acm.org/citation.cfm?id=337035].  The
+of $d$ items \cite{Schafer1999, Adomavicius2005, Resnick1997}. The
 second stages prunes it to $c < d$ such that globally we ensure that
 the resulting recommendation subgraph is `efficient' for traversal. 
 
@@ -121,9 +120,8 @@ minimize the number of vertices that have in-degree less than an
 integer $a$. We call this the $(c, a)$-recommendation subgraph
 problem.  Note that if $a=c=1$ this is simply the problem of maximum
 bipartite matching ~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$,
-this is called fractional matching, that can be converted to the
-usual bipartite matching problem. [CITE FRACTIONAL MATCHING ON
-  GRAPHS PAPERS]\vs
+we obtain a $b$-matching problem, that can be converted to the
+usual bipartite matching problem. \cite{Gabow1983}
 
 {\bf Implementation Issues} Over the past few years, the second and
 third authors have implemented complex graph algorithms in
@@ -189,9 +187,11 @@ effectiveness of the lazy engineer is provided by using a random graph
 model for the recommendation supergraph. Since the lazy algorithm
 involves choosing {\em any} set of $c$ recommendations, the natural
 random graph model that permits analysis of this method is the {\em
-  fixed-degree} model [CITE PAPERS FOR FIXED DEGREE] where every node
-on the left has recommendations to a random subset of size exactly $d$
-nodes in the right.
+  fixed-degree} model where every node on the left has recommendations
+to a random subset of size exactly $d$ nodes in the right. This model is
+similar to the another model called $d$-out, where vertices from both
+sides of the bipartition send $d$ edges to the other side of the bipartition
+\cite{FriezePittel2004}.
 
 We study this model in Section~\ref{fixed-degree}. Our main result
 identifies the range of parameters involving $c,a,l=|L|$ and $r =|R|$
