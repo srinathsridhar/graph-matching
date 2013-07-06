@@ -1,0 +1,51 @@
+\section{Proofs of More General Models}
+
+\begin{thm}
+Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$. Then
+\[ \E[S] \geq r(1-\exp(-ck)) \]
+where the expectation is over $G$ and $H$.
+\end{thm}
+
+\begin{proof}
+Let $v\in R$ and let $T_L^{D-1}, T_L^{D-2}\backslash T_L^{D-1},
+\ldots, T_L^0\backslash T_L^1$ be the sets it can take edges
+from. Since $T_L$ and $T_R$ split perfectly evenly at each node the
+vertices in these sets will be chosen from $r_{D-1}, r_{D-1},
+r_{D-2},\ldots, r_{1}$ vertices in $R$ as neighbors,
+where $r_i$ is the size of subtree of the right tree rooted at depth
+$i$. Furthermore, each of these sets described above have size
+$l_{D-1}, l_{D-1}, l_{D-2}, \ldots, l_{1}$ respectively, where $l_i$
+is the size of a subtree of $T_L$ rooted at depth $i$. It follows that
+the probability that $v$ does not receive any edges at all is at most
+
+\begin{align*}
+	      \Pr[\lnot X_v] 
+	&=    \left(1-\frac{1}{r_{D-1}}\right)^{c_0l_{D-1}}\prod_{i=1}^{D-1}\left(1 - \frac{1}{r_i}\right)^{c_{D-i} l_i} \\
+	&\leq \exp\left(-\frac{l_{D-1}}{r_{D-1}}c_0\right)\prod_{i=1}^{D-1} \exp\left(-\frac{l_i}{r_i}c_{D-i}\right) \\
+	&=    \exp\left(-(c_0 + \ldots + c_{D-1})k\right) \\
+	&=    \exp(-ck)
+\end{align*}
+
+Since this is an indicator variable, it follows that 
+\[ \E[S] = \E\left[\sum_{v \in R} X_v \right] \geq r \left(1-\exp(-ck)\right) \]
+\end{proof}
+
+\begin{thm}
+With $S$, $G$ and $H$ defined as above, we have
+\[ \E[S] \geq r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
+where the expectation is over $G$ and $H$.
+\end{thm}
+\begin{proof}
+Let $v_j \in R_j$ be an arbitrary vertex and let $X_{v_j}$ be the
+indicator variable for the event that $\deg_H(v_i) \geq 1$. The
+probability that none of the neighbors of some $u_i\in R_i$ is $v_j$
+is exactly $(1-\frac{1}{r_j})^{c_{ij}}$. It follows that the
+probability that the degree of $v_j$ in the subgraph $H[L_i,R_j]$ is 0
+is at most $(1-\frac{1}{r_j})^{c_{ij}l_i}$. Considering this
+probability over all $R_j$ gives us:
+\[ \Pr[X_{v_i} = 0] = \prod_{i=1}^{t} \left(1-\frac{1}{r_j}\right)^{c_{ij} l_i} \leq \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
+
+By linearity of expectation $\E[S] = \sum_{i=1}^{t'} r_i \E[X_{v_i}]$,
+so it follows that
+\[ \E[S] \geq \sum_{j=1}^{t'} r_j \left(1-\exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\right) = r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
+\end{proof}
