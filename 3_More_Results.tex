@@ -149,11 +149,11 @@ To sample $H$ from $G$, we sample $c_{ij}$ neighbors for each
 $u_i\in L_i$ from $R_i$. Letting $S$ be the set of vertices in 
 $v\in R$ that satisfy $\deg_H(v)\geq 1$, we can show the following:
 
-%\begin{thm}
-%With $S$, $G$ and $H$ defined as above, we have
-%\[ \E[S] \geq r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
-%where the expectation is over $G$ and $H$.
-%\end{thm}
+\begin{thm}
+With $S$, $G$ and $H$ defined as above, we have
+\[ \E[S] \geq r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
+where the expectation is over $G$ and $H$.
+\end{thm}
 %\begin{proof}
 %Let $v_j \in R_j$ be an arbitrary vertex and let $X_{v_j}$ be the
 %indicator variable for the event that $\deg_H(v_i) \geq 1$. The
@@ -209,17 +209,14 @@ we have $\E[X_{uv}] = \E[W_{uv}]\E[Y_{uv}]$ for all edges. Since $c$
 edges out of $r$ are picked for each vertex, $\E[Y_{uv}] = \frac{c}{r}$
 , so $\E[X_{uv}] = \frac{c}{r}\mu$. Therefore, the expected weight
 coming into a vertex $v\in R$ would be 
-
 \[ \E[X_v] = \sum_{u\in L} \E[X_{uv}] = \frac{cl\mu}{r} = ck\mu\]
 
 However, $X_{uv}$ for each $u$ are i.i.d random variables. Since by
 assumption $ck\mu = 1+\epsilon$, by Hoeffding bounds~\cite{Hoeffding1963} 
 we can obtain
-
 \[ \Pr[X_v \leq 1] = \Pr[X_v - \E[X_v] \geq \epsilon] \leq \exp\left(-\frac{2l\epsilon^2}{b^2}\right) \]
 
 By linearity of expectation we can now get the result in the theorem
-
 \[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{proof}
 
