@@ -122,14 +122,14 @@ realistic graphs including a hierarchical, cartesian and weighted
 graph models. \vs
 
 
-{\bf The Greedy Algorithm} While the lazy algorithm chooses any set of $c$ recommendations, the natural
+{\bf The Greedy Algorithm} While the lazy algorithm chooses any set of $c$ recommendations, the 
 greedy algorithm will need some work: it scans the nodes on the right that must
 be discovered, and checks if there are $a$ neighbors from the left that have
 not exhausted their bound of $c$ edges in the subgraph, and if so, it uses them to
 add this node to the discovered set. We study this algorithm in Section~\ref{greedy}. 
 We show the easy result that Greedy gives a $\frac{1}{a+1}$-approximation, 
 and also do an average case analysis. We
-use the usual Erd\"os-Renyi model~\cite{ErdosRenyi59} for the analysis.
+use the usual Erd\"os-Renyi model\cite{ErdosRenyi59} for the analysis.
 %In the subsequent Section~\ref{worst-vs-avg}, we compare and plot the worst-case
 %performance of Greedy against the average case expected performance of the random
 %or lazy algorithm, as a basis for our later computational comparisons in a
