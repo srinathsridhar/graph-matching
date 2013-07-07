@@ -171,8 +171,27 @@ sizes of the subtrees in $T_L$ and $T_R$.
 
 \subsection{Cartesian Product Model}
 \label{cartesian}
-We can extend the analysis in Section \ref{fixed-degree} in a way
-orthogonal to the hierarchical tree model. We assume that
+We can see another shortcoming of the uniform graph model if we think
+of products as being clustered into categories. This is similar to the
+hierarchical tree mode, but our assumptions are weaker in that we don't
+mandate a complete hierarchy and that the clusters can be unrelated. In
+such a model, we would expect many recommendation edges to be 
+intra-cluster edges rather than inter-cluster edges. Assuming that
+cluster sizes are the same, the uniform model would generate the same
+number of edges between any two pairs of clusters. However, in an 
+aggregate of data collected from real merchants, we can see that some
+pairs of clusters have many more edges between them than the uniform
+model would predict:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{images/cartesian_histogram.png}
+\begin{minipage}[h]{0.7\textwidth}
+\caption{Histogram showing the percentage edges between pairs of clusters. The long tail is omitted.}
+\end{minipage}
+\end{figure}
+
+This finding motivates the following model. We assume that
 $L$ has been partitioned into $t$ subsets $L_1,\ldots, L_t$ and
 that $R$ has been partitioned into $t'$ subsets $R_1,\ldots,
 R_{t'}$. For convenience, we let $|L_i| = l_i$ and $|R_i|=r_i$. Given
