@@ -1,20 +1,18 @@
 \section{Algorithms for Recommendation Subgraphs}
 In this section, we analyze the lazy algorithm of choosing any set of
 $c$ recommendations, and the slightly more interesting greedy algorithm
-for finding a $(c,a)$-recommendation subgraph. To do this, we first
-introduce the fixed-degree random graph model for the candidate
-supergraph of recommendations. 
+for finding a $(c,a)$-recommendation subgraph. We begin by introducing
+the fixed-degree random graph model for the input supergraph.
+
 
 \subsection{Fixed Degree Model}
 \label{fixed-degree}
-
-In this model, we assume that a bipartite graph $G=(L,R,E)$ is
-generated probabilistically by the following procedure. Each
-vertex $v\in L$, uniformly samples a set of $d$ neighbors
-from $R$. For convenience let $|L|=l$, $|R|=r$ and $k=l/r$. From
-$G$, we sample a subgraph $H$ where for each vertex $u\in L$ a set of
-$c$ neighbors are sampled uniformly from set of incident vertices. The
-following theorem derives a lower bound on the expected solution.
+ In this model, we assume that a bipartite graph $G=(L,R,E)$ is
+generated probabilistically as follows. Each vertex $v\in L$
+uniformly samples a set of $d$ neighbors from $R$. Subgraph $H$
+is now sampled from $G$ by uniformly sampling $c$ out of the $d$ incident edges
+on each vertex. Let $|L|=l$, $|R|=r$ and $k=l/r$. 
+The following theorem gives a lower bound on the expected solution.
 
 
 %\begin{thm}\label{original_result}
@@ -40,9 +38,10 @@ following theorem derives a lower bound on the expected solution.
 
 
 \begin{thm}\label{original_result}
-Let $S$ be the random variable denoting the number of vertices $v \in R$ such that $\deg_{H}(v)\geq a$. Then
+Let $S$ be the
+random variable denoting the number of vertices $v \in R$ such that
+$\deg_{H}(v)\geq a$. Then
 \[ \emph{\E}[S] \geq r\left(1-e^{-ck+\frac{a-1}{r}}\frac{(ck)^a-1}{ck-1}\right)  \]
-where the expectation is over the randomness of $G$ and $H$.
 \end{thm}
 
 \begin{proof}
@@ -53,8 +52,8 @@ degree of the vertex $v$ in our subgraph. Because our algorithm
 uniformly subsamples a uniformly random selection of edges, we can
 assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. So $X_{uv}$ is a
-Bernoulli random variable. Using the trivial bound $\binom{n}{i}
-\leq n^i$ on binomial coefficients we get:
+Bernoulli random variable. Using the bound $\binom{n}{i}
+\leq n^i$ on binomial coefficients we get,
 \begin{align*}
       \Pr[X_v < a]
 &=    \sum_{i=0}^{a-1} \binom{cl}{i} \left(1-\frac{1}{m}\right)^{cl-i}\left(\frac{1}{r}\right)^i \\
@@ -78,7 +77,8 @@ The above sampling algorithm gives a $\left(1-\frac1e\right)$-factor approximati
 \begin{proof}
 The size of the optimal solution is bounded above by both the number
 of edges in the graph and the number of vertices in $R$. The former of
-these is $cl=ckr$ and the latter is $r$, which shows that $OPT \leq
+these is $cl=ckr$ and the latter is $r$, which shows that the optimal solution size
+$OPT \leq
 r\max(ck,1)$. Therefore, by simple case analysis the approximation ratio
 in expectation is at least
 \[ \frac{1-\exp(-ck)}{\min(ck,1)} \geq 1-\frac{1}{e} \]
@@ -92,7 +92,7 @@ solution will be at least 95\% as good as the optimal solution even
 with our trivial bounds. Similarly, when $ck<1$, the approximation
 ratio is $(1-\exp(-ck))/ck$ which also approaches 1 as $ck\to 0$. In
 particular, if $ck=0.1$ then the solution will be at 95\% as good as
-the optimal solution. The case when $ck=1$ therefore represents the
+the optimal solution. The case when $ck=1$ represents the
 worst case outcome for this model where we only guarantee 63\%
 optimality. The graph below shows the approximation ratio as a
 function of $ck$.\vs
@@ -144,7 +144,7 @@ values of $a$.\vs
     $ck$ & 3.00 & 4.74 & 7.05 & 10.01 & 13.48 \\
     \hline
   \end{tabular}
-  \caption{The required $ck$ to obtain 95\% optimality}
+  \caption{The required $ck$ to obtain 95\% optimality for $(c, a)$-recommendation subgraph}
 \end{figure} 
 
 We close out this section by showing that the main result that holds in expectation also hold with high probability. 
@@ -167,13 +167,13 @@ $ S \leq r(1-2\exp(-ck))$ with probability at most $(e/4)^{r(1-\exp(-ck))}$.
 
 \begin{proof}
 We can write $S$ as $\sum_{v\in R} 1-X_v$ where $X_v$ is the indicator
-variable that denotes that $X_v$ is matched. Note that the variables 
-$1-X_v$ for each $v\in R$ are non-positively correlated. In particular,
-if $N(v)$ and $N(v')$ are disjoint, then $1-X_v$ and $1-X_{v'}$ are 
-independent. Otherwise, $v$ not claiming any edges can only increase 
-the probability that $v'$ gets an edge from any vertex
-$u\in N(v)\cap N(v')$, so the variables would be negatively correlated.
-Furthermore, note that the expected size of $S$ is $r(1-\exp(-ck))$ by
-Theorem \ref{original_result}. Therefore, we can apply Theorem 
-\ref{negative_corr_chernoff} with $\delta=1$ and obtain the result.
+variable that denotes that $X_v$ is matched. Note that the variables
+$1-X_v$ for each $v\in R$ are non-positively correlated. In
+particular, if $N(v)$ and $N(v')$ are disjoint, then $1-X_v$ and
+$1-X_{v'}$ are independent. Otherwise, $v$ not claiming any edges can
+only increase the probability that $v'$ has an edge from any vertex
+$u\in N(v)\cap N(v')$. Also note that the expected size of $S$ is
+$r(1-\exp(-ck))$ by Theorem \ref{original_result}. Therefore, we can
+apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ and obtain
+the result.
 \end{proof}
