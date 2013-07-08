@@ -1,7 +1,7 @@
 \section{Realistic Models of Recommendation Graphs}
 %We realize that the models described previously are a bit
 %theoretical.
-Even though we studies the fixed-degree model in detail, recommendation systems based on relevance in practice
+Even though we studied the fixed-degree model in detail, recommendation systems based on relevance in practice
 will not have edges that are spread uniformly at random. Items that are
 about specific topics are much more likely to interlink within
 themselves than to those outside that topic, leading to
@@ -20,7 +20,7 @@ the table in Figure~\ref{fig:hier} we examined the edges adjacent to
 products at depth 4 or greater. We calculated the percentage of edges
 connecting to products that had different least common ancestors (LCA) with the current product.  We
 then randomized the edges so that we can compare how the graph would
-have looked if there was no substructure and re-calculate the
+have looked if there was no substructure and re-calculated the
 distribution of the edges and the LCA levels. We noticed that the
 uniform distribution had edges that had very shallow LCA indicating that
 most edges did not follow the product hierarchy while in reality,
@@ -112,11 +112,8 @@ Let $d = d_{0} + \ldots + d_{D-1}$.\vs
 \end{minipage}
 \end{figure}
 
-
-
-
-Our goal now is to find a variant of matching~\cite{Gabow1983} in this
-graph that is close to optimal in expectation for the case of $a=1$. That is, our degree
+For the $a=1$ case, our goal now is to find a $b$-matching~\cite{Gabow1983} in this
+graph that is close to optimal in expectation. That is, our degree
 upper and lower bounds on vertices in $L$ and $R$ are $c$ and 1
 respectively. Let $c = c_0 + \ldots + c_{D-1}$ be similar to how we
 defined $d$.  To combine the analysis of the randomness of the
@@ -179,11 +176,10 @@ sizes of the subtrees in $T_L$ and $T_R$.
 \label{cartesian}
 We can see another shortcoming of the uniform graph model if we think
 of products as being clustered into categories. This is similar to the
-hierarchical tree mode, but our assumptions are weaker in that we don't
+hierarchical tree model, but our assumptions are weaker in that we don't
 mandate a complete hierarchy and that the clusters can be unrelated. In
 such a model, we would expect many more recommendation edges to be
 intra-cluster edges rather than inter-cluster edges.
-
 
 This finding motivates the cartesian product model where we assume that
 $L$ has been partitioned into $t$ subsets $L_1,\ldots, L_t$ and
