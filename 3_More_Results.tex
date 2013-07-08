@@ -7,7 +7,7 @@ about specific topics are much more likely to interlink within
 themselves than to those outside that topic, leading to
 clusters of recommendations.
 
-To understand this substructure in underlying
+To understand this clustering in underlying
 graphs in practice, we compiled results from several e-commerce retailers that
 have been aggregated and anonymized in the table shown below. For each
 retailer, we compiled the product ontology present within the
@@ -16,11 +16,11 @@ juicer called ``Breville Juice Fountain Plus'' is in the tree path:
 Home $\rightarrow$ Juicers $\rightarrow$ High Speed Juicers
 $\rightarrow$ Breville Juice Fountain Plus. We then examined the
 recommendations from products at different depths of the hierarchy. In
-the table in Figure~\ref{fig:hier} we examined the edges adjacent to
+the table in Figure~\ref{fig:hier} we show the edges adjacent to
 products at depth 4 or greater. We calculated the percentage of edges
 connecting to products that had different least common ancestors (LCA) with the current product.  We
 then randomized the edges so that we can compare how the graph would
-have looked if there was no substructure and re-calculated the
+have looked if there was no clusters and re-calculated the
 distribution of the edges and the LCA levels. We noticed that the
 uniform distribution had edges that had very shallow LCA indicating that
 most edges did not follow the product hierarchy while in reality,
@@ -37,25 +37,28 @@ as the {\em hierarchical tree model}.
     Hierarchical & 7.1 & 1.9 & 8.0 & 24.9 & 52.3 & 5.5 & 0.2 & 0.1\\
     \hline
   \end{tabular}
-  \caption{Percent edges for depth-4 products by LCA of endpoints in reality (from hierarchical data) and simulated Uniform.}\label{fig:hier}
+  \caption{Percent edges for depth-4 products by LCA of endpoints in reality (from hierarchical data) and simulated uniform distribution of edges.}\label{fig:hier}
 \end{figure}
-
-In a second analysis, we simply truncated the product hierarchy
-at depth 3 and collected the resulting disjoint clusters in the hierarchy. We
-then examined all the recommendations and partitioned them into those going between each pair of these clusters. In a uniform distribution, we would expect the
-edges to be equally likely to span across each pair of clusters
-(assuming clusters are equal sized). But what we observed was that
-different pairs of clusters had different edge-densities. For instance, an Espresso Machine might point more to other Coffee Machines or
-Coffee Beans (note that Coffee Beans and Espresso Machine might share
-no LCA apart from the root) than to other clusters. These results are
-shown in Figure~\ref{fig:cart-emp} which clearly demonstrates that the pairs of clusters
-responsible for the most number of recommendation edges
+ In a second analysis, we simply truncated the product hierarchy
+at depth 3 and collected the resulting disjoint clusters in the
+hierarchy. We then examined all the recommendations and partitioned
+them into those going between each pair of these clusters. In a
+uniform distribution, we would expect theedges to be equally likely
+to span across each pair of clusters (if clusters are equal
+sized). But what we observed was that different pairs of clusters
+had different edge-densities. For instance, an Espresso Machine might
+point more to other Coffee Machines or Coffee Beans (note that
+Coffee Beans and Espresso Machine might share no LCA apart from the
+root) than to other clusters. These results are shown in
+Figure~\ref{fig:cart-emp} which clearly demonstrates that the pairs of
+clusters responsible for the most number of recommendation edges
 produce many more edges than the uniform model would predict.  This
 motivated us to define and study the {\em cartesian product model} in
 Subsection~\ref{cartesian} which is orthogonal to the uniform and
-hierarchical tree models. Finally, in Section~\ref{weighted}, we study the {\em weighted model}
-which assigns weights to the graph edges so that we can incorporate strengths and traffic
-patterns across a website besides just relevance-based recommendations.
+hierarchical tree models. Finally, in Section~\ref{weighted}, we study
+the {\em weighted model} which assigns weights to the graph edges so
+that we can incorporate strengths and traffic patterns across a
+website besides just relevance-based recommendations.
 
 The way these analyses we performed for these new models are similar to the
 analysis we carried out for the fixed-degree model. While we only present
@@ -67,7 +70,7 @@ $(c,a)$-recommendation subgraphs as done in Section \ref{fixed-degree}.
 \centering
 \includegraphics[width=0.5\textwidth]{images/cartesian_histogram.png}
 \begin{minipage}{1\textwidth}
-\caption{Histogram of percent edges between pairs of clusters. The long tail is omitted.}
+\caption{Histogram of percent edges between pairs of clusters. Each point on $x$-axis is a pair of clusters. The $x$-axis has no inherent order but they have been sorted by number of edges for visualization. The tail is omitted.}
 \label{fig:cart-emp}
 \vspace{-0.2in}
 \end{minipage}
