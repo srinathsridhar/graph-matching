@@ -16,20 +16,24 @@ recommendations is a candidate supergraph. Given the limited space to
 display recommendations a subgraph that has bounded outdegree $c$ on the
 popular pages must be chosen. Our goal is to maximize the number of
 undiscovered pages that have indegree at least some target $a$. We introduce and study this
-$(c, a)$-recommendation subgraph problem.
+as the $(c, a)$-recommendation subgraph problem.
 
-Solving such problems optimally at web-scale involves writing distributed matching algorithms.
-Instead, in this work, we study the effectiveness of a lazy engineer
-solving the recommendation subgraph problem. We investigate the cases
-when the candidate supergraph is a random graph under two models: the
-fixed-degree model where every node on the left has exactly $d$ random
-neighbors on the right, as well as the standard Erd\"{o}s-Renyi model
-with expected degree $d$ on the left side. We show that for most
-reasonable parameters of the models, the lazy engineer would have
-found solutions very close to optimal. We further show the conditions
-under which a perfect recommendation subgraph, a generalization of
-perfect matchings, exists. Lastly, to more realistically model web
-graphs, we propose generalizations of the random graph models using
-topic taxonomies, varying subgraph edge densities and edge weights
-that capture the strength of recommendations. Surprisingly, the lazy engineer would
-still have found near optimal solution under different realistic parameters, which we validate with some computational testing on simulated models. 
+Solving such problems optimally at web-scale typically involves
+writing distributed matching algorithms.  These can be incredibly hard
+to implement, debug and scale effectively.  Instead, in this work, we
+study the effectiveness of a lazy engineer solving the recommendation
+subgraph problem. We investigate the cases when the candidate
+supergraph is a random graph under two models: the fixed-degree model
+where every node on the left has exactly $d$ random neighbors on the
+right, as well as the standard Erd\"{o}s-Renyi model with expected
+degree $d$ on the left side. We show that for most reasonable
+parameters of the models, the lazy engineer would have found solutions
+very close to optimal. We further show the conditions under which a
+perfect recommendation subgraph, a generalization of perfect
+matchings, exists. Lastly, to more realistically model web graphs, we
+propose generalizations of the random graph models using topic
+taxonomies, varying subgraph edge densities and edge weights that
+capture the strength of recommendations. Surprisingly, the lazy
+engineer would still have found near optimal solutions under different
+realistic parameters, which we validate with some computational
+testing on simulated models.

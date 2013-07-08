@@ -1,33 +1,31 @@
-\section{Realistic Models of Recommendation Graphs}
-%We realize that the models described previously are a bit
-%theoretical.
-Even though we studied the fixed-degree model in detail, recommendation systems based on relevance in practice
-will not have edges that are spread uniformly at random. Items that are
-about specific topics are much more likely to interlink within
-themselves than to those outside that topic, leading to
-clusters of recommendations.
-
-To understand this clustering in underlying
-graphs in practice, we compiled results from several e-commerce retailers that
-have been aggregated and anonymized in the table shown below. For each
-retailer, we compiled the product ontology present within the
-site that places a product in this tree-like categorization. E.g., a
-juicer called ``Breville Juice Fountain Plus'' is in the tree path:
-Home $\rightarrow$ Juicers $\rightarrow$ High Speed Juicers
-$\rightarrow$ Breville Juice Fountain Plus. We then examined the
-recommendations from products at different depths of the hierarchy. In
-the table in Figure~\ref{fig:hier} we show the edges adjacent to
-products at depth 4 or greater. We calculated the percentage of edges
-connecting to products that had different least common ancestors (LCA) with the current product.  We
-then randomized the edges so that we can compare how the graph would
-have looked if there was no clusters and re-calculated the
-distribution of the edges and the LCA levels. We noticed that the
-uniform distribution had edges that had very shallow LCA indicating that
-most edges did not follow the product hierarchy while in reality,
-the endpoints of edges recommended had much deeper LCA meaning recommendation edges were clustered based on the product hierarchy. This led us
-to formalize this new model of input graphs that we study in Subsection~\ref{hierarchy}
-as the {\em hierarchical tree model}.
-
+\section{Generalized Models of Recommendation Graphs}
+Even though we studied the fixed-degree uniform model in detail,
+recommendation systems based on relevance in practice will not have
+edges that are spread uniformly at random. Items that are about
+specific topics are much more likely to interlink within themselves
+than to those outside that topic, leading to clusters of
+recommendations.  To understand this clustering in underlying
+graphs in practice, we compiled results from several e-commerce
+retailers that have been aggregated and anonymized in the table
+shown below. For each retailer, we compiled the product ontology
+present within the site that places a product in this tree-like
+categorization. E.g., a juicer called ``Breville Juice Fountain
+Plus'' is in the tree path: Home $\rightarrow$ Juicers $\rightarrow$
+High Speed Juicers $\rightarrow$ Breville Juice Fountain Plus. We
+then examined the recommendations from products at different depths
+of the hierarchy. In the table in Figure~\ref{fig:hier} we show the
+edges adjacent to products at depth 4 or greater. We calculated the
+percentage of edges connecting to products that had different least
+common ancestors (LCA) with the current product.  We then randomized
+the edges so that we can compare how the graph would have looked if
+there was no clusters and re-calculated the distribution of the
+edges and the LCA levels. We noticed that the uniform distribution
+had edges that had very shallow LCA indicating that most edges did
+not follow the product hierarchy while in reality, the endpoints of
+edges recommended had much deeper LCA meaning recommendation edges
+were clustered based on the product hierarchy. This led us to
+formalize this new model of input graphs that we study in
+Subsection~\ref{hierarchy} as the {\em hierarchical tree model}. 
 \begin{figure}[h]
   \centering
   \begin{tabular}{ |c|c|c|c|c|c|c|c|c|c| }
