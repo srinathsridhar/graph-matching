@@ -2,28 +2,49 @@
 \section{Introduction}
 
 One of the great benefits of the web as a useful source of hyperlinked
-information comes from the careful choices made in crafting the recommendations
-that link a given page to closely related pages. Even though this advantage was
-identified well before the www was in place by Bush~\cite{Bush45aswe}, it continues
-to persist even today. Smooth site navigation is a result of carefully chosen
-recommendations to closely related pages. Thus, the presence of recommendations
-is an integral feature of several popular websites that are known to have high
-user engagement as reflected in long sessions. Examples range from
-entertainment sites like YouTube that recommend a set of videos on the right
-for every video watched by a user, information sites like Quora that recommend
-a set of related questions on every question page, to retail sites like Amazon
-that recommend similar products on every product page. Recent estimates~\cite{big-data-book13} attribute up to a third of the sales in Amazon and three-quarters of new orders in Netflix due to their carefully chosen online recommendations. 
+information comes from the careful choices made in crafting the
+recommendations that link a page to closely related pages. Though this
+advantage was identified well before the www was in place by
+Bush~\cite{Bush45aswe}, it continues to persist even today. The
+presence of recommendations is an integral feature of several popular
+websites that are known to have high user engagement and long
+sessions. Examples range from entertainment sites like YouTube that
+recommend a set of videos on the right for every video watched by a
+user, information sites like Quora that recommend a set of related
+questions on every question page, to retail sites like Amazon that
+recommend similar products on every product page. Recent
+estimates~\cite{big-data-book13} attribute up to a third of the sales
+in Amazon and three-quarters of new orders in Netflix are due to precisely choosing recommendations.
 
 \subsection{Recommendation Subgraphs}
-Offline recommendation systems~\cite{Schafer1999, Adomavicius2005, Resnick1997}
-decide on a large set of related candidate items for each item (or page) based
-on relevance. In this work, we assume $d$ candidates are available per page and 
-we analyze how to prune the set to $c < d$ recommendations such that globally we ensure that the resulting recommendation subgraph allows `efficient' traversal through the site. We represent recommendations by using a directed graph where the vertices are items and a directed edge $(u, v)$ is a recommendation from $u$ to $v$. Note that, under this model, if $c=1$ and we require the chosen recommendation subgraph to be (strongly) connected, a feasible solution is a Hamilton cycle which is NP-complete to detect~\cite{CLRS2001}. \vs
+Recommendation systems~\cite{Schafer1999, Adomavicius2005,
+  Resnick1997} start by finding a large set of related candidate items
+for each item (or page) using relevance. In this work, we assume $d$
+such related candidates are available per page and our goal is to
+analyze how to prune the set to $c < d$ recommendations such that
+globally we ensure that the resulting recommendation subgraph can be traversed
+`efficiently' by the user. We represent recommendations
+by using a digraph where the vertices are items and a directed
+edge $(u, v)$ is a recommendation from $u$ to $v$. Note that, under
+this model, if $c=1$ and we require the chosen recommendation subgraph
+to be (strongly) connected, a feasible solution is a Hamilton cycle
+which is NP-complete to find~\cite{CLRS2001}. 
 
-%\subsection{Bipartite Recommendation Subgraphs}
-
-We generalize the graph recommendation model by using a bipartite digraph, where one partition $L$ represents the set of items for which we are required to suggest
-recommendations and the other partition $R$ represents the set of items that can be potentially recommended. If needed, the same item can be represented in both $L$ and $R$.  As before, the input to the problem is the bipartite graph where each $L$-vertex has $d$ recommendations. Given the space restrictions to display recommendations, the output is a subgraph where each vertex in $L$ has $c < d$ recommendations. The goal is to maximize the number of vertices that have in-degree at least a target integer $a$. We introduce and study this $(c, a)$-recommendation subgraph problem in this paper.  Note that if $a=c=1$ this is simply the maximum bipartite matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we obtain a $b$-matching problem, that can be converted to a bipartite matching problem~\cite{Gabow1983}.\vs
+We generalize the graph recommendation model by using a bipartite
+digraph, where one partition $L$ represents the set of items for which
+we are required to suggest recommendations and the other partition $R$
+represents the set of items that can be potentially recommended. If
+needed, the same item can be represented in both $L$ and $R$.  As
+before, the input to the problem is the graph where each
+$L$-vertex has $d$ recommendations. Given the space restrictions to
+display recommendations, the output is a subgraph where each vertex in
+$L$ has $c < d$ recommendations. The goal is to maximize the number of
+vertices that have in-degree at least a target integer $a$. We
+introduce and study this $(c, a)$-recommendation subgraph problem in
+this work.  Note that if $a=c=1$ this is simply the maximum bipartite
+matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we
+obtain a $b$-matching problem, that can be converted to a bipartite
+matching problem~\cite{Gabow1983}.\vs
 
 \noindent
 {\bf Motivation from Practice.} Over the past few years, the first and
@@ -54,41 +75,59 @@ We now describe typical web graph characteristics by discussing the sizes of $L$
 that, in most websites,  a small number of `head' pages contribute to a
 significant amount of the traffic while a long tail of the remaining
 pages contribute to the rest~\cite{HubermanAdamic1999, DuDemmerBrewer2006}. As
-demonstrated by one of the prior measurements~\cite{KumarNorrisSun2009}
-it is not unreasonable to expect 50\% of the site traffic to be
+demonstrated by a prior measurement~\cite{KumarNorrisSun2009}
+it is not unreasonable to expect 50\% of site traffic to be
 contributed by less than 1\% (a few thousands) of the web pages while a
-large number of tail pages (a few hundreds of thousands) contribute
-the other half of the traffic. This implies that in practice $L$ can
+large number of tail pages (a few hundred thousand) contribute
+the other half. This implies that in practice $L$ can
 be up to two orders of magnitude smaller than $R$.  By observing
 recommendations of Quora, Amazon, YouTube and our own work, 
-%in building these technologies in practice, 
 typical values for $c$ range from 3 to 20 recommendations per page. Values of $a$ are harder to nail down but it typically ranges from $1$ to $10$. \vs
 
 
 \subsection{Main Results}
+We initiate the study of structural engineering of effective
+recommendation systems by formulating and solving them as subgraph
+problems. We offer very good bounds on the performance of algorithms
+that a lazy engineer would prefer (random choice, greedy) under a
+natural new fixed-degree model; we extend the analysis of perfect
+matchings in random graphs to show the range of values of the graph
+density for which perfect recommendation subgraphs exist; motivated by
+empirical recommendation supergraphs that we analyze, we propose three
+new random graph models (hierarchical, cartesian product and weighted)
+extending our fixed-degree model to capture these real-life scenarios,
+and extend our analysis of the random algorithm to all these
+models. We now provide a short overview of these results. 
 
-{\bf The Lazy Engineer.} The above reasons motivated us to
-investigate the ``lazy" approach of choosing a random $c$ out of $d$ edges
-and investigating its performance under realistic scenarios in practice.  
-%In
-%practice, this would immediately imply that a very simple back-end
-%system can be built in many cases without the need for a complicated
-%algorithm. If the thresholds provided by our analysis are insufficient
-%in quality, then the software designer can consider implementing the classical
-%algorithms. \vs
-%\noindent
-%{\bf Recommendation Graph Models} 
-%The lazy engineer's algorithm
-%essentially picks a random $c$ out of $d$ edges. 
-Surprisingly, we found this method to be very effective for a wide range of realistic scenarios. To explain this, we carry out a theoretical investigation using
-a {\em fixed-degree} random graph model for the candidate supergraph, where every
-node on the left has recommendations to a random subset of size $d$ nodes in the right. This model is similar to the another model usually termed ``$d$-out", where vertices from both sides of the bipartition send $d$
-edges to the other side of the bipartition~\cite{FriezePittel2004}. Our main result
-(Theorem~\ref{original_result} in Section~\ref{fixed-degree}) identifies the range of parameters involving $c,a,l=|L|$ and $r =|R|$ where the lazy algorithm is very effective. We also show that the random choice algorithm is a $(1-\frac1e)$- approximation algorithm in expectation, and derive high probability bounds on performance.\vs
+%We hope our work will serve as a starting point for a more
+%thorough investigation of recommendation subgraph problems.
 
-
-\noindent
-While the lazy algorithm chooses any set of $c$ recommendations, a slightly less lazy algorithm is {\em greedy}: it scans the nodes on the right that must be discovered, and checks if there are $a$ neighbors from the left that have not exhausted their bound of $c$ edges in the subgraph, and if so, it uses them to add this node to the discovered set. We study this algorithm in Section~\ref{greedy}, where a simple $\frac{1}{a+1}$-approximation result is followed by a very tight bound for realistic values of the edge density under the usual Erd\"os-Renyi model\cite{ErdosRenyi59}. This analysis serves to portend the impressive overall performance of greedy in our computational results. \vs
+{\bf The Lazy Engineer.} The implementation challenges mentioned above
+motivated us to investigate simple algorithms that are practical and can 
+be implemented at very large scale. First, we simply analyze choosing a random
+$c$ out of $d$ edges and investigating its performance.  Surprisingly,
+we found this method to be very effective for a wide range of
+realistic scenarios. This led us to carry out a theoretical
+investigation using a {\em fixed-degree} random graph model for the
+candidate supergraph, where every node on $L$ has recommendations to a
+random subset of size $d$ nodes in $R$.  This is similar to another
+model usually termed `$d$-out', where vertices from both sides of the
+bipartition generate $d$ edges~\cite{FriezePittel2004}. Our main
+result (Theorem~\ref{original_result} in Section~\ref{fixed-degree})
+identifies the range of parameters involving $c,a,|L|, |R|$ where the
+lazy algorithm is very effective. We also show that this is a
+$(1-\frac1e)$- approximation algorithm in expectation, and high
+probability bounds as well.  We then analyzed a {\em greedy} algorithm
+that scans the nodes on $R$, and checks
+if there are $a$ neighbors from $L$ that have not exhausted their
+bound of $c$ edges and if so, it uses them to add
+this node to the solution set. We study this algorithm in
+Section~\ref{greedy}, where a simple $\frac{1}{a+1}$-approximation
+result is followed by a very tight bound for realistic values of the
+edge density under the usual Erd\"os-Renyi
+model\cite{ErdosRenyi59}. This analysis serves to portend the
+impressive overall performance of greedy in our computational
+results. \vs
 %In the subsequent Section~\ref{worst-vs-avg}, we compare and plot the worst-case
 %performance of Greedy against the average case expected performance of the random
 %or lazy algorithm, as a basis for our later computational comparisons in a
@@ -120,18 +159,4 @@ categories. (iii) To model the effect of strength of a candidate recommendation,
 {\bf Computational Results.} 
 To validate our claims of effectiveness of a lazy engineer empirically, we ran several simulations for a range of values of $k (= \frac{l}{r})$ by varying the value of $c$ in each case. We are able to replicate the qualitative properties of our theoretical results for the random choice algorithm in Section~\ref{fixed-degree}. We also compare its performance against that of the greedy algorithm and a partition-based algorithm used to prove our results on perfect recommendation graphs. Our results conclusively show that it pays for the engineer to be a little less lazy than choosing a random set of recommendations, by being greedy in choosing the subgraph. This advantage persists for greedy even in practical scenarios with values of $a$ larger than one, a range where our results on random graph models do not show very strong guarantees. \vs
 
-\noindent
-{\bf Contributions.} To summarize, we initiate the study of structural
-engineering of effective recommendation systems by formulating and
-solving them as subgraph problems. We offer very good bounds on the
-performance of algorithms that a lazy engineer would prefer (random
-choice, greedy) under a natural new fixed-degree model; we extend the
-analysis of perfect matchings in random graphs to show the range of
-values of the graph density for which perfect recommendation subgraphs
-exist; motivated by empirical recommendation supergraphs that we
-analyze, we propose three new random graph models (hierarchical,
-cartesian product and weighted) extending our fixed-degree model to
-capture these real-life scenarios, and extend our analysis of the
-random algorithm to all these models. We hope our work will serve as a
-starting point for a more thorough investigation of recommendation
-subgraph problems.
+

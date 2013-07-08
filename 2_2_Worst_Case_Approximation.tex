@@ -59,6 +59,8 @@ fixed degree model used in the previous section, we now prove the
 near optimality of the greedy algorithm for the $(c, a)$-recommendation
 subgraph problem.
 
+{
+\renewcommand{\qedsymbol}{}
 \begin{thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
 \[ \E[S] \geq r - \frac{a(lp)^{a-1}}{p}\]
@@ -89,6 +91,7 @@ we obtain
 &\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1} \geq r - \frac{a(lp)^{a-1}}{p}
 \end{align*}
 \end{proof} 
+}
 
 Note that at least asymptotically, this result can explain why the greedy
 algorithm does much better in expectation than $1/(a+1)$ guarantee we 
