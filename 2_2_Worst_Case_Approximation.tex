@@ -5,8 +5,9 @@ optimal solutions in expectation. In this section, we will show that
 it is possible to obtain good solutions regardless of the model that
 generated the recommendation subgraph. \vs
 
-We analyze the following
-natural greedy algorithm. Consider each vertex in $R$ that has not been selected
+We analyze the following natural greedy algorithm
+that builds a $(c,a)$-recommendation subgraph iteratively as follows. 
+Consider each vertex in $R$ that has not been selected
 into $H$ in some arbitrary order. If there is some $v \in R$ that has $a$ neighbors
 in $L$ all of which have degree less than $c$, add $v$ and these edges to $H$ breaking
 ties arbitrarily.
@@ -39,7 +40,7 @@ vertices to the solution.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.5\textwidth]{images/greedy.png}
+\includegraphics[width=.4\textwidth]{images/greedy.png}
 \begin{minipage}[h]{.8\linewidth}
 \caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
 \end{minipage}
@@ -53,8 +54,10 @@ which the vertices are processed still leaves a constant factor gap
 in the size of the solution\cite{KarpVaziraniVazirani1990}.
 Despite this result, the greedy algorithm fares much better when we
 give it the same expectation treatment we have given the sampling
-algorithm. We now prove the near optimality of the greedy algorithm for the
-$(c, a)$-recommendation subgraph problem.
+algorithm. Switching to the Erd\"{o}s-Renyi model instead of the 
+fixed degree model used in the previous section, we now prove the
+near optimality of the greedy algorithm for the $(c, a)$-recommendation
+subgraph problem.
 
 \begin{thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
@@ -72,15 +75,25 @@ $(i+1)^{th}$ vertex. The maximum number of such invalidated vertices
 is at most $\lceil i/c \rceil$. Therefore, the probability that fewer
 than $a$ of the at least $l-\lceil i/c \rceil $ available 
 vertices have an edge to this vertex is at most $\Pr[Y\sim Bin(l-\frac{i}{c},p): Y < a]$.
-Using the approximation that
+We can bound this probability by bounding each term in the binomial
+expansion of it by $(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}$ and obtain:
+
 \[ \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \leq a(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}\]
-and summing over all the $X_i$ using the linearity of expectation,
+
+Summing over all the $X_i$ using the linearity of expectation and this upper bound,
 we obtain
 \begin{align*}
       \E[S]
 &\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
 &\geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-\frac{ia}{c},p): Y < a] \\
-&\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-\frac{ia}{c}-a+1}[lp-\frac{iap}{c}]^{r-1} \\
-&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1} \geq r - \frac{a(lp)^{a-1}}{p}\\
+&\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-\frac{ia}{c}-a+1}[lp-\frac{iap}{c}]^{a-1} \\
+&\geq r - a(lp)^{r-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1} \geq r - \frac{a(lp)^{a-1}}{p}
 \end{align*}
 \end{proof} 
+
+Note that at least asymptotically, this result can explain why the greedy
+algorithm does much better in expectation than $1/(a+1)$ guarantee we 
+can prove in the worst case. In particular, for a fixed $a$ and $c$, if
+$l/r$ is taken to be a constant then this result shows that $p$ only
+needs to be taken $\Theta(\log^{a}(l))$ for the greedy algorithm to
+give $o(r)$ error in expectation. 

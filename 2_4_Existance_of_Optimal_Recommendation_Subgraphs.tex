@@ -1,5 +1,5 @@
 \subsection{Existance of Perfect Recommendation Subgraphs}
-We now prove existance of perfect recommendation subgraphs which is a generalization
+We now prove existence of perfect recommendation subgraphs which is a generalization
 of perfect matchings. In the following subsection, We use this to develop our last algorithm.
 We define a \emph{perfect} $(c,a)$-recommendation subgraph on $G$ to be a subgraph $H$ such that
 $deg_H(u)\leq c$ for all $u\in L$ and $deg_H(v)=a$ for
@@ -37,20 +37,20 @@ therefore restrict $R$ to an arbitrary subset $R'$ of size $lc/a$.
 Next, we pick an enumeration of the vertices in $R'=\{v_0,\ldots, v_{lc/a-1}\}$
 and add these vertices into $a$ subsets by defining
 $R_i = \{v_{(i-1)l/a}, \ldots, v_{(i-1)l/a+l}\}$ for each $1\leq i\leq c$ where
-the arithmetic in the indices is done modulo $lc/a$. Note both $R_i$ and all of
-the $L_i$ have size $l$. \vs
+the arithmetic in the indices is done modulo $lc/a$. Note both $L$ and all of
+the $R_i$ have size $l$. \vs
 
 Using these new sets we define the graphs $G_i$ on the bipartitions
 $(L, R_i)$. Since the sets $R_i$ are intersecting, we cannot define the
-graphs $G_i$ to be induced subgraphs. However, note that each vertex $v\in R$
+graphs $G_i$ to be induced subgraphs. However, note that each vertex $v\in R'$
 falls into exactly $a$ of these subsets. Therefore, we can uniformly assign each
 edge in $G$ to one of $a$ graphs among $\{G_1,\ldots, G_c\}$ it can fall into,
 and make each of those graphs a random graph. In fact, while the different
 $G_i$ are coupled, taken in isolation we can consider any single $G_i$ to be
 drawn from the distribution $G_{l,l,p/a}$ since $G$ was drawn from $G_{l,r,p}$.
 Since $p/a \geq (\log l - \log\log l)/l$ by assumption, we can now say that by
-Theorem~\ref{random_matching_threshold}, the probability that $G_i$ has no perfect
-matching is $o(1)$. \vs
+Theorem~\ref{random_matching_threshold}, the probability that a particular
+$G_i$ has no perfect matching is $o(1)$. \vs
 
 Considering $c$ to be fixed, by a union bound we can now conclude that except
 for a $o(1)$ probability, each one of the $G_i$ has a perfect matching. By
@@ -79,8 +79,8 @@ vertex in $R$ is contained in exactly $a$ of the sets. Using the previous
 theorem, we know that each of the graphs $G_i$ has a perfect matching with high
 probability. These perfect matchings can be approximated to a $1-\epsilon/c$
 factor by finding matchings that do not have augmenting paths of length
-$\geq 2c/\epsilon$. This can be done for each $G_i$ in $O(|E|c/\epsilon)$ time.
-Furthermore, the union of unmatched vertices makes up an at most
-$c(\epsilon/c)$ fraction of $R'$.
+$\geq 2c/\epsilon$~\cite{LovaszPlummer1983}. This can be done for each
+$G_i$ in $O(|E|c/\epsilon)$ time. Furthermore, the union of unmatched vertices
+makes up an at most $c(\epsilon/c)$ fraction of $R'$.
 \end{proof}
 
