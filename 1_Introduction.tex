@@ -28,7 +28,7 @@ by using a digraph where the vertices are items and a directed
 edge $(u, v)$ is a recommendation from $u$ to $v$. Note that, under
 this model, if $c=1$ and we require the chosen recommendation subgraph
 to be (strongly) connected, a feasible solution is a Hamilton cycle
-which is NP-complete to find~\cite{CLRS2001}. 
+which is NP-complete to find~\cite{CLRS2001}.
 
 We generalize the graph recommendation model by using a bipartite
 digraph, where one partition $L$ represents the set of items for which
@@ -71,7 +71,7 @@ algorithms; this can be reduced by using graph compression techniques but that a
 %%
 
 We now describe typical web graph characteristics by discussing the sizes of $L$, $R$, $c$ and $a$ in practice. It is well known
-%and can be verified by prior experiences of the authors 
+%and can be verified by prior experiences of the authors
 that, in most websites,  a small number of `head' pages contribute to a
 significant amount of the traffic while a long tail of the remaining
 pages contribute to the rest~\cite{HubermanAdamic1999, DuDemmerBrewer2006}. As
@@ -81,7 +81,7 @@ contributed by less than 1\% (a few thousands) of the web pages while a
 large number of tail pages (a few hundred thousand) contribute
 the other half. This implies that in practice $L$ can
 be up to two orders of magnitude smaller than $R$.  By observing
-recommendations of Quora, Amazon, YouTube and our own work, 
+recommendations of Quora, Amazon, YouTube and our own work,
 typical values for $c$ range from 3 to 20 recommendations per page. Values of $a$ are harder to nail down but it typically ranges from $1$ to $10$. \vs
 
 
@@ -97,13 +97,13 @@ empirical recommendation supergraphs that we analyze, we propose three
 new random graph models (hierarchical, cartesian product and weighted)
 extending our fixed-degree model to capture these real-life scenarios,
 and extend our analysis of the random algorithm to all these
-models. We now provide a short overview of these results. 
+models. We now provide a short overview of these results.
 
 %We hope our work will serve as a starting point for a more
 %thorough investigation of recommendation subgraph problems.
-
+\noindent
 {\bf The Lazy Engineer.} The implementation challenges mentioned above
-motivated us to investigate simple algorithms that are practical and can 
+motivated us to investigate simple algorithms that are practical and can
 be implemented at very large scale. First, we simply analyze choosing a random
 $c$ out of $d$ edges and investigating its performance.  Surprisingly,
 we found this method to be very effective for a wide range of
@@ -150,9 +150,9 @@ achieving this bound exists, we say that there is a perfect
 $(c,a)$-recommendation subgraph. We extend prior results on the
 existence of a perfect matching to characterize the edge
 probability values above which there exist perfect recommendation
-subgraphs, by using a novel subset partitioning method for 
+subgraphs, by using a novel subset partitioning method for
 analysis. \vs
- 
+
 %By relaxing the condition of optimality of matching (i.e.
 %perfect matchings) to disallowing short augmenting paths in these methods, we also
 %turn the above results into $(1-\epsilon)$-approximation algorithms trading off
@@ -167,7 +167,7 @@ and allows varying edge density across different pairs of
 categories. (iii) To model the effect of strength of a candidate recommendation, we postulate a {\em weighted graph model} where all edges in the complete bipartite graph get recommendation weights that are identically distributed; we then examine when subgraphs with $L$-nodes picking a random set of $c$ edges come close to optimizing the number of nodes in $R$ that have total incoming weight of at least one. \vs
 
 \noindent
-{\bf Computational Results.} 
+{\bf Computational Results.}
 To validate our claims of effectiveness of a lazy engineer empirically, we ran several simulations for a range of values of $k (= \frac{l}{r})$ by varying the value of $c$ in each case. We are able to replicate the qualitative properties of our theoretical results for the random choice algorithm in Section~\ref{fixed-degree}. We also compare its performance against that of the greedy algorithm and a partition-based algorithm used to prove our results on perfect recommendation graphs. Our results conclusively show that it pays for the engineer to be a little less lazy than choosing a random set of recommendations, by being greedy in choosing the subgraph. This advantage persists for greedy even in practical scenarios with values of $a$ larger than one, a range where our results on random graph models do not show very strong guarantees. \vs
 
 
