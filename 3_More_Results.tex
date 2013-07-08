@@ -150,12 +150,7 @@ of products as being clustered into categories. This is similar to the
 hierarchical tree mode, but our assumptions are weaker in that we don't
 mandate a complete hierarchy and that the clusters can be unrelated. In
 such a model, we would expect many recommendation edges to be
-intra-cluster edges rather than inter-cluster edges. Assuming that
-cluster sizes are the same, the uniform model would generate the same
-number of edges between any two pairs of clusters. However, in an
-aggregate of data collected from real merchants, we can see that some
-pairs of clusters have many more edges between them than the uniform
-model would predict:
+intra-cluster edges rather than inter-cluster edges. 
 
 \begin{figure}[h]
 \centering
@@ -183,7 +178,6 @@ that is proved in Appendix~\ref{sec:appendix}.
 \begin{thm}
 With $S$, $G$ and $H$ defined as above, we have
 \[ \E[S] \geq r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
-where the expectation is over $G$ and $H$.
 \end{thm}
 %\begin{proof}
 %Let $v_j \in R_j$ be an arbitrary vertex and let $X_{v_j}$ be the
@@ -200,15 +194,16 @@ where the expectation is over $G$ and $H$.
 %\[ \E[S] \geq \sum_{j=1}^{t'} r_j \left(1-\exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\right) = r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
 %\end{proof}
 
-This model is interesting because it can capture a broader set of
-recommendation subgraphs than the fixed degree model. However, it is
-difficult to estimate how good a solution will be without knowing
-the sizes of the sets in the partitions. We note that we
-obtain the approximation guarantee of $(1-\exp(-ck))$ provided that
-$l_i/r_j = k$ for all $i$ and $j$ where $k$ is some fixed
-constant. Another interesting point about this model and the algorithm
-we described for sampling $H$ is that we are free to set the $c_{ij}$
-as we see fit. In particular, $c_{ij}$ can be chosen to maximize the
+%This model is interesting because it can capture a broader set of
+%recommendation subgraphs than the fixed degree model. However, it is
+%difficult to estimate how good a solution will be without knowing
+%the sizes of the sets in the partitions. We note that we
+%obtain the approximation guarantee of $(1-\exp(-ck))$ provided that
+%$l_i/r_j = k$ for all $i$ and $j$ where $k$ is some fixed
+%constant. 
+An interesting point about this model and the algorithm
+we described for sampling $H$ is that we are free to select $c_{ij}$.
+In particular, $c_{ij}$ can be chosen to maximize the
 approximation guarantee in expectation we obtained above using
 gradient descent or other first order methods prior to running the
 recommendation algorithm to increases the quality of the solution.
@@ -235,7 +230,7 @@ Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weight
 
 There are two things to note about this variant. The first is that
 since the variables $X_v$ are negatively correlated, our results in
-Subsection \ref{fixed-degree} can be readily extended to the results of this
+Subsection \ref{fixed-degree} can be extended to the results of this
 section. The second is that the condition that $W_{uv}$ are i.i.d
 is not necessary to obtain the full effect of the analysis. Indeed,
 the only place in the proof where the fact that $W_{uv}$ are i.i.d
