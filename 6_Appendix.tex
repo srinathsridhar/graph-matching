@@ -20,14 +20,14 @@ is the size of a subtree of $T_L$ rooted at depth $i$. It follows that
 the probability that $v$ does not receive any edges at all is at most
 
 \begin{align*}
-	      \Pr[\lnot X_v] 
+	      \Pr[\lnot X_v]
 	&=    \left(1-\frac{1}{r_{D-1}}\right)^{c_0l_{D-1}}\prod_{i=1}^{D-1}\left(1 - \frac{1}{r_i}\right)^{c_{D-i} l_i} \\
 	&\leq \exp\left(-\frac{l_{D-1}}{r_{D-1}}c_0\right)\prod_{i=1}^{D-1} \exp\left(-\frac{l_i}{r_i}c_{D-i}\right) \\
 	&=    \exp\left(-(c_0 + \ldots + c_{D-1})k\right) \\
 	&=    \exp(-ck)
 \end{align*}
 
-Since this is an indicator variable, it follows that 
+Since this is an indicator variable, it follows that
 \[ \E[S] = \E\left[\sum_{v \in R} X_v \right] \geq r \left(1-\exp(-ck)\right) \]
 \end{proof}
 
@@ -74,3 +74,15 @@ we can obtain
 By linearity of expectation we can now get the result in the theorem
 \[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{proof}
+We make two remarks about this proof. The first is that
+since the variables $X_v$ are negatively correlated, our results in
+Subsection \ref{fixed-degree} can be extended to the results of this
+section. The second is that the condition that $W_{uv}$ are i.i.d
+is not necessary to obtain the full effect of the analysis. Indeed,
+the only place in the proof where the fact that $W_{uv}$ are i.i.d
+is when we argued that $X_{uv}$ is large with high probability by a
+Hoeffding bound. For the bound to apply, it is sufficient to assume
+that $W_{uv}$ for all $v$ are independent. In particular, it is
+possible that $W_{uv}$ for all $u$ are inter-dependent. This allows
+us to assume a weight distribution that depends on the strength of
+the recommender and the relevance of the recommendation separately.

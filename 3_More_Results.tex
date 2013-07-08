@@ -249,10 +249,12 @@ solution produced by this algorithm. We have the following theorem that is
 proved in Appendix~\ref{sec:appendix}.
 
 \begin{thm}
-Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$, then
+Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$ and $S$ is the set of vertices in $R$ of incident weight at least one, then
 \[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{thm}
+Since in real-life scenarios, $l >> (\frac{b}{\epsilon})^2$, the bound proved above is very close to optimal. Furthermore, as remarked in the Appendix, using negative correlation of the indicator variables of weight one in $R$, they can be turned into high probability bounds as well.
 
+\iffalse
 There are two things to note about this variant. The first is that
 since the variables $X_v$ are negatively correlated, our results in
 Subsection \ref{fixed-degree} can be extended to the results of this
@@ -265,3 +267,4 @@ that $W_{uv}$ for all $v$ are independent. In particular, it is
 possible that $W_{uv}$ for all $u$ are inter-dependent. This allows
 us to assume a weight distribution that depends on the strength of
 the recommender and the relevance of the recommendation separately.
+\fi
