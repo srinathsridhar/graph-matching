@@ -70,6 +70,9 @@ Letting $Y_v = \left[X_v \geq a\right]$, we now see that
 \[ \E[S] = \E\left[\sum_{v\in R} Y_v\right] \geq r\left(1-e^{-ck+\frac{a-1}{r}} \frac{(ck)^a-1}{ck-1}\right) \]
 \end{proof}
 
+We can combine this lower bound with a trivial lower bound to obtain an
+approximation ratio that holds in expectation.
+
 \begin{thm}
 The above sampling algorithm gives a $\left(1-\frac1e\right)$-factor approximation to the $(c,1)$-graph recommendation problem in expectation.
 \end{thm}
@@ -163,7 +166,7 @@ We close out this section by showing that the main result that holds in expectat
 
 \begin{thm}\label{negative_corr_chernoff}~\cite{AugerDoerr2011}
 Let $X_1,\ldots, X_n$ be non-positively correlated variables. If $X=\sum_{i=1}^n X_i$, then for any $\delta\geq 0$
-\[ Pr[X \geq (1+\delta)\E[X] ] \leq \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^{\E[X]} \]
+\[ \Pr[X \geq (1+\delta)\emph{\E}[X] ] \leq \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^{\E[X]} \]
 \end{thm}
 
 %Using this we can convert our expectation result to one that holds
