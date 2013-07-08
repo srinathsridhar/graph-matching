@@ -1,5 +1,6 @@
-\section{Proofs of More General Models}
+\section{Proofs of More General Models}\label{sec:appendix}
 
+\setcounter{thm}{9}
 \begin{thm}
 Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$. Then
 \[ \E[S] \geq r(1-\exp(-ck)) \]
@@ -48,4 +49,28 @@ probability over all $R_j$ gives us:
 By linearity of expectation $\E[S] = \sum_{i=1}^{t'} r_i \E[X_{v_i}]$,
 so it follows that
 \[ \E[S] \geq \sum_{j=1}^{t'} r_j \left(1-\exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\right) = r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
+\end{proof}
+
+\begin{thm}
+Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$, then
+\[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
+\end{thm}
+
+\begin{proof}
+For each edge $uv\in G$, let $W_{uv}$ be its random weight, $Y_{uv}$ be
+the indicator for the event $uv\in H$ and define $X_{uv} = Y_{uv}
+W_{uv}$. Since weights and edges are sampled by independent processes,
+we have $\E[X_{uv}] = \E[W_{uv}]\E[Y_{uv}]$ for all edges. Since $c$
+edges out of $r$ are picked for each vertex, $\E[Y_{uv}] = \frac{c}{r}$
+, so $\E[X_{uv}] = \frac{c}{r}\mu$. Therefore, the expected weight
+coming into a vertex $v\in R$ would be
+\[ \E[X_v] = \sum_{u\in L} \E[X_{uv}] = \frac{cl\mu}{r} = ck\mu\]
+
+However, $X_{uv}$ for each $u$ are i.i.d random variables. Since by
+assumption $ck\mu = 1+\epsilon$, by Hoeffding bounds~\cite{Hoeffding1963}
+we can obtain
+\[ \Pr[X_v \leq 1] = \Pr[X_v - \E[X_v] \geq \epsilon] \leq \exp\left(-\frac{2l\epsilon^2}{b^2}\right) \]
+
+By linearity of expectation we can now get the result in the theorem
+\[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{proof}
