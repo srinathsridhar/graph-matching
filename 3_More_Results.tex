@@ -60,17 +60,20 @@ the {\em weighted model} which assigns weights to the graph edges so
 that we can incorporate strengths and traffic patterns across a
 website besides just relevance-based recommendations.
 
-The way these analyses we performed for these new models are similar to the
-analysis we carried out for the fixed-degree model. While we only present
+The way we performed the analyses for these new models are similar to those 
+that we carried out for the uniform model. While we only present
 results for the approximation of $(c,1)$-recommendation subgraphs for brevity, 
-these results can be readily extended to the more general problem of finding
+these results can be extended to the more general problem of finding
 $(c,a)$-recommendation subgraphs as done in Section \ref{fixed-degree}.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{images/cartesian_histogram.png}
 \begin{minipage}{1\textwidth}
-\caption{Histogram of percent edges between pairs of clusters. Each point on $x$-axis is a pair of clusters. The $x$-axis has no inherent order but they have been sorted by number of edges for visualization. The tail is omitted.}
+\caption{Histogram of percent edges between pairs of clusters. Each
+  point on $x$-axis is a pair of clusters. The $x$-axis has no
+  inherent order but they have been sorted by number of edges for easier
+  visualization. The tail is omitted.}
 \label{fig:cart-emp}
 \vspace{-0.2in}
 \end{minipage}
@@ -81,8 +84,8 @@ $(c,a)$-recommendation subgraphs as done in Section \ref{fixed-degree}.
 
 %We assume that we are given a bipartite graph $G=(L,R,E)$.
 In this model, the vertex sets $L$
-and $R$ are the leaf sets of two full binary trees $T_L$ and $T_R$ of
-depth $D$ where there is a one-to-one correspondence between the
+and $R$ are the leaf sets of two trees $T_L$ and $T_R$ of
+depth $D$ where there is a 1-to-1 correspondence between the
 subtrees of these two trees. We also assume that each branching in
 both $T_L$ and $T_R$ splits the nodes evenly into the two
 subtrees. As in the previous sections, we set $|L|/|R|=k$,
