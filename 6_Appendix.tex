@@ -1,10 +1,10 @@
 \section{Proofs of More General Models}\label{sec:appendix}
 
 \setcounter{thm}{9}
+We prove the main theorem about hierarchical models from Section~\ref{hierarchy}. 
 \begin{thm}
-Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$. Then
-\[ \E[S] \geq r(1-\exp(-ck)) \]
-where the expectation is over $G$ and $H$.
+Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$ in the hierarchical tree model. Then
+\[ \E[S] \geq r(1-\exp(-ck)) \].
 \end{thm}
 
 \begin{proof}
@@ -31,10 +31,12 @@ Since this is an indicator variable, it follows that
 \[ \E[S] = \E\left[\sum_{v \in R} X_v \right] \geq r \left(1-\exp(-ck)\right) \]
 \end{proof}
 
+Next, we prove our main bound on the random choice solution under the cartesian product model introduced in Section~\ref{cartesian}.
+
 \begin{thm}
-With $S$, $G$ and $H$ defined as above, we have
+Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$ in the cartesian product model. Then
+%\vspace{-0.1in}
 \[ \E[S] \geq r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
-where the expectation is over $G$ and $H$.
 \end{thm}
 \begin{proof}
 Let $v_j \in R_j$ be an arbitrary vertex and let $X_{v_j}$ be the

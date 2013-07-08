@@ -4,7 +4,7 @@ $deg_H(u)\leq c$ for all $u\in L$ and $deg_H(v)=a$ for
 $\min(r,cl/a)$ of the vertices in $R$. In this section we will
 prove a sufficient condition for perfect $(c,a)$-recommendation
 subgraphs to exist in a bipartite graph $G$ under the Erd\"os-Renyi model\cite{ErdosRenyi59} where edges are sampled
-uniformly and independently with probability $p$. 
+uniformly and independently with probability $p$.
 We use the algorithm we propose to prove this condition as a candidate to compare against random choice and greedy in our tests.
 Our result relies on
 the following characterization of perfect matchings.
@@ -20,7 +20,7 @@ We will prove that a perfect $(c,a)$-recommendation subgraph exists in
 random graphs with high probability by building it up from $a$
 matchings each of which must exist with high probability if $p$ is
 sufficiently high. In particular, we show that $p$ only needs to
-be $\Omega(\frac{\log n}{n})$ for this to succeed. 
+be $\Omega(\frac{\log n}{n})$ for this to succeed.
 %While the theorem is stated for
 %the case when $a \leq c$, it applies equally well to the $a > c$
 %case by partitioning $L$ instead of $R$ in the following proof.
@@ -36,7 +36,7 @@ Given the size and the degree constraints of $L$, at most $lc/a$
 vertices in $R$ can have degree $a$ in a $(c,a)$-recommendation subgraph. We
 therefore restrict $R$ to an arbitrary subset $R'$ of size $lc/a$.
 Next, we pick an enumeration of the vertices in $R'=\{v_0,\ldots, v_{lc/a-1}\}$
-and add these vertices into $a$ subsets by defining
+and add each of these vertices into $a$ subsets as follows. Define
 $R_i = \{v_{(i-1)l/a}, \ldots, v_{(i-1)l/a+l-1}\}$ for each $1\leq i\leq c$ where
 the arithmetic in the indices is done modulo $lc/a$. Note both $L$ and all of
 the $R_i$'s have size $l$. \vs
@@ -44,8 +44,7 @@ the $R_i$'s have size $l$. \vs
 Using these new sets we define the graphs $G_i$ on the bipartitions
 $(L, R_i)$. Since the sets $R_i$ are intersecting, we cannot define the
 graphs $G_i$ to be induced subgraphs. However, note that each vertex $v\in R'$
-falls into exactly $a$ of these subsets. Therefore, we can uniformly randomly assign each
-edge in $G$ to one of $a$ graphs among $\{G_1,\ldots, G_c\}$ it can fall into,
+falls into exactly $a$ of these subsets. Therefore, we can uniformly randomly assign each edge in $G$ to one of $a$ graphs among $\{G_1,\ldots, G_c\}$ it can fall into,
 and make each of those graphs a random graph. In fact, while the different
 $G_i$ are coupled, taken in isolation we can consider any single $G_i$ to be
 drawn from the distribution $G_{l,l,p/a}$ since $G$ was drawn from $G_{l,r,p}$.
