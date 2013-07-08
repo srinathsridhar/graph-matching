@@ -95,17 +95,29 @@ worst case outcome for this model where we only guarantee 63\%
 optimality. The graph below shows the approximation ratio as a
 function of $ck$.\vs
 
-\begin{figure}[h]
+\begin{figure}[b]
 \centering
 \begin{minipage}[h]{0.45\textwidth}
+  \centering
   \includegraphics[width=0.8\textwidth]{images/sri_Original.png}
   \caption{Approx ratio as a function of $ck$ }\label{fig:simple_approx}
 \end{minipage}
-%\begin{minipage}[h]{0.45\textwidth}
-%  \includegraphics[width=.4\textwidth]{images/greedy.png}
-%  \caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
-%\end{minipage}
-\end{figure}
+\hspace{0cm}
+\begin{minipage}[t]{0.45\textwidth}
+  %\vspace{.2cm}
+  \centering
+  \begin{tabular}{ |c|c|c|c|c|c| }
+    \hline
+    $a$ & 1 & 2 & 3 & 4 & 5 \\ \hline
+    $ck$ & 3.00 & 4.74 & 7.05 & 10.01 & 13.48 \\
+    \hline
+  \end{tabular}
+  \vspace{0.7cm}
+  \caption{The required $ck$ to obtain 95\% optimality for $(c, a)$-recommendation subgraph}
+\end{minipage}
+\end{figure} 
+
+
 
 %Now suppose that $G$ is generated and $H$ is sampled using the same
 %processes as described above. The next theorem, extends the above
@@ -140,16 +152,6 @@ values of $a$.\vs
 %need to concentrate the edges on specific nodes in $R$ that will
 %eventually count in the objective. 
 
-\begin{figure}[h]
-  \centering
-  \begin{tabular}{ |c|c|c|c|c|c| }
-    \hline
-    $a$ & 1 & 2 & 3 & 4 & 5 \\ \hline
-    $ck$ & 3.00 & 4.74 & 7.05 & 10.01 & 13.48 \\
-    \hline
-  \end{tabular}
-  \caption{The required $ck$ to obtain 95\% optimality for $(c, a)$-recommendation subgraph}
-\end{figure} 
 
 We close out this section by showing that the main result that holds in expectation also hold with high probability. 
 While Chernoff bounds are usually stated for independent variables, the
