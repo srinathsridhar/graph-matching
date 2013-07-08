@@ -7,11 +7,12 @@ the fixed-degree random graph model for the input supergraph.
 
 \subsection{Fixed Degree Model}
 \label{fixed-degree}
- In this model, we assume that a bipartite graph $G=(L,R,E)$ is
+
+In this model, we assume that a bipartite graph $G=(L,R,E)$ is
 generated probabilistically as follows. Each vertex $v\in L$
-uniformly samples a set of $d$ neighbors from $R$. Subgraph $H$
+uniformly samples a set of $d$ neighbors from $R$. The solution subgraph $H$
 is now sampled from $G$ by uniformly sampling $c\leq d$ edges incident
-on each vertex. Let $|L|=l$, $|R|=r$ and $k=l/r$. 
+on each vertex. Let $|L|=l$, $|R|=r$ and $k=l/r$.
 The following theorem gives a lower bound on the expected solution.
 
 
@@ -40,7 +41,7 @@ The following theorem gives a lower bound on the expected solution.
 \begin{thm}\label{original_result}
 Let $S$ be the
 random variable denoting the number of vertices $v \in R$ such that
-$\deg_{H}(v)\geq a$. Then
+$\deg_{H}(v)\geq a$ in the fixed-degree model. Then
 \[ \emph{\E}[S] \geq r\left(1-e^{-ck+\frac{a-1}{r}}\frac{(ck)^a-1}{ck-1}\right)  \]
 \end{thm}
 
@@ -56,9 +57,9 @@ Bernoulli random variable. Using the bound $\binom{n}{i}
 \leq n^i$ on binomial coefficients we get,
 \begin{align*}
       \Pr[X_v < a]
-&=    \sum_{i=0}^{a-1} \binom{cl}{i} \left(1-\frac{1}{m}\right)^{cl-i}\left(\frac{1}{r}\right)^i
+&=    \sum_{i=0}^{a-1} \binom{cl}{i} \left(1-\frac{1}{r}\right)^{cl-i}\left(\frac{1}{r}\right)^i
  \leq \sum_{i=0}^{a-1} \left(\frac{cl}{r}\right)^i\left(1-\frac{1}{r}\right)^{cl-i} \\
-&\leq    \left(1-\frac{1}{r}\right)^{cl-(a-1)}\sum_{i=0}^{a-1} (ck)^i
+&\leq    \left(1-\frac{1}{r}\right)^{cl-(a-1)} \cdot \sum_{i=0}^{a-1} (ck)^i
  \leq \left(1-\frac{1}{r}\right)^{cl-(a-1)}\frac{(ck)^a-1}{ck-1} \\
 &\leq e^{-ck+\frac{a-1}{r}} \frac{(ck)^a-1}{ck-1}
 \end{align*}
@@ -79,7 +80,7 @@ these is $cl=ckr$ and the latter is $r$, which shows that the optimal solution s
 $OPT \leq
 r\max(ck,1)$. Therefore, by simple case analysis the approximation ratio
 in expectation is at least
-$ ({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $ 
+$ ({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
 \end{proof}
 
 
@@ -93,7 +94,7 @@ ratio is $(1-\exp(-ck))/ck$ which also approaches 1 as $ck\to 0$. In
 particular, if $ck=0.1$ then the solution will be at 95\% as good as
 the optimal solution. The case when $ck=1$ represents the
 worst case outcome for this model where we only guarantee 63\%
-optimality. The graph below shows the approximation ratio as a
+optimality. Figure~\ref{fig:simple_approx} shows the approximation ratio as a
 function of $ck$.\vs
 
 \begin{figure}[b]
@@ -115,8 +116,9 @@ function of $ck$.\vs
   \end{tabular}
   \vspace{0.7cm}
   \caption{The required $ck$ to obtain 95\% optimality for $(c, a)$-recommendation subgraph}
+  \label{a-values}
 \end{minipage}
-\end{figure} 
+\end{figure}
 
 
 
@@ -126,14 +128,14 @@ function of $ck$.\vs
 %In particular if we set $a=1$, we will obtained the estimate from the original analysis.
 
 %Now, we can perform a similar analysis as before. In
-%particular, 
+%particular,
 For the general $(c, a)$-recommendation subgraph problem, if $ck>a$, then the problem is easy on average. This
 is in comparison to the trivial estimate of $cl$. For a fixed $a$, a
 random solution gets better as $ck$ increases because the decrease in
 $e^{-ck}$ more than compensates for the polynomial in $ck$ next to
 it. However, in the more realistic case $ck<a$, we need to use the
-trivial estimate of $ckr/a$, and the analysis for $a=1$ does not extend here. 
-The following table shows how large 
+trivial estimate of $ckr/a$, and the analysis for $a=1$ does not extend here.
+The table in Figure~\ref{a-values} shows how large
 $ck$ needs to be for the solution to be 95\% optimal for different
 values of $a$.\vs
 
@@ -151,21 +153,21 @@ values of $a$.\vs
 %our solution was good in the $a=1$ case. However, when $a<1$, the fact
 %that our edges are well-dispersed only hurts our solution because we
 %need to concentrate the edges on specific nodes in $R$ that will
-%eventually count in the objective. 
+%eventually count in the objective.
 
 
-We close out this section by showing that the main result that holds in expectation also hold with high probability. 
-While Chernoff bounds are usually stated for independent variables, the
-variant below holds for any number of pairwise non-positively correlated
-variables.
+We close out this section by showing that the main result that holds in expectation also hold with high probability for $a=1$, using the following variant of Chernoff bounds.
+%While Chernoff bounds are usually stated for independent variables, the
+%variant below holds for any number of pairwise non-positively correlated
+%variables.
 
 \begin{thm}\label{negative_corr_chernoff}~\cite{AugerDoerr2011}
 Let $X_1,\ldots, X_n$ be non-positively correlated variables. If $X=\sum_{i=1}^n X_i$, then for any $\delta\geq 0$
 \[ Pr[X \geq (1+\delta)\E[X] ] \leq \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^{\E[X]} \]
 \end{thm}
 
-Using this we can convert our expectation result to one that holds 
-with high probability.
+%Using this we can convert our expectation result to one that holds
+%with high probability.
 
 \begin{thm}
 Let $S$ be the random variable denoting the number of vertices $v \in R$ such that $\deg_{H}(v)\geq 1$. Then
@@ -181,6 +183,7 @@ $1-X_{v'}$ are independent. Otherwise, $v$ not claiming any edges can
 only increase the probability that $v'$ has an edge from any vertex
 $u\in N(v)\cap N(v')$. Also note that the expected size of $S$ is
 $r(1-\exp(-ck))$ by Theorem \ref{original_result}. Therefore, we can
-apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ and obtain
+apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ to obtain
 the result.
 \end{proof}
+For realistic scenarios where $r$ is very large, this gives very good bounds. 
