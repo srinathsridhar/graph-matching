@@ -72,17 +72,19 @@ algorithms; this can be reduced by using graph compression techniques but that a
 
 We now describe typical web graph characteristics by discussing the sizes of $L$, $R$, $c$ and $a$ in practice. It is well known
 %and can be verified by prior experiences of the authors
-that, in most websites,  a small number of `head' pages contribute to a
+that, in most websites, a small number of `head' pages contribute to a
 significant amount of the traffic while a long tail of the remaining
-pages contribute to the rest~\cite{HubermanAdamic1999, DuDemmerBrewer2006}. As
-demonstrated by a prior measurement~\cite{KumarNorrisSun2009}
-it is not unreasonable to expect 50\% of site traffic to be
-contributed by less than 1\% (a few thousands) of the web pages while a
-large number of tail pages (a few hundred thousand) contribute
-the other half. This implies that in practice $L$ can
-be up to two orders of magnitude smaller than $R$.  By observing
-recommendations of Quora, Amazon, YouTube and our own work,
-typical values for $c$ range from 3 to 20 recommendations per page. Values of $a$ are harder to nail down but it typically ranges from $1$ to $20$. \vs
+pages contribute to the rest~\cite{HubermanAdamic1999,
+  DuDemmerBrewer2006}. As demonstrated by a prior
+measurement~\cite{KumarNorrisSun2009} it is not unreasonable to expect
+50\% of site traffic to be contributed by less than 1\% (a few
+thousands) of the web pages while a large number of tail pages (a few
+hundred thousand) contribute the other half. This implies that in
+practice $L$ can be up to two orders of magnitude smaller than $R$.
+By observing recommendations of Quora, Amazon, YouTube and our own
+work, typical values for $c$ range from 3 to 20 recommendations per
+page. Values of $a$ are harder to nail down but it typically ranges
+from $1$ to $5$. \vs
 
 
 \subsection{Main Results}
