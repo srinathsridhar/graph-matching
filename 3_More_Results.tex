@@ -48,13 +48,20 @@ edges to be equally likely to span across each pair of clusters
 different pairs of clusters had different edge-densities. For instance, an Espresso Machine might point more to other Coffee Machines or
 Coffee Beans (note that Coffee Beans and Espresso Machine might share
 no LCA apart from the root) than to other clusters. These results are
-shown in Figure~\ref{fig:cart-emp} that clearly demonstrates that these
-clusters exist and have different densities than the uniform sampling model. This
+shown in Figure~\ref{fig:cart-emp} which clearly demonstrates that the pairs of clusters
+responsible for the most number of recommendation edges
+produce many more edges than the uniform model would predict.  This
 motivated us to define and study the {\em cartesian product model} in
 Subsection~\ref{cartesian} which is orthogonal to the uniform and
 hierarchical tree models. Finally, in Section~\ref{weighted}, we study the {\em weighted model}
 which assigns weights to the graph edges so that we can incorporate strengths and traffic
 patterns across a website besides just relevance-based recommendations.
+
+The analyses for these different model are carried out are similar to the
+analyses we carried out for the fixed-degree model. While only present
+results for the approximation $(c,1)$-recommendation subgraphs in expectation for brevity, 
+these results can be readily extended to the more general problem of finding
+$(c,a)$-recommendation subgraphs as done in Section \ref{fixed-degree}.
 
 \begin{figure}
 \centering
