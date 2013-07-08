@@ -1,7 +1,7 @@
 \section{Proofs of More General Models}\label{sec:appendix}
 
 \setcounter{thm}{9}
-We prove the main theorem about hierarchical models from Section~\ref{hierarchy}. 
+We prove the main theorem about hierarchical models from Section~\ref{hierarchy}.
 \begin{thm}
 Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$ in the hierarchical tree model. Then
 \[ \E[S] \geq r(1-\exp(-ck)) \].
@@ -53,8 +53,9 @@ so it follows that
 \[ \E[S] \geq \sum_{j=1}^{t'} r_j \left(1-\exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\right) = r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
 \end{proof}
 
+Finally, we give the proof of the performance of the random choice algorithm of the lazy engineer for the weighted model from Section~\ref{weighted}.
 \begin{thm}
-Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$, then
+Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$ and $S$ is the set of vertices in $R$ of incident weight at least one, then
 \[ \E[S] = \sum_{v\in R} \E[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{thm}
 
