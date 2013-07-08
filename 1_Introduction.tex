@@ -109,7 +109,7 @@ $c$ out of $d$ edges and investigating its performance.  Surprisingly,
 we found this method to be very effective for a wide range of
 realistic scenarios. This led us to carry out a theoretical
 investigation using a {\em fixed-degree} random graph model for the
-candidate supergraph, where every node on $L$ has recommendations to a
+input supergraph, where every node on $L$ has recommendations to a
 random subset of size $d$ nodes in $R$.  This is similar to another
 model usually termed `$d$-out', where vertices from both sides of the
 bipartition generate $d$ edges~\cite{FriezePittel2004}. Our main
@@ -139,8 +139,19 @@ results. \vs
 % models. \vs
 
 \noindent
-{\bf Perfect Recommendation Subgraphs.} Next we turn to the question of the conditions under which the extensions of perfect matchings (corresponding to the case $a=1$) exist in random candidate supergraphs under the standard Erd\"os-Renyi model. Since at most $c$ edges are allowed out of each of $l$ nodes, and nodes on the right require degree $a$, the maximum number of nodes on the right that can have degree $a$ is at most $\frac{cl}{a}$. When a subgraph achieving this bound exists, we say that there is an perfect $(c,a)$-recommendation subgraph. We extend prior results on the
-existence of a perfect matching in this model to characterize the edge probability values above which there exist such perfect recommendation subgraphs, by using a novel subset partitioning method for the analysis. \vs
+{\bf Perfect Recommendation Subgraphs.} Next we turn to the question
+of the conditions under which the extensions of perfect matchings
+(corresponding to the case $a=1$) exist in random input
+supergraphs under the standard Erd\"os-Renyi model. Since at most $c$
+edges are allowed out from each vertex in $L$, and vertices on the
+$R$ require degree $a$, the maximum number of nodes on $R$
+that have degree $a$ is at most $\frac{cl}{a}$. When a subgraph
+achieving this bound exists, we say that there is a perfect
+$(c,a)$-recommendation subgraph. We extend prior results on the
+existence of a perfect matching to characterize the edge
+probability values above which there exist perfect recommendation
+subgraphs, by using a novel subset partitioning method for 
+analysis. \vs
  
 %By relaxing the condition of optimality of matching (i.e.
 %perfect matchings) to disallowing short augmenting paths in these methods, we also
@@ -149,7 +160,7 @@ existence of a perfect matching in this model to characterize the edge probabili
 
 \noindent
 {\bf New Models for Recommendation Supergraphs.}
-Informed by our empirical experience, we identify the systematic ways in which real data sets diverge from the simple fixed-degree model under which we performed the analysis of the lazy engineer's methods. These lead us to define three new graph generation models for the candidate supergraph that allow for varying density between various categories of nodes on both sides: (i) To model sites where the nodes both sides of the graph are organized according to the same hierarchy,
+Informed by our empirical experience, we identify the systematic ways in which real data sets diverge from the simple fixed-degree model under which we performed the analysis of the lazy engineer's methods. These lead us to define three new graph generation models for the candidate supergraph that allow for varying density between various categories of nodes on both sides: (i) To model sites where the nodes on both sides of the graph are organized according to the same hierarchy,
 we propose a {\em hierarchical tree model}, and extend our analysis: these hierarchies may come from topic ontologies in information sites such as Quora or news sites, or from product classifications in retail sites.
 (ii) We then introduce a simple {\em cartesian product model} that partitions both sides into disjoint categories
 and allows varying edge density across different pairs of
