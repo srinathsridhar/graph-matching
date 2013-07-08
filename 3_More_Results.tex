@@ -1,6 +1,6 @@
 \section{Realistic Models of Recommendation Graphs}
 %We realize that the models described previously are a bit
-%theoretical. 
+%theoretical.
 Even though we studies the fixed-degree model in detail, recommendation systems based on relevance in practice
 will not have edges that are spread uniformly at random. Items that are
 about specific topics are much more likely to interlink within
@@ -22,7 +22,7 @@ connecting to products that had different least common ancestors (LCA) with the 
 then randomized the edges so that we can compare how the graph would
 have looked if there was no substructure and re-calculate the
 distribution of the edges and the LCA levels. We noticed that the
-uniform distribution had edges that had very shallow LCA indicating that 
+uniform distribution had edges that had very shallow LCA indicating that
 most edges did not follow the product hierarchy while in reality,
 the endpoints of edges recommended had much deeper LCA meaning recommendation edges were clustered based on the product hierarchy. This led us
 to formalize this new model of input graphs that we study in Subsection~\ref{hierarchy}
@@ -37,45 +37,56 @@ as the {\em hierarchical tree model}.
     Hierarchical & 7.1 & 1.9 & 8.0 & 24.9 & 52.3 & 5.5 & 0.2 & 0.1\\
     \hline
   \end{tabular}
-  \caption{Percent edges by LCA of endpoints in reality (Hier) and in simulated uniform distribution.}\label{fig:hier}
+  \caption{Percent edges for depth-4 products by LCA of endpoints in reality (Hier) and simulated Uniform.}\label{fig:hier}
 \end{figure}
 
 In a second analysis, we simply truncated the product hierarchy
-at depth 3 and collected the list of disjoint clusters in the hierarchy. We
+at depth 3 and collected the resulting disjoint clusters in the hierarchy. We
 then examined all the recommendations and partitioned them into those going between each pair of these clusters. In a uniform distribution, we would expect the
 edges to be equally likely to span across each pair of clusters
 (assuming clusters are equal sized). But what we observed was that
 different pairs of clusters had different edge-densities. For instance, an Espresso Machine might point more to other Coffee Machines or
 Coffee Beans (note that Coffee Beans and Espresso Machine might share
 no LCA apart from the root) than to other clusters. These results are
-shown in Figure~\ref{fig:hierarchy} that clearly demonstrates that these
+shown in Figure~\ref{fig:cart-emp} that clearly demonstrates that these
 clusters exist and have different densities than the uniform sampling model. This
 motivated us to define and study the {\em cartesian product model} in
 Subsection~\ref{cartesian} which is orthogonal to the uniform and
 hierarchical tree models. Finally, in Section~\ref{weighted}, we study the {\em weighted model}
-which assigns weights to the graph edges so that we can incorporate traffic
+which assigns weights to the graph edges so that we can incorporate strengths and traffic
 patterns across a website besides just relevance-based recommendations.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/cartesian_histogram.png}
+\begin{minipage}{1\textwidth}
+\caption{Histogram of percent edges between pairs of clusters. The long tail is omitted.}
+\label{fig:cart-emp}
+\vspace{-0.2in}
+\end{minipage}
+\end{figure}
 
 \subsection{Hierarchical Tree Model}
 \label{hierarchy}
 
-We assume that we are given a bipartite graph $G=(L,R,E)$. The vertex sets $L$
+%We assume that we are given a bipartite graph $G=(L,R,E)$. 
+In this model, the vertex sets $L$
 and $R$ are the leaf sets of two full binary trees $T_L$ and $T_R$ of
 depth $D$ where there is a one-to-one correspondence between the
 subtrees of these two trees. We also assume that each branching in
 both $T_L$ and $T_R$ splits the nodes evenly into the two
 subtrees. As in the previous sections, we set $|L|/|R|=k$,
-and require that this ratio is still $k$ if we take any subtree on the left
-and its corresponding subtree on the right. For simplicity of notations, we
+and require that this ratio is still $k$ if we divide the size of any subtree on the left
+and that of its corresponding subtree on the right. For simplicity of notation, we
 will use a subtree and its leaf set interchangeably. We assume that the trees are
-fixed in advance but $G$ is generated probabilistically according to
+fixed in advance but the bipartite recommendation graph $G = (L, R, E)$ is generated probabilistically according to
 the following procedure. Let $u\in L$ and $T_L^0, \ldots T^{D-1}_L$ be
 the subtrees it belongs at depths $0,\ldots, D-1$. Also, let
 $T_R^0,\ldots, T_R^{D-1}$ be the subtrees on the right that correspond
-to these trees on the left. We let $u$ make an edge to $d_{D-1}$ of
+to these trees on the left. We let $u$ make a recommending edge to $d_{D-1}$ of
 the vertices in $T_{R}^{D-1}$, $d_{D-2}$ edges to the vertices in
-$T_{R}^{D-2} \backslash T_{R}^{D-1}$ and so on. The $d_i$ edges out of $u$ are chosen uniformly from $T_R^i \setminus T_R^{i-1}$ 
-and let $d = d_{0} + \ldots + d_{D-1}$.\vs
+$T_{R}^{D-2} \backslash T_{R}^{D-1}$ and so on. The $d_i$ edges out of $u$ are chosen uniformly from $T_R^i \setminus T_R^{i+1}$.
+Let $d = d_{0} + \ldots + d_{D-1}$.\vs
 
 \begin{figure}[b]
 \vspace{-0.2in}
@@ -84,23 +95,28 @@ and let $d = d_{0} + \ldots + d_{D-1}$.\vs
 \centering
 \includegraphics[width=1.1\textwidth]{images/hierarchy_tree.png}
 %\begin{minipage}[h]{0.7\textwidth}
-\caption{This diagram shows the notation we use for this model and the 1-to-1 correspondance of subtrees.}\label{fig:hierarchy}
+\caption{This diagram shows the notation we use for this model and the 1-to-1 correspondence of subtrees.}\label{fig:hierarchy}
 \end{minipage}
 \hspace{0cm}
 \begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{images/greedy.png}
-%\begin{minipage}[h]{.8\linewidth}
+\includegraphics[width=0.9\textwidth]{images/greedy.png}
+
+%\begin{minipage}[h]{.8\linewidth}
+
 \vspace{-0.3in}
-\caption{When $v$ selects edges to $u_1,\ldots, u_a$, it can remove $v_1,\ldots, v_a$ from candidates. Potentially invalidated edges shown in red.}
-%\end{minipage}
+\caption{When $v$ selects edges to $u_1,\ldots, u_a$, it can remove $v_1,\ldots, v_a$ from candidates. Potentially invalidated edges shown in red.}
+
+%\end{minipage}
+\label{fig:greedy}
 \end{minipage}
-\end{figure}
+\end{figure}
+
 
 
 
 Our goal now is to find a variant of matching~\cite{Gabow1983} in this
-graph that is close to optimal in expectation. That is, our degree
+graph that is close to optimal in expectation for the case of $a=1$. That is, our degree
 upper and lower bounds on vertices in $L$ and $R$ are $c$ and 1
 respectively. Let $c = c_0 + \ldots + c_{D-1}$ be similar to how we
 defined $d$.  To combine the analysis of the randomness of the
@@ -113,7 +129,7 @@ parameters in place, we can have the following analog of our main
 theorem for $a=1$ for the hierarchical model and is proved in Appendix~\ref{sec:appendix}.
 
 \begin{thm}
-Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$. Then
+Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$ in the hierarchical tree model. Then
 \[ \E[S] \geq r(1-\exp(-ck)) \]
 \end{thm}
 
@@ -145,12 +161,14 @@ Note that this is the same result as we obtained for the fixed degree
 model in Section \ref{fixed-degree}. In fact, the approximation
 guarantees when $ck \ll 1$ or $ck \gg 1$ hold exactly as before.\vs
 
-The sampling of $H$ can be done algorithmically because we separated
+The algorithmic sampling of $H$ is convenient in this model because we separated
 out the edge generation process at a given depth from the edge
-generation process at deeper subtrees. There is no ambiguity as to why
-an edge is in the underlying graph. That is, if we superimpose $T_L$
+generation process at deeper subtrees. 
+%There is no ambiguity as to why
+%an edge is in the underlying graph. That is, 
+If we superimpose $T_L$
 and $T_R$, then an edge between $u_l\in L$ and $v_r\in R$ must have
-come from an edge generated by the process corresponding to the lowest common ancestor of $u_l$ and $v_r$. This way, the algorithm can actually sample intelligently and in the same way that the graph was generated in the first place. Also note
+come from an edge generated by the process corresponding to the lowest common ancestor of $u_l$ and $v_r$ in the same hierarchy. This way, the algorithm can actually sample intelligently and in the same way that the graph was generated in the first place, which is also the key to our simple analysis. Note
 that we do not have to assume that the trees $T_L$ and $T_R$ are
 binary. We only need the trees to be regular and evenly divided at
 each vertex since the proof only relies on the proportions of the
@@ -163,27 +181,19 @@ We can see another shortcoming of the uniform graph model if we think
 of products as being clustered into categories. This is similar to the
 hierarchical tree mode, but our assumptions are weaker in that we don't
 mandate a complete hierarchy and that the clusters can be unrelated. In
-such a model, we would expect many recommendation edges to be
-intra-cluster edges rather than inter-cluster edges. 
+such a model, we would expect many more recommendation edges to be
+intra-cluster edges rather than inter-cluster edges.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/cartesian_histogram.png}
-\begin{minipage}{1\textwidth}
-\caption{Histogram of percent edges between pairs of clusters. The long tail is omitted.}
-\vspace{-0.2in}
-\end{minipage}
-\end{figure}
 
-This finding motivates the following model. We assume that
+This finding motivates the cartesian product model where we assume that
 $L$ has been partitioned into $t$ subsets $L_1,\ldots, L_t$ and
 that $R$ has been partitioned into $t'$ subsets $R_1,\ldots,
-R_{t'}$. For convenience, we let $|L_i| = l_i$ and $|R_i|=r_i$. Given
-this suppose that for each $1\leq i\leq t$ and each $1\leq j\leq t'$,
-$G[L_i, R_j]$ is an instance of the fixed degree model with
-$d=d_{ij}$. We assume that for all $i$, we have $\sum_{j=1}^{t'}
-d_{ij} = d$ for some fixed $d$. Also assume that we have fixed in
-advance $c_{ij}$ for each $1\leq i\leq t$ and $1\leq j\leq t'$ that
+R_{t'}$, and we assign different densities to different terms in their cartesian product. For convenience, we let $|L_i| = l_i$ and $|R_i|=r_i$. Given
+this, for each $1\leq i\leq t$ and each $1\leq j\leq t'$,
+we let $G[L_i, R_j]$ be an instance of the fixed degree model with
+$d=d_{ij}$. However, we require that for all $i$, we have $\sum_{j=1}^{t'}
+d_{ij} = d$ for some fixed $d$. Also we require that we have fixed in
+advance $c_{ij} \leq d_{ij}$ for each $1\leq i\leq t$ and $1\leq j\leq t'$ that
 satisfy $\sum_{j=1}^{t'} c_{ij} = c$ for all $i$ for some fixed $c$.
 To sample $H$ from $G$, we sample $c_{ij}$ neighbors for each
 $u_i\in L_i$ from $R_i$. Letting $S$ be the set of vertices in
@@ -191,7 +201,8 @@ $v\in R$ that satisfy $\deg_H(v)\geq 1$, we can show the following theorem
 that is proved in Appendix~\ref{sec:appendix}.
 
 \begin{thm}
-With $S$, $G$ and $H$ defined as above, we have \vspace{-0.1in}
+Let $S$ be the subset of edges $v\in R$ such that $\deg_H(v) \geq 1$ in the cartesian product model. Then
+%\vspace{-0.1in}
 \[ \E[S] \geq r - \sum_{j=1}^{t'} r_j \exp\left(-\sum_{i=1}^t c_{ij} \frac{l_i}{r_j}\right)\]
 \end{thm}
 %\begin{proof}
@@ -215,14 +226,13 @@ With $S$, $G$ and $H$ defined as above, we have \vspace{-0.1in}
 %the sizes of the sets in the partitions. We note that we
 %obtain the approximation guarantee of $(1-\exp(-ck))$ provided that
 %$l_i/r_j = k$ for all $i$ and $j$ where $k$ is some fixed
-%constant. 
+%constant.
 An interesting point about this model and the algorithm
 we described for sampling $H$ is that we are free to select $c_{ij}$.
 In particular, $c_{ij}$ can be chosen to maximize the
 approximation guarantee in expectation we obtained above using
 gradient descent or other first order methods prior to running the
 recommendation algorithm to increases the quality of the solution.
-
 
 \subsection{Weighted Model}
 \label{weighted}
