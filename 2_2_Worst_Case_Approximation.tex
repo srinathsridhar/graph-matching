@@ -10,7 +10,7 @@ that builds a $(c,a)$-recommendation subgraph iteratively as follows.
 Consider each vertex in $R$ that has not been selected
 into $H$ in some arbitrary order. If there is some $v \in R$ that has $a$ neighbors
 in $L$ all of which have degree less than $c$, add $v$ and these edges to $H$ breaking
-ties arbitrarily.
+ties arbitrarily. Figure~\ref{fig:greedy} illustrates a step of the algorithm.
 
 \begin{thm}
 The greedy algorithm achieves $1/(a+1)$-approximation ratio for the $(c,a)$-graph
@@ -38,13 +38,13 @@ greedy algorithm can not stop before it has added $OPT/(a+1)$
 vertices to the solution.
 \end{proof}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=.4\textwidth]{images/greedy.png}
-\begin{minipage}[h]{.8\linewidth}
-\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
-\end{minipage}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=.4\textwidth]{images/greedy.png}
+%\begin{minipage}[h]{.8\linewidth}
+%\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
+%\end{minipage}
+%\end{figure}
 
 Note that this approximation guarantee is as good as we can expect.
 If we set $a=1$ then we obtain the familiar

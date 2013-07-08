@@ -77,13 +77,25 @@ the vertices in $T_{R}^{D-1}$, $d_{D-2}$ edges to the vertices in
 $T_{R}^{D-2} \backslash T_{R}^{D-1}$ and so on. The $d_i$ edges out of $u$ are chosen uniformly from $T_R^i \setminus T_R^{i-1}$ 
 and let $d = d_{0} + \ldots + d_{D-1}$.\vs
 
-\begin{figure}[h]
+\begin{figure}[b]
 \centering
-\includegraphics[width=0.6\textwidth]{images/hierarchy_tree.png}
-\begin{minipage}[h]{0.7\textwidth}
-\caption{This diagram shows the notation we use for this model and the 1-to-1 correspondance of subtrees}\label{fig:hierarchy}
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=1.1\textwidth]{images/hierarchy_tree.png}
+%\begin{minipage}[h]{0.7\textwidth}
+\caption{This diagram shows the notation we use for this model and the 1-to-1 correspondance of subtrees.}\label{fig:hierarchy}
 \end{minipage}
-\end{figure}
+\hspace{0cm}
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{images/greedy.png}
+%\begin{minipage}[h]{.8\linewidth}
+\caption{When $v$ selects edges to $u_1,\ldots, u_a$, it can remove $v_1,\ldots, v_a$ from candidates. Potentially invalidated edges shown in red.}
+%\end{minipage}
+\end{minipage}
+\end{figure}
+
+
 
 Our goal now is to find a variant of matching~\cite{Gabow1983} in this
 graph that is close to optimal in expectation. That is, our degree
@@ -154,7 +166,7 @@ intra-cluster edges rather than inter-cluster edges.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{images/cartesian_histogram.png}
+\includegraphics[width=0.5\textwidth]{images/cartesian_histogram.png}
 \begin{minipage}[h]{0.7\textwidth}
 \caption{Histogram showing the percentage edges between pairs of clusters. The long tail is omitted.}
 \end{minipage}
