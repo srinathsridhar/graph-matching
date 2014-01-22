@@ -5,15 +5,25 @@ optimal solutions in expectation. In this section, we will show that
 it is possible to obtain good solutions regardless of the model that
 generated the recommendation subgraph. \vs
 
-We analyze the following natural greedy algorithm for constructing a $(c,a)$-recommendation subgraph $H$ iteratively.
-Consider each vertex in $R$ that has not been selected
-into $H$ in some arbitrary order. If there is some $v \in R$ that has $a$ neighbors
-in $L$ all of which have degree less than $c$, add $v$ and these edges to $H$ breaking
-ties arbitrarily.
-%Figure~\ref{fig:greedy} illustrates a step of the algorithm.
+We analyze the following natural greedy algorithm for constructing a $(c,a)$-recommendation
+subgraph $H$ iteratively. \vspace{0.05in}
+
+\begin{algorithm}[H]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$v$ in $R$}{
+    freelinks \leftarrow $\{u \in N(v) | useddegree[u] < c\}$\;    \If{length(freelinks) $\geq a$}{      restrict freelinks to $a$ elements\;      \For{$u$ in freelinks} {
+        $H \leftarrow H \cup \{(u,v)\}$\;
+        useddegree[$u$] $\leftarrow$ useddegree[$u$]+1\;
+      }
+   	}  }
+  \Return $H$\;  \caption{The greedy Algorithm}\end{algorithm}\vs
+
+The algorithm loops through each vertex in $R$, and does a constant amount
+of work in each iteration. Therefore, the runtime is linear. Furthermore,
+the only data structure we use is an array which keeps track of $\deg_H(u)$
+for each $u\in R$, so we only use linear memory as well. Finally, we prove
+prove the following tight approximation property of this algorithm.
 
 \begin{thm}
-The greedy algorithm achieves $1/(a+1)$-approximation ratio for the $(c,a)$-graph
+The greedy algorithm gives at last a $1/(a+1)$-approximation to the $(c,a)$-graph
 recommendation problem.
 \end{thm}
 \begin{proof}
@@ -40,13 +50,11 @@ greedy algorithm can not stop before it has added $OPT/(a+1)$
 vertices to the solution.
 \end{proof}
 
-%\begin{figure}[t]
-%\centering
-%\includegraphics[width=.4\textwidth]{images/greedy.png}
-%\begin{minipage}[h]{.8\linewidth}
-%\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
-%\end{minipage}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.39\textwidth]{images/greedy.png}
+\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
+\end{figure} 
 
 This approximation guarantee is as good as we can expect, since for $a=1$ we recover the familiar
 $1/2$-approximation of the greedy algorithm for matchings.
@@ -60,8 +68,6 @@ fixed degree model used in the previous section, we now prove the
 near optimality of the greedy algorithm for the $(c, a)$-recommendation
 subgraph problem.
 
-{
-\renewcommand{\qedsymbol}{}
 \begin{thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
 \[ \emph{\E}[S] \geq r - \frac{a(lp)^{a-1}}{p}\]
@@ -94,7 +100,6 @@ we obtain
 &\geq r - \frac{a(lp)^{a-1}}{p} \\
 \end{align*}
 \end{proof}
-}
 
 Asymptotically, this result explains why the greedy
 algorithm does much better in expectation than $1/(a+1)$ guarantee we
