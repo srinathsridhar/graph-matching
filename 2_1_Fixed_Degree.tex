@@ -10,9 +10,19 @@ the fixed-degree random graph model for the input supergraph.
 
 In this model, we assume that a bipartite graph $G=(L,R,E)$ is
 generated probabilistically as follows. Each vertex $v\in L$
-uniformly samples a set of $d$ neighbors from $R$. The solution subgraph $H$
-is now sampled from $G$ by uniformly sampling $c\leq d$ edges incident
-on each vertex. Let $|L|=l$, $|R|=r$ and $k=l/r$.
+uniformly samples a set of $d$ neighbors from $R$. We present the
+following straightforward sampling algorithm to generate a 
+$(c,a)$-recommendation subgraph from $G$:
+
+\begin{algorithm}[H]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$u$ in $L$}{
+    neighbors $\leftarrow$ a random sample of $c$ vertices in $N(u)$\;    \For{$v$ in neighbors} {
+      $H \leftarrow H \cup \{(u,v)\}$\;
+   	}  }
+  \Return $H$\;  \caption{The sampling algorithm}\end{algorithm}\vs
+
+The algorithm is obviously linear time since we do $|L|$ iterations
+of the loop, and a constant amount of work in each iteration. The space
+complexity is similarly linear, since the only thing we store is $H$.
 The following theorem gives a lower bound on the expected solution.
 
 
@@ -55,6 +65,7 @@ assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. So $X_{uv}$ is a
 Bernoulli random variable. Using the bound $\binom{n}{i}
 \leq n^i$ on binomial coefficients we get,
+
 \begin{align*}
       \Pr[X_v < a]
 &=    \sum_{i=0}^{a-1} \binom{cl}{i} \left(1-\frac{1}{r}\right)^{cl-i}\left(\frac{1}{r}\right)^i \\
@@ -63,7 +74,6 @@ Bernoulli random variable. Using the bound $\binom{n}{i}
 &\leq \left(1-\frac{1}{r}\right)^{cl-(a-1)}\frac{(ck)^a-1}{ck-1} \\
 &\leq e^{-ck+\frac{a-1}{r}} \frac{(ck)^a-1}{ck-1}
 \end{align*}
-
 
 Letting $Y_v = \left[X_v \geq a\right]$, we now see that
 
