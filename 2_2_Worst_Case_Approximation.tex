@@ -87,9 +87,11 @@ Summing over all the $X_i$ using the linearity of expectation and this upper bou
 we obtain
 \begin{align*}
       \E[S]
-&\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-\frac{ia}{c},p): Y < a] \\
+&\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
+&\geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-\frac{ia}{c},p): Y < a] \\
 %&\geq r - \sum_{i=0}^{r-1}a(1-p)^{l-\frac{ia}{c}-a+1}[lp-\frac{iap}{c}]^{a-1} \\
-&\geq r - a(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1} \geq r - \frac{a(lp)^{a-1}}{p}
+&\geq r - a(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1} \\
+&\geq r - \frac{a(lp)^{a-1}}{p} \\
 \end{align*}
 \end{proof}
 }

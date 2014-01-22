@@ -1,7 +1,6 @@
-\documentclass[11pt]{article}
+\documentclass{sig-alternate}
 \newcommand{\E}{\text{E}}
-\usepackage{fullpage, amsmath, amsthm, graphicx, cite}
-\usepackage[compact]{titlesec}
+\usepackage{amsmath, amsthm, graphicx, cite, algorithm2e}
 
 \setlength{\parindent}{0pt}
 \newtheorem{thm}{Theorem}
@@ -10,27 +9,40 @@
 \newtheorem*{cor}{Corollary}
 \newtheorem*{rem}{Remark}
 \newcommand{\vs}{\vspace{0.1cm}}
-\date{}
 
-{\makeatletter
- \gdef\subsection{\@ifnextchar*\subsection@star\subsection@normal}
- \gdef\subsection@normal#1{\refstepcounter{subsection}%
-            \paragraph{\thesubsection\hbox{~~}#1.}}
- \gdef\subsection@star*#1{\paragraph{#1.}}}
+%{\makeatletter
+% \gdef\subsection{\@ifnextchar*\subsection@star\subsection@normal}
+% \gdef\subsection@normal#1{\refstepcounter{subsection}%
+%            \paragraph{\thesubsection\hbox{~~}#1.}}
+% \gdef\subsection@star*#1{\paragraph{#1.}}}
+
+\makeatletter
+\def\@copyrightspace{\relax}
+\makeatother
 
 \begin{document}
 \title{The Lazy Engineer and Recommendation Subgraphs\thanks{This work was supported in part by an internship at BloomReach Inc.}}
-\author{Arda Antikacioglu\thanks{Department of Mathematics, Carnegie
-    Mellon University; aantikac@andrew.cmu.edu},
-R. Ravi\thanks{Computer Science Department and Tepper School of Business, Carnegie Mellon
-    University; ravi@cmu.edu}
-~and
-Srinath Sridhar\thanks{BloomReach Inc; srinath@bloomreach.com}}
 
+\numberofauthors{3}
+\author{
+\alignauthor
+Arda Antikacioglu \\
+       \affaddr{Department of Mathematics}\\
+       \affaddr{Carnegie Mellon University}\\
+       \email{aantikac@andrew.cmu.edu}
+\alignauthor
+R. Ravi \\
+       \affaddr{Tepper School of Business}\\
+       \affaddr{Carnegie Mellon University}\\
+       \email{ravi@cmu.edu}
+\alignauthor 
+Srinath Sridar \\
+       \affaddr{Bloomreach Inc.}\\
+       \email{srinath@bloomreach.com}
+}
 
 \maketitle
 \input{0_Abstract.tex}
-\pagebreak
 
 \setcounter{page}{1}
 \input{1_Introduction.tex}

@@ -57,10 +57,10 @@ Bernoulli random variable. Using the bound $\binom{n}{i}
 \leq n^i$ on binomial coefficients we get,
 \begin{align*}
       \Pr[X_v < a]
-&=    \sum_{i=0}^{a-1} \binom{cl}{i} \left(1-\frac{1}{r}\right)^{cl-i}\left(\frac{1}{r}\right)^i
- \leq \sum_{i=0}^{a-1} \left(\frac{cl}{r}\right)^i\left(1-\frac{1}{r}\right)^{cl-i} \\
-&\leq    \left(1-\frac{1}{r}\right)^{cl-(a-1)} \cdot \sum_{i=0}^{a-1} (ck)^i
- \leq \left(1-\frac{1}{r}\right)^{cl-(a-1)}\frac{(ck)^a-1}{ck-1} \\
+&=    \sum_{i=0}^{a-1} \binom{cl}{i} \left(1-\frac{1}{r}\right)^{cl-i}\left(\frac{1}{r}\right)^i \\
+&\leq \sum_{i=0}^{a-1} \left(\frac{cl}{r}\right)^i\left(1-\frac{1}{r}\right)^{cl-i} \\
+&\leq    \left(1-\frac{1}{r}\right)^{cl-(a-1)} \sum_{i=0}^{a-1} (ck)^i \\
+&\leq \left(1-\frac{1}{r}\right)^{cl-(a-1)}\frac{(ck)^a-1}{ck-1} \\
 &\leq e^{-ck+\frac{a-1}{r}} \frac{(ck)^a-1}{ck-1}
 \end{align*}
 
