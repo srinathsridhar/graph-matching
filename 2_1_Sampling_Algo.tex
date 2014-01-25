@@ -11,7 +11,7 @@ several matchings, in that order.
 While the algorithm was mentioned earlier, we present it more formally 
 below.
 
-\begin{algorithm}[H]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$u$ in $L$}{
+\begin{algorithm}[h]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$u$ in $L$}{
     neighbors $\leftarrow$ a random sample of $c$ vertices in $N(u)$\;    \For{$v$ in neighbors} {
       $H \leftarrow H \cup \{(u,v)\}$\;
    	}  }

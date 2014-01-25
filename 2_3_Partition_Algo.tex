@@ -68,7 +68,7 @@ to the $(c,a)$-recommendation subgraph problem by leveraging
 combinatorial properties of matchings. We call this method
 the Partition Algorithm, and we outline it below
 
-\begin{algorithm}[H]\label{partition_alg}  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}
+\begin{algorithm}[h]\label{partition_alg}  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}
   $R' \leftarrow$ a random sample of $|L|c/a$ vertices from $R$\;
   Choose $G[L,R_1],\ldots,G[L,R_c]$ as in Theorem \ref{perfect}\;  \For{$i$ in [1..n]} {
     $M_i \leftarrow$ A matching of $G[L,R_i]$ with no augmenting path of length $2c/\epsilon$\;

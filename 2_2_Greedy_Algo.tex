@@ -8,8 +8,8 @@ generated the recommendation subgraph. \vs
 We analyze the following natural greedy algorithm for constructing a $(c,a)$-recommendation
 subgraph $H$ iteratively. \vspace{0.05in}
 
-\begin{algorithm}[H]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$v$ in $R$}{
-    freelinks \leftarrow $\{u \in N(v) | useddegree[u] < c\}$\;    \If{length(freelinks) $\geq a$}{      restrict freelinks to $a$ elements\;      \For{$u$ in freelinks} {
+\begin{algorithm}[h]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$v$ in $R$}{
+    freelinks $\leftarrow \{u \in N(v) | useddegree[u] < c\}$\;    \If{length(freelinks) $\geq a$}{      restrict freelinks to $a$ elements\;      \For{$u$ in freelinks}{
         $H \leftarrow H \cup \{(u,v)\}$\;
         useddegree[$u$] $\leftarrow$ useddegree[$u$]+1\;
       }
