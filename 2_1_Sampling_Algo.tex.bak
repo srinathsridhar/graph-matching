@@ -1,47 +1,38 @@
 \section{Algorithms for Recommendation Subgraphs}
-%In this section, we analyze the lazy algorithm of choosing any set of
-%$c$ recommendations, the more interesting greedy algorithm which has
-%better theoretical performance guarantees, and a slower matching based
-%solution that constructs a recommendation subgraph out of overlaying
-%several matchings, in that order.
+In this section, we analyze the lazy algorithm of choosing any set of
+$c$ recommendations, the more interesting greedy algorithm which has
+better theoretical performance guarantees, and a slower matching based
+solution that constructs a recommendation subgraph out of overlaying
+several matchings, in that order.
 
-\subsection{The Sampling Algorithm}
+\subsection{Fixed Degree Model}
 \label{fixed-degree}
 
-We present the sampling algorithm for the $(c,a)$-recommendation subgraph formally below.
+While the algorithm was mentioned earlier, we present it more formally 
+below.
 
-\begin{algorithm}[h]
-  \SetAlgoLined
-  \KwData{A bipartite graph $G=(L,R,E)$}
-  \KwResult{A (c,a)-recommendation subgraph $H$}
-  \For{$u$ in $L$}{
-    neighbors $\leftarrow$ a random sample of $c$ vertices in $N(u)$\;
-    \For{$v$ in neighbors} {
+\begin{algorithm}[h]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$u$ in $L$}{
+    neighbors $\leftarrow$ a random sample of $c$ vertices in $N(u)$\;    \For{$v$ in neighbors} {
       $H \leftarrow H \cup \{(u,v)\}$\;
-   	}
-  }
-  \Return $H$\;
-  \caption{The sampling algorithm}
-\end{algorithm}\vs
+   	}  }
+  \Return $H$\;  \caption{The sampling algorithm}\end{algorithm}\vs
 
-Given a bipartite graph $G$, the algorithm clearly takes linear time
+Given a bipartite graph $G$, the algorithm is obviously linear time
 since we do $|L|$ iterations of the loop, and a constant amount of
-work in each iteration. The space complexity is also linear,
-since the only thing we store is $H$. 
+work in each iteration. The space complexity is similarly linear,
+since the only thing we store is $H$. The following theorem gives a
+lower bound on the expected solution.
 
-We next introduce a simple random graph model for the supergraph from which we are allowed to choose recommendations and present a
+To analyze the this algorithm, we will use random graphs and give a
 bound on its expected performance when the underlying supergraph $G=(L,R,E)$
-is chosen probabilistically according to this model. 
-\vs
-
-{\bf Fixed Degree Model:} Each vertex $v\in L$
+is chosen probabilistically as follows. Each vertex $v\in L$
 uniformly and independently samples a set of $d$ neighbors from $R$.
-This model is similar to, but is distinct from the more commonly
+This model is similar to, but is distinct from the more commonly 
 known Erd\"{o}s-Renyi model of random graphs. In particular, while the
 degree of each vertex in $L$ is fixed under this model, concentration
 bounds can show that the degrees of the vertices in $L$ would have
 similarly been concentrated around $d$ under appropriate parameter
-settings. We prove the following theorem about the performance
+settings. We now prove the following theorem about the performance
 of the Sampling Algorithm.
 
 \begin{thm}\label{original_result}
@@ -93,7 +84,8 @@ $ ({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
 \end{proof}
 
 
-For the $(c, 1)$-recommendation subgraph problem the approximation obtained by this sampling approach can be much better for certain values of $ck$. In particular,
+For the $(c, 1)$-recommendation subgraph problem the approximation obtained by this sampling
+approach can be much better for certain values of $ck$. In particular,
 if $ck>1$, then the approximation ratio is $1-\exp(-ck)$, which
 approaches 1 as $ck\to\infty$. In particular, if $ck=3$, then the
 solution will be at least 95\% as good as the optimal solution even
@@ -164,5 +156,4 @@ $r(1-\exp(-ck))$ by Theorem \ref{original_result}. Therefore, we can
 apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ to obtain
 the result.
 \end{proof}
-
 For realistic scenarios where $r$ is very large, this gives very good bounds. 

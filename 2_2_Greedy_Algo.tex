@@ -1,20 +1,30 @@
 \subsection{The Greedy Algorithm}
 \label{greedy}
-The results in the previous section concentrated on producing nearly
-optimal solutions in expectation. In this section, we will show that
-it is possible to obtain good solutions regardless of the model that
-generated the recommendation subgraph. \vs
+%The results in the previous section concentrated on producing nearly
+%optimal solutions in expectation. In this section, we will show that
+%it is possible to obtain good solutions regardless of the model that
+%generated the recommendation subgraph. \vs
 
-We analyze the following natural greedy algorithm for constructing a $(c,a)$-recommendation
+We now analyze the following natural greedy algorithm for constructing a $(c,a)$-recommendation
 subgraph $H$ iteratively. \vspace{0.05in}
 
-\begin{algorithm}[h]  \SetAlgoLined  \KwData{A bipartite graph $G=(L,R,E)$}  \KwResult{A (c,a)-recommendation subgraph $H$}  \For{$v$ in $R$}{
-    freelinks $\leftarrow \{u \in N(v) | useddegree[u] < c\}$\;    \If{length(freelinks) $\geq a$}{      restrict freelinks to $a$ elements\;      \For{$u$ in freelinks}{
+\begin{algorithm}[h]
+  \SetAlgoLined
+  \KwData{A bipartite graph $G=(L,R,E)$}
+  \KwResult{A (c,a)-recommendation subgraph $H$}
+  \For{$v$ in $R$}{
+    freelinks $\leftarrow \{u \in N(v) | useddegree[u] < c\}$\;
+    \If{length(freelinks) $\geq a$}{
+      restrict freelinks to $a$ elements\;
+      \For{$u$ in freelinks}{
         $H \leftarrow H \cup \{(u,v)\}$\;
         useddegree[$u$] $\leftarrow$ useddegree[$u$]+1\;
       }
-   	}  }
-  \Return $H$\;  \caption{The greedy Algorithm}\end{algorithm}\vs
+   	}
+  }
+  \Return $H$\;
+  \caption{The greedy Algorithm}
+\end{algorithm}\vs
 
 The algorithm loops through each vertex in $R$, and does a constant amount
 of work in each iteration. Therefore, the runtime is linear. Furthermore,
@@ -53,10 +63,10 @@ vertices to the solution.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.39\textwidth]{images/greedy.png}
-\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are avaiable. The potentially invalidated edges are shown in red.}
-\end{figure} 
+\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are available. The potentially invalidated edges are shown in red.}
+\end{figure}
 
-This approximation guarantee is as good as we can expect, 
+This approximation guarantee is as good as we can expect,
 since for $a=1$ we recover the familiar $1/2$-approximation
 of the greedy algorithm for matchings. As in matchings,
 randomizing the order in which the vertices are processed still
