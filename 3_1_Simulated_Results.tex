@@ -1,27 +1,40 @@
 \section{Experimental Results}
 
-******I just copied from the old paper below just to remind ourselves of what plots we need to generate: Needs work.
-
-
 \subsection{Simulated Runs}
 We simulated performance of our algorithms on random graphs generated
 by the graph models we outlined. In the following figures, each data
 point is obtained by averaging the measurements over 10 random
 graphs,  where the red, blue and green lines denote the approximation
 ratio of the greedy, sampling and partitioning algorithms respectively.
-% **** Write two sentences about the partition algorithm here: What do you do after partitioning? Solve matching optimally?
 Recall that the partition algorithm split the graph into multiple graphs and found
 matchings in these smaller graphs which were then combined into a
 recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
-sampling or greedy algorithms.
+sampling or greedy algorithms. It also takes significantly more memory to
+run. This can be seen in the graphs below.
 
+% INSERT THE GRAPHS HERE
+% I'M HAVING TROUBLE GETTING MATHEMATICA TO GRAPH ALL THE POINTS
+% SO THIS IS JUST A PLACEHOLDER UNTIL I FIGURE IT OUT
 
+\begin{figure}[t]
+\centering
+\begin{minipage}[h]{0.48\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{images/time.png}
+\caption{Time}\label{fig:a=1:1}
+\end{minipage}
+\hspace{0cm}
+\begin{minipage}[h]{0.48\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{images/space.png}
+\caption{Space}\label{fig:a=1:2}
+\end{minipage}
+\vspace{-0.2in}
+\end{figure}
 
-
-**** Do the figures below only lower bounds, or actual performances as a percentage of the size of $|R|$?
-
-
+\vs
+Next, we analyze the relative qualities of the solutions each method produces.
 Figures~\ref{fig:a=1:1} and \ref{fig:a=1:2} show that the
 lower bound we calculated for the expected performance of the sampling
 algorithm accurately captures the behavior of the sampling algorithm
@@ -33,6 +46,8 @@ random sampling algorithm in all cases, but its advantage vanishes as
 $c$ gets larger. Note that the dip in the graphs when $cl=ar$, at
 $c=4$ in Figure~\ref{fig:a=1:1} and $c=2$ in Figure~\ref{fig:a=1:2} is
 expected and was previously demonstrated in Figure~\ref{fig:simple_approx}.
+The partition algorithm is immune to this drop that effects both the greedy
+and the sampling algorithms. 
 
 \begin{figure}[t]
 \centering
@@ -55,6 +70,7 @@ expected and was previously demonstrated in Figure~\ref{fig:simple_approx}.
 % Also I can't believe that greedy is optimal. I am still tempted to say that
 % greedy will do badly when d is small. Like d < 5.
 
+\vs
 In contrast to the case when $a=1$, the sampling algorithm performs
 worse when $a>1$ but performs increasingly better with $c$ as
 demonstrated by Figures~\ref{fig:a=2} and \ref{fig:a=4}. The greedy
@@ -62,8 +78,9 @@ algorithm continues to produce solutions that are nearly optimal,
 regardless of the settings of $c$ and $a$. Therefore, our simulations
 suggest that in many cases a software engineer can simply design the
 sampling method for solving the $(c, a)$-recommendation subgraph
-problem. In those cases where the sampling is not suitable as flagged by our analysis, we still
-find that the greedy performs adequately and is simple to implement.
+problem. In those cases where the sampling is not suitable as flagged by our analysis, 
+we still find that the greedy performs adequately and is simple to implement.
+
 
 \begin{figure}[t]
 \centering
@@ -81,13 +98,16 @@ find that the greedy performs adequately and is simple to implement.
 \vspace{-0.2in}
 \end{figure}
 
+\vs
+In short, our synthetic experiments show the following strengths of each algorithm:\\
+\textbf{Sampling Algorithm:} This algorithm uses little to no memory and can be implemented as an online algorithm. If keeping the underlying graph in memory is an issue, then chances are this algorithm will do well while only needing a fraction of the resources the other two algorithms would take.\\
+\textbf{Partition Algorithm:} This algorithm generally does well, but at the expense of significant runtime and space costs. This algorithm is good for recovering the optimal solution when $a=1$, or recovering a good $(c,a)$-recommendation subgraph when we know that a perfect one exists. It also has a distinct advantage over Greedy or Sampling algorithms when $lc=ra$.\\
+\textbf{Greedy Algorithm:} This algorithm is the all around best algorithm we tested. It run really quickly, uses little amounts of space, enabling it run completely in memory for graphs with as many as tens of millions of edges. It's performance is very close to the optimum. \\
 
-TODO: Run simulations for much larger sizes of $R$ say 1M, 10M and if possible 100M nodes. Show how far partition can go in these runs and when it is too slow and why.
+\emph{TODO}: Run simulations for much larger sizes of $R$ say 1M, 10M and if possible 100M nodes. Show how far partition can go in these runs and when it is too slow and why.
+\emph{Arda}: Actually, if we scale L and R together, none of our algorithms will sense the scale change, except greedy, where there will be a difference, but it probably won't be visible because greedy does so well already.
 
-TODO: Redo the same plots for three different client sets at three different scales: larger $R$, the better. Again, see if you can run Partition in any of them and when it chokes. 
+\emph{TODO}: While running on real data what is the scale for performance that we will be using? Will we just plot the number of nodes of $R$ that had degree at least $a$ in the solution without a benchmark for the size of optimal other than just $|R|$? Can we do anything interesting here?
+\emph{Arda}: Not really. We use min(R, Lc/a) as the lower bound. It's pretty accurate unless there's something rather pathological about the graph. The fact that greedy routinely comes within 95\% of this value probably indicates that there's not much room for improvement.
 
-TODO: While running on real data what is the scale for performance that we will be using? Will we just plot the number of nodes of $R$ that had degree at least $a$ in the solution without a benchmark for the size of optimal other than just $|R|$? Can we do anything interesting here?
-
-TODO: Are there other statistics about these three methods that would be illustrative to plot? e.g. running time as we scale up $c$ and the size of $R$ for each of the three programs would be good to measure and plot.
-
- 
+\emph{TODO}: Are there other statistics about these three methods that would be illustrative to plot? e.g. running time as we scale up $c$ and the size of $R$ for each of the three programs would be good to measure and plot.
