@@ -1,0 +1,46 @@
+\abstract
+
+Recommendations are central to the utility of many of the popular websites such as YouTube, Facebook and Quora, as well as the economic viability of most e-commerce websites. Such sites usually have a large list of candidate pages that could serve as recommendations from the current page based on relevance. Choosing an appropriate set of links to exhibit at each product page is one of the key features of Web Relevance Engines that have been commercially deployed at several retail sites.
+
+We describe the deployed solution to this problem at BloomReach Inc., as part of their relevance engine for e-commerce. The problem of choosing the appropriate recommendations from each retail product page is addressed by a structure optimizer (White paper on "Inside the Technology: Web Relevance Engine" April 2012) in the engine. The design of this optimizer approaches the problem as one of selecting a subgraph of the candidate recommendations graph so as to maximize the number of less-visible product pages that are redundantly recommended. 
+
+In this paper, we present the formulation of this problem as a graph optimization problem, and outline three different scalable algorithms for solving it, based on local random sampling, a greedy procedure and a more sophisticated partitioning idea that divides the edges into sets from which recommendations are separately chosen. We provide theoretical analysis of the performance of these three methods on simple random models of the recommendation subgraph. We then provide empirical validation of our analysis on simulated data that clearly shows that only the first two methods are viable in a scalable production setting; furthermore, these experiments also demonstrate that greedy while being computationally more expensive gives higher quality solutions. Our experimental results on real clients of BloomReach confirm these findings: the partition based algorithm runs out of memory in the larger instances, and Greedy is the all round best performer. These results justify the deployment of Greedy (along with additional business rule enhancements) that has been successfully used to implement the structural optimization of the web relevance engine at BloomReach.
+
+\iffalse 
+
+We formulate the problem of choosing the short list of recommendations from each page as one of choosing a subgraph of the candidate recommendation graph with the objective of maximizing the size of the recommended pages.
+
+To inter-connect the website for efficient
+traversal it is critical to choose a few recommendations on each
+page from the list of all candidates.
+
+In our formulation of the problem, the set of pages on the site is
+divided into a few popular pages where surfers arrive and the
+remaining large number of pages that should be recommended from the
+popular pages. The natural bipartite graph of potential
+recommendations is a candidate supergraph. Given the limited space to
+display recommendations a subgraph that has bounded outdegree $c$ on the
+popular pages must be chosen. Our goal is to maximize the number of
+undiscovered pages that have indegree at least some target $a$. We introduce and study this
+as the $(c, a)$-recommendation subgraph problem.
+
+Solving such problems optimally at web-scale typically involves
+writing distributed matching algorithms.  These can be incredibly hard
+to implement, debug and scale effectively.  Instead, in this work, we
+study the effectiveness of a lazy engineer solving the recommendation
+subgraph problem. We investigate the cases when the candidate
+supergraph is a random graph under two models: the fixed-degree model
+where every node on the left has exactly $d$ random neighbors on the
+right, as well as the standard Erd\"{o}s-Renyi model with expected
+degree $d$ on the left side. We show that for most reasonable
+parameters of the models, the lazy engineer would have found solutions
+very close to optimal. We further show the conditions under which a
+perfect recommendation subgraph, a generalization of perfect
+matchings, exists. Lastly, to more realistically model web graphs, we
+propose generalizations of the random graph models using topic
+taxonomies, varying subgraph edge densities and edge weights that
+capture the strength of recommendations. Surprisingly, the lazy
+engineer would still have found near optimal solutions under different
+realistic parameters, which we validate with some computational
+testing on simulated models.
+\fi
