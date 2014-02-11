@@ -3,16 +3,22 @@
 \subsection{Web Relevance Engines}
 Digital discovery divide (cite Bloomreach white paper) is the problem of companies not being able to present users with what they seek in the short time they spend looking for this information.
 
-The problem is prevalent not only in eCommerce firms but also in social network and micro-blogging sites where surfacing relevant content quickly is important for user engagement.
+The problem is prevalent not only in eCommerce firms but also in social networks and micro-blogging sites where surfacing relevant content quickly is important for user engagement.
 
-Bloomreach has a web relevance engine to address the problem that is offered as a service to the websites of popular retailers like Neiman Marcus, Crate \& Barrel, Williams-Sonoma and Staples. Main idea is to optimize the site for relevance to the visitors: the site is thoroughly crawled and indexed for semantic interpretation and then eventual relevance scoring. The relevance scoring provides clues for optimizing the navigation structure of the sites that is done by a structure optimizer.
-
-Structure optimizer solves the problem of establishing hyperlinks between the pages in the site for better discoverability. To quote the white-paper, the solution of the structure optimizer is a set of edges that ensure that each "non-crawled" page is easily accessible from a set of "crawled" pages.
+BloomReach is a big-data marketing company that uses the client's content as well as web-wide data to optimize both customer acquisition and satisfaction.
+BloomReach's clients include popular retailers like Neiman Marcus, Crate \& Barrel, Williams-Sonoma and Staples. In this paper, we describe the structure optimizer of the Web Relevance Engine.
+The structure optimizer adds hyperlinks between pages that ensures that crawlers as well as users can efficiently navigate the entire website of a client. 
 
 \subsection{Structure Optimization of Websites}
-Similar problems arise in all other recommendation systems where the set of possible relevant recommendations from each page is typically much larger than can be displayed as links in the page. This includes e.g., related videos in YouTube, relevant updates in FaceBook feeds, as well as related hashtags in a search for a hashtag in Twitter. All of these sites face the problem of choosing among very relevant content to surface.
+Similar problems arise in all other recommendation systems where the set of possible relevant recommendations from each page is typically much larger than can be displayed as links in the page. 
+To just provide a couple of simple examples, YouTube has a section that displays all the related videos for the main video being viewed. Quora has a section for questions related to the main question
+that is displayed. These recommendations are central to determining how the traffic across say all of YouTube is going to flow.
 
-If we use the criterion of discoverability as the objective for the choice of the links to recommend, we get a new formulation of the recommendation selection problem that is more structural: In particular, if we think of commonly visited and crawled pages in a site as the core pages, from which there are a large number of possible recommendations available to related but less visited peripheral pages, the problem of choosing a limited number of pages to recommend at each core page can be cast with the objective of maximizing the number of peripheral non-crawled pages that are linked. We formulate this as a recommendation subgraph problem, and study practical algorithms for solving these problems in real-life data.
+As a website owner one big question that you can ask is simply if there is a significant fraction of the website that is not recommended at all (or `hardly' recommended) from other pages. Continuing
+with the above example, if say half of the YouTube videos hardly were recommended from other videos, then millions of great videos might be undiscovered for the longest time. We try to address
+problem by ensuring that every page will require at least a baseline number of visits so that great content does not remain undiscovered. 
+
+We use the criterion of discoverability as the objective for the choice of the links to recommend. We naturally get a new formulation of the recommendation selection problem that is structural. In particular, if we think of commonly visited pages in a site as the discovered pages, from which there are a large number of possible recommendations available to related but less visited peripheral pages, the problem of choosing a limited number of pages to recommend at each discovered page can be cast with the objective of maximizing the number of peripheral non-visited pages that are linked. We formulate this as a recommendation subgraph problem, and study practical algorithms for solving these problems in real-life data. 
 
 \subsection{Recommendation Systems as a Subgraph Selection Problem}
 
