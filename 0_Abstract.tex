@@ -1,39 +1,43 @@
 \abstract
 
-Recommendations are central to the utility of many of the popular websites such as YouTube, 
-Facebook and Quora, as well as the economic viability of e-commerce websites. 
-Such sites typically contain a set of recommendations on every single
+Recommendations are central to the utility of many of the popular websites such as YouTube,
+Facebook and Quora, as well as the economic viability of e-commerce websites.
+Such sites typically contain a set of recommendations on every product
 page which enables visitors to easily navigate the website. Choosing
 an appropriate set of recommendations at each page is one of the key
-features of these relevance engines that have been commercially deployed at several retail sites.
+features of web relevance engines that have been commercially deployed 
+at several retail sites.
 
-Specifically in the case of BloomReach, an engine consisting of several independent 
+Specifically in the case of BloomReach, an engine consisting of several independent
 software components analyzes and optimizes its clients websites.
 %Can cite ~\cite{WebRelevanceEngine} if needed.
 This paper focuses on the structure optimizer component which
-improves the website navigation experience so as to enable the discovery of previously 
-undiscovered content. 
+improves the website navigation experience so as to enable the discovery of previously
+undiscovered content.
 
-We begin the paper by formalizing this concept of recommendations that can be used to improve
-the structure and discoverability of the website. We formulate this as a natural graph optimization 
-problem which in its simplest case reduces to a bipartite matching problem. In practice, solving these 
-matching problems requires super-linear time which is not scalable. Also, it is very hard to 
-over-estimate the importance of implementing simple algorithms in
-practice because they are 
-significantly easier to maintain in a production software package. This motivated us to analyze three heuristics
-for solving the problem in increasing sophistication: a local random sampling algorithm, 
-a greedy algorithm and a partitioning algorithm that divides the edges into sets from which recommendations 
+We begin the paper by formalizing the concept of recommendations that can be used to improve
+the structure and discoverability of the website. We formulate this as a natural graph optimization
+problem which, in its simplest case, reduces to a bipartite matching problem. In practice, solving these
+matching problems requires super-linear time and is not scalable. Furthermore, implementing simple 
+algorithms is paramount in practice because they are
+significantly easier to maintain in a production software package. This motivated us to analyze 
+three heuristic methods for solving the problem in increasing order of sophistication: 
+a local random sampling algorithm,
+a greedy algorithm and a partitioning algorithm that divides the edges into sets from which recommendations
 are separately chosen.
 
 We first theoretically analyze the performance of these three methods
-on random graph models showing when each method individually will be sufficient and exactly 
-when we need to move to the more sophisticated method. We then provide empirical analysis
-of these algorithms on simulated and production real-world data. Our
-results show that it is not always necessary to implement complicated
-algorithms in the real-world and often great practical results that
-are backed by concrete theoretical guarantees can be obtained by using simpler heuristics.
+on random graph models characterizing when each method will yield a solution of sufficient quality
+and the parameter regimes when more sophistication is needed. 
+We complement this by providing an empirical analysis
+of these algorithms on simulated and real-world production data. Our
+results confirm that it is not always necessary to implement complicated
+algorithms in the real-world. Indeed, our results demonstrate that 
+very good practical results 
+can be obtained by using simple heuristics and 
+backed by the confidence of concrete theoretical guarantees.
 
-\iffalse 
+\iffalse
 
 We formulate the problem of choosing the short list of recommendations from each page as one of choosing a subgraph of the candidate recommendation graph with the objective of maximizing the size of the recommended pages.
 
@@ -70,4 +74,4 @@ capture the strength of recommendations. Surprisingly, the lazy
 engineer would still have found near optimal solutions under different
 realistic parameters, which we validate with some computational
 testing on simulated models.
-\fi
+\fi 
