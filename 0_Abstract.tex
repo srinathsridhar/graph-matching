@@ -1,41 +1,42 @@
 \abstract
 
-Recommendations are central to the utility of many of the popular websites such as YouTube,
-Facebook and Quora, as well as the economic viability of e-commerce websites.
-Such sites typically contain a set of recommendations on every product
-page that enables visitors to easily navigate the website. Choosing
-an appropriate set of recommendations at each page is one of the key
-features of web relevance engines that have been commercially deployed 
-at several retail sites.
+Recommendations are central to the utility of many websites including
+YouTube, Quora as well as popular e-commerce stores. Such sites
+typically contain a set of recommendations on every product page that 
+enables visitors to easily navigate the website. Choosing an
+appropriate set of recommendations at each page is one of the key 
+features of backend engines that have been deployed at several e-commerce sites.
 
-Specifically in the case of BloomReach, an engine consisting of several independent
-software components analyzes and optimizes its clients websites.
-%Can cite ~\cite{WebRelevanceEngine} if needed.
-This paper focuses on the structure optimizer component which
-improves the website navigation experience so as to enable the discovery of previously
+Specifically at BloomReach, an engine consisting of several
+independent components analyzes and optimizes its clients
+websites. This paper focuses on the structure optimizer component
+which improves the website navigation experience that enables the discovery of previously
 undiscovered content.
 
-We begin the paper by formalizing the concept of recommendations that can be used to improve
-the structure and discoverability of the website. We formulate this as a natural graph optimization
-problem which, in its simplest case, reduces to a bipartite matching problem. In practice, solving these
-matching problems requires super-linear time and is not scalable. Furthermore, implementing simple 
-algorithms is paramount in practice because they are
-significantly easier to maintain in a production software package. This motivated us to analyze 
-three heuristic methods for solving the problem in increasing order of sophistication: 
-a local random sampling algorithm,
-a greedy algorithm and a partitioning algorithm that divides the edges into sets from which recommendations
-are separately chosen.
+We begin the paper by formalizing the concept of recommendations used
+for discovery. We formulate this as a natural graph optimization
+problem which in its simplest case, reduces to a bipartite matching
+problem. In practice, solving these matching problems requires
+superlinear time and is not scalable. Also, implementing simple
+algorithms is critical in practice because they are significantly
+easier to maintain in a production software package. This motivated us
+to analyze three methods for solving the problem in increasing order of sophistication: 
+a local random sampling algorithm, a greedy algorithm and a more involved partitioning based algorithm.
 
 We first theoretically analyze the performance of these three methods
-on random graph models characterizing when each method will yield a solution of sufficient quality
-and the parameter regimes when more sophistication is needed. 
-We complement this by providing an empirical analysis
-of these algorithms on simulated and real-world production data. Our
-results confirm that it is not always necessary to implement complicated
-algorithms in the real-world. Indeed, our results demonstrate that 
-very good practical results 
-can be obtained by using simple heuristics and 
-backed by the confidence of concrete theoretical guarantees.
+on random graph models characterizing when each method will yield a
+solution of sufficient quality and the parameter ranges when more 
+sophistication is needed. We complement this by providing an empirical
+analysis of these algorithms on simulated and real-world production
+data. Our results confirm that it is not always necessary to implement
+complicated algorithms in the real-world. Indeed, our results
+demonstrate that very good practical results can be obtained by 
+using simple heuristics that are backed by the confidence of concrete theoretical guarantees.
+
+
+
+
+
 
 \iffalse
 
