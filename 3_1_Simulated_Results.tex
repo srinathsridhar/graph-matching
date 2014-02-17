@@ -6,9 +6,9 @@ by the graph models we outlined. In the following figures, each data
 point is obtained by averaging the measurements over 10 random
 graphs,  where the red, blue and green lines denote the approximation
 ratio of the greedy, sampling and partitioning algorithms respectively.
-Recall that the partition algorithm split the graph into multiple graphs and found
-matchings in these smaller graphs which were then combined into a
-recommendation subgraph. For this reason, a run of the partition
+Recall that the partition algorithm split the graph into multiple graphs
+and found matchings in these smaller graphs which were then combined into
+a recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
 sampling or greedy algorithms. It also takes significantly more memory to
 run. This can be seen in the graphs below.
@@ -100,14 +100,20 @@ we still find that the greedy performs adequately and is simple to implement.
 
 \vs
 In short, our synthetic experiments show the following strengths of each algorithm:\\
-\textbf{Sampling Algorithm:} This algorithm uses little to no memory and can be implemented as an online algorithm. If keeping the underlying graph in memory is an issue, then chances are this algorithm will do well while only needing a fraction of the resources the other two algorithms would take.\\
-\textbf{Partition Algorithm:} This algorithm generally does well, but at the expense of significant runtime and space costs. This algorithm is good for recovering the optimal solution when $a=1$, or recovering a good $(c,a)$-recommendation subgraph when we know that a perfect one exists. It also has a distinct advantage over Greedy or Sampling algorithms when $lc=ra$.\\
-\textbf{Greedy Algorithm:} This algorithm is the all around best algorithm we tested. It run really quickly, uses little amounts of space, enabling it run completely in memory for graphs with as many as tens of millions of edges. It's performance is very close to the optimum. \\
+\textbf{Sampling Algorithm:} This algorithm uses little to no memory and can
+be implemented as an online algorithm. If keeping the underlying graph in
+memory is an issue, then chances are this algorithm will do well while only needing
+a fraction of the resources the other two algorithms would take.\\
 
-\emph{TODO}: Run simulations for much larger sizes of $R$ say 1M, 10M and if possible 100M nodes. Show how far partition can go in these runs and when it is too slow and why.
-\emph{Arda}: Actually, if we scale L and R together, none of our algorithms will sense the scale change, except greedy, where there will be a difference, but it probably won't be visible because greedy does so well already.
+\textbf{Partition Algorithm:} This algorithm does well, but only when $a$ is small. In this
+realm, partition is not only competitive with greedy, but it's actually better. However
+this performance comes at expense of significant runtime and space costs. This algorithm
+will recover the  optimal solution when $a=1$, and will likely be able to recover a
+good $(c,a)$-recommendation subgraph when we know that a perfect one exists. It also has
+a distinct advantage over both greedy and sampling algorithms when $lc=ra$. \\
 
-\emph{TODO}: While running on real data what is the scale for performance that we will be using? Will we just plot the number of nodes of $R$ that had degree at least $a$ in the solution without a benchmark for the size of optimal other than just $|R|$? Can we do anything interesting here?
-\emph{Arda}: Not really. We use min(R, Lc/a) as the lower bound. It's pretty accurate unless there's something rather pathological about the graph. The fact that greedy routinely comes within 95\% of this value probably indicates that there's not much room for improvement.
-
-\emph{TODO}: Are there other statistics about these three methods that would be illustrative to plot? e.g. running time as we scale up $c$ and the size of $R$ for each of the three programs would be good to measure and plot.
+\textbf{Greedy Algorithm:} This algorithm is the all around best algorithm we tested.
+It's runs really quickly because it only requires a single pass over the data and uses
+relatively little amounts of space enabling it run completely in memory for graphs with
+as many as tens of millions of edges. It's not as quick as sampling or accurate as partition
+when $a$ is small, but it has great performance over all settings of parameters.
