@@ -4,31 +4,28 @@
 We simulated performance of our algorithms on random graphs generated
 by the graph models we outlined. In the following figures, each data
 point is obtained by averaging the measurements over 10 random
-graphs,  where the red, blue and green lines denote the approximation
-ratio of the greedy, sampling and partitioning algorithms respectively.
-Recall that the partition algorithm split the graph into multiple graphs
+graphs. Recall that the partition algorithm split the graph into multiple graphs
 and found matchings in these smaller graphs which were then combined into
 a recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
 sampling or greedy algorithms. It also takes significantly more memory to
-run. This can be seen in the graphs below.
-
-% INSERT THE GRAPHS HERE
-% I'M HAVING TROUBLE GETTING MATHEMATICA TO GRAPH ALL THE POINTS
-% SO THIS IS JUST A PLACEHOLDER UNTIL I FIGURE IT OUT
+run. This can be seen in \ref{time_graph} and \ref{space_graph}. We only present
+space and time results for the (3,3)-recommendation problem, but the exact value
+of $a$ and $c$ would only change space and time usage by a constant, so these
+graphs are indicative of time and space usage over all ranges of parameters.\vs
 
 \begin{figure}[t]
 \centering
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.8\textwidth]{images/time.png}
-\caption{Time}\label{fig:a=1:1}
+\caption{Time needed to solve a (3,3)-recommendation problem in random graphs where $|L|$ scales as $|R|$ with k=4.}\label{fig:time_graph}
 \end{minipage}
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.8\textwidth]{images/space.png}
-\caption{Space}\label{fig:a=1:2}
+\caption{Space needed to solve a (3,3)-recommendation problem in random graphs where $|L|$ scales as $|R|$ with k=4.}\label{fig:space_graph}
 \end{minipage}
 \vspace{-0.2in}
 \end{figure}
