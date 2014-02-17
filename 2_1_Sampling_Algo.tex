@@ -13,10 +13,10 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
 \begin{algorithm}[h]
   \SetAlgoLined
   \KwData{A bipartite graph $G=(L,R,E)$}
-  \KwResult{A (c,a)-recommendation subgraph $H$}
+  \KwResult{A $(c,a)$-recommendation subgraph $H$}
   \For{$u$ in $L$}{
-    neighbors $\leftarrow$ a random sample of $c$ vertices in $N(u)$\;
-    \For{$v$ in neighbors} {
+    $S \leftarrow$ a random sample of $c$ vertices in $N(u)$\;
+    \For{$v$ in S} {
       $H \leftarrow H \cup \{(u,v)\}$\;
    	}
   }

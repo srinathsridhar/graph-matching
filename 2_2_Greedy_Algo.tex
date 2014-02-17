@@ -11,14 +11,17 @@ subgraph $H$ iteratively. \vspace{0.05in}
 \begin{algorithm}[h]
   \SetAlgoLined
   \KwData{A bipartite graph $G=(L,R,E)$}
-  \KwResult{A (c,a)-recommendation subgraph $H$}
+  \KwResult{A $(c,a)$-recommendation subgraph $H$}
+  \For{$u$ in $L$}{
+    $d[u] \leftarrow 0$
+  }
   \For{$v$ in $R$}{
-    freelinks $\leftarrow \{u \in N(v) | useddegree[u] < c\}$\;
-    \If{length(freelinks) $\geq a$}{
-      restrict freelinks to $a$ elements\;
-      \For{$u$ in freelinks}{
+    $F \leftarrow \{u \in N(v) | d[u] < c\}$\;
+    \If{$|F| \geq a$}{
+      restrict $F$ to $a$ elements\;
+      \For{$u$ in $F$}{
         $H \leftarrow H \cup \{(u,v)\}$\;
-        useddegree[$u$] $\leftarrow$ useddegree[$u$]+1\;
+        $d[u] \leftarrow d[u]+1$\;
       }
    	}
   }
