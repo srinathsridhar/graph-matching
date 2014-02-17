@@ -4,15 +4,11 @@
 We simulated performance of our algorithms on random graphs generated
 by the graph models we outlined. In the following figures, each data
 point is obtained by averaging the measurements over 10 random
-graphs. Recall that the partition algorithm split the graph into multiple graphs
-and found matchings in these smaller graphs which were then combined into
-a recommendation subgraph. For this reason, a run of the partition
-algorithm takes much longer to solve a problem instance than either the
-sampling or greedy algorithms. It also takes significantly more memory to
-run. This can be seen in \ref{time_graph} and \ref{space_graph}. We only present
-space and time results for the (3,3)-recommendation problem, but the exact value
-of $a$ and $c$ would only change space and time usage by a constant, so these
-graphs are indicative of time and space usage over all ranges of parameters.\vs
+graphs. We first present the time and space usage of these algorithms when
+solving a $(3,3)$-recommendation subgraph problem in different sized graphs.
+Note that varying the value of $a$ and $c$ would only change space and time
+usage by a constant, so these two graphs are indicative of time and space
+usage over all ranges of parameters
 
 \begin{figure}[t]
 \centering
@@ -29,8 +25,22 @@ graphs are indicative of time and space usage over all ranges of parameters.\vs
 \end{minipage}
 \vspace{-0.2in}
 \end{figure}
-
 \vs
+
+Recall that the partition algorithm split the graph into multiple graphs
+and found matchings in these smaller graphs which were then combined into
+a recommendation subgraph. For this reason, a run of the partition
+algorithm takes much longer to solve a problem instance than either the
+sampling or greedy algorithms. It also takes significantly more memory to
+run. This can easily be seen in \ref{time_graph} and \ref{space_graph}.
+Compare this to greedy and sampling which both require a single pass over
+the graph, and no advanced data structures. In fact, if the adjacency list
+of $G$ is pre-sorted by the edge's endpoint in $L$, then sampling can be
+implemented as an online algorithm. Similarly, if the adjacency list of $G$
+is pre-sorted by the edge's endpoint in $R$, then the greedy algorithm can
+be implemented so that the graph doesn't have to be kept in memory. In this
+event, greedy uses only $O(|L|)$ memory.\vs
+
 Next, we analyze the relative qualities of the solutions each method produces.
 Figures~\ref{fig:a=1:1} and \ref{fig:a=1:2} show that the
 lower bound we calculated for the expected performance of the sampling

@@ -29,13 +29,13 @@ For the realistic value of $c=6$, the greedy algorithm produced a solution that 
 merchants we tested. For several of the merchants, it in fact performed almost optimally starting from $a=2$. \vs
 
 The partition is also promising, especially when the $a$ value we're aiming for is low. Indeed, when $a=1$ or $a=2$,
-it's on average comparable to greedy though not nearly as good as the simulated runs would suggest. In fact, in some
-instances partition can beat the performance of the greedy algorithm. However, as $a$ gets larger, the partition
-algorithm gets worse faster than the other algorithms since the matchings it finds are not informed of the other
-matchings. \vs
+it's on average comparable to greedy though its performance lags behind what the simulated runs would suggest. 
+In some of the low-$a$ instances the partition algorithm can still beat the greedy algorithm. However, as $a$ gets larger,
+the partition algorithm gets worse faster than the other algorithms since the matchings it finds are not informed
+of the other matchings. \vs
 
 The sampling algorithm does mostly fine in real life data, but only when $c$ get rather large. It's obviously worse
 than greedy, but unlike the partition algorithm its performance improves dramatically as $c$ gets larger, and its 
 performance doesn't get worse as quickly when $a$ gets larger. Therefore, as $c$ gets larger, it becomes a viable
-alternative to greedy especially in cases where we can't even pay the $O(|L|+|R|)$ memory cost of the greedy algorithm.
+alternative to greedy especially in cases where we can't even pay the $O(|V|)$ memory cost of the greedy algorithm.
 It is therefore impractical to use on all but the largest of data sets.
