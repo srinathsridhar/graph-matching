@@ -1,20 +1,25 @@
 \subsection{The Partition Algorithm}
-To motivate the partition algorithm, we first define the idea of optimal solutions for the recommendation subgraph problem. 
+To motivate the partition algorithm, we first define the idea of optimal solutions for the recommendation subgraph problem.
 \vs
 
 {\bf Perfect Recommendation Subgraphs:} We define a \emph{perfect} $(c,a)$-recommendation subgraph on $G$ to be a subgraph $H$ such that
 $deg_H(u)\leq c$ for all $u\in L$ and $deg_H(v)=a$ for
 $\min(r,cl/a)$ of the vertices in $R$. 
-
 \vs
 
-We will
-prove a sufficient condition for perfect $(c,a)$-recommendation
-subgraphs to exist in a bipartite graph $G$ under the Erd\"os-Renyi model\cite{ErdosRenyi59} where edges are sampled
-uniformly and independently with probability $p$.
-We then use the algorithm we propose to prove this condition as the Partition algorithm to compare against random choice and greedy in our tests.
-Our result relies on
-the following characterization of perfect matchings.
+The reason we define perfect $(c,a)$-recommendation subgraphs is that when one
+exists, it's possible to recover it in polynomial time using a min-cost
+b-matching algorithm for any setting of $a$ and $c$. However, both  b-matching
+algorithms and their implementations often incur significant overheads even 
+over matchings. This motivates a solution that uses only matchings to approximate
+an optimal solution given that one exists.
+
+We do this by proving a sufficient condition for perfect $(c,a)$-recommendation
+subgraphs to exist with high probability in a bipartite graph $G$ under the
+Erd\"os-Renyi model \cite{ErdosRenyi59} where edges are sampled uniformly and
+independently with probability $p$. This argument then guides our formulation of
+a heuristic that overlays matchings in strategic ways to obtain $(c,a)$-recommendation
+subgraphs.
 
 \begin{thm}\cite{Janson2011}
 \label{random_matching_threshold}
@@ -92,8 +97,8 @@ the Partition Algorithm, and we outline it below.
 
 \begin{thm}
 Let $G$ be drawn from $G_{l,r,p}$ where $p \geq a\frac{\log l - \log\log l}{l}$.
-Then Algorithm 3 \ref{partition_alg} finds a $(1-\epsilon)$-approximation
-in $O(\frac{|E|c^2}{\epsilon})$ time with probability $1-o(1)$.
+Then Algorithm \ref{partition_alg} finds a $(1-\epsilon)$-approximation
+in $O(\frac{|E|}{\epsilon})$ time with probability $1-o(1)$.
 \end{thm}
 \begin{proof}
 Using the previous theorem, we know that each of the graphs $G_i$ has a
@@ -105,6 +110,10 @@ $O(|E|c/\epsilon)$ time. Furthermore, the union of unmatched vertices
 makes up an at most $c(\epsilon/c)$ fraction of $R'$, which proves the claim.
 \end{proof}
 
-Depending on the parameters used, the quality of the solutions given by this algorithm can vary wildly. Given the relative difficulty of finding
-matching in very large scale graphs, we will opt to go for speed more than
-accuracy in our tests.
+Notice that if we were to run the augmenting paths algorithm to completeness
+for each matching $M_i$, then this algorithm would take $O(|E||L|)$ time. We
+could reduce this further to $O(|E|\sqrt{L})$ by using Hopcroft-Karp. Assuming
+a sparse graph where $|E|=\Theta(|L|\log|L|)$, the time complexity of running
+this algorithm comes out to $\Theta(|L|^{3/2}\log|L|)$.  The space complexity
+is only $\Theta(|E|) = \Theta(|L|\log|L|)$, but a large constant is hidden by
+the big-Oh notation that makes this algorithm impractical in real test cases. 
