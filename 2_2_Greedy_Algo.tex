@@ -29,11 +29,11 @@ subgraph $H$ iteratively. \vspace{0.05in}
   \caption{The greedy Algorithm}
 \end{algorithm}\vs
 
-The algorithm loops through each vertex in $R$, and does a constant amount
-of work in each iteration. Therefore, the runtime is linear. Furthermore,
-the only data structure we use is an array which keeps track of $\deg_H(u)$
-for each $u\in R$, so we only use linear memory as well. Finally, we prove
-prove the following tight approximation property of this algorithm.
+The algorithm loops through each vertex in $R$, and considers each edge once.
+Therefore, the runtime is $\Theta(|E|)$. Furthermore, the only data structure
+we use is an array which keeps track of $\deg_H(u)$ for each $u\in L$, so the
+memory consumption is $\Theta(|L|)$. Finally, we prove prove the following tight
+approximation property of this algorithm.
 
 \begin{thm}
 The greedy algorithm gives at last a $1/(a+1)$-approximation to the $(c,a)$-graph

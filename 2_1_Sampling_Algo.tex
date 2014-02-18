@@ -1,9 +1,4 @@
 \section{Algorithms for Recommendation Subgraphs}
-%In this section, we analyze the lazy algorithm of choosing any set of
-%$c$ recommendations, the more interesting greedy algorithm which has
-%better theoretical performance guarantees, and a slower matching based
-%solution that constructs a recommendation subgraph out of overlaying
-%several matchings, in that order.
 
 \subsection{The Sampling Algorithm}
 \label{fixed-degree}
@@ -15,7 +10,7 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
   \KwData{A bipartite graph $G=(L,R,E)$}
   \KwResult{A $(c,a)$-recommendation subgraph $H$}
   \For{$u$ in $L$}{
-    $S \leftarrow$ a random sample of $c$ vertices in $N(u)$\;
+    $S \leftarrow$ a random sample of $c$ vertices without replacement in $N(u)$\;
     \For{$v$ in S} {
       $H \leftarrow H \cup \{(u,v)\}$\;
    	}
@@ -24,14 +19,15 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
   \caption{The sampling algorithm}
 \end{algorithm}\vs
 
-Given a bipartite graph $G$, the algorithm clearly takes linear time
-since we do $|L|$ iterations of the loop, and a constant amount of
-work in each iteration. The space complexity is also linear,
-since the only thing we store is $H$. 
+Given a bipartite graph $G$, the algorithm has runtime complexity of
+$O(|E|)$ since every edge is considered at most once. The space 
+complexity can be taken to be $O(1)$, since the adjacency representation
+of $G$ can be assumed to be pre-sorted by the endpoint of each edge in $L$.\vs
 
-We next introduce a simple random graph model for the supergraph from which we are allowed to choose recommendations and present a
-bound on its expected performance when the underlying supergraph $G=(L,R,E)$
-is chosen probabilistically according to this model. 
+We next introduce a simple random graph model for the supergraph from
+which we are allowed to choose recommendations and present a bound on
+its expected performance when the underlying supergraph $G=(L,R,E)$ is
+chosen probabilistically according to this model. 
 \vs
 
 {\bf Fixed Degree Model:} Each vertex $v\in L$

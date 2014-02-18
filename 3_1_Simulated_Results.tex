@@ -73,10 +73,6 @@ and the sampling algorithms.
 \end{figure}
 
 
-% Can we show the graph for larger c? Maybe up to 20?
-% Also I can't believe that greedy is optimal. I am still tempted to say that
-% greedy will do badly when d is small. Like d < 5.
-
 \vs
 In contrast to the case when $a=1$, the sampling algorithm performs
 worse when $a>1$ but performs increasingly better with $c$ as
@@ -107,6 +103,7 @@ we still find that the greedy performs adequately and is simple to implement.
 
 \vs
 In short, our synthetic experiments show the following strengths of each algorithm:\\
+
 \textbf{Sampling Algorithm:} This algorithm uses little to no memory and can
 be implemented as an online algorithm. If keeping the underlying graph in
 memory is an issue, then chances are this algorithm will do well while only needing
