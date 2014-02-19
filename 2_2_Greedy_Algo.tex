@@ -5,7 +5,7 @@
 %it is possible to obtain good solutions regardless of the model that
 %generated the recommendation subgraph. \vs
 
-We now analyze the following natural greedy algorithm for constructing a $(c,a)$-recommendation
+We next analyze the natural greedy algorithm for constructing a $(c,a)$-recommendation
 subgraph $H$ iteratively. \vspace{0.05in}
 
 \begin{algorithm}[h]
@@ -32,11 +32,11 @@ subgraph $H$ iteratively. \vspace{0.05in}
 The algorithm loops through each vertex in $R$, and considers each edge once.
 Therefore, the runtime is $\Theta(|E|)$. Furthermore, the only data structure
 we use is an array which keeps track of $\deg_H(u)$ for each $u\in L$, so the
-memory consumption is $\Theta(|L|)$. Finally, we prove prove the following tight
+memory consumption is $\Theta(|L|)$. Finally, we prove the following tight
 approximation property of this algorithm.
 
 \begin{thm}
-The greedy algorithm gives at last a $1/(a+1)$-approximation to the $(c,a)$-graph
+The greedy algorithm gives a $1/(a+1)$-approximation to the $(c,a)$-graph
 recommendation problem.
 \end{thm}
 \begin{proof}
@@ -50,9 +50,8 @@ Each selection of the greedy algorithm might result in
 some candidates becoming infeasible, but it can continue as long as the candidate pool is not depleted.
 Each time the greedy algorithm selects some vertex $v\in
 R$ with edges to $\{u_1,\ldots, u_a\}$, we remove $v$ from the candidate pool.
-If any $u_i$ had degree $c$ in the optimal solution, we would also need to
-remove an arbitrary vertex $v_i\in R$ adjacent to $u_i$ from the optimal
-solution.
+Furthermore each $u_i$ could have degree $c$ in the optimal solution and used each of its edges to make a neighbor attain degree $a$. The greedy choice of an edge to $u_i$ requires us to remove such an edge to an arbitrary vertex $v_i\in R$ adjacent to $u_i$ in the optimal
+solution, and thus remove $v_i$ from further consideration in the candidate pool.
 %In other words, by using an edge of $u_i$, we force it to
 %not use an edge it used to some other $v_i$, which might cause the
 %degree of $v_i$ to go below $a$.
@@ -64,6 +63,7 @@ vertices to the solution.
 \end{proof}
 
 \begin{figure}[H]
+\label{fig:greedy}
 \centering
 \includegraphics[width=.39\textwidth]{images/greedy.png}
 \caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are available. The potentially invalidated edges are shown in red.}
@@ -71,15 +71,16 @@ vertices to the solution.
 
 This approximation guarantee is as good as we can expect,
 since for $a=1$ we recover the familiar $1/2$-approximation
-of the greedy algorithm for matchings. As in matchings,
-randomizing the order in which the vertices are processed still
-leaves a constant factor gap in the quality of the solution
+of the greedy algorithm for matchings. Furthermore, even in the case of matchings ($a=1$),
+randomizing the order in which the vertices are processed is still
+known to leave a constant factor gap in the quality of the solution
 ~\cite{KarpVaziraniVazirani1990}. Despite this result, the greedy
-algorithm fares much better when we give it the same expectation
-treatment we have given the sampling algorithm. Switching to the
-Erd\"{o}s-Renyi model instead of the fixed degree model used in
+algorithm fares much better when we analyze its expected performance.
+Switching to the
+{\bf Erd\"{o}s-Renyi model} instead of the fixed degree model used in
 the previous section, we now prove the near optimality of the
-greedy algorithm for the $(c, a)$-recommendation subgraph problem.
+greedy algorithm for the $(c, a)$-recommendation subgraph problem. 
+Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.
 
 \begin{thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:

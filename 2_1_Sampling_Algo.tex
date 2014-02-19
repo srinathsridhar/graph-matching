@@ -20,25 +20,27 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
 \end{algorithm}\vs
 
 Given a bipartite graph $G$, the algorithm has runtime complexity of
-$O(|E|)$ since every edge is considered at most once. The space 
+$O(|E|)$ since every edge is considered at most once. The space
 complexity can be taken to be $O(1)$, since the adjacency representation
 of $G$ can be assumed to be pre-sorted by the endpoint of each edge in $L$.\vs
 
 We next introduce a simple random graph model for the supergraph from
 which we are allowed to choose recommendations and present a bound on
 its expected performance when the underlying supergraph $G=(L,R,E)$ is
-chosen probabilistically according to this model. 
+chosen probabilistically according to this model.
 \vs
 
-{\bf Fixed Degree Model:} Each vertex $v\in L$
+{\bf Fixed Degree Model:} In this model for generating the candidate 
+recommendation graph, each vertex $v\in L$
 uniformly and independently samples a set of $d$ neighbors from $R$.
 This model is similar to, but is distinct from the more commonly
-known Erd\"{o}s-Renyi model of random graphs. In particular, while the
+known Erd\"{o}s-Renyi model of random graphs~\cite{janson2011random}. In particular, while the
 degree of each vertex in $L$ is fixed under this model, concentration
 bounds can show that the degrees of the vertices in $L$ would have
 similarly been concentrated around $d$ under appropriate parameter
-settings. We prove the following theorem about the performance
-of the Sampling Algorithm.
+settings in the Erd\"{o}s-Renyi model. 
+We prove the following theorem about the performance
+of the Sampling Algorithm. We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define $k = \frac{l}{r}$.
 
 \begin{thm}\label{original_result}
 Let $S$ be the
@@ -99,13 +101,23 @@ particular, if $ck=0.1$ then the solution will be at 95\% as good as
 the optimal solution. The case when $ck=1$ represents the
 worst case outcome for this model where we only guarantee 63\%
 optimality. Figure~\ref{fig:simple_approx} shows the approximation ratio as a
-function of $ck$.\vs
+function of $ck$ for the $(c,1)$-recommendation subgraph problem in the fixed degree model.\vs
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{images/sri_Original.png}
   \caption{Approx ratio as a function of $ck$ }\label{fig:simple_approx}
 \end{figure}
+
+For the general $(c, a)$-recommendation subgraph problem, if $ck>a$,
+then the problem is easy on average. This is in comparison to the
+trivial estimate of $cl$. For a fixed $a$, a random solution gets
+better as $ck$ increases because the decrease in $e^{-ck}$ more than
+compensates for the polynomial in $ck$ next to it. However, in the
+more realistic case $ck<a$, we need to use the trivial estimate of
+$ckr/a$, and the analysis for $a=1$ does not extend here. The table
+in Figure~\ref{a-values} shows how large $ck$ needs to be for the
+solution to be 95\% optimal for different values of $a$, again in the fixed degree model.\vs
 
 \begin{figure}[H]
   %\vspace{.2cm}
@@ -120,16 +132,6 @@ function of $ck$.\vs
   \label{a-values}
 \end{figure}
 
-
-For the general $(c, a)$-recommendation subgraph problem, if $ck>a$,
-then the problem is easy on average. This is in comparison to the
-trivial estimate of $cl$. For a fixed $a$, a random solution gets
-better as $ck$ increases because the decrease in $e^{-ck}$ more than
-compensates for the polynomial in $ck$ next to it. However, in the
-more realistic case $ck<a$, we need to use the trivial estimate of
-$ckr/a$, and the analysis for $a=1$ does not extend here. The table
-in Figure~\ref{a-values} shows how large $ck$ needs to be for the
-solution to be 95\% optimal for different values of $a$.\vs
 
 We close out this section by showing that the main result that holds
 in expectation also hold with high probability for $a=1$, using the
@@ -149,7 +151,7 @@ $ S \leq r(1-2\exp(-ck))$ with probability at most $(e/4)^{r(1-\exp(-ck))}$.
 \end{thm}
 
 \begin{proof}
-We can write $S$ as $\sum_{v\in R} 1-X_v$ where $X_v$ is the indicator
+We can write $S$ as $\sum_{v\in R} (1-X_v)$ where $X_v$ is the indicator
 variable that denotes that $X_v$ is matched. Note that the variables
 $1-X_v$ for each $v\in R$ are non-positively correlated. In
 particular, if $N(v)$ and $N(v')$ are disjoint, then $1-X_v$ and
@@ -161,4 +163,4 @@ apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ to obtain
 the result.
 \end{proof}
 
-For realistic scenarios where $r$ is very large, this gives very good bounds. 
+For realistic scenarios where $r$ is very large, the above theorem gives very tight bounds on the size of the solution, also explaining the effectiveness of the simple sampling algorithm in such instances.
