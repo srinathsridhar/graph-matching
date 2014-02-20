@@ -77,9 +77,9 @@ known to leave a constant factor gap in the quality of the solution
 ~\cite{KarpVaziraniVazirani1990}. Despite this result, the greedy
 algorithm fares much better when we analyze its expected performance.
 Switching to the
-{\bf Erd\"{o}s-Renyi model} instead of the fixed degree model used in
+{\bf Erd\"{o}s-Renyi model}~\cite{ErdosRenyi59} instead of the fixed degree model used in
 the previous section, we now prove the near optimality of the
-greedy algorithm for the $(c, a)$-recommendation subgraph problem. 
+greedy algorithm for the $(c, a)$-recommendation subgraph problem.
 Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.
 
 \begin{thm}
@@ -89,17 +89,25 @@ Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the
 \begin{proof}
 Note that if edges are generated uniformly, we can consider the
 graph as being revealed to us one vertex at a time as the greedy
-algorithm runs. In particular, consider the event $X_i$ that the
-greedy algorithm matches the $(i+1)^{th}$ vertex it inspects. While,
+algorithm runs. In particular, consider the event $X_{i+1}$ that the
+greedy algorithm matches the $(i+1)^{st}$ vertex it inspects. While,
 $X_{i+1}$ is dependent on $X_1,\ldots, X_i$, the worst condition for
 $X_{i+1}$ is when all the previous $i$ vertices were from the same
 vertices in $L$, which are now not available for matching the
-$(i+1)^{th}$ vertex. The maximum number of such invalidated vertices
-is at most $\lceil i/c \rceil$. Therefore, the probability that fewer
-than $a$ of the at least $l-\lceil i/c \rceil $ available
-vertices have an edge to this vertex is at most $\Pr[Y\sim Bin(l-\frac{i}{c},p): Y < a]$.
-We can bound this probability by bounding each term in its binomial
-expansion by $(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}$ to obtain the following.
+$(i+1)^{st}$ vertex. The maximum number of such invalidated vertices
+is at most $\lceil ia/c \rceil$. Therefore, the bad event
+is that we have fewer
+than $a$ of the at least $l-\lceil ia/c \rceil $ available
+vertices having an edge to this vertex, and the probability of this
+bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the probability that
+a Binomial random variable with $l - \frac{ia}{c}$ trials of probability $p$ of success
+for each trial has less than $a$ successes.
+We can bound this probability by upper-bounding the $t^{th}$ term above in its binomial
+expansion by ${{l-\frac{ia}{c}}\choose{t}} (1-p)^{l-\frac{ia}{c}-t}(p)^{t} \leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}$ to obtain the following.
+%$(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}$ to obtain the following.
+
+%Arda: I dont see how you get the following from above: In particular for p <1/2, you should be getting rid of the p^a term and have only the (1-p) terms...???
+
 
 \[ \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \leq a (1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}\]
 
@@ -115,5 +123,7 @@ we obtain
 
 Asymptotically, this result explains why the greedy
 algorithm does much better in expectation than $1/(a+1)$ guarantee we
-can prove in the worst case. In particular, suppose $a$ and $c$ are fixed and that
+can prove in the worst case.
+%Arda: The following does not make much sense to me either. I assume you are talking about lc >> ra to get high coverage from the left to the right, but I dont see how you get the expressions that are sublinear in l??
+In particular, suppose $a$ and $c$ are fixed and that
 $l/r$ is taken to be a constant as both $l$ and $r$ tend to $\infty$. In the realm where sublinear error is possible (i.e. when $lc/a>r$) each term in the sum above becomes $\Theta(l^{-\epsilon})$ for some $\epsilon>0$ if we set $p=\Theta(\log(l)/l)$. Consequently, the error term reduces to $\Theta(l^{1-\epsilon}\log^a(l))$ which is sublinear on the number of vertices.

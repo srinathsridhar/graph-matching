@@ -30,7 +30,7 @@ its expected performance when the underlying supergraph $G=(L,R,E)$ is
 chosen probabilistically according to this model.
 \vs
 
-{\bf Fixed Degree Model:} In this model for generating the candidate 
+{\bf Fixed Degree Model:} In this model for generating the candidate
 recommendation graph, each vertex $v\in L$
 uniformly and independently samples a set of $d$ neighbors from $R$.
 This model is similar to, but is distinct from the more commonly
@@ -38,7 +38,7 @@ known Erd\"{o}s-Renyi model of random graphs~\cite{janson2011random}. In particu
 degree of each vertex in $L$ is fixed under this model, concentration
 bounds can show that the degrees of the vertices in $L$ would have
 similarly been concentrated around $d$ under appropriate parameter
-settings in the Erd\"{o}s-Renyi model. 
+settings in the Erd\"{o}s-Renyi model.
 We prove the following theorem about the performance
 of the Sampling Algorithm. We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define $k = \frac{l}{r}$.
 
@@ -57,7 +57,9 @@ degree of the vertex $v$ in our subgraph. Because our algorithm
 uniformly subsamples a uniformly random selection of edges, we can
 assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. So $X_{uv}$ is a
-Bernoulli random variable. Using the bound $\binom{n}{i}
+Bernoulli random variable.
+%Arda: We sample without replacement, so there might be some error/approximation in assuming Bernoulli. Can you make this more formal? e.g. Since typically c << r, we can assume that X is Bernoulli with success probability 1/r...
+Using the bound $\binom{n}{i}
 \leq n^i$ on binomial coefficients we get,
 
 \begin{align*}
@@ -114,7 +116,7 @@ then the problem is easy on average. This is in comparison to the
 trivial estimate of $cl$. For a fixed $a$, a random solution gets
 better as $ck$ increases because the decrease in $e^{-ck}$ more than
 compensates for the polynomial in $ck$ next to it. However, in the
-more realistic case $ck<a$, we need to use the trivial estimate of
+more realistic case, the undiscovered pages in $R$ too numerous to be all covered even if we used the full set of budgeted links allowed out of $L$, i.e. $cl < ra$ or rearranging, $ck<a$; in this case, we need to use the trivial estimate of
 $ckr/a$, and the analysis for $a=1$ does not extend here. The table
 in Figure~\ref{a-values} shows how large $ck$ needs to be for the
 solution to be 95\% optimal for different values of $a$, again in the fixed degree model.\vs

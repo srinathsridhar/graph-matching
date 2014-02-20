@@ -4,27 +4,27 @@ To motivate the partition algorithm, we first define the idea of optimal solutio
 
 {\bf Perfect Recommendation Subgraphs:} We define a \emph{perfect} $(c,a)$-recommendation subgraph on $G$ to be a subgraph $H$ such that
 $deg_H(u)\leq c$ for all $u\in L$ and $deg_H(v)=a$ for
-$\min(r,cl/a)$ of the vertices in $R$. 
+$\min(r,\lfloor cl/a \rfloor)$ of the vertices in $R$.
 \vs
 
 The reason we define perfect $(c,a)$-recommendation subgraphs is that when one
 exists, it's possible to recover it in polynomial time using a min-cost
-b-matching algorithm for any setting of $a$ and $c$. However, both  b-matching
-algorithms and their implementations often incur significant overheads even 
-over matchings. This motivates a solution that uses only matchings to approximate
-an optimal solution given that one exists.
+$b$-matching algorithm (matchings with a specified degree $b$ on each vertex) for any setting of $a$ and $c$. However, implementations of $b$-matching
+algorithms often incur significant overheads even
+over regular bipartite matchings. This motivates a solution that uses regular bipartite matching algorithms to find an approximately
+optimal solution given that a perfect one exists.
 
 We do this by proving a sufficient condition for perfect $(c,a)$-recommendation
 subgraphs to exist with high probability in a bipartite graph $G$ under the
-Erd\"os-Renyi model \cite{ErdosRenyi59} where edges are sampled uniformly and
+{\bf Erd\"os-Renyi model}~\cite{ErdosRenyi59} where edges are sampled uniformly and
 independently with probability $p$. This argument then guides our formulation of
-a heuristic that overlays matchings in strategic ways to obtain $(c,a)$-recommendation
+a heuristic that overlays matchings carefully to obtain $(c,a)$-recommendation
 subgraphs.
 
 \begin{thm}\cite{Janson2011}
 \label{random_matching_threshold}
 Let $G$ be a bipartite graph drawn from $G_{n, n, p}$. If $p \geq \frac{\log n -
-\log\log n}{n}$, then as $\lim_{n\to\infty}$ probability that G has a perfect
+\log\log n}{n}$, then as $n\to\infty$,  the probability that G has a perfect
     matching approaches 1.
 \end{thm}
 
@@ -39,7 +39,7 @@ be $\Omega(\frac{\log n}{n})$ for this to succeed.
 
 \begin{thm}\label{perfect}
 Let $G$ be a random graph drawn from $G_{l, r, p}$ with $p\geq a\frac{\log l-\log\log
-l}{l}$ and $kc \geq a$, then the probability that $G$ has a perfect $(c, a)$-recommendation
+l}{l}$ and $kc \geq a$ (or $lc \geq ra$), then the probability that $G$ has a perfect $(c, a)$-recommendation
 subgraph tends to 1 as $l,r\to\infty$.
 \end{thm}
 
@@ -47,6 +47,7 @@ subgraph tends to 1 as $l,r\to\infty$.
 Given the size and the degree constraints of $L$, at most $lc/a$
 vertices in $R$ can have degree $a$ in a $(c,a)$-recommendation subgraph. We
 therefore restrict $R$ to an arbitrary subset $R'$ of size $lc/a$.
+%Arda: We assumed kc \geq a, so we always get R' to be all of R??? Can you clarify?
 Next, we pick an enumeration of the vertices in $R'=\{v_0,\ldots, v_{lc/a-1}\}$
 and add each of these vertices into $a$ subsets as follows. Define
 $R_i = \{v_{(i-1)l/a}, \ldots, v_{(i-1)l/a+l-1}\}$ for each $1\leq i\leq c$ where
@@ -56,7 +57,9 @@ the $R_i$'s have size $l$. \vs
 Using these new sets we define the graphs $G_i$ on the bipartitions
 $(L, R_i)$. Since the sets $R_i$ are intersecting, we cannot define the
 graphs $G_i$ to be induced subgraphs. However, note that each vertex $v\in R'$
-falls into exactly $a$ of these subsets. Therefore, we can uniformly randomly assign each edge in $G$ to one of $a$ graphs among $\{G_1,\ldots, G_c\}$ it can fall into,
+falls into exactly $a$ of these subsets. 
+%Arda: Is this still true if we have lc >> ar? We might have overcoverage of the nodes of R by more than a sets but this should only help us... At least clarify what is going on in the general case with a few more sentences.
+Therefore, we can uniformly randomly assign each edge in $G$ to one of $a$ graphs among $\{G_1,\ldots, G_c\}$ it can fall into,
 and make each of those graphs a random graph. In fact, while the different
 $G_i$ are coupled, taken in isolation we can consider any single $G_i$ to be
 drawn from the distribution $G_{l,l,p/a}$ since $G$ was drawn from $G_{l,r,p}$.
@@ -86,6 +89,7 @@ the Partition Algorithm, and we outline it below.
   \KwData{A bipartite graph $G=(L,R,E)$}
   \KwResult{A (c,a)-recommendation subgraph $H$}
   $R' \leftarrow$ a random sample of $|L|c/a$ vertices from $R$\;
+%Arda: In light of above comments. I am not sure you need to define R'
   Choose $G[L,R_1],\ldots,G[L,R_c]$ as in Theorem \ref{perfect}\;
   \For{$i$ in [1..n]} {
     $M_i \leftarrow$ A matching of $G[L,R_i]$ with no augmenting path of length $2c/\epsilon$\;
@@ -112,7 +116,9 @@ makes up an at most $c(\epsilon/c)$ fraction of $R'$, which proves the claim.
 
 Notice that if we were to run the augmenting paths algorithm to completeness
 for each matching $M_i$, then this algorithm would take $O(|E||L|)$ time. We
-could reduce this further to $O(|E|\sqrt{L})$ by using Hopcroft-Karp. Assuming
+could reduce this further to $O(|E|\sqrt{L})$ by using Hopcroft-Karp. 
+%Arda: Add citation to Hopcroft-Karp here
+Assuming
 a sparse graph where $|E|=\Theta(|L|\log|L|)$, the time complexity of running
 this algorithm comes out to $\Theta(|L|^{3/2}\log|L|)$.  The space complexity
 is only $\Theta(|E|) = \Theta(|L|\log|L|)$, but a large constant is hidden by
