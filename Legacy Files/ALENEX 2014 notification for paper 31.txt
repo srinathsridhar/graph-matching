@@ -1,0 +1,324 @@
+
+Subject:
+ALENEX 2014 notification for paper 31
+From:
+ALENEX 2014 <alenex2014@easychair.org>
+Date:
+10/28/2013 12:18 PM
+To:
+R Ravi <ravi@andrew.cmu.edu>
+
+Dear R Ravi,
+
+Thank you for your submission to ALENEX 2014.
+
+On behalf of the Program Committee,
+we regret to inform you that your paper titled
+
+The Lazy Engineer and Recommendation Subgraphs
+
+could not be accepted for presentation at ALENEX 2014.
+
+This year’s review process was extremely rigorous because of a
+large number of submissions. Each paper received at least three
+peer reviews and intensive discussion among PC members. Due to the
+one day/one track format of ALENEX, the Program Committee could
+only accept 15 papers out of 68 submissions, i.e., an acceptance
+rate of about 22%. As a consequence, many good papers had to be
+rejected.
+
+Reviews are attached to this notification. We hope the comments
+could be helpful for your further research.
+
+You are warmly welcomed to participate in ALENEX 2014.
+The list of accepted papers will be available soon from the website.
+
+Catherine McGeoch and Ulrich Meyer (PC co-chairs)
+
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 31
+TITLE: The Lazy Engineer and Recommendation Subgraphs
+AUTHORS: Arda Antikacioglu, R Ravi and Srinath Sridhar
+
+OVERALL EVALUATION: -2 (reject)
+REVIEWER'S CONFIDENCE: 3 (medium)
+
+----------- REVIEW -----------
+This paper considers the problem of finding a (c,a)-matching in a
+bipartite graph, where each vertex in L can be incident to at most
+c matched edges, and each vertex in R is incident to at least a
+matched edges. The problem is motivated by giving recommendations
+to users for example in Youtube, Amazon, etc. Given the scale of
+the problem, simple algorithms are desirable. The authors analyze
+random and greedy algorithms on several random graph models, and
+validate the results computationally.
+
+The authors motivate the need for simple algorithms, but they do
+not motivate their choice of objective, which is to maximize the
+number of vertices in R that receive at least $a$ recommendations
+from vertices in L. They claim that in practice, values of $a$
+between 1 and 5 are used, but I don't really see why for example
+Youtube wants to maximize the number of videos that get linked to?
+
+I read the paper up to Theorem 6. I believe the proof of Theorem 6
+is incorrect and only holds if p > 1/2. Otherwise, I don't see how
+you can bound "each term in its binomial expansion" as they do. If
+p > 1/2, then the Erdos-Renyi graph is very dense, and it is not
+that surprising that greedy gives a good approximation guarantee.
+The results before Thm 6 seem OK but they are pretty
+straightforward.
+
+Detailed comments:
+
+p.1 : why is it interesting that the requirement that your
+recommendation subgraph is strongly connected and c=1 gives the
+Hamiltonian cycle problem? Sure, it is true, but this is not the
+problem you are considering.
+
+p. 2: \ell and r are used, but not defined here
+
+p. 3: Do you assume that you can choose multiple copies of (u,v)?
+If not, I don't see why $X_v$ is a binomial random variable with
+parameters $c\ell$ and $1/r$. For your setting, it does not really
+matter, since $\ell, r$ are much larger than $c$, but it is not
+correct as written.
+
+p. 5: you use notation that is never introduced such as $Bin$.
+
+p. 5: it seems that the number of such invalidated vertices is at
+most $\lceil ic/a \rceil$ instead of what you claim.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 31
+TITLE: The Lazy Engineer and Recommendation Subgraphs
+AUTHORS: Arda Antikacioglu, R Ravi and Srinath Sridhar
+
+OVERALL EVALUATION: -1 (weak reject)
+REVIEWER'S CONFIDENCE: 2 (low)
+
+----------- REVIEW -----------
+The authors study a graph optimization problem motivated by
+recommendation systems in websites such as YouTube and Amazon.
+
+In abstract graph terms we are given a bipartite digraph
+and two numbers c and a. In the input graph G=(L,R,E) edges
+are directed from L to R and each vertex in L has degree d.
+We wish to extract a subgraph of G, where each vertex from
+L has out-degree only some prescribed c<d and the
+optimization goal is to maximize the number of vertices
+that have in-degree at least a given integer a.
+
+The authors analyze the performance of some simple (here's
+the lazy engineer) approaches to approximating the optimal
+solution, using randomization or a greedy approach. Some
+different randomization models are tested. Various bounds
+are derived as well as generalizations of the problem to
+better reflect the original motivating problems. Empirical
+results are also reported.
+
+The basic ideas in the paper are rather simple yet it is
+rich in observations. I liked reading it. I do have however
+some reservations about it, which I detail next . I hope
+the authors will address these in preparing a revision.
+
+The opening sentence in motivating the work is "Over the
+past few years, the first and third authors have
+implemented complex graph algorithms in cutting-edge
+web-technology companies including Google, Facebook and
+BloomReach." It was then rather disappointing to find out
+that only a tiny part of the empirical results relate to
+practice rather than to simulation of random graphs.
+
+The writing could be improved in several ways. Let me
+mention a few:
+ - It would be helpful to have a formal definition of the
+problem addressed in pure graph terms, unclouded by the
+motivation terminology.
+ - The exposition in Section 4 is too cursory and hard to
+follow. It seems like the authors ran out of steam in
+trying to explain their work. Clarity of exposition could
+also be improved earlier.
+
+typos, specifics
+
+ p 2 , middle,  "at most \frac{cl}{a}": l has not been
+defined yet
+
+ p 4, 2nd parag, "in the more realistic case ck<a": why is
+this more realistic?
+
+ p 5, Thm 6, define G_{l,r,p}
+
+ p 6, Thm 7, rephrase, remove "lim"
+
+ p 8, middle, theedges, add space
+
+ p 8, 2 lines before Sec 4.1: "While we only present" gives
+the impression that you have done the work but do not report
+it, whereas "can be extended" implies you have not done it.
+Be more explicit here.
+
+ ref [7], capital letters in Cambodia and Ghana
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 31
+TITLE: The Lazy Engineer and Recommendation Subgraphs
+AUTHORS: Arda Antikacioglu, R Ravi and Srinath Sridhar
+
+OVERALL EVALUATION: -1 (weak reject)
+REVIEWER'S CONFIDENCE: 3 (medium)
+
+----------- REVIEW -----------
+The authors describe some simple algorithms for a central problem
+in building web-based recommendation systems. The problem is well
+motivated, and the authors explain convincingly why simple
+algorithms (preferred by a lazy engineer) that scale well in a
+distributed environment, and that can be applied apply to huge web
+graphs are important to consider. They derive some nice theoretical
+results as well.
+
+Their general conclusion of their analyses is that simple
+algorithms do just as well (between 90 and 100 percent of optimal
+solutions) as complex and un-implementable algorithms. This seems a
+very nice example of the KISS rule. I hope the authors will
+continue to work on this problem.
+
+However, there is a huge mis-match between the problem described in
+the introduction and the experimental work presented in Section 3.
+In general the experiments are too limited, un-explained, and
+inconclusive for ALENEX standards. Some specific criticisms:
+
+1. The authors say (p1) that typical problems are of size L = 100,
+R = 100M, which motivates the need for fast simple algorithms. And
+that in practice L can be up to two orders of magnitude smaller
+than R. But the experiments in figures 4..6 are for L = 25k, 50k
+and R = 100k -- is there any reason to think these results will
+scale to the graph sizes described in the introductions.
+
+2. The authors spend some time explaining why simple and fast is
+desirable, but there is no mention of the computation times for
+their implementations -- are they fast, or not? Would they be fast
+enough on the huge real-world problems?
+
+2b. It is stated (p2) that two of the authors have spent
+considerable time implementing complicated graph algorithms for
+cutting-edge companies. So can we get an idea about how these
+proposed simple ideas might compare to those complex ideas? Can the
+authors find some real data to test their ideas on?
+
+3. The authors mention (top of sect 3) that they simulated the
+performance of their algorithms on random graphs generated by the
+various graph models they have outlined. But the only experimental
+results (Figs 4..7) apparently refer to the simple random model --
+what about the others, which the authors argue (in Section 1) are
+the important ones?
+
+(It is possible that these Figs do refer to the others, but the
+authors fail to mention it -- if so, that is just one example of a
+significant lack of detail in describing what exactly their
+experiments were for.)
+
+And so forth. While I am enthusiastic about this research path, the
+authors need to develop experimental analyses that are relevant to
+their problem and proposed algorithms.
+
+
+----------------------- REVIEW 4 ---------------------
+PAPER: 31
+TITLE: The Lazy Engineer and Recommendation Subgraphs
+AUTHORS: Arda Antikacioglu, R Ravi and Srinath Sridhar
+
+OVERALL EVALUATION: -1 (weak reject)
+REVIEWER'S CONFIDENCE: 3 (medium)
+
+----------- REVIEW -----------
+The paper discusses solutions for recommendation subgraphs. Given a
+set L of items (perhaps a set of movies that a customer watched),
+the goal is to come up with a small set of relevant recommendations
+for that customer.
+
+This can be modeled as a bipartite graph, where vertices are items,
+one side of the partition is the set L of items for which we are
+required to give recommendations, and the other side is the set R
+of possible recommended items; a directed edge (u,v) means u
+recommends v.
+
+For each vertex v in L we assume we are given a set of d vertices
+that are similar---thus d outgoing edges from v. The goal is to
+prune R to a small set of c< d outgoing edges per vertex.
+
+The question is how to select a good small subset of R. The author
+define the problem as finding a subgraph (containing all vertices
+in L) where each vertex in L has c<d outgoing edges, so that the
+number of vertices in R that have in-degree at least a target
+integer a is maximized.
+
+Throughout the paper the authors refer rather indirectly to three
+algorithms for this problem: 1. random sampling (basically randomly
+selecting c edges per vertex in L), also referred as the lazy
+engineer approach 2. greedy (add vertices to R in some greedy
+fashion) 3. partition (split into smaller graphs, find
+recommendations in each component and then combine them together)
+
+The main contribution of the paper is to give bounds on the quality
+of the solution computed with these algorithms under some
+assumptions on the parameters c and a. To do so they employ a
+fixed-degree random graph model, and show that the random sampling
+approach is very effective at approximating the optimal solution.
+They prove a good approximation bound for the greedy algorithm
+irrespective of the model, and an even better one assuming the
+Erdos-Renyi random graph model. They study the condition under
+which a so-called perfect recommendation subgraph exists, and
+describe three new graph models more suitable for recommendations:
+a hierarchical tree model, a cartesian product model and a weighted
+graph model.
+
+The theoretical results are strong, and clearly a good step in
+understanding the behavior of these algorithms.
+
+However overall the paper is unfulfilling in its current form. It
+feels that the paper was written with very little attention to the
+actual algorithms and the experimental results.
+
+A big concern is the lack of a literature review and proper
+discussion. The related work section is very small, and the reader
+learns nothing about what is known and what has been done on this
+topic. Is this the well-accepted definition of the problem, or are
+there other ways to approach recommendation subgraphs? Is it known
+what companies like Amazon, Google, Facebook, etc use? The
+algorithms analyzed in this paper are straightforward---someone
+myst have tried them before?
+
+The authors say "matching algorithms require linear memory and
+super-linear run time which does not scale well'. Can you be a bit
+more specific?
+
+The authors say that algorithms would easily require 160GB in main
+memory: I assume the problem needs to be solved online, so
+IO-efficient algorithms (that might take a few hours) are not an
+option. In practice, according to the author, the problem is solved
+offline using distributed computing. What is the difference between
+an online instance versus an offline instance? Is it possible to
+precompute ahead of time the answer to any query?
+
+The paper is centered around proving the quality results. The
+algorithms are not properly presented. There is no analysis of
+running time. The third algorithm that uses partition is not
+described at all actually. Sure, the authors can argue that the
+algorithms are pretty straightforward, still, when I see plots
+showing the comparative performance I like to know precisely what
+is compared. Note that none of the experiments runs on large graphs
+(100k vertices).
+
+The experimental section is thin, and I don't feel that I learnt
+much. They give graphs that show the approximation ratios wrt the
+optimal algorithm for each of the three algorithms above, for
+various instances of simulated random graphs. The experiments
+validate what the theoretical results, and show that the
+algorithms, especially greedy, is close to optimal. But are random
+graphs realistic models? Would it be possible to run some
+experiments on "real" data? The authors need to convince us why
+they didn't do it.
