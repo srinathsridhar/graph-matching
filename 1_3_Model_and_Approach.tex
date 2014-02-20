@@ -24,7 +24,11 @@ matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we
 obtain a $b$-matching problem, that can be converted to a bipartite
 matching problem~\cite{Gabow1983}.\vs
 
-We now describe typical web graph characteristics by discussing the sizes of $L$, $R$, $c$ and $a$ in practice. As noted before, in most websites, a small number of `head' pages contribute to a significant amount of the traffic while a long tail of the remaining pages contribute to the rest~\cite{HubermanAdamic1999,
+We now describe typical web graph characteristics by discussing the
+sizes of $L$, $R$, $c$ and $a$ in practice. As noted before, in most
+websites, a small number of `head' pages contribute to a significant
+amount of the traffic while a long tail of the remaining pages
+contribute to the rest~\cite{HubermanAdamic1999,
   DuDemmerBrewer2006}. As demonstrated by a prior
 measurement~\cite{KumarNorrisSun2009} it is not unreasonable to expect
 50\% of site traffic to be contributed by less than 1\% (a few
@@ -32,34 +36,76 @@ thousands) of the web pages while a large number of tail pages (a few
 hundred thousand) contribute the other half. This implies that in
 practice $L$ can be up to two orders of magnitude smaller than $R$.
 By observing recommendations of Quora, Amazon, YouTube and our own
-work at BloomReach, typical values for $c$ range from 3 to 20 recommendations per
-page. Values of $a$ are harder to nail down but it typically ranges
-from $1$ to $5$. The redundancy expressed by $a$ reflects the amount of coverage required by web-crawlers for the page to include it in the searchable index of the crawler.
-\vs
+work at BloomReach, typical values for $c$ range from 3 to 20
+recommendations per page. Values of $a$ are harder to nail down but it
+typically ranges from $1$ to $5$. The redundancy expressed by $a$
+reflects the amount of coverage required by web-crawlers for the page
+to include it in the searchable index of the crawler.  \vs
 
 \subsection{Practical Requirements}
 
-Over the past few years, the authors have implemented complex graph algorithms in production software environments.
-There are two key requirements in making such graph algorithms
+Maintaining production software packages especially those involving algorithms
+are extremely hard. There are two key requirements in making graph algorithms
 practical. The first is that the method used must be very simple to
 implement, debug, deploy and most importantly maintain long-term. The second is that the method must scale
 gracefully with larger sizes. \vs
 
-Matching algorithms require linear memory and super-linear run-time
-which does not scale well. For example, a
-e-commerce website of a client of BloomReach with 1M product pages and 100 recommendation candidates per
-product would require easily over 160GB in main memory to run matching
-algorithms; this can be reduced by using graph compression techniques but that adds more technical difficulties in development and maintenance. In practice offline problem instances are solved by using distributed computing such as map-reduce~\cite{DeanGhemawat2004}. However, efficient map-reduce algorithms for graph problems are notoriously difficult and complicated. \vs
+Graph matching algorithms require linear memory and super-linear run-time
+which does not scale well. For example, an e-commerce website of a
+client of BloomReach with 1M product pages and 100 recommendation
+candidates per product would require easily over 160GB in main memory to store the graph
+and run matching algorithms; this can be reduced by using graph
+compression techniques but that adds more technical difficulties in
+development and maintenance. Algorithms that are time intensive
+can sometimes be sped-up by using distributed computing techniques such as
+map-reduce~\cite{DeanGhemawat2004}. However, efficient map-reduce
+algorithms for graph problems are notoriously difficult. \vs
 
 \subsection{Simple Solutions}
 
-To circumvent the time and space complexity of implementing optimal graph algorithms for the recommendation subgraph problem, we propose the study of three simple solutions strategies that not only can be shown to scale well in practice but
-also have good theoretical properties.
+To circumvent the time and space complexity of implementing optimal
+graph algorithms for the recommendation subgraph problem, we propose
+the study of three simple solutions strategies that not only can be
+shown to scale well in practice but also have good theoretical
+properties.
 
 \begin{itemize}
-\item {\bf Sampling:} The first solution is a simple random sampling solution that selects a random subset of $c$ links out of the available $d$ from every page. Note that this solution requires no memory overhead to store these results a-priori and the recommendations can be generated using a random number generator on the fly. While this might seem trivial at first, for sufficient (and often real-world) values of $c$ and $a$ we show that this can be optimal.
-\item {\bf Greedy:} The second solution we propose is a greedy algorithm that chooses the recommendation links so as to maximize the number of nodes in $R$ that can accumulate $a$ in-links. In particular, we keep track of the number of in-links required for each node in $R$ to reach the target of $a$ and choose the links from each node in $L$ giving preference to adding links to nodes in $R$ that are closer to the target in-degree $a$.
-\item {\bf Partition:} The third solution is inspired by a theoretically rigorous method to find optimal subgraphs in sufficiently dense graphs: it partitions the edges into $a$ subsets by random sub-sampling, such that there is a good chance of finding a perfect matching from $L$ to $R$ in each of the subsets. The union of the matchings so found will thus result in most nodes in $R$ achieving the target degree $a$. We require the number of edges in the underlying graph to be significantly large for this method to work very well; moreover, we need to run a (near-)perfect matching algorithm in each of the subsets which is also a computationally expensive subroutine. Hence, even though this method works very well in dense graphs, it does not scale very well in terms of running time and space.
+
+\item {\bf Sampling:} The first solution is a simple random sampling
+  solution that selects a random subset of $c$ links out of the
+  available $d$ from every page. Note that this solution requires no
+  memory overhead to store these results a-priori and the
+  recommendations can be generated using a random number generator on
+  the fly. While this might seem trivial at first, for sufficient (and
+  often real-world) values of $c$ and $a$ we show that this can be
+  optimal.
+
+\item {\bf Greedy:} The second solution we propose is a greedy
+  algorithm that chooses the recommendation links so as to maximize
+  the number of nodes in $R$ that can accumulate $a$ in-links. In
+  particular, we keep track of the number of in-links required for
+  each node in $R$ to reach the target of $a$ and choose the links
+  from each node in $L$ giving preference to adding links to nodes in
+  $R$ that are closer to the target in-degree $a$.
+
+\item {\bf Partition:} The third solution is inspired by a
+  theoretically rigorous method to find optimal subgraphs in
+  sufficiently dense graphs: it partitions the edges into $a$ subsets
+  by random sub-sampling, such that there is a good chance of finding
+  a perfect matching from $L$ to $R$ in each of the subsets. The union
+  of the matchings so found will thus result in most nodes in $R$
+  achieving the target degree $a$. We require the number of edges in
+  the underlying graph to be significantly large for this method to
+  work very well; moreover, we need to run a (near-)perfect matching
+  algorithm in each of the subsets which is also a computationally
+  expensive subroutine. Hence, even though this method works very well
+  in dense graphs, it does not scale very well in terms of running
+  time and space.
 \end{itemize}
 
-In the next section, we elaborate on these methods, their running times, implementation details, and theoretical performance guarantees. In the following section, we present our comprehensive empirical evaluations of all three methods, first the results on simulated data and then the results on real data from some clients of BloomReach.
+In the next section, we elaborate on these methods, their running
+times, implementation details, and theoretical performance
+guarantees. In the following section, we present our comprehensive
+empirical evaluations of all three methods, first the results on
+simulated data and then the results on real data from some clients of
+BloomReach.
