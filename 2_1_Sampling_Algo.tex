@@ -17,6 +17,7 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
   }
   \Return $H$\;
   \caption{The sampling algorithm}
+  \label{sampling-algo}
 \end{algorithm}\vs
 
 Given a bipartite graph $G$, the algorithm has runtime complexity of
@@ -31,16 +32,19 @@ chosen probabilistically according to this model.
 \vs
 
 {\bf Fixed Degree Model:} In this model for generating the candidate
-recommendation graph, each vertex $v\in L$
-uniformly and independently samples a set of $d$ neighbors from $R$.
-This model is similar to, but is distinct from the more commonly
-known Erd\"{o}s-Renyi model of random graphs~\cite{janson2011random}. In particular, while the
-degree of each vertex in $L$ is fixed under this model, concentration
-bounds can show that the degrees of the vertices in $L$ would have
-similarly been concentrated around $d$ under appropriate parameter
-settings in the Erd\"{o}s-Renyi model.
-We prove the following theorem about the performance
-of the Sampling Algorithm. We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define $k = \frac{l}{r}$.
+recommendation graph, each vertex $v\in L$ uniformly and independently
+samples $d$ neighbors from $R$ with replacement. While this allows each
+vertex in $L$ to have the same vertex as a neighbor multiple times, in
+reality $l$ and $r$ are so much larger than $d$ that repetition is
+very unlikely. This model is similar to, but is distinct from the more
+commonly known Erd\"{o}s-Renyi model of random graphs~\cite{janson2011random}.
+In particular, while the degree of each vertex in $L$ is fixed under
+this model, concentration bounds can show that the degrees of the
+vertices in $L$ would have similarly been concentrated around $d$ under
+appropriate parameter settings in the Erd\"{o}s-Renyi model. We prove 
+the following theorem about the performance of the Sampling Algorithm.
+We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define
+$k = \frac{l}{r}$.
 
 \begin{thm}\label{original_result}
 Let $S$ be the
@@ -50,18 +54,28 @@ $\deg_{H}(v)\geq a$ in the fixed-degree model. Then
 \end{thm}
 
 \begin{proof}
-Let $X_{uv}$ be the indicator variable of the event that the edge $uv$
-($u\in L$, $v\in R$) is in the subgraph that we picked
-and set $X_{v} = \sum_{u\in L} X_{uv}$ so that $X_{v}$ represents the
-degree of the vertex $v$ in our subgraph. Because our algorithm
-uniformly subsamples a uniformly random selection of edges, we can
-assume that $H$ was generated the same way as $G$ but sampled $c$
-instead of $d$ edges for each vertex $u\in L$. So $X_{uv}$ is a
-Bernoulli random variable. In fact, $X_{uv}$ is a 0-1 random variable with
-mean $c/r$ for all choices of $u$ and $v$ by symmetry
+We will analyze the sampling algorithm as if it picks the neighbors of
+each $v\in L$ with replacement, the same way the fixed-degree model
+generates $G$. This variant would obviously waste some edges, and perform
+worse than the variant which samples neighbors without replacement. This
+means that any performance guarantee we prove for this variant holds
+for our original statement of the algorithm as well.
 
-%Arda: We sample without replacement, so there might be some error/approximation in assuming Bernoulli. Can you make this more formal? e.g. Since typically c << r, we can assume that X is Bernoulli with success probability 1/r...
-Using the bound $\binom{n}{i}\leq n^i$ on binomial coefficients we get,
+To prove the claim let $X_{v}$ be the random variable that represents
+the degree of the vertex $v$ in our chosen subgraph $H$. Because our
+algorithm uniformly subsamples a uniformly random selection of edges,
+we can assume that $H$ was generated the same way as $G$ but sampled $c$
+instead of $d$ edges for each vertex $u\in L$. Since there are $cl$
+edges in $H$ that can be incident on $v$, we can now calculate that
+
+\begin{align*}
+      \Pr[X_v = i]
+&=    \binom{cl}{i} (1-\frac{1}{r})^{cl-i} \left(\frac{1}{r}\right)^i \\
+&\leq (cl)^i (1-\frac{1}{r})^{cl-i} \left(\frac{1}{r}\right)^i
+\end{align*}
+
+Using a union bound, we can combine these inequalities to upper bound
+the probability that $\deg_H(v)<a$.
 
 \begin{align*}
       \Pr[X_v < a]
