@@ -5,13 +5,14 @@ YouTube, Quora as well as popular e-commerce stores. Such sites
 typically contain a set of recommendations on every product page that 
 enables visitors to easily navigate the website. Choosing an
 appropriate set of recommendations at each page is one of the key 
-features of backend engines that have been deployed at several e-commerce sites.
+features of backend engines that have been deployed at several e-commerce
+sites.\vs
 
 Specifically at BloomReach, an engine consisting of several
 independent components analyzes and optimizes its clients
 websites. This paper focuses on the structure optimizer component
-which improves the website navigation experience that enables the discovery of previously
-undiscovered content.
+which improves the website navigation experience that enables the
+discovery of previously undiscovered content.\vs
 
 We begin the paper by formalizing the concept of recommendations used
 for discovery. We formulate this as a natural graph optimization
@@ -20,8 +21,9 @@ problem. In practice, solving these matching problems requires
 superlinear time and is not scalable. Also, implementing simple
 algorithms is critical in practice because they are significantly
 easier to maintain in a production software package. This motivated us
-to analyze three methods for solving the problem in increasing order of sophistication: 
-a local random sampling algorithm, a greedy algorithm and a more involved partitioning based algorithm.
+to analyze three methods for solving the problem in increasing order
+of sophistication: a local random sampling algorithm, a greedy algorithm
+and a more involved partitioning based algorithm. \vs
 
 We first theoretically analyze the performance of these three methods
 on random graph models characterizing when each method will yield a
@@ -31,7 +33,8 @@ analysis of these algorithms on simulated and real-world production
 data. Our results confirm that it is not always necessary to implement
 complicated algorithms in the real-world. Indeed, our results
 demonstrate that very good practical results can be obtained by 
-using simple heuristics that are backed by the confidence of concrete theoretical guarantees.
+using simple heuristics that are backed by the confidence of concrete
+theoretical guarantees. \vs
 
 
 
