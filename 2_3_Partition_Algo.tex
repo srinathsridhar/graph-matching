@@ -116,8 +116,9 @@ makes up an at most $c(\epsilon/c)$ fraction of $R'$, which proves the claim.
 
 Notice that if we were to run the augmenting paths algorithm to completeness
 for each matching $M_i$, then this algorithm would take $O(|E||L|)$ time. We
-could reduce this further to $O(|E|\sqrt{L})$ by using Hopcroft-Karp. 
-%Arda: Add citation to Hopcroft-Karp here
+could reduce this further to $O(|E|\sqrt{L})$ by using Hopcroft-Karp.
+\cite{HopcroftKarp} \vs
+
 Assuming
 a sparse graph where $|E|=\Theta(|L|\log|L|)$, the time complexity of running
 this algorithm comes out to $\Theta(|L|^{3/2}\log|L|)$.  The space complexity
