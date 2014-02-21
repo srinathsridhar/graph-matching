@@ -80,10 +80,10 @@ Switching to the
 {\bf Erd\"{o}s-Renyi model}~\cite{ErdosRenyi59} instead of the fixed degree model used in
 the previous section, we now prove the near optimality of the
 greedy algorithm for the $(c, a)$-recommendation subgraph problem.
-Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.
+Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.  For technical reasons, we need to assume that $lp \geq 1$ in the following theorem. However, this is a very weak assumption since $lp$ is simply the expected degree of a vertex $v\in L$. Typical values for $p$ for our applications will be $\Omega(\log(l)/l)$ making the expected degree $lp=\Omega(\log l)$.
 
 \begin{thm}
-Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
+Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $lp \geq 1$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
 \[ \emph{\E}[S] \geq r - \frac{a(lp)^{a-1}}{(1-p)^a} \sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}}\]
 \end{thm}
 \begin{proof}
@@ -101,18 +101,31 @@ available vertices having an edge to this vertex. The probability of this
 bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the
 probability that a Binomial random variable with $l - \frac{ia}{c}$
 trials of probability $p$ of success for each trial has less than $a$
-successes. We can bound this probability by upper-bounding the $t^{th}$
-term above in its binomial expansion by
-${{l-\frac{ia}{c}}\choose{t}} (1-p)^{l-\frac{ia}{c}-t}(p)^{t} \leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}$ 
-to obtain the following. %$(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}$ to obtain the following.
+successes. We can bound this probability by using a union bound and
+upper-bounding $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]$ for each 
+$0 \leq t \leq a-1$. By using the trivial estimate that
+$\binom{n}{i} \leq n^i$ for all $n$ and $i$, we obtain:
 
-%Arda: I dont see how you get the following from above: In particular for p <1/2, you should be getting rid of the p^a term and have only the (1-p) terms...???
-%I tried to explain where the exponents come from.
-
-\[ \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \leq a (1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}\]
+\begin{align*}
+      \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]
+&=    \binom{l-\frac{ia}{c}}{t} (1-p)^{l-\frac{ia}{c}-t}p^{t} \\
+&\leq \left(l-\frac{ia}{c}\right)^t (1-p)^{l-\frac{ia}{c}-t} p^{t} \\
+&\leq (lp)^t (1-p)^{l-\frac{ia}{c}-t} 
+\end{align*}
 
 Notice that the largest exponent $lp$ can take within the bounds of
-out sum is $a-1$. Summing over all the $X_i$ using the linearity of
+our sum is $a-1$. Similarly, the smallest exponent $(1-p)$ can take
+within the bounds of our sum is $l-\frac{ia}{c}-a+1$. Now applying
+the union bound gives:
+
+\begin{align*}
+&           \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \\
+&\leq  \sum_{t=0}^{a-1} \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t] \\
+&\leq  \sum_{t=0}^{a-1} (lp)^t (1-p)^{l-\frac{ia}{c}-t} \\
+&=     a(lp)^{a-1} (1-p)^{l-\frac{ia}{c}-a+1}
+\end{align*}
+
+Finally, summing over all the $X_i$ using the linearity of
 expectation and this upper bound, we obtain
 
 \begin{align*}
