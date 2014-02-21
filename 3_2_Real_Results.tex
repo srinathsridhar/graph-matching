@@ -6,8 +6,8 @@ recommendations); the remaining merchants (3, 4 and 5) have on the
 order of $10^6$ vertices and $10^7$ input edges between them. 
 We estimated an upper bound on the optimum solution by taking the minimum of
 $|L|c/a$ and the number of vertices in $R$ of degree at least
-$a$. Figures~\ref{fig:real_sampling},~\ref{fig:real_greedy}
-and~\ref{fig:real_partition} plot the average of the optimality
+$a$. Figures~\ref{fig:real_a=1},~\ref{fig:real_a=2}
+and~\ref{fig:real_a=3} plot the average of the optimality
 percentage of the sampling, greedy and partition algorithms across all
 the merchants respectively. Note that we could only run the partition
 algorithm for the first two merchants due to memory constraints. \vs
@@ -16,21 +16,21 @@ algorithm for the first two merchants due to memory constraints. \vs
 \centering
 \begin{minipage}[h]{0.48\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{images/real_sampling.png}
-\caption{Sampling algorithm for real merchants}\label{fig:real_sampling}
+\includegraphics[width=0.8\textwidth]{images/real_a=1.png}
+\caption{Real data runs when a=1}\label{fig:real_a=1}
 \end{minipage}
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{images/real_greedy.png}
-\caption{Greedy algorithm for real merchants}\label{fig:real_greedy}
+\includegraphics[width=0.8\textwidth]{images/real_a=2.png}
+\caption{Real data runs when a=2}\label{fig:real_a=2}
 \end{minipage}
 \hspace{0cm}
 \centering
 \begin{minipage}[h]{0.48\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{images/real_partition.png}
-\caption{Partition algorithm for real merchants}\label{fig:real_partition}
+\includegraphics[width=0.8\textwidth]{images/real_a=3.png}
+\caption{Real data runs when a=2}\label{fig:real_a=3}
 \end{minipage}
 \vspace{-0.2in}
 \end{figure} \vs
