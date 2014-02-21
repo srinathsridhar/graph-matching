@@ -96,23 +96,25 @@ $X_{i+1}$ is when all the previous $i$ vertices were from the same
 vertices in $L$, which are now not available for matching the
 $(i+1)^{st}$ vertex. The maximum number of such invalidated vertices
 is at most $\lceil ia/c \rceil$. Therefore, the bad event
-is that we have fewer
-than $a$ of the at least $l-\lceil ia/c \rceil $ available
-vertices having an edge to this vertex, and the probability of this
-bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the probability that
-a Binomial random variable with $l - \frac{ia}{c}$ trials of probability $p$ of success
-for each trial has less than $a$ successes.
-We can bound this probability by upper-bounding the $t^{th}$ term above in its binomial
-expansion by ${{l-\frac{ia}{c}}\choose{t}} (1-p)^{l-\frac{ia}{c}-t}(p)^{t} \leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}$ to obtain the following.
-%$(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}$ to obtain the following.
+is that we have fewer than $a$ of the at least $l-\lceil ia/c \rceil$ 
+available vertices having an edge to this vertex. The probability of this
+bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the
+probability that a Binomial random variable with $l - \frac{ia}{c}$
+trials of probability $p$ of success for each trial has less than $a$
+successes. We can bound this probability by upper-bounding the $t^{th}$
+term above in its binomial expansion by
+${{l-\frac{ia}{c}}\choose{t}} (1-p)^{l-\frac{ia}{c}-t}(p)^{t} \leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}$ 
+to obtain the following. %$(1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}$ to obtain the following.
 
 %Arda: I dont see how you get the following from above: In particular for p <1/2, you should be getting rid of the p^a term and have only the (1-p) terms...???
-
+%I tried to explain where the exponents come from.
 
 \[ \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \leq a (1-p)^{l-\frac{ia}{c}-a+1}(lp)^{a-1}\]
 
-Summing over all the $X_i$ using the linearity of expectation and this upper bound,
-we obtain
+Notice that the largest exponent $lp$ can take within the bounds of
+out sum is $a-1$. Summing over all the $X_i$ using the linearity of
+expectation and this upper bound, we obtain
+
 \begin{align*}
       \E[S]
 &\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\

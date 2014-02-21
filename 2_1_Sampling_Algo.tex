@@ -57,10 +57,11 @@ degree of the vertex $v$ in our subgraph. Because our algorithm
 uniformly subsamples a uniformly random selection of edges, we can
 assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. So $X_{uv}$ is a
-Bernoulli random variable.
+Bernoulli random variable. In fact, $X_{uv}$ is a 0-1 random variable with
+mean $c/r$ for all choices of $u$ and $v$ by symmetry
+
 %Arda: We sample without replacement, so there might be some error/approximation in assuming Bernoulli. Can you make this more formal? e.g. Since typically c << r, we can assume that X is Bernoulli with success probability 1/r...
-Using the bound $\binom{n}{i}
-\leq n^i$ on binomial coefficients we get,
+Using the bound $\binom{n}{i}\leq n^i$ on binomial coefficients we get,
 
 \begin{align*}
       \Pr[X_v < a]
