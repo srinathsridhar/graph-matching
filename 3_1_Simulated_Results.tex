@@ -123,11 +123,12 @@ be implemented as an online algorithm. If keeping the underlying graph in
 memory is an issue, then chances are this algorithm will do well while only needing
 a fraction of the resources the other two algorithms would need.\\
 
-\textbf{Partition Algorithm:} This algorithm does well, but only when $a$ is small. In this
-realm, partition is the best algorithm. However this performance comes at expense of significant runtime and space. This algorithm
-will recover the  optimal solution when $a=1$, and will likely be able to recover a
-good $(c,a)$-recommendation subgraph when the graph sufficiently dense and we believe that a perfect one exists. It also has
-a distinct advantage over both greedy and sampling algorithms when $lc=ra$. \\
+\textbf{Partition Algorithm:} This algorithm does well, but only when $a$ is small.
+In particular, when $a=1$ or 2, partition seems to be the best algorithm, but the quality
+of the solutions degrade quickly after that point. However this performance comes at
+expense of significant runtime and space. Since greedy performs almost as well without
+requiring large amounts of space or time, partition is best suited for instances where
+$a$ is low the quality of the solution is more important than anything else.\\
 
 \textbf{Greedy Algorithm:} This algorithm is the all-round best performing algorithm we tested.
 It only requires a single pass over the data thus running very quickly,  and uses
