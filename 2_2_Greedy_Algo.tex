@@ -82,7 +82,7 @@ the previous section, we now prove the near optimality of the
 greedy algorithm for the $(c, a)$-recommendation subgraph problem.
 Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.  For technical reasons, we need to assume that $lp \geq 1$ in the following theorem. However, this is a very weak assumption since $lp$ is simply the expected degree of a vertex $v\in L$. Typical values for $p$ for our applications will be $\Omega(\log(l)/l)$ making the expected degree $lp=\Omega(\log l)$.
 
-\begin{thm}
+\begin{thm}\label{greed-is-good}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $lp \geq 1$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
 \[ \emph{\E}[S] \geq r - \frac{a(lp)^{a-1}}{(1-p)^a} \sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}}\]
 \end{thm}
@@ -138,7 +138,45 @@ expectation and this upper bound, we obtain
 
 Asymptotically, this result explains why the greedy
 algorithm does much better in expectation than $1/(a+1)$ guarantee we
-can prove in the worst case.
-%Arda: The following does not make much sense to me either. I assume you are talking about lc >> ra to get high coverage from the left to the right, but I dont see how you get the expressions that are sublinear in l??
-In particular, suppose $a$ and $c$ are fixed and that
-$l/r$ is taken to be a constant as both $l$ and $r$ tend to $\infty$. In the realm where sublinear error is possible (i.e. when $lc/a>r$) each term in the sum above becomes $\Theta(l^{-\epsilon})$ for some $\epsilon>0$ if we set $p=\Theta(\log(l)/l)$. Consequently, the error term reduces to $\Theta(l^{1-\epsilon}\log^a(l))$ which is sublinear on the number of vertices.
+can prove in the worst case. In particular, for a reasonable setting of
+the right parameters, we can prove that the error term of our greedy
+approximation will be sublinear.
+
+\begin{thm}
+Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $p = \frac{\gamma \log l}{l}$ for some $\gamma \geq 1$. Suppose that $c, a$ and $\epsilon>0$ are such that $lc=(1+\epsilon)ra$ and that $l$ and $r$ go to infinity while satisfying this relation. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then
+
+\[ \E[S] \geq r - o(r) \]
+\end{thm}
+\begin{proof}
+We will prove this claim by applying \cite{greedy-is-good}. Note that it suffices to prove that $(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}} = o(r)$ since the other terms are just constants. We first bound the elements of this summation. Using the facts that $p = \frac{\gamma \log l}{l}$, $lc/a = (1+\epsilon)r$ and that $i<r$ throughout the summation gives the following bound on each term:
+
+\begin{align*}
+       (1-p)^{l-\frac{ia}{c}} 
+&\leq  \left(1-\frac{\gamma \log l}{l}\right)^{l-\frac{ia}{c}} \\
+&\leq  \exp\left(-\frac{\gamma \log l}{l}\left(l-\frac{ia}{c}\right)\right) \\ 
+&=     \exp\left((-\log l)\left(\gamma - \frac{ia}{lc}\right)\right) \\
+&=     l^{-\gamma+\frac{ia}{lc}} = l^{-\gamma+\frac{i}{(1+\epsilon)r}} \\
+&\leq  l^{-1+\frac{1}{1+\epsilon}} = l^{-\frac{\epsilon}{1+\epsilon}}
+\end{align*}
+
+Finally, we can evaluate the whole sum:
+
+\begin{align*}
+       (lp)^{a-1}  \sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}}
+&\leq  \left(\log^{a-1}l\right) \sum_{i=0}^{r-1}l^{-\frac{\epsilon}{1+\epsilon}}\\
+&\leq  \left(\log^{a-1}l\right) rl^{-\frac{\epsilon}{1+\epsilon}}\\
+&=     \left(\log^{a-1}l\right) \frac{c}{(1+\epsilon)a}l^{1-\frac{\epsilon}{1+\epsilon}} = o(l)\\
+\end{align*}
+
+However, since $r$ is a constant times $l$, any function that is $o(l)$ is also $o(r)$ and this proves the claim.
+
+\end{proof}
+
+
+
+
+
+
+
+
+
