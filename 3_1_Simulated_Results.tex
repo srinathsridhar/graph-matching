@@ -3,11 +3,11 @@
 \subsection{Simulated Data}
 We simulated performance of our algorithms on random graphs generated
 by the graph models we outlined. 
-%Arda: We mention fixed degree and Erdos-Renyi above - which one are you talking about here in the experiments?99
+%Arda: We mention fixed degree and Erdos-Renyi above - which one are you talking about here in the experiments?
 In the following figures, each data
 point is obtained by averaging the measurements over 10 random
 graphs. We first present the time and space usage of these algorithms when
-solving a $(3,3)$-recommendation subgraph problem in different sized graphs.
+solving a $(10,3)$-recommendation subgraph problem in different sized graphs.
 Note that varying the value of $a$ and $c$ would only change space and time
 usage by a constant, so these two graphs are indicative of time and space
 usage over all ranges of parameters
@@ -16,14 +16,17 @@ usage over all ranges of parameters
 \centering
 \begin{minipage}[h]{.48\textwidth}
 \centering
-\includegraphics[width=.99\textwidth]{images/time.png}
-\caption{Time needed to solve a (3,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:time_graph}
+\includegraphics[width=.99\textwidth]{images/time1.png}
+\vspace{-0.2in}
+\caption{Time needed to solve a (10,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:time_graph}
 \end{minipage}
+\vspace{.2cm}
 \hspace{0cm}
 \begin{minipage}[h]{.48\textwidth}
 \centering
 \includegraphics[width=.99\textwidth]{images/space.png}
-\caption{Space needed to solve a (3,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:space_graph}
+\vspace{-0.2in}
+\caption{Space needed to solve a (10,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:space_graph}
 \end{minipage}
 \vspace{-0.2in}
 \end{figure}
@@ -72,15 +75,17 @@ but comes with the cost of higher time and space utilization.
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=25000,r=100000_Greedy_vs_Naive.png}
+\vspace{-1cm}
 \caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in simulated graphs with $|L|=25$k, $|R|=100$k, $d=20$}\label{fig:a=1:1}
 \end{minipage}
+\vspace{.2cm}
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=50000,r=100000_Greedy_vs_Naive.png}
+\vspace{-1cm}
 \caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in simulated graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=1:2}
 \end{minipage}
-\vspace{-0.2in}
 \end{figure}
 
 
@@ -104,15 +109,17 @@ systems in practice.
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=2_Greedy_vs_Naive.png}
+\vspace{-1cm}
 \caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in simulated graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=2}
 \end{minipage}
+\vspace{.2cm}
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=4_Greedy_vs_Naive.png}
+\vspace{-1cm}
 \caption{Solution quality for the $(c, 4)$-recommendation subgraph problem in simulated graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=4}
 \end{minipage}
-\vspace{-0.2in}
 \end{figure}
 
 \vs
