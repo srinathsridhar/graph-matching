@@ -90,8 +90,6 @@ vertex in $L$ has degree $c$. It follows that except for a $o(1)$ probability
 there exists a $(c,a)$-recommendation subgraph in $G$.
 \end{proof}
 
-\vs
-
 {\bf Approximation Algorithm Using Perfect Matchings:}
 The above result now enables us to design a near linear time
 algorithm with a $(1-\epsilon)$ approximation guarantee
@@ -115,7 +113,7 @@ and we outline it below.
   $H \leftarrow M_1\bigcup\ldots \bigcup M_c$\;
   \Return $H$\;
   \caption{The partition algorithm}
-\end{algorithm}\vs
+\end{algorithm}
 
 \begin{thm}
 Let $G$ be drawn from $G_{l,r,p}$ where $p \geq a\frac{\log l - \log\log l}{l}$.
