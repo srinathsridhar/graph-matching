@@ -96,8 +96,11 @@ there exists a $(c,a)$-recommendation subgraph in $G$.
 The above result now enables us to design a near linear time
 algorithm with a $(1-\epsilon)$ approximation guarantee
 to the $(c,a)$-recommendation subgraph problem by leveraging
-combinatorial properties of matchings. We call this method
-the Partition Algorithm, and we outline it below.
+combinatorial properties of matchings. In particular, we use
+the fact a matching that does not have augmenting paths of
+length $>2\alpha$ is a $1-1/\alpha$ approximation to the maximum
+matching problem. We call this method the Partition Algorithm,
+and we outline it below.
 
 \begin{algorithm}[h]\label{partition_alg}
   \SetAlgoLined
