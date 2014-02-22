@@ -19,12 +19,16 @@ algorithm for the first two merchants due to memory constraints. \vs
 \includegraphics[width=0.98\textwidth]{images/real_a=1.png}
 \caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in real retailer data }\label{fig:real_a=1}
 \end{minipage}
+\end{figure}
+
+\begin{figure}[t]
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.98\textwidth]{images/real_a=2.png}
 \caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in real retailer data}\label{fig:real_a=2}
 \end{minipage}
+
 \hspace{0cm}
 \centering
 \begin{minipage}[h]{0.48\textwidth}
@@ -32,8 +36,7 @@ algorithm for the first two merchants due to memory constraints. \vs
 \includegraphics[width=0.98\textwidth]{images/real_a=3.png}
 \caption{Solution quality for the $(c, 3)$-recommendation subgraph problem in real retailer data}\label{fig:real_a=3}
 \end{minipage}
-\vspace{-0.2in}
-\end{figure} \vs
+\end{figure} \vspace{-0.2cm}
 
 From these results, we can see that that greedy performs exceptionally
 well when $c$ gets even moderately large.  For the realistic value of
@@ -45,7 +48,7 @@ The partition method is also promising, especially when the $a$ value
 that is targeted is low. Indeed, when $a=1$ or $a=2$, its performance
 is comparable or better than greedy, though it is not as pronounced as
 the simulations. However, for larger values of $a$ the partition
-algorithm performs worse. \vs
+algorithm performs worse. 
 
 The sampling algorithm performs mostly well in real life data, but and
 particularly so when $c$ is large. It is typically worse than
