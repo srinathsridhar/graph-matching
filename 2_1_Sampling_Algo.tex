@@ -18,7 +18,7 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
   \Return $H$\;
   \caption{The sampling algorithm}
   \label{sampling-algo}
-\end{algorithm}\vs
+\end{algorithm}
 
 Given a bipartite graph $G$, the algorithm has runtime complexity of
 $O(|E|)$ since every edge is considered at most once. The space
@@ -32,16 +32,16 @@ chosen probabilistically according to this model.
 \vs
 
 {\bf Fixed Degree Model:} In this model for generating the candidate
-recommendation graph, each vertex $v\in L$ uniformly and independently
+recommendation graph, each vertex $u\in L$ uniformly and independently
 samples $d$ neighbors from $R$ with replacement. While this allows each
 vertex in $L$ to have the same vertex as a neighbor multiple times, in
-reality $l$ and $r$ are so much larger than $d$ that repetition is
-very unlikely. This model is similar to, but is distinct from the more
+reality $r$ is so much larger than $d$ that repetition is very unlikely
+at a vertex in $L$. This model is similar to, but is distinct from the more
 commonly known Erd\"{o}s-Renyi model of random graphs~\cite{janson2011random}.
 In particular, while the degree of each vertex in $L$ is fixed under
-this model, concentration bounds can show that the degrees of the
-vertices in $L$ would have similarly been concentrated around $d$ under
-appropriate parameter settings in the Erd\"{o}s-Renyi model. We prove 
+our model, concentration bounds can show that the degrees of the
+vertices in $L$ would have similarly been concentrated around $d$ for $p=d/r$
+in the Erd\"{o}s-Renyi model. We prove 
 the following theorem about the performance of the Sampling Algorithm.
 We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define
 $k = \frac{l}{r}$.
@@ -55,18 +55,20 @@ $\deg_{H}(v)\geq a$ in the fixed-degree model. Then
 
 \begin{proof}
 We will analyze the sampling algorithm as if it picks the neighbors of
-each $v\in L$ with replacement, the same way the fixed-degree model
+each $u\in L$ with replacement, the same way the fixed-degree model
 generates $G$. This variant would obviously waste some edges, and perform
 worse than the variant which samples neighbors without replacement. This
 means that any performance guarantee we prove for this variant holds
-for our original statement of the algorithm as well.
+for our original statement of the algorithm as well. \vs
 
 To prove the claim let $X_{v}$ be the random variable that represents
-the degree of the vertex $v$ in our chosen subgraph $H$. Because our
+the degree of the vertex $v\in R$ in our chosen subgraph $H$. Because our
 algorithm uniformly subsamples a uniformly random selection of edges,
 we can assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. Since there are $cl$
-edges in $H$ that can be incident on $v$, we can now calculate that
+edges in $H$ that can be incident on $v$, and each of these edges has a 
+$1/r$ probability of being incident on a given vertex in $L$, we can now
+calculate that
 
 \begin{align*}
       \Pr[X_v = i]
@@ -91,7 +93,7 @@ Letting $Y_v = \left[X_v \geq a\right]$, we now see that
 \[ \E[S] = \E\left[\sum_{v\in R} Y_v\right] \geq r\left(1-e^{-ck+\frac{a-1}{r}} \frac{(ck)^a-1}{ck-1}\right) \]
 \end{proof}
 
-We can combine this lower bound with a trivial lower bound to obtain an
+We can combine this lower bound with a trivial upper bound to obtain an
 approximation ratio that holds in expectation.
 
 \begin{thm}
@@ -103,8 +105,7 @@ of edges in the graph and the number of vertices in $R$. The former of
 these is $cl=ckr$ and the latter is $r$, which shows that the optimal solution size
 $OPT \leq
 r\max(ck,1)$. Therefore, by simple case analysis the approximation ratio
-in expectation is at least
-$ ({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
+in expectation is at least $({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
 \end{proof}
 
 

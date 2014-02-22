@@ -148,7 +148,7 @@ Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $p = \frac{\gamma \l
 \[ \E[S] \geq r - o(r) \]
 \end{thm}
 \begin{proof}
-We will prove this claim by applying \cite{greedy-is-good}. Note that it suffices to prove that $(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}} = o(r)$ since the other terms are just constants. We first bound the elements of this summation. Using the facts that $p = \frac{\gamma \log l}{l}$, $lc/a = (1+\epsilon)r$ and that $i<r$ throughout the summation gives the following bound on each term:
+We will prove this claim by applying Theorem \ref{greed-is-good}. Note that it suffices to prove that $(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}} = o(r)$ since the other terms are just constants. We first bound the elements of this summation. Using the facts that $p = \frac{\gamma \log l}{l}$, $lc/a = (1+\epsilon)r$ and that $i<r$ throughout the summation, we get the following bound on each term:
 
 \begin{align*}
        (1-p)^{l-\frac{ia}{c}} 
