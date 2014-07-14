@@ -4,3 +4,7 @@
 *.blg
 *.synctex
 *.sav
+
+.DS_Store
+
+.DS_Store

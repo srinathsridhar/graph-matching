@@ -1,6 +1,14 @@
 \subsection{Real Data}
 We now present the results of running the algorithm on several real
-datasets. Two of the merchants had moderate-sized relation graphs with
+datasets. The super graphs in these datasets were constructed with the
+help of several algorithms that extract keywords and values from the
+descriptions of the products. These keywords may relate to such properties
+of the product as color, year of manufacture, country of origin, materials, 
+or other properties. The collection of recommendations for each product 
+were then reduced to at most 50 edges. In practice, it our recommendation
+is to be permissive to the point of 
+
+Two of the merchants had moderate-sized relation graphs with
 about $10^5$ vertices and $10^6$ input edges (candidate
 recommendations); the remaining merchants (3, 4 and 5) have on the
 order of $10^6$ vertices and $10^7$ input edges between them. 
