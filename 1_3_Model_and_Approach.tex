@@ -24,6 +24,21 @@ matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we
 obtain a $b$-matching problem, that can be converted to a bipartite
 matching problem~\cite{Gabow1983}.\vs
 
+Also notice that we impose two thresholds in our model of the problem.
+The first is applied in order to divide the vertices into two groups,
+$L$ for the highly discoverable vertices, and $R$ for the undiscoverable
+vertices. The second thresholding is applied in our requirement that 
+vertices in $R$ receive at least $a$ edges from $L$ instead of simply 
+maximizing the number of edges as in a $b$-matching problem. These thresholds
+might seem arbitrary, but are in fact practically useful. In particular,
+our research suggests that the discoverability of a product is more
+closely correlated with the maximum traffic an in-neighbor of it has, than the
+sum of the traffic of all of its in-neighbors combined. While 20 inlinks of
+weight 1 would be counted the same as a single inlink of weight 20 in the 
+weighted $b$-matching setting, in our experience the former is strictly worse
+than the latter. Since there is no way to control for this property with any
+existing matching model, we introduce our own.
+
 We now describe typical web graph characteristics by discussing the
 sizes of $L$, $R$, $c$ and $a$ in practice. As noted before, in most
 websites, a small number of `head' pages contribute to a significant
@@ -78,7 +93,9 @@ properties.
   recommendations can be generated using a random number generator on
   the fly. While this might seem trivial at first, for sufficient (and
   often real-world) values of $c$ and $a$ we show that this can be
-  optimal.
+  optimal. Furthermore, while we omit this result for brevity, our 
+  approach can be extended to the case where the recommendation edges
+  have graphs.
 
 \item {\bf Greedy:} The second solution we propose is a greedy
   algorithm that chooses the recommendation links so as to maximize

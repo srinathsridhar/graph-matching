@@ -1,12 +1,15 @@
 \subsection{Real Data}
 We now present the results of running the algorithm on several real
-datasets. The super graphs in these datasets were constructed with the
-help of several algorithms that extract keywords and values from the
-descriptions of the products. These keywords may relate to such properties
+datasets. In the graphs that we use, each node corresponds to a single
+product in the catalog of a merchant and the edges connect similar products.
+The edges of the supergraph were determined with the help of a several heuristic
+algorithms that extracted relevant keywords and values from the descriptions 
+of the products. These keywords may relate to such properties
 of the product as color, year of manufacture, country of origin, materials, 
-or other properties. The collection of recommendations for each product 
-were then reduced to at most 50 edges. In practice, it our recommendation
-is to be permissive to the point of 
+or other properties. The union of the recommendations for each product from each
+heuristic were then reduced to at most 50 edges. In practice, it our recommendation
+to be more permissive with including edges in the supergraph, than it is to be
+exclusive.
 
 Two of the merchants had moderate-sized relation graphs with
 about $10^5$ vertices and $10^6$ input edges (candidate

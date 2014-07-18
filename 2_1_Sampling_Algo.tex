@@ -133,8 +133,8 @@ trivial estimate of $cl$. For a fixed $a$, a random solution gets
 better as $ck$ increases because the decrease in $e^{-ck}$ more than
 compensates for the polynomial in $ck$ next to it. However, in the
 more realistic case, the undiscovered pages in $R$ too numerous to be all covered even if we used the full set of budgeted links allowed out of $L$, i.e. $cl < ra$ or rearranging, $ck<a$; in this case, we need to use the trivial estimate of
-$ckr/a$, and the analysis for $a=1$ does not extend here. The table
-in Figure~\ref{a-values} shows how large $ck$ needs to be for the
+$ckr/a$, and the analysis for $a=1$ does not extend here. For practical purposes, the table
+in Figure~\ref{a-values} shows how large $c$ needs to be (in terms of $k$) for the
 solution to be 95\% optimal for different values of $a$, again in the fixed degree model.\vs
 
 \begin{figure}[H]
@@ -143,7 +143,7 @@ solution to be 95\% optimal for different values of $a$, again in the fixed degr
   \begin{tabular}{ |c|c|c|c|c|c| }
     \hline
     $a$ & 1 & 2 & 3 & 4 & 5 \\ \hline
-    $ck$ & 3.00 & 4.74 & 7.05 & 10.01 & 13.48 \\
+    $c$ & $3.00k^{-1}$ & $4.74k^{-1}$ & $7.05k^{-1}$ & $10.01k^{-1}$ & $13.48k^{-1}$ \\
     \hline
   \end{tabular}
   \caption{The required $ck$ to obtain 95\% optimality for $(c, a)$-recommendation subgraph}
