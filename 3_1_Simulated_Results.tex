@@ -33,7 +33,8 @@ usage over all ranges of parameters
 \vs
 
 Recall that the partition algorithm split the graph into multiple graphs
-and found matchings in these smaller graphs which were then combined into
+and found matchings (using an implementation of Hopcroft-Karp) 
+in these smaller graphs which were then combined into
 a recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
 sampling or greedy algorithms. It also takes significantly more memory to
