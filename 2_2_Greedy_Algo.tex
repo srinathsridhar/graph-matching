@@ -28,7 +28,7 @@ of a vertex $u$. \vspace{0.05in}
   }
   \Return $H$\;
   \caption{The greedy Algorithm}
-\end{algorithm}\vs
+\end{algorithm}
 
 The algorithm loops through each vertex in $R$, and considers each edge once.
 Therefore, the runtime is $\Theta(|E|)$. Furthermore, the only data structure
@@ -67,7 +67,7 @@ vertices to the solution.
 \label{fig:greedy}
 \centering
 \includegraphics[width=.39\textwidth]{images/greedy.png}
-\caption{This diagram shows one step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it potentially removes $v_1,\ldots, v_a$ from the pool of candidates that are available. The potentially invalidated edges are shown in red.}
+\caption{One step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it can remove $v_1,\ldots, v_a$ from the pool of candidates that are available. The potentially invalidated edges are shown in red.}
 \end{figure}
 
 This approximation guarantee is as good as we can expect,

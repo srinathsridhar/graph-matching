@@ -91,10 +91,10 @@ the probability that $\deg_H(v)<a$.
 Letting $Y_v = \left[X_v \geq a\right]$, we now see that
 
 \[ \E[S] = \E\left[\sum_{v\in R} Y_v\right] \geq r\left(1-e^{-ck+\frac{a-1}{r}} \frac{(ck)^a-1}{ck-1}\right) \]
-\end{proof}
+\end{proof}%\vspace{-.7cm}
 
 We can combine this lower bound with a trivial upper bound to obtain an
-approximation ratio that holds in expectation.
+approximation ratio that holds in expectation.  
 
 \begin{thm}
 The above sampling algorithm gives a $\left(1-\frac1e\right)$-factor approximation to the $(c,1)$-graph recommendation problem in expectation.
