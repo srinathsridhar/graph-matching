@@ -109,7 +109,20 @@ properties that we demonstrate using approximation ratios.
 
 In the next section, we elaborate on these methods, their running
 times, implementation details, and theoretical performance
-guarantees. In the following section, we present our comprehensive
+guarantees. In the section after that, we present our comprehensive
 empirical evaluations of all three methods, first the results on
 simulated data and then the results on real data from some clients of
-BloomReach.
+BloomReach. As a summary, the table below show the time and space complexity
+of our different algorithms
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{lllll}
+\cline{2-4}
+\multicolumn{1}{l|}{}       & \multicolumn{1}{l|}{Sampling} & \multicolumn{1}{l|}{Greedy} & \multicolumn{1}{l|}{Partition}          &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{Time}  & \multicolumn{1}{l|}{$O(|E|)$}   & \multicolumn{1}{l|}{$O(|E|)$} & \multicolumn{1}{l|}{$O(|E|\sqrt{|V|})$} &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{Space} & \multicolumn{1}{l|}{$O(1)$}     & \multicolumn{1}{l|}{$O(|V|)$}   & \multicolumn{1}{l|}{$O(|E|)$}             &  \\ \cline{1-4}
+                            &                               &                             &                                         & 
+\end{tabular}
+\caption{Complexities of the different algorithms}
+\end{figure}
