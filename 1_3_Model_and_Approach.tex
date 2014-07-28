@@ -24,7 +24,7 @@ matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we
 obtain a $b$-matching problem, that can be converted to a bipartite
 matching problem~\cite{Gabow1983}.\vs
 
-The requirement of having a minimum number of $a$ in-links from L for a node in R to be counted as discovered might seem unnatural at first sight. However, it is a natural formulation of the requirement of indexing algorithms for search engines where such a redundancy in their crawler visits is needed before recording pages in R in the search index and hence eventually as results for a relevant search query. Since most large web repositories using recommendations have a search capability, they also have such an indexing system that requires a minimum level of redundancy to include pages in their search index. Thus our problem formulation is also applicable in such general web systems that we study. \\
+The requirement of having a minimum number of $a$ in-links from $L$ for a node in $R$ to be counted as discovered might seem unnatural at first sight. However, it is a natural formulation of the requirement of indexing algorithms for search engines where such a redundancy in their crawler visits is needed before adding pages into the search index. This intuition is supported by the fact that the in-link count of a page provides a local approximation to its PageRank ~\cite{bar2008local}. \\
 
 We now describe typical web graph characteristics by discussing the
 sizes of $L$, $R$, $c$ and $a$ in practice. As noted before, in most
@@ -106,12 +106,7 @@ properties that we demonstrate using approximation ratios.
   time and space.
 \end{itemize}
 
-In the next section, we elaborate on these methods, their running
-times, implementation details, and theoretical performance
-guarantees. In the section after that, we present our comprehensive
-empirical evaluations of all three methods, first the results on
-simulated data and then the results on real data from some clients of
-BloomReach. As a summary, the table below show the time and space complexity
+As a summary, the table below shows the time and space complexity
 of our different algorithms.
 
 \begin{figure}[H]
@@ -120,9 +115,16 @@ of our different algorithms.
 \cline{2-4}
                                     & Sampling                                        & Greedy   & Partition          &  \\ \cline{1-4}
 \multicolumn{1}{|l|}{Time}          & $O(|E|)$                                        & $O(|E|)$ & $O(|E|\sqrt{|V|})$ &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Space}         & $O(1)$                                          & $O(V)$   & $O(|E|)$           &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{Working Space} & $O(1)$                                          & $O(V)$   & $O(|E|)$           &  \\ \cline{1-4}
 %\multicolumn{1}{|l|}{Approx. Ratio} & $1-\frac{(ck)^a-1}{ck-1}e^{-ck+\frac{a-1}{r}}$  & $1-o(1)$ & $1-o(1)$           &  \\ \cline{1-4}
 %\multicolumn{1}{|l|}{Is Optimal}    & NO                                              & NO       & YES                &  \\ \cline{1-4}
 \end{tabular}
 \caption{Complexities of the different algorithms}
 \end{figure}
+
+In the next section, we elaborate on these methods, their running
+times, implementation details, and theoretical performance
+guarantees. In the section after that, we present our comprehensive
+empirical evaluations of all three methods, first the results on
+simulated data and then the results on real data from some clients of
+BloomReach. 
