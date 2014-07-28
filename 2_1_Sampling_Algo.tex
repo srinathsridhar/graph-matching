@@ -168,17 +168,17 @@ Let $S$ be the random variable denoting the number of vertices $v \in R$ such th
 $ S \leq r(1-2\exp(-ck))$ with probability at most $(e/4)^{r(1-\exp(-ck))}$.
 \end{thm}
 
-\begin{proof}
-We can write $S$ as $\sum_{v\in R} (1-X_v)$ where $X_v$ is the indicator
-variable that denotes that $X_v$ is matched. Note that the variables
-$1-X_v$ for each $v\in R$ are non-positively correlated. In
-particular, if $N(v)$ and $N(v')$ are disjoint, then $1-X_v$ and
-$1-X_{v'}$ are independent. Otherwise, $v$ not claiming any edges can
-only increase the probability that $v'$ has an edge from any vertex
-$u\in N(v)\cap N(v')$. Also note that the expected size of $S$ is
-$r(1-\exp(-ck))$ by Theorem \ref{original_result}. Therefore, we can
-apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ to obtain
-the result.
-\end{proof}
+%\begin{proof}
+%We can write $S$ as $\sum_{v\in R} (1-X_v)$ where $X_v$ is the indicator
+%variable that denotes that $X_v$ is matched. Note that the variables
+%$1-X_v$ for each $v\in R$ are non-positively correlated. In
+%particular, if $N(v)$ and $N(v')$ are disjoint, then $1-X_v$ and
+%$1-X_{v'}$ are independent. Otherwise, $v$ not claiming any edges can
+%only increase the probability that $v'$ has an edge from any vertex
+%$u\in N(v)\cap N(v')$. Also note that the expected size of $S$ is
+%$r(1-\exp(-ck))$ by Theorem \ref{original_result}. Therefore, we can
+%apply Theorem \ref{negative_corr_chernoff} with $\delta=1$ to obtain
+%the result.
+%\end{proof}
 
 For realistic scenarios where $r$ is very large, the above theorem gives very tight bounds on the size of the solution, also explaining the effectiveness of the simple sampling algorithm in such instances.
