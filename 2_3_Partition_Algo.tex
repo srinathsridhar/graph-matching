@@ -34,7 +34,7 @@ random graphs with high probability by building it up from $a$
 matchings each of which must exist with high probability if $p$ is
 sufficiently high. To find these matchings, we identify subsets of size
 $l$ in $R$ that we can perfectly match to $L$. These subsets overlap,
-and we choose them so that each vertex in $R$ is in $a$ of these subsets. 
+and we choose them so that each vertex in $R$ is in $a$ subsets. 
 %While the theorem is stated for
 %the case when $a \leq c$, it applies equally well to the $a > c$
 %case by partitioning $L$ instead of $R$ in the following proof.
@@ -82,7 +82,7 @@ Since $p/a \geq (\log l - \log\log l)/l$ by assumption, we conclude by
 Theorem~\ref{random_matching_threshold}, the probability that a particular
 $G_i$ has no perfect matching is $o(1)$. \vs
 
-Considering $c$ to be fixed, by a union bound, we then conclude that except
+If we fix $c$, we can conclude by a union bound that except
 for a $o(1)$ probability, each one of the $G_i$'s has a perfect matching. By
 superimposing all of these perfect matchings, we can see that every vertex in
 $R'$ has degree $a$. Since each vertex in $L$ is in exactly $c$ matchings, each

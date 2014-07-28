@@ -9,7 +9,7 @@ features such as keywords, color, brand, gender (where applicable) as
 well as user browsing patterns to determine the similarity between
 pairs of products. Such algorithms are commonly used in e-commerce websites
 such as Amazon, Overstock, eBay etc to display the most related products 
-to the user when they are browsing a specific product. 
+to the user when they are browsing a specific product. \vs
 
 Two of the client merchants of BloomReach presented here had
 moderate-sized relation graphs with about $10^5$ vertices and $10^6$
@@ -28,6 +28,7 @@ algorithm for the first two merchants due to memory constraints. \vs
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/real_a=1.png}
+
 \caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in retailer data}
 \label{fig:real_a=1}
 \end{minipage}
@@ -36,6 +37,7 @@ algorithm for the first two merchants due to memory constraints. \vs
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/real_a=2.png}
+
 \caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in retailer data}
 \label{fig:real_a=2}
 \end{minipage}
@@ -44,11 +46,12 @@ algorithm for the first two merchants due to memory constraints. \vs
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/real_a=3.png}
+
 \caption{Solution quality for the $(c, 3)$-recommendation subgraph problem in retailer data}
 \label{fig:real_a=3}
 \end{minipage}
-\vspace{-.7cm}
-\end{figure}
+\vspace{-.3cm}
+\end{figure} \vs
 
 From these results, we can see that that greedy performs exceptionally
 well when $c$ gets even moderately large.  For the realistic value of
@@ -68,4 +71,4 @@ greedy, but unlike the partition algorithm, its performance improves
 dramatically as $c$ becomes larger, and its performance does not get
 worse as quickly when $a$ gets larger. Therefore, for large $c$ 
 sampling becomes a viable alternative to greedy mainly in cases where the
-linear memory cost of the greedy algorithm is too prohibitive. 
+linear memory cost of the greedy algorithm is too prohibitive.

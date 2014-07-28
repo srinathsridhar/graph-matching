@@ -8,12 +8,13 @@ In the following figures, each data
 point is obtained by averaging the measurements over 100 random
 graphs. We first present the time and space usage of these algorithms when
 solving a $(10,3)$-recommendation subgraph problem in different sized graphs.
+In all our charts, error bars are present, but too small to be noticeable.
 Note that varying the value of $a$ and $c$ would only change space and time
 usage by a constant, so these two graphs are indicative of time and space
 usage over all ranges of parameters. The code used conduct these experiments 
 can be found at %<insert link here>
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \begin{minipage}[h]{.48\textwidth}
 \centering
@@ -30,26 +31,24 @@ can be found at %<insert link here>
 \caption{Space needed to solve a (10,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:space_graph}
 \end{minipage}
 \vspace{-0.2in}
-\end{figure}
-\vs
+\end{figure} 
 
 Recall that the partition algorithm split the graph into multiple graphs
 and found matchings (using an implementation of Hopcroft-Karp ~\cite{HopcroftKarp}) 
 in these smaller graphs which were then combined into
 a recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
-sampling or greedy algorithms. It also takes significantly more memory to
-run. This can easily be seen in Figure~\ref{fig:time_graph} and Figure~\ref{fig:space_graph}.
+sampling or greedy algorithms. It also takes significantly more memory as can be seen in Figures 4 and 5.
 %Arda: What is the relation of the size of R to that of L in these figures? Say it in the captions!!
 %Arda: In both these figures, change the annotation of three algorithms to the corresponding type of point in the series (triangle, circle etc.) as in the later figures.
 Compare this to greedy and sampling which both require a single pass over
-the graph, and no advanced data structures. In fact, if the adjacency list
+the graph, and no advanced data structures. In fact, if the edges
 of $G$ is pre-sorted by the edge's endpoint in $L$, then the sampling algorithm can be
 implemented as an online algorithm with constant space and in constant time 
-per link selection. Similarly, if the adjacency list of $G$
+per link selection. Similarly, if the edges of $G$
 is pre-sorted by the edge's endpoint in $R$, then the greedy algorithm can
 be implemented so that the entire graph does not have to be kept in memory. In this
-event, greedy uses only $O(|L|)$ memory.\vs
+event, greedy uses only $O(|L|)$ memory. \vs
 
 Next, we analyze the relative qualities of the solutions each method
 produces.  Figures~\ref{fig:a=1:1} and \ref{fig:a=1:2} plot the
@@ -64,21 +63,21 @@ we used is an accurate approximation of the expectation, up to lower
 order terms, as is demonstrated in these simulated runs.  The random
 sampling algorithm does well, both when $c$ is low and high, but
 falters when $ck=1$. The greedy algorithm performs better than the
-random sampling algorithm in all cases, but its advantage vanishes as
+sampling algorithm in all cases, but its advantage vanishes as
 $c$ gets larger. Note that the dip in the graphs when $cl=ar$, at
 $c=4$ in Figure~\ref{fig:a=1:1} and $c=2$ in Figure~\ref{fig:a=1:2} is
 expected and was previously demonstrated in
 Figure~\ref{fig:simple_approx}.  The partition algorithm is immune to
 this drop that affects both the greedy and the sampling algorithms,
-but comes with the cost of higher time and space utilization.
+but comes with the cost of higher time and space utilization.\vs
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=25000,r=100000_Greedy_vs_Naive_error.png}
 \vspace{-1cm}
-\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in simulated graphs with $|L|=25$k, $|R|=100$k, $d=20$}\label{fig:a=1:1}
+\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=25$k, $|R|=100$k, $d=20$}\label{fig:a=1:1}
 \end{minipage}
 \vspace{.2cm}
 \hspace{0cm}
@@ -86,33 +85,31 @@ but comes with the cost of higher time and space utilization.
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=50000,r=100000_Greedy_vs_Naive_error.png}
 \vspace{-1cm}
-\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in simulated graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=1:2}
+\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=1:2}
 \end{minipage}
+\vspace{-.8cm}
 \end{figure}
 
-
-\vs In contrast to the case when $a=1$, the sampling algorithm
+In contrast to the case when $a=1$, the sampling algorithm
 performs worse when $a>1$ but performs increasingly better with $c$ as
 demonstrated by Figures~\ref{fig:a=2} and \ref{fig:a=4}. The greedy
 algorithm continues to produce solutions that are nearly optimal,
-regardless of the settings of $c$ and $a$, even winning over the
+regardless of the settings of $c$ and $a$, even beating the
 partition algorithm with increasing values of $a$. Our simulations
-suggest that in most cases, one can simply use the very simple
-sampling method for solving the $(c, a)$-recommendation subgraph
-problem. In those cases where the sampling is not suitable as flagged
+suggest that in most cases, one can simply use our sampling method for solving the $(c, a)$-recommendation subgraph problem. In cases where the sampling is not suitable as flagged
 by our analysis, we still find that the greedy performs adequately and
 is also simple to implement. These two algorithms thus confirm to our
 requirements we initially laid out for deployment in large-scale real
 systems in practice.
 
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \begin{minipage}[h]{0.48\textwidth}
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png}
 \vspace{-1cm}
-\caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in simulated graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=2}
+\caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=2}
 \end{minipage}
 \vspace{.2cm}
 \hspace{0cm}
@@ -120,14 +117,14 @@ systems in practice.
 \centering
 \includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}
 \vspace{-1cm}
-\caption{Solution quality for the $(c, 4)$-recommendation subgraph problem in simulated graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=4}
+\caption{Solution quality for the $(c, 4)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=4}
 \end{minipage}
+\vspace{-.8cm}
 \end{figure}
 
-\vs
 To summarize, our synthetic experiments show the following strengths of each algorithm: \vs
 
-\textbf{Sampling Algorithm:} This algorithm uses little to no memory and can
+\textbf{Sampling Algorithm:} Sampling uses little to no memory and can
 be implemented as an online algorithm. If keeping the underlying graph in
 memory is an issue, then chances are this algorithm will do well while only needing
 a fraction of the resources the other two algorithms would need. \vs
@@ -140,5 +137,7 @@ requiring large amounts of space or time, partition is best suited for instances
 $a$ is low the quality of the solution is more important than anything else. \vs
 
 \textbf{Greedy Algorithm:} This algorithm is the all-round best performing algorithm we tested.
-It requires a single pass over the data and so runs very quickly, and can run completely in memory for graphs with as many as tens of millions of edges. It is not as fast as sampling or accurate as partition
+It only requires a single pass over the data thus very quickly,  and uses
+relatively little amounts of space enabling it run completely in memory for graphs with
+as many as tens of millions of edges. It is not as fast as sampling or accurate as partition
 when $a$ is small, but it has very good performance over all parameter ranges. 
