@@ -5,7 +5,7 @@
 
 We present the sampling algorithm for the $(c,a)$-recommendation subgraph formally below.
 
-\begin{algorithm}[h]
+\begin{algorithm}
   \SetAlgoLined
   \KwData{A bipartite graph $G=(L,R,E)$}
   \KwResult{A $(c,a)$-recommendation subgraph $H$}
@@ -35,8 +35,8 @@ chosen probabilistically according to this model.
 recommendation graph, each vertex $u\in L$ uniformly and independently
 samples $d$ neighbors from $R$ with replacement. While this allows each
 vertex in $L$ to have the same vertex as a neighbor multiple times, in
-reality $r$ is so much larger than $d$ that repetition is very unlikely
-at a vertex in $L$. This model is similar to, but is distinct from the more
+reality $r \gg d$ is so edge repetition is very unlikely.
+This model is similar to, but is distinct from the more
 commonly known Erd\"{o}s-Renyi model of random graphs~\cite{janson2011random}.
 In particular, while the degree of each vertex in $L$ is fixed under
 our model, concentration bounds can show that the degrees of the
@@ -111,7 +111,7 @@ in expectation is at least $({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
 
 For the $(c, 1)$-recommendation subgraph problem the approximation obtained by this sampling approach can be much better for certain values of $ck$. In particular,
 if $ck>1$, then the approximation ratio is $1-\exp(-ck)$, which
-approaches 1 as $ck\to\infty$. In particular, if $ck=3$, then the
+approaches 1 as $ck\to\infty$. If $ck=3$, then the
 solution will be at least 95\% as good as the optimal solution even
 with our trivial bounds. Similarly, when $ck<1$, the approximation
 ratio is $(1-\exp(-ck))/ck$ which also approaches 1 as $ck\to 0$. In
