@@ -24,7 +24,7 @@ matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we
 obtain a $b$-matching problem, that can be converted to a bipartite
 matching problem~\cite{Gabow1983}.\vs
 
-The requirement of having a minimum number of $a$ in-links from L for a node in R to be counted as discovered might seem unnatural at first sight. However, it is a natural formulation of the requirement of indexing algorithms for search engines where such a redundancy in their crawler visits is needed before recording pages in R in the search index and hence eventually as results for a relevant search query. Since most large web repositories using recommendations have a search capability, they also have such an indexing system that requires a minimum level of redundancy to include pages in their search index. Thus our problem formulation is also applicable in such general web systems that we study. \vs
+The requirement of having a minimum number of $a$ in-links from L for a node in R to be counted as discovered might seem unnatural at first sight. However, it is a natural formulation of the requirement of indexing algorithms for search engines where such a redundancy in their crawler visits is needed before recording pages in R in the search index and hence eventually as results for a relevant search query. Since most large web repositories using recommendations have a search capability, they also have such an indexing system that requires a minimum level of redundancy to include pages in their search index. Thus our problem formulation is also applicable in such general web systems that we study. \\
 
 We now describe typical web graph characteristics by discussing the
 sizes of $L$, $R$, $c$ and $a$ in practice. As noted before, in most
@@ -46,8 +46,7 @@ to include it in the searchable index of the crawler. \vs
 
 \subsection{Practical Requirements}
 
-Maintaining production software packages especially those involving algorithms
-are extremely hard. There are two key requirements in making graph algorithms
+There are two key requirements in making graph algorithms
 practical. The first is that the method used must be very simple to
 implement, debug, deploy and most importantly maintain long-term. The second is that the method must scale
 gracefully with larger sizes. \vs
@@ -117,12 +116,12 @@ of our different algorithms
 
 \begin{figure}[H]
 \centering
-\begin{tabular}{lllll}
+\begin{tabular}{l|l|l|l|l}
 \cline{2-4}
-\multicolumn{1}{l|}{}       & \multicolumn{1}{l|}{Sampling} & \multicolumn{1}{l|}{Greedy} & \multicolumn{1}{l|}{Partition}          &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Time}  & \multicolumn{1}{l|}{$O(|E|)$}   & \multicolumn{1}{l|}{$O(|E|)$} & \multicolumn{1}{l|}{$O(|E|\sqrt{|V|})$} &  \\ \cline{1-4}
-\multicolumn{1}{|l|}{Space} & \multicolumn{1}{l|}{$O(1)$}     & \multicolumn{1}{l|}{$O(|V|)$}   & \multicolumn{1}{l|}{$O(|E|)$}             &  \\ \cline{1-4}
-                            &                               &                             &                                         & 
+                                    & Sampling                                        & Greedy   & Partition          &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{Time}          & $O(|E|)$                                        & $O(|E|)$ & $O(|E|\sqrt{|V|})$ &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{Space}         & $O(1)$                                          & $O(V)$   & $O(|E|)$           &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{Approx. Ratio} & $1-\frac{(ck)^a-1}{ck-1}e^{-ck+\frac{a-1}{r}}$  & $1-o(1)$ & $1-o(1)$           &  \\ \cline{1-4}
 \end{tabular}
 \caption{Complexities of the different algorithms}
 \end{figure}
