@@ -1,6 +1,6 @@
 \subsection{Real Data}
 
-We now present the results of running the algorithm on several real
+We now present the results of running our algorithms on several real
 datasets. In the graphs that we use, each node corresponds to a single
 product in the catalog of a merchant and the edges connect similar
 products. For each product up to 50 most similar products were
@@ -27,7 +27,7 @@ algorithm for the first two merchants due to memory constraints. \vs
 \centering
 \begin{minipage}[h]{0.48\textwidth}
 \centering
-\includegraphics[width=0.99\textwidth]{images/real_a=1.png}
+\includegraphics[width=0.99\textwidth]{images/real_a=1_new.png}
 
 \caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in retailer data}
 \label{fig:real_a=1}
@@ -36,7 +36,7 @@ algorithm for the first two merchants due to memory constraints. \vs
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
-\includegraphics[width=0.99\textwidth]{images/real_a=2.png}
+\includegraphics[width=0.99\textwidth]{images/real_a=2_new.png}
 
 \caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in retailer data}
 \label{fig:real_a=2}
@@ -45,7 +45,7 @@ algorithm for the first two merchants due to memory constraints. \vs
 \hspace{0cm}
 \begin{minipage}[h]{0.48\textwidth}
 \centering
-\includegraphics[width=0.99\textwidth]{images/real_a=3.png}
+\includegraphics[width=0.99\textwidth]{images/real_a=3_new.png}
 
 \caption{Solution quality for the $(c, 3)$-recommendation subgraph problem in retailer data}
 \label{fig:real_a=3}
@@ -61,14 +61,14 @@ results were almost optimal starting from $a=2$. \vs
 
 The partition method is also promising, especially when the $a$ value
 that is targeted is low. Indeed, when $a=1$ or $a=2$, its performance
-is comparable or better than greedy, though it is not as pronounced as
-the simulations. However, for larger values of $a$ the partition
+is comparable or better than greedy, though the difference is not as pronounced as
+it is in the simulations. However, for larger values of $a$ the partition
 algorithm performs worse. 
 
-The sampling algorithm performs mostly well in real life data,
-particularly so when $c$ is large. It is typically worse than
+The sampling algorithm performs mostly well on real data,
+especially when $c$ is large. It is typically worse than
 greedy, but unlike the partition algorithm, its performance improves
-dramatically as $c$ becomes larger, and its performance does not get
-worse as quickly when $a$ gets larger. Therefore, for large $c$ 
+dramatically as $c$ becomes larger, and its performance does not worsen
+as quickly when $a$ gets larger. Therefore, for large $c$ 
 sampling becomes a viable alternative to greedy mainly in cases where the
 linear memory cost of the greedy algorithm is too prohibitive.
