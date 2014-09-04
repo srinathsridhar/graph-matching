@@ -14,10 +14,3 @@
 *.sty
 
 *.zip
-
-algorithm2e/*
-main.out
-
-main.log
-
-main.dvi
