@@ -104,7 +104,7 @@ The size of the optimal solution is bounded above by both the number
 of edges in the graph and the number of vertices in $R$. The former of
 these is $cl=ckr$ and the latter is $r$, which shows that the optimal solution size
 $OPT \leq
-r\max(ck,1)$. Therefore, by simple case analysis the approximation ratio
+r\min(ck,1)$. Therefore, by simple case analysis the approximation ratio
 in expectation is at least $({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
 \end{proof}
 

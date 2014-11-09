@@ -81,7 +81,7 @@ Switching to the
 {\bf Erd\"{o}s-Renyi model}~\cite{ErdosRenyi59} instead of the fixed degree model used in
 the previous section, we now prove the near optimality of the
 greedy algorithm for the $(c, a)$-recommendation subgraph problem.
-Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.  For technical reasons, we need to assume that $lp \geq 1$ in the following theorem. However, this is a very weak assumption since $lp$ is simply the expected degree of a vertex $v\in L$. Typical values for $p$ for our applications will be $\Omega(\log(l)/l)$ making the expected degree $lp=\Omega(\log l)$.
+Recall that in this model (sometimes referred to as $G_{n,p}$), each possible edge is inserted with probability $p$ independent of other edges. In our version $G_{l,r,p}$, we only add edges from $L$ to $R$ each with probability $p$ independent of other edges in this complete bipartite candidate graph.  For technical reasons, we need to assume that $lp \geq 1$ in the following theorem. However, this is a very weak assumption since $lp$ is simply the expected degree of a vertex $v\in R$. Typical values for $p$ for our applications will be $\Omega(\log(l)/l)$ making the expected degree $lp=\Omega(\log l)$.
 
 \begin{thm}\label{greed-is-good}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $lp \geq 1$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
