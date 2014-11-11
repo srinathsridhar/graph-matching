@@ -1,16 +1,17 @@
 \abstract
 
 
-Recommendations are central to the utility of many popular e-commerce websites. Such sites
-typically contain a set of recommendations on every product page that
-enables visitors and crawlers to easily navigate the website. Choosing an
-appropriate set of recommendations at each page is one of the key
-features of backend engines that have been deployed at several e-commerce
-sites. Specifically at BloomReach, an engine consisting of several
-independent components analyzes and optimizes its clients
-websites. This paper focuses on the structure optimizer component
-which improves the website navigation experience that enables the
-discovery of previously undiscovered content from popular pages.\vs
+Recommendations are central to the utility of many popular e-commerce
+websites. Such sites typically contain a set of recommendations on
+every product page that enables visitors and crawlers to easily
+navigate the website.  These recommendations are universally present
+on all e-commerce websites. Choosing an appropriate set of recommendations
+at each page is a critical task performed by dedicated backend
+software packages.  At BloomReach, an engine consisting of several independent components
+analyzes and optimizes its clients e-commerce website. This paper
+focuses on the structure optimizer component which improves the
+website navigation experience that enables the discovery of previously
+undiscovered content by exposing them from popular pages.\vs
 
 %Recommendations are central to the utility of many websites including
 %YouTube, Quora as well as popular e-commerce stores. Such sites
@@ -20,14 +21,15 @@ discovery of previously undiscovered content from popular pages.\vs
 %features of backend engines that have been deployed at several e-commerce
 %sites.\vs
 
-We formalize the concept of recommendations used
-for discovery as a natural graph optimization
-problem in a bipartite graph: the left partition represent highly
-visited pages while the right represents rarely visited ones, while the edges are candidate recommendation links that can be used. 
-The goal is to pick at most a fixed number of out-links from each left node to maximize the number of right nodes that are in-linked redundantly. The allowed out-degree of left nodes and minimum redundancy of coverage of right nodes are parameters defining the problem.
+We formalize the concept of recommendations used for discovery as a natural graph optimization
+problem on a bipartite graph: the left partition represent highly visited pages while the right 
+represents rarely visited ones, and the edges are candidate recommendation links that can be used. 
+The goal is to pick at most a fixed number of out-links from each left node to maximize the number of 
+right nodes that are in-linked redundantly. The allowed out-degree of left nodes and minimum redundancy
+ of coverage of right nodes are parameters defining the problem.
 
-In the special case when the in-link requirement is one, the problem reduces to maximum bipartite matching which already requires
-superlinear time and is not scalable. Also, implementing simple
+In the special case when the in-link requirement is one, the problem reduces to maximum bipartite 
+matching which already requires superlinear time and is not scalable. Also, implementing simple
 algorithms is critical in practice because they are significantly
 easier to maintain in a production software package. This motivated us
 to analyze three methods for solving the problem in increasing order
