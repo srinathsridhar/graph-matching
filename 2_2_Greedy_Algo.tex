@@ -87,6 +87,9 @@ Recall that in this model (sometimes referred to as $G_{n,p}$), each possible ed
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $lp \geq 1$. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then:
 \[ \emph{\E}[S] \geq r - \frac{a(lp)^{a-1}}{(1-p)^a} \sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}}\]
 \end{thm}
+
+When the underlying random graph is sufficiently dense, Theorem~\ref{simple-thm} shows that the above guarantee is asymptotically optimal. \vs
+
 \begin{proof}
 Note that if edges are generated uniformly, we can consider the
 graph as being revealed to us one vertex at a time as the greedy
@@ -97,13 +100,13 @@ $X_{i+1}$ is when all the previous $i$ vertices were from the same
 vertices in $L$, which are now not available for matching the
 $(i+1)^{st}$ vertex. The maximum number of such invalidated vertices
 is at most $\lceil ia/c \rceil$. Therefore, the bad event
-is that we have fewer than $a$ of the at least $l-\lceil ia/c \rceil$ 
+is that we have fewer than $a$ of the at least $l-\lceil ia/c \rceil$
 available vertices having an edge to this vertex. The probability of this
 bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the
 probability that a Binomial random variable with $l - \frac{ia}{c}$
 trials of probability $p$ of success for each trial has less than $a$
 successes. We can bound this probability by using a union bound and
-upper-bounding $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]$ for each 
+upper-bounding $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]$ for each
 $0 \leq t \leq a-1$. By using the trivial estimate that
 $\binom{n}{i} \leq n^i$ for all $n$ and $i$, we obtain:
 
@@ -111,7 +114,7 @@ $\binom{n}{i} \leq n^i$ for all $n$ and $i$, we obtain:
       \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]
 &=    \binom{l-\frac{ia}{c}}{t} (1-p)^{l-\frac{ia}{c}-t}p^{t} \\
 &\leq \left(l-\frac{ia}{c}\right)^t (1-p)^{l-\frac{ia}{c}-t} p^{t} \\
-&\leq (lp)^t (1-p)^{l-\frac{ia}{c}-t} 
+&\leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}
 \end{align*}
 
 Notice that the largest exponent $lp$ can take within the bounds of
@@ -144,6 +147,7 @@ the right parameters, we can prove that the error term of our greedy
 approximation will be sublinear.
 
 \begin{thm}
+\label{simple-thm}
 Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $p = \frac{\gamma \log l}{l}$ for some $\gamma \geq 1$. Suppose that $c, a$ and $\epsilon>0$ are such that $lc=(1+\epsilon)ra$ and that $l$ and $r$ go to infinity while satisfying this relation. If $S$ is the size of the $(c,a)$-recommendation subgraph produced by the greedy algorithm, then
 
 \[ \E[S] \geq r - o(r) \]
@@ -152,9 +156,9 @@ Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $p = \frac{\gamma \l
 We will prove this claim by applying Theorem \ref{greed-is-good}. Note that it suffices to prove that $(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}} = o(r)$ since the other terms are just constants. We first bound the elements of this summation. Using the facts that $p = \frac{\gamma \log l}{l}$, $lc/a = (1+\epsilon)r$ and that $i<r$ throughout the summation, we get the following bound on each term:
 
 \begin{align*}
-       (1-p)^{l-\frac{ia}{c}} 
+       (1-p)^{l-\frac{ia}{c}}
 &\leq  \left(1-\frac{\gamma \log l}{l}\right)^{l-\frac{ia}{c}} \\
-&\leq  \exp\left(-\frac{\gamma \log l}{l}\left(l-\frac{ia}{c}\right)\right) \\ 
+&\leq  \exp\left(-\frac{\gamma \log l}{l}\left(l-\frac{ia}{c}\right)\right) \\
 &=     \exp\left((-\log l)\left(\gamma - \frac{ia}{lc}\right)\right) \\
 &=     l^{-\gamma+\frac{ia}{lc}} = l^{-\gamma+\frac{i}{(1+\epsilon)r}} \\
 &\leq  l^{-1+\frac{1}{1+\epsilon}} = l^{-\frac{\epsilon}{1+\epsilon}}

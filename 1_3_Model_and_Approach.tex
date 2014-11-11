@@ -57,19 +57,20 @@ Graph matching algorithms require linear memory and super-linear run-time
 which does not scale well. For example, an e-commerce website of a
 client of BloomReach with 1M product pages and 100 recommendation
 candidates per product would require easily over 160GB in main memory to store the graph
-and run matching algorithms; this can be reduced by using graph
+and run exact matching algorithms; this can be reduced by using graph
 compression techniques but that adds more technical difficulties in
 development and maintenance. Algorithms that are time intensive
 can sometimes be sped-up by using distributed computing techniques such as
 map-reduce~\cite{DeanGhemawat2004}. However, efficient map-reduce
-algorithms for graph problems are notoriously difficult. Finally, all of these methods apply only to the special case of our problem when $a=1$.\vs
+algorithms for graph problems are notoriously difficult. Finally, all of these methods apply only to the special case of our problem when $a=1$, leaving open the question of solving the more interesting and typical cases of redundant coverage when $a > 1$.\vs
 
 \subsection{Simple Approximation Algorithms}
 
-To circumvent the time and space complexity of implementing optimal
-graph algorithms for the recommendation subgraph problem, we propose
-the study of three simple approximate solutions strategies that not only can be
-shown to scale well in practice but also have good theoretical
+To satisfy these practical requirements,
+%the time and space complexity of implementing optimal
+%graph algorithms for the recommendation subgraph problem,
+we propose
+the study of three simple approximate solutions strategies that not only can be shown to scale well in practice but also have good theoretical
 properties that we demonstrate using approximation ratios.
 
 \begin{itemize}
@@ -81,9 +82,9 @@ properties that we demonstrate using approximation ratios.
   recommendations can be generated using a random number generator on
   the fly. While this might seem trivial at first, for sufficient (and
   often real-world) values of $c$ and $a$ we show that this can be
-  optimal. Also, this method is very easy to adapt to the case when the underlying graph is dynamic with both nodes and edges changing over time. Furthermore, while we omit this result for brevity, our
+  optimal. Also, this method is very easy to adapt to the case when the underlying graph is dynamic with both nodes and edges changing over time. Furthermore, our
   approach can be extended to the case where the recommendation edges
-  have weights.
+  have weights representing varying strengths of association as is typically provided by the traditional methods that generate candidate recommendation links\footnote{We omit a full description of this result for brevity.}.
 
 \item {\bf Greedy:} The second solution we propose is a greedy
   algorithm that chooses the recommendation links so as to maximize
@@ -91,7 +92,7 @@ properties that we demonstrate using approximation ratios.
   particular, we keep track of the number of in-links required for
   each node in $R$ to reach the target of $a$ and choose the links
   from each node in $L$ giving preference to adding links to nodes in
-  $R$ that are closer to the target in-degree $a$.
+  $R$ that are closer to the target in-degree $a$. This method bears close resemblance in strategy with greedy methods used for maximum coverage and its more general submodular maximization variants.
 
 \item {\bf Partition:} The third solution is inspired by a
   theoretically rigorous method to find optimal subgraphs in
@@ -102,9 +103,9 @@ properties that we demonstrate using approximation ratios.
   achieving the target degree $a$. We require the number of edges in
   the underlying graph to be significantly large for this method to
   work very well; moreover, we need to run a (near-)perfect matching
-  algorithm in each of the subsets which is also a computationally
+  algorithm in each of the edge-subsets which is also a computationally
   expensive subroutine. Hence, even though this method works very well
-  in dense graphs, it does not scale very well in terms of running
+  in dense graphs, its resource requirements may not scale well in terms of running
   time and space.
 \end{itemize}
 

@@ -45,7 +45,7 @@ vertices in $L$ would have similarly been concentrated around $d$ for $p=d/r$
 in the Erd\"{o}s-Renyi model. We prove
 the following theorem about the performance of the Sampling Algorithm.
 We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define
-$k = \frac{l}{r}$.
+$k = \frac{l}{r}$. 
 
 \begin{thm}\label{original_result}
 Let $S$ be the
@@ -53,6 +53,9 @@ random variable denoting the number of vertices $v \in R$ such that
 $\deg_{H}(v)\geq a$ in the fixed-degree model. Then
 \[ \emph{\E}[S] \geq r\left(1-e^{-ck+\frac{a-1}{r}}\frac{(ck)^a-1}{ck-1}\right)  \]
 \end{thm}
+
+To get a quick sense of the very good performance bounds reflected in this theorem, please see Figure~\ref{fig:simple_approx} that plots the approximation ratio as a function of $ck$ for the $(c,1)$-recommendation subgraph problem, as well as Figure~\ref{a-values} that shows how large $c$ needs to be (in terms of $k$) for the
+solution to be 95\% optimal for different values of $a$, both in the fixed degree model.\vs
 
 \begin{proof}
 We will analyze the sampling algorithm as if it picks the neighbors of
