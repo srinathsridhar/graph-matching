@@ -1,43 +1,47 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10) (format=pdflatex 2013.8.31)  11 FEB 2014 00:21
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.10)  10 NOV 2014 20:22
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**main.tex
-(./main.tex
+**C:/Users/ravi/Desktop/Repos/graphmatching/main.tex
+(C:/Users/ravi/Desktop/Repos/graphmatching/main.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, cz
-ech, slovak, dutch, ukenglish, usenglishmax, basque, french, german-x-2012-05-3
-0, ngerman-x-2012-05-30, german, ngerman, swissgerman, italian, polish, portugu
-ese, spanish, catalan, galician, loaded.
-(./sig-alternate.cls
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/epsfig.sty
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+(C:\Users\ravi\Desktop\Repos\graphmatching\sig-alternate.cls
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/graphicx.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/keyval.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/graphics.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/trig.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/pdftex-def/pdftex.def
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/infwarerr.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ltxcmds.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count79
@@ -48,52 +52,52 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \epsfxsize=\dimen104
 \epsfysize=\dimen105
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2009/06/22 v3.00
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2000/07/18 v2.13 AMS math features
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip41
 
 For additional information on amsmath, use the `?' option.
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsmath/amstext.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsmath/amsgen.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen106
 ))
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsmath/amsbsy.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsmath/amsopn.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count80
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count81
 \leftroot@=\count82
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count83
 \DOTSCASE@=\count84
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen108
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count85
 \c@MaxMatrixCols=\count86
 \dotsspace@=\muskip10
@@ -114,8 +118,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \multlinegap=\skip42
 \multlinetaggap=\skip43
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
 Document Class 'sig-alternate' <22nd. April '09>. Modified by G.K.M. Tobin/Gerr
 y Murray
@@ -147,7 +151,7 @@ Questions on the style, SIGS policies, etc. to Adrienne Griscti griscti@acm.org
 \titleboxnoteflag=\count100
 Document Class: sig-alternate 2009/04/22 - V2.4 - based on acmproc.cls V1.3 <No
 v. 30 '99>
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/latexsym.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latexsym.sty"
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -179,18 +183,19 @@ LaTeX Info: Redefining \cite on input line 1211.
 \acmcopyr=\toks33
 \boilerplate=\toks34
 \copyrightetc=\toks35
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/fontenc.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/t1enc.def
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
 LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/ae/t1aer.fd
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ae\t1aer.fd"
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-))) (./amsthm-alt.sty
+)))
+(C:\Users\ravi\Desktop\Repos\graphmatching\amsthm-alt.sty
 
 LaTeX Warning: You have requested package `amsthm-alt',
                but the package provides `amsthmWithoutProof'.
@@ -206,12 +211,12 @@ Package: amsthmWithoutProof 2004/08/06 v2.20
 \thm@headsep=\skip46
 \dth@everypar=\toks41
 LaTeX Info: Redefining \qed on input line 292.
-) (/opt/local/share/texmf-texlive-dist/tex/latex/cite/cite.sty
+) (C:\Users\ravi\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/float/float.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count109
 \float@exts=\toks42
@@ -219,793 +224,583 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks43
 \@floatcapt=\box31
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-! LaTeX Error: File `algorithm2e.sty' not found.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
 
-Enter file name: 
-
-! LaTeX Error: Unknown option `lined' for package `algorithm2e'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.5 
-    
-? 
-
-! LaTeX Error: Unknown option `boxed' for package `algorithm2e'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.5 
-    
-? 
-\c@thm=\count110
-No file main.aux.
-\openout1 = `main.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-(/opt/local/share/texmf-texlive-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count111
-\scratchdimen=\dimen123
-\scratchbox=\box32
-\nofMPsegments=\count112
-\nofMParguments=\count113
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count114
-\MPscratchDim=\dimen124
-\MPnumerator=\count115
-\makeMPintoPDFobject=\count116
-\everyMPtoPDFconversion=\toks45
-) (/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifluatex.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 39.
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen123
+\Hy@linkcounter=\count110
+\Hy@pagecounter=\count111
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/ulasy.fd
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count112
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count113
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen124
+\Fld@menulength=\count114
+\Field@Width=\dimen125
+\Fld@charsize=\dimen126
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+
+
+Package hyperref Warning: Option `pdfpagelabels' is turned off
+(hyperref)                because \thepage is undefined.
+
+\c@Item=\count115
+\c@Hfootnote=\count116
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count117
+\c@bookmark@seq@number=\count118
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip47
+)
+(C:\Users\ravi\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithm2e\algorithm2e.sty
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count119
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+
+
+Package relsize Warning: Failed to get list of font sizes.
+(relsize)                Falling back to old definition. on input line 81.
+
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip48
+\skiplinenumber=\skip49
+\skiprule=\skip50
+\skiphlne=\skip51
+\skiptext=\skip52
+\skiplength=\skip53
+\algomargin=\skip54
+\skipalgocfslide=\skip55
+\algowidth=\dimen127
+\inoutsize=\dimen128
+\inoutindent=\dimen129
+\interspacetitleruled=\dimen130
+\interspacealgoruled=\dimen131
+\interspacetitleboxruled=\dimen132
+\algocf@inoutbox=\box32
+\algocf@inputbox=\box33
+\AlCapSkip=\skip56
+\AlCapHSkip=\skip57
+\algoskipindent=\skip58
+\algocf@nlbox=\box34
+\algocf@hangingbox=\box35
+\algocf@untilbox=\box36
+\algocf@skipuntil=\skip59
+\algocf@capbox=\box37
+\algoheightruledefault=\skip60
+\algoheightrule=\skip61
+\algotitleheightruledefault=\skip62
+\algotitleheightrule=\skip63
+\c@algocfline=\count120
+\c@algocfproc=\count121
+\c@algocf=\count122
+\algocf@algoframe=\box38
+\algocf@algobox=\box39
+) (C:\Users\ravi\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(C:\Users\ravi\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen133
+\captionmargin@=\dimen134
+\captionwidth=\dimen135
+\caption@tempdima=\dimen136
+\caption@indent=\dimen137
+\caption@parindent=\dimen138
+\caption@hangindent=\dimen139
+\abovecaptionskip=\skip64
+\belowcaptionskip=\skip65
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
+tempboxa \hbox {\textbf {#1: #2}} \ifdim \wd \@tempboxa >\hsize \textbf {#1: #2
+}\par \else \hbox to\hsize {\hfil \box \@tempboxa \hfil } \fi .
+\c@ContinuedFloat=\count123
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
+\c@thm=\count124
+ (C:\Users\ravi\Desktop\Repos\graphmatching\main.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+
+(C:\Users\ravi\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count125
+\scratchdimen=\dimen140
+\scratchbox=\box40
+\nofMPsegments=\count126
+\nofMParguments=\count127
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen141
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
+\everyMPtoPDFconversion=\toks45
+)
+\AtBeginShipoutBox=\box41
+
+
+Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
+(hyperref)                using 11in.
+
+Package hyperref Info: Link coloring OFF on input line 21.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count131
+)
+LaTeX Info: Redefining \ref on input line 21.
+LaTeX Info: Redefining \pageref on input line 21.
+LaTeX Info: Redefining \nameref on input line 21.
+
+(C:\Users\ravi\Desktop\Repos\graphmatching\main.out)
+(C:\Users\ravi\Desktop\Repos\graphmatching\main.out)
+\@outlinefile=\write3
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 43.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 43.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 43.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Overfull \hbox (8.49046pt too wide) in paragraph at lines 39--39
+Overfull \hbox (8.49046pt too wide) in paragraph at lines 43--43
  []\eaddfnt aantikac@andrew.cmu.edu| 
  []
 
 
-Overfull \hbox (0.8225pt too wide) in paragraph at lines 39--39
+Overfull \hbox (0.8225pt too wide) in paragraph at lines 43--43
  []\eaddfnt srinath@bloomreach.com| 
  []
 
-(./0_Abstract.tex) (./1_1_Introduction.tex [1{/opt/local/var/db/texmf/fonts/map
-/pdftex/updmap/pdftex.map}
+(C:\Users\ravi\Desktop\Repos\graphmatching\0_Abstract.tex)
+(C:\Users\ravi\Desktop\Repos\graphmatching\1_1_Introduction.tex [1{C:/Users/rav
+i/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-]
-
-LaTeX Warning: Citation `Bush45aswe' on page \thepage  undefined on input line 
-30.
-
-
-LaTeX Warning: Citation `big-data-book13' on page \thepage  undefined on input 
-line 38.
-
-
-LaTeX Warning: Citation `Schafer1999' on page \thepage  undefined on input line
- 42.
-
-
-LaTeX Warning: Citation `Adomavicius2005' on page \thepage  undefined on input 
-line 42.
-
-
-LaTeX Warning: Citation `Resnick1997' on page \thepage  undefined on input line
- 42.
-
-) (./1_2_Related_Work.tex
-
-LaTeX Warning: Citation `almazro2010survey' on page \thepage  undefined on inpu
-t line 3.
-
-
-LaTeX Warning: Citation `twitter-collab-filtering' on page \thepage  undefined 
-on input line 3.
-
-
-LaTeX Warning: Citation `amazon-collab-filtering' on page \thepage  undefined o
-n input line 3.
-
-
-LaTeX Warning: Citation `google-collab-filtering' on page \thepage  undefined o
-n input line 3.
-
-) (./1_3_Model_and_Approach.tex
-
-LaTeX Warning: Citation `LovaszPlummer1986' on page \thepage  undefined on inpu
-t line 23.
-
-
-LaTeX Warning: Citation `Gabow1983' on page \thepage  undefined on input line 2
-5.
-
-
-LaTeX Warning: Citation `HubermanAdamic1999' on page \thepage  undefined on inp
-ut line 28.
-
-
-LaTeX Warning: Citation `DuDemmerBrewer2006' on page \thepage  undefined on inp
-ut line 28.
-
-
-LaTeX Warning: Citation `KumarNorrisSun2009' on page \thepage  undefined on inp
-ut line 29.
-
-[2]
-
-LaTeX Warning: Citation `DeanGhemawat2004' on page \thepage  undefined on input
- line 52.
-
-) (./2_1_Sampling_Algo.tex
-Overfull \hbox (15.33252pt too wide) in paragraph at lines 1--1
-[]\secfnt ALGORITHMS FOR REC-OM-MEN-DA-TION
+])
+(C:\Users\ravi\Desktop\Repos\graphmatching\1_2_Related_Work.tex)
+(C:\Users\ravi\Desktop\Repos\graphmatching\1_3_Model_and_Approach.texpdfTeX war
+ning (ext4): destination with the same identifier (name{page.}) has been alread
+y used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9 
+     [2]
+Underfull \hbox (badness 7151) in paragraph at lines 12--20
+[]\T1/aer/m/n/9 We in-tro-duce and study this as the \T1/aer/bx/n/9 the $\OT1/c
+mr/m/n/9 (\OML/cmm/m/it/9 c; a\OT1/cmr/m/n/9 )$\T1/aer/bx/n/9 -
  []
 
 
-Overfull \hbox (18.06691pt too wide) in paragraph at lines 11--12
+Underfull \hbox (badness 7203) in paragraph at lines 40--44
+[]\T1/aer/m/n/9 By ob-serv-ing rec-om-men-da-tions of Quora, Ama-zon,
+ []
+
+) (C:\Users\ravi\Desktop\Repos\graphmatching\2_1_Sampling_Algo.tex
+Underfull \hbox (badness 1442) in paragraph at lines 1--1
+[]\secfnt ALGORITHMS FOR REC-OM-MEN-DA-
+ []
+
+
+Underfull \hbox (badness 5711) in paragraph at lines 6--7
 []\T1/aer/m/n/9 We present the sam-pling al-go-rithm for the $\OT1/cmr/m/n/9 (\
-OML/cmm/m/it/9 c; a\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 -recommendation
+OML/cmm/m/it/9 c; a\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 -
  []
 
-
-! LaTeX Error: Environment algorithm undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \begin{algorithm}
-                      [h]
-? 
-! Undefined control sequence.
-l.14   \SetAlgoLined
-                    
-? 
-! Undefined control sequence.
-l.15   \KwData
-              {A bipartite graph $G=(L,R,E)$}
-? 
-! Undefined control sequence.
-l.16   \KwResult
-                {A (c,a)-recommendation subgraph $H$}
-? 
-! Undefined control sequence.
-l.17   \For
-           {$u$ in $L$}{
-? 
-! Undefined control sequence.
-l.19     \For
-             {$v$ in neighbors} {
-? 
-! Undefined control sequence.
-l.23   \Return
-               $H$\;
-? 
-
-! LaTeX Error: \caption outside float.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.24   \caption
-               {The sampling algorithm}
-? 
-! Undefined control sequence.
-\caption ... \endcsname \fi \fi \@dblarg {\@tempf 
-                                                  \@captype }
-l.24   \caption
-               {The sampling algorithm}
-? 
-! Undefined control sequence.
-\caption ...e \fi \fi \@dblarg {\@tempf \@captype 
-                                                  }
-l.24   \caption
-               {The sampling algorithm}
-? 
-
-! LaTeX Error: \begin{document} ended by \end{algorithm}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.25 \end{algorithm}
-                    \vs
-? 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-Overfull \hbox (5.85078pt too wide) in paragraph at lines 83--84
-\T1/aer/m/it/9 factor ap-prox-i-ma-tion to the $\OT1/cmr/m/n/9 (\OML/cmm/m/it/9
- c; \OT1/cmr/m/n/9 1)$\T1/aer/m/it/9 -graph rec-om-men-da-tion prob-
- []
-
-
-Overfull \hbox (26.03313pt too wide) in paragraph at lines 86--93
-\T1/aer/m/n/9 ma-tion ra-tio in ex-pec-ta-tion is at least $\OT1/cmr/m/n/9 ([])
-\OML/cmm/m/it/9 = []\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 ck; \OT1/cmr/m/n/9 1) \OMS/
-cmsy/m/n/9 ^^U
- []
-
-
-LaTeX Warning: Reference `fig:simple_approx' on page \thepage  undefined on inp
-ut line 105.
-
-
-Overfull \hbox (2.36537pt too wide) in paragraph at lines 96--107
-\T1/aer/m/n/9 prox-i-ma-tion ob-tained by this sam-pling ap-proach can be much
- []
-
-<images/sri_Original.png, id=28, 501.875pt x 321.2pt>
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 
+      [3] <images/sri_Original.png, id=149, 501.875pt x 321.2pt>
 File: images/sri_Original.png Graphic file (type png)
 
 <use images/sri_Original.png>
-Package pdftex.def Info: images/sri_Original.png used on input line 110.
-(pdftex.def)             Requested size: 201.59692pt x 129.02174pt.
+Package pdftex.def Info: images/sri_Original.png used on input line 126.
+(pdftex.def)             Requested size: 171.35815pt x 109.67215pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.139 
+       [4 <C:/Users/ravi/Desktop/Repos/graphmatching/images/sri_Original.png (P
+NG copy)>]) (C:\Users\ravi\Desktop\Repos\graphmatching\2_2_Greedy_Algo.tex
 
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Warning: Reference `a-values' on page \thepage  undefined on input line 1
-35.
-
-
-LaTeX Warning: Citation `AugerDoerr2011' on page \thepage  undefined on input l
-ine 142.
-
-
-LaTeX Warning: Reference `original_result' on page \thepage  undefined on input
- line 163.
-
-
-LaTeX Warning: Reference `negative_corr_chernoff' on page \thepage  undefined o
-n input line 164.
-
-) (./2_2_Greedy_Algo.tex
-Overfull \hbox (2.78159pt too wide) in paragraph at lines 8--10
-\T1/aer/m/n/9 con-struct-ing a $\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 c; a\OT1/cmr/m/
-n/9 )$\T1/aer/m/n/9 -recommendation sub-graph $\OML/cmm/m/it/9 H$ \T1/aer/m/n/9
- it-er-a-tively.
- []
-
-
-! LaTeX Error: Environment algorithm undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.11 \begin{algorithm}
-                      [h]
-? 
-! Undefined control sequence.
-l.12   \SetAlgoLined
-                    
-? 
-! Undefined control sequence.
-l.13   \KwData
-              {A bipartite graph $G=(L,R,E)$}
-? 
-! Undefined control sequence.
-l.14   \KwResult
-                {A (c,a)-recommendation subgraph $H$}
-? 
-! Undefined control sequence.
-l.15   \For
-           {$v$ in $R$}{
-? 
-! Undefined control sequence.
-l.17     \If
-            {length(freelinks) $\geq a$}{
-? 
-! Undefined control sequence.
-l.19       \For
-               {$u$ in freelinks}{
-? 
-! Undefined control sequence.
-l.25   \Return
-               $H$\;
-? 
-
-! LaTeX Error: \caption outside float.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.26   \caption
-               {The greedy Algorithm}
-? 
-! Undefined control sequence.
-\caption ... \endcsname \fi \fi \@dblarg {\@tempf 
-                                                  \@captype }
-l.26   \caption
-               {The greedy Algorithm}
-? 
-! Undefined control sequence.
-\caption ...e \fi \fi \@dblarg {\@tempf \@captype 
-                                                  }
-l.26   \caption
-               {The greedy Algorithm}
-? 
-
-! LaTeX Error: \begin{document} ended by \end{algorithm}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.27 \end{algorithm}
-                    \vs
-? 
-
-Overfull \hbox (1.61502pt too wide) in paragraph at lines 11--28
-\T1/aer/m/n/9 freelinks $\OML/cmm/m/it/9 H \OMS/cmsy/m/n/9   \OML/cmm/m/it/9 H 
-\OMS/cmsy/m/n/9 [ f\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 u; v\OT1/cmr/m/n/9 )\OMS/cms
-y/m/n/9 g$ \T1/aer/m/n/9 useddegree[$\OML/cmm/m/it/9 u$\T1/aer/m/n/9 ] $\OMS/cm
-sy/m/n/9  $ \T1/aer/m/n/9 useddegree[$\OML/cmm/m/it/9 u$\T1/aer/m/n/9 ]+1
- []
-
-
-LaTeX Warning: Reference `fig:greedy' on page \thepage  undefined on input line
- 58.
-
-[4 <./images/sri_Original.png (PNG copy)>]
-<images/greedy.png, id=34, 559.08875pt x 319.1925pt>
+<images/greedy.png, id=168, 559.08875pt x 319.1925pt>
 File: images/greedy.png Graphic file (type png)
  <use images/greedy.png>
-Package pdftex.def Info: images/greedy.png used on input line 65.
+Package pdftex.def Info: images/greedy.png used on input line 69.
 (pdftex.def)             Requested size: 196.5597pt x 112.2207pt.
-
-
-LaTeX Warning: Citation `KarpVaziraniVazirani1990' on page \thepage  undefined 
-on input line 74.
-
-) (./2_3_Partition_Algo.tex
-
-LaTeX Warning: Citation `ErdosRenyi59' on page \thepage  undefined on input lin
-e 13.
-
-
-Overfull \hbox (32.13353pt too wide) in paragraph at lines 11--18
-[]\T1/aer/m/n/9 We will prove a suf-fi-cient con-di-tion for per-fect $\OT1/cmr
-/m/n/9 (\OML/cmm/m/it/9 c; a\OT1/cmr/m/n/9 )$\T1/aer/m/n/9 -recommendation
- []
-
-
-LaTeX Warning: Citation `Janson2011' on page \thepage  undefined on input line 
-19.
-
-[5 <./images/greedy.png>]
-
-LaTeX Warning: Reference `random_matching_threshold' on page \thepage  undefine
-d on input line 59.
-
-
-! LaTeX Error: Environment algorithm undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.79 \begin{algorithm}
-                      [h]\label{partition_alg}
-? 
-! Undefined control sequence.
-l.80   \SetAlgoLined
-                    
-? 
-! Undefined control sequence.
-l.81   \KwData
-              {A bipartite graph $G=(L,R,E)$}
-? 
-! Undefined control sequence.
-l.82   \KwResult
-                {A (c,a)-recommendation subgraph $H$}
-? 
-
-LaTeX Warning: Reference `perfect' on page \thepage  undefined on input line 84
-.
-
-! Undefined control sequence.
-l.85   \For
-           {$i$ in [1..n]} {
-? 
-! Undefined control sequence.
-l.89   \Return
-               $H$\;
-? 
-
-! LaTeX Error: \caption outside float.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90   \caption
-               {The partition algorithm}
-? 
-! Undefined control sequence.
-\caption ... \endcsname \fi \fi \@dblarg {\@tempf 
-                                                  \@captype }
-l.90   \caption
-               {The partition algorithm}
-? 
-! Undefined control sequence.
-\caption ...e \fi \fi \@dblarg {\@tempf \@captype 
-                                                  }
-l.90   \caption
-               {The partition algorithm}
-? 
-
-! LaTeX Error: \begin{document} ended by \end{algorithm}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.91 \end{algorithm}
-                    \vs
-? 
-
-LaTeX Warning: Reference `partition_alg' on page \thepage  undefined on input l
-ine 95.
-
-
-Overfull \hbox (18.24559pt too wide) in paragraph at lines 94--97
-\T1/aer/bx/n/9 Theorem 9. \T1/aer/m/it/9 Let $\OML/cmm/m/it/9 G$ \T1/aer/m/it/9
- be drawn from $\OML/cmm/m/it/9 G[]$ \T1/aer/m/it/9 where $\OML/cmm/m/it/9 p \O
-MS/cmsy/m/n/9 ^^U \OML/cmm/m/it/9 a[]$\T1/aer/m/it/9 .
- []
-
-
-Overfull \hbox (3.98647pt too wide) in paragraph at lines 94--97
-\T1/aer/m/it/9 Then Al-go-rithm 3 [] finds a $\OT1/cmr/m/n/9 (1 \OMS/cmsy/m/n/9
- ^^@ \OML/cmm/m/it/9 ^^O\OT1/cmr/m/n/9 )$\T1/aer/m/it/9 -approximation in $\OML
-/cmm/m/it/9 O\OT1/cmr/m/n/9 ([])$
- []
-
-
-LaTeX Warning: Citation `LovaszPlummer1986' on page \thepage  undefined on inpu
-t line 103.
-
-) (./3_1_Simulated_Results.tex
-
-LaTeX Warning: File `images/time.png' not found on input line 24.
-
-
-! Package pdftex.def Error: File `images/time.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.24 ...hics[width=0.8\textwidth]{images/time.png}
-                                                  
-? 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 24.
-(/opt/local/share/texmf-texlive-dist/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
-
-LaTeX Warning: File `images/space.png' not found on input line 30.
-
-
-! Package pdftex.def Error: File `images/space.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 ...ics[width=0.8\textwidth]{images/space.png}
-                                                  
-? 
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 22--34
- []$[]$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 22--34
- []$ 
- []
-
-
-LaTeX Warning: Reference `fig:a=1:1' on page \thepage  undefined on input line 
-38.
-
-
-LaTeX Warning: Reference `fig:a=1:2' on page \thepage  undefined on input line 
-38.
-
-
-LaTeX Warning: Reference `fig:a=1:1' on page \thepage  undefined on input line 
-47.
-
-
-LaTeX Warning: Reference `fig:a=1:2' on page \thepage  undefined on input line 
-47.
-
-
-LaTeX Warning: Reference `fig:simple_approx' on page \thepage  undefined on inp
-ut line 48.
-
-[6]
-<images/l=25000,r=100000_Greedy_vs_Naive.png, id=44, 501.875pt x 332.24126pt>
-File: images/l=25000,r=100000_Greedy_vs_Naive.png Graphic file (type png)
-
-<use images/l=25000,r=100000_Greedy_vs_Naive.png>
-Package pdftex.def Info: images/l=25000,r=100000_Greedy_vs_Naive.png used on in
-put line 56.
-(pdftex.def)             Requested size: 193.535pt x 128.12366pt.
-
-<images/l=50000,r=100000_Greedy_vs_Naive.png, id=45, 501.875pt x 332.24126pt>
-File: images/l=50000,r=100000_Greedy_vs_Naive.png Graphic file (type png)
-
-<use images/l=50000,r=100000_Greedy_vs_Naive.png>
-Package pdftex.def Info: images/l=50000,r=100000_Greedy_vs_Naive.png used on in
-put line 62.
-(pdftex.def)             Requested size: 193.535pt x 128.12366pt.
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 54--66
- []$[]$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 54--66
- []$ 
- []
-
-
-LaTeX Warning: Reference `fig:a=2' on page \thepage  undefined on input line 76
-.
-
-
-LaTeX Warning: Reference `fig:a=4' on page \thepage  undefined on input line 76
-.
-
-
-<images/l=50000,r=100000,a=2_Greedy_vs_Naive.png, id=46, 501.875pt x 332.24126p
-t>
-File: images/l=50000,r=100000,a=2_Greedy_vs_Naive.png Graphic file (type png)
- <use images/l=50000,r=100000,a=2_Greedy_vs_Naive.png>
-Package pdftex.def Info: images/l=50000,r=100000,a=2_Greedy_vs_Naive.png used o
-n input line 89.
-(pdftex.def)             Requested size: 193.535pt x 128.12366pt.
-
-<images/l=50000,r=100000,a=4_Greedy_vs_Naive.png, id=47, 501.875pt x 332.24126p
-t>
-File: images/l=50000,r=100000,a=4_Greedy_vs_Naive.png Graphic file (type png)
- <use images/l=50000,r=100000,a=4_Greedy_vs_Naive.png>
-Package pdftex.def Info: images/l=50000,r=100000,a=4_Greedy_vs_Naive.png used o
-n input line 95.
-(pdftex.def)             Requested size: 193.535pt x 128.12366pt.
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 87--99
- []$[]$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 87--99
- []$ 
- []
-
-
-Overfull \hbox (12.36221pt too wide) in paragraph at lines 102--106
-[]\T1/aer/m/n/9 In short, our syn-thetic ex-per-i-ments show the fol-low-ing st
-rengths
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--106
-
- []
-
-
-Underfull \vbox (badness 4303) has occurred while \output is active []
-
-)
-(./3_2_Real_Results.tex [7 <./images/l=25000,r=100000_Greedy_vs_Naive.png (PNG 
-copy)> <./images/l=50000,r=100000_Greedy_vs_Naive.png (PNG copy)> <./images/l=5
-0000,r=100000,a=2_Greedy_vs_Naive.png (PNG copy)> <./images/l=50000,r=100000,a=
-4_Greedy_vs_Naive.png (PNG copy)>]
-<images/real_sampling_a=1.png, id=52, 439.6425pt x 237.88875pt>
-File: images/real_sampling_a=1.png Graphic file (type png)
-
-<use images/real_sampling_a=1.png>
-Package pdftex.def Info: images/real_sampling_a=1.png used on input line 8.
-(pdftex.def)             Requested size: 193.535pt x 104.71855pt.
-
-<images/real_sampling_a=2.png, id=53, 439.6425pt x 237.88875pt>
-File: images/real_sampling_a=2.png Graphic file (type png)
-
-<use images/real_sampling_a=2.png>
-Package pdftex.def Info: images/real_sampling_a=2.png used on input line 14.
-(pdftex.def)             Requested size: 193.535pt x 104.71855pt.
-
-<images/real_sampling_a=3.png, id=54, 439.6425pt x 237.88875pt>
-File: images/real_sampling_a=3.png Graphic file (type png)
-
-<use images/real_sampling_a=3.png>
-Package pdftex.def Info: images/real_sampling_a=3.png used on input line 21.
-(pdftex.def)             Requested size: 193.535pt x 104.71855pt.
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 6--25
- []$[]$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 6--25
- []$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 6--25
- []$ 
- []
-
-<images/real_greedy_a=1.png, id=55, 439.6425pt x 237.88875pt>
-File: images/real_greedy_a=1.png Graphic file (type png)
-
-<use images/real_greedy_a=1.png>
-Package pdftex.def Info: images/real_greedy_a=1.png used on input line 31.
-(pdftex.def)             Requested size: 193.535pt x 104.71855pt.
-
-<images/real_greedy_a=2.png, id=56, 439.6425pt x 237.88875pt>
-File: images/real_greedy_a=2.png Graphic file (type png)
-
-<use images/real_greedy_a=2.png>
-Package pdftex.def Info: images/real_greedy_a=2.png used on input line 37.
-(pdftex.def)             Requested size: 193.535pt x 104.71855pt.
-
-<images/real_greedy_a=3.png, id=57, 439.6425pt x 237.88875pt>
-File: images/real_greedy_a=3.png Graphic file (type png)
-
-<use images/real_greedy_a=3.png>
-Package pdftex.def Info: images/real_greedy_a=3.png used on input line 43.
-(pdftex.def)             Requested size: 193.535pt x 104.71855pt.
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 29--47
- []$[]$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 29--47
- []$ 
- []
-
-
-Overfull \hbox (1.91785pt too wide) in paragraph at lines 29--47
- []$ 
- []
-
-) (./4_Future_Directions.tex)
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.85 
+      [5 <C:/Users/ravi/Desktop/Repos/graphmatching/images/greedy.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.170 \end{align*}
+                   [6])
+(C:\Users\ravi\Desktop\Repos\graphmatching\2_3_Partition_Algo.tex
+Underfull \hbox (badness 4303) in paragraph at lines 120--123
+\OML/cmm/m/it/9 a[]$\T1/aer/m/it/9 . Then Al-go-rithm 3 finds a $\OT1/cmr/m/n/9
+ (1 \OMS/cmsy/m/n/9   \OML/cmm/m/it/9 \OT1/cmr/m/n/9 )$\T1/aer/m/it/9 -
+ []
 
-No file main.bbl.
-[1 <./images/real_sampling_a=1.png (PNG copy)> <./images/real_sampling_a=2.png 
-(PNG copy)> <./images/real_sampling_a=3.png (PNG copy)> <./images/real_greedy_a
-=1.png (PNG copy)> <./images/real_greedy_a=2.png (PNG copy)> <./images/real_gre
-edy_a=3.png (PNG copy)>] (./main.aux)
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.132 \end{proof}
+                  [7])
+(C:\Users\ravi\Desktop\Repos\graphmatching\3_1_Simulated_Results.tex
+LaTeX Font Info:    Try loading font information for T1+aett on input line 15.
 
-LaTeX Warning: There were undefined references.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+<images/time1_error.png, id=212, 455.7025pt x 232.87pt>
+File: images/time1_error.png Graphic file (type png)
+
+<use images/time1_error.png>
+Package pdftex.def Info: images/time1_error.png used on input line 21.
+(pdftex.def)             Requested size: 239.49998pt x 122.39005pt.
+
+<images/space_error.png, id=213, 455.7025pt x 235.88126pt>
+File: images/space_error.png Graphic file (type png)
+
+<use images/space_error.png>
+Package pdftex.def Info: images/space_error.png used on input line 29.
+(pdftex.def)             Requested size: 239.49998pt x 123.97269pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 19--34
+ []$[]$ 
+ []
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 19--34
+ []$ 
+ []
 
+
+<images/l=25000,r=100000_Greedy_vs_Naive_error.png, id=220, 455.7025pt x 232.87
+pt>
+File: images/l=25000,r=100000_Greedy_vs_Naive_error.png Graphic file (type png)
+
+ <use images/l=25000,r=100000_Greedy_vs_Naive_error.png>
+Package pdftex.def Info: images/l=25000,r=100000_Greedy_vs_Naive_error.png used
+ on input line 78.
+(pdftex.def)             Requested size: 239.49998pt x 122.39005pt.
+
+<images/l=50000,r=100000_Greedy_vs_Naive_error.png, id=221, 455.7025pt x 232.87
+pt>
+File: images/l=50000,r=100000_Greedy_vs_Naive_error.png Graphic file (type png)
+
+ <use images/l=50000,r=100000_Greedy_vs_Naive_error.png>
+Package pdftex.def Info: images/l=50000,r=100000_Greedy_vs_Naive_error.png used
+ on input line 86.
+(pdftex.def)             Requested size: 239.49998pt x 122.39005pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 76--91
+ []$[]$ 
+ []
+
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 76--91
+ []$ 
+ []
+
+
+Underfull \vbox (badness 5274) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.104 
+       [8 <C:/Users/ravi/Desktop/Repos/graphmatching/images/time1_error.png (PN
+G copy)> <C:/Users/ravi/Desktop/Repos/graphmatching/images/space_error.png (PNG
+ copy)> <C:/Users/ravi/Desktop/Repos/graphmatching/images/l=25000,r=100000_Gree
+dy_vs_Naive_error.png (PNG copy)> <C:/Users/ravi/Desktop/Repos/graphmatching/im
+ages/l=50000,r=100000_Greedy_vs_Naive_error.png (PNG copy)>]
+<images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png, id=234, 455.7025pt x 23
+2.87pt>
+File: images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png Graphic file (type 
+png)
+ <use images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png>
+Package pdftex.def Info: images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png 
+used on input line 110.
+(pdftex.def)             Requested size: 239.49998pt x 122.39005pt.
+
+<images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png, id=235, 455.7025pt x 23
+2.87pt>
+File: images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png Graphic file (type 
+png)
+ <use images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png>
+Package pdftex.def Info: images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png 
+used on input line 118.
+(pdftex.def)             Requested size: 239.49998pt x 122.39005pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 108--123
+ []$[]$ 
+ []
+
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 108--123
+ []$ 
+ []
+
+) (C:\Users\ravi\Desktop\Repos\graphmatching\3_2_Real_Results.tex
+<images/real_a=1_new.png, id=239, 455.7025pt x 218.8175pt>
+File: images/real_a=1_new.png Graphic file (type png)
+
+<use images/real_a=1_new.png>
+Package pdftex.def Info: images/real_a=1_new.png used on input line 30.
+(pdftex.def)             Requested size: 239.49998pt x 115.00444pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 28--35
+ []$[]$ 
+ []
+
+<images/real_a=2_new.png, id=240, 455.7025pt x 217.81375pt>
+File: images/real_a=2_new.png Graphic file (type png)
+
+<use images/real_a=2_new.png>
+Package pdftex.def Info: images/real_a=2_new.png used on input line 39.
+(pdftex.def)             Requested size: 239.49998pt x 114.47688pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 36--44
+ []$ 
+ []
+
+<images/real_a=3_new.png, id=241, 455.7025pt x 216.81pt>
+File: images/real_a=3_new.png Graphic file (type png)
+
+<use images/real_a=3_new.png>
+Package pdftex.def Info: images/real_a=3_new.png used on input line 48.
+(pdftex.def)             Requested size: 239.49998pt x 113.94936pt.
+
+Overfull \hbox (1.91785pt too wide) in paragraph at lines 45--54
+ []$ 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (C:\Users\ravi\Desktop\Repos\graphmatching\4_Future_Directions.texpdfTeX warn
+ing (ext4): destination with the same identifier (name{page.}) has been already
+ used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 
+      [9 <C:/Users/ravi/Desktop/Repos/graphmatching/images/l=50000,r=100000,a=2
+_Greedy_vs_Naive_error.png (PNG copy)> <C:/Users/ravi/Desktop/Repos/graphmatchi
+ng/images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png (PNG copy)>])
+(C:\Users\ravi\Desktop\Repos\graphmatching\main.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.107 \bibitem{amazon-collab-filtering}
+                                        [1 <C:/Users/ravi/Desktop/Repos/graphma
+tching/images/real_a=1_new.png> <C:/Users/ravi/Desktop/Repos/graphmatching/imag
+es/real_a=2_new.png> <C:/Users/ravi/Desktop/Repos/graphmatching/images/real_a=3
+_new.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.59 \end{document}
+                    [2
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
+ (C:\Users\ravi\Desktop\Repos\graphmatching\main.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 59.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 692A5F12A476EBBE89B5ED28DFF48C38;1274.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
  ) 
 Here is how much of TeX's memory you used:
- 3179 strings out of 494763
- 41876 string characters out of 3171441
- 106106 words of memory out of 3000000
- 6270 multiletter control sequences out of 15000+200000
- 61495 words of font info for 83 fonts, out of 3000000 for 9000
- 134 hyphenation exceptions out of 8191
- 41i,10n,26p,1208b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/opt/local/share/texmf-texlive-dist/fonts/enc/dvips/base/8r.enc}</opt/local/
-share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></opt/local/s
-hare/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></opt/local
-/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></opt/loca
-l/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></opt/
-local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/l
-ocal/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></opt/lo
-cal/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></opt/loc
-al/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/local
-/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></opt/local/s
-hare/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/local/sha
-re/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/shar
-e/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></opt/local/share
-/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></opt/local/share/
-texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></opt/local/share/t
-exmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></opt/local/share/te
-xmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></opt/local/share/tex
-mf-texlive-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></opt/local/share/texmf-tex
-live-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></opt/local/share/texmf-texlive-d
-ist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on main.pdf (8 pages, 469699 bytes).
+ 9066 strings out of 493921
+ 133905 string characters out of 3144879
+ 250314 words of memory out of 3000000
+ 12101 multiletter control sequences out of 15000+200000
+ 65928 words of font info for 96 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 41i,15n,38p,1300b,441s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmti7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmtt9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb
+8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb>
+Output written on main.pdf (11 pages, 534861 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 343 PDF objects out of 1000 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
+ 208 words of extra memory for PDF output out of 10000 (max. 10000000)
 

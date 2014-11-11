@@ -25,3 +25,5 @@ main.dvi
 main.log
 
 main.log
+*.bak
+.pdf
