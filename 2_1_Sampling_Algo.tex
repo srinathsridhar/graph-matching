@@ -1,4 +1,5 @@
 \section{Algorithms for Recommendation Subgraphs}
+\label{methodsec}
 
 \subsection{The Sampling Algorithm}
 \label{fixed-degree}
@@ -41,7 +42,7 @@ commonly known Erd\"{o}s-Renyi model of random graphs~\cite{Janson2011}.
 In particular, while the degree of each vertex in $L$ is fixed under
 our model, concentration bounds can show that the degrees of the
 vertices in $L$ would have similarly been concentrated around $d$ for $p=d/r$
-in the Erd\"{o}s-Renyi model. We prove 
+in the Erd\"{o}s-Renyi model. We prove
 the following theorem about the performance of the Sampling Algorithm.
 We denote the ratio of the size of $L$ and $R$ by $k$, i.e., we define
 $k = \frac{l}{r}$.
@@ -66,7 +67,7 @@ the degree of the vertex $v\in R$ in our chosen subgraph $H$. Because our
 algorithm uniformly subsamples a uniformly random selection of edges,
 we can assume that $H$ was generated the same way as $G$ but sampled $c$
 instead of $d$ edges for each vertex $u\in L$. Since there are $cl$
-edges in $H$ that can be incident on $v$, and each of these edges has a 
+edges in $H$ that can be incident on $v$, and each of these edges has a
 $1/r$ probability of being incident on a given vertex in $L$, we can now
 calculate that
 
@@ -94,7 +95,7 @@ Letting $Y_v = \left[X_v \geq a\right]$, we now see that
 \end{proof} \vspace{-.2cm}
 
 We can combine this lower bound with a trivial upper bound to obtain an
-approximation ratio that holds in expectation.  
+approximation ratio that holds in expectation.
 
 \begin{thm}
 The above sampling algorithm gives a $\left(1-\frac1e\right)$-factor approximation to the $(c,1)$-graph recommendation problem in expectation.
@@ -183,9 +184,10 @@ $ S \leq r(1-2\exp(-ck))$ with probability at most $(e/4)^{r(1-\exp(-ck))}$.
 
 For realistic scenarios where $r$ is very large, the above theorem gives very tight bounds on the size of the solution, also explaining the effectiveness of the simple sampling algorithm in such instances.
 
-Finally, we state without proof the generalization of this method to the weighted setting. 
+Finally, we state without proof the generalization of this method to the weighted setting.
 
 \begin{thm}
+\label{wtd-thm}
 Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$ and $S$ is the set of vertices in $R$ of incident weight at least one, then
 \[ \emph{\E}[S] = \sum_{v\in R} \emph{\E}[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
 \end{thm}

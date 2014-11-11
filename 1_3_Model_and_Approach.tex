@@ -1,4 +1,5 @@
 \section{Our Model}
+\label{modelsec}
 
 We model the structure optimization of recommendations by using a bipartite
 digraph, where one partition $L$ represents the set of discovered
@@ -23,9 +24,9 @@ vertices in $R$ that have in-degree at least a target integer $a$.
 Note that if $a=c=1$ this is simply the maximum bipartite
 matching problem~\cite{LovaszPlummer1986}. If $a=1$ and $c > 1$, we
 obtain a $b$-matching problem, that can be converted to a bipartite
-matching problem~\cite{Gabow1983}.\vs
+matching problem~\cite{Gabow1983}. The typical and interesting cases when $a > 1$ is most likely NP-hard, ruling out the possibility of eficient exact algorithms.\vs
 
-%The requirement of having a minimum number of $a$ in-links from $L$ for a node in $R$ to be counted as discovered might seem unnatural at first sight. However, it is a natural formulation of the requirement of indexing algorithms for search engines where such a redundancy in their  visits is needed before adding pages into the search index. This intuition is supported by the fact that the in-link count of a page provides a local approximation to its PageRank ~\cite{bar2008local}. \\
+The requirement of having a minimum number of $a$ in-links from $L$ for a node in $R$ to be counted as discovered might seem unnatural at first sight. However, it is a natural formulation of the requirement of indexing algorithms for search engines where such a redundancy in their  visits is needed before adding pages into the search index. This intuition is supported by the fact that the in-link count of a page provides a local approximation to its PageRank ~\cite{bar2008local}. \vs
 
 We now describe typical web graph characteristics by discussing the
 sizes of $L$, $R$, $c$ and $a$ in practice. As noted before, in most
@@ -37,10 +38,9 @@ own experience with the 80/20 rule, i.e. 80\% of a site's traffic is
 captured by 20\% of the pages. Therefore, the ratio $k=|L|/|R|$ is
 typically between $1/3$ to $1/5$, but may be even lower. \vs
 
-By observing recommendations of Quora, Amazon, YouTube and our own
-work at BloomReach, typical values for $c$ range from 3 to 20
+From our own work at BloomReach (and by observing recommendations of Quora, Amazon, and YouTube), typical values for $c$ range from 3 to 20
 recommendations per page. Values of $a$ are harder to nail down but it
-typically ranges from $1$ to $5$.
+typically ranges from $1$ to $5$.\vs
 
 %The redundancy expressed by $a$
 %reflects the amount of coverage required by web-crawlers for the page
@@ -62,13 +62,13 @@ compression techniques but that adds more technical difficulties in
 development and maintenance. Algorithms that are time intensive
 can sometimes be sped-up by using distributed computing techniques such as
 map-reduce~\cite{DeanGhemawat2004}. However, efficient map-reduce
-algorithms for graph problems are notoriously difficult. \vs
+algorithms for graph problems are notoriously difficult. Finally, all of these methods apply only to the special case of our problem when $a=1$.\vs
 
-\subsection{Simple Solutions}
+\subsection{Simple Approximation Algorithms}
 
 To circumvent the time and space complexity of implementing optimal
 graph algorithms for the recommendation subgraph problem, we propose
-the study of three simple solutions strategies that not only can be
+the study of three simple approximate solutions strategies that not only can be
 shown to scale well in practice but also have good theoretical
 properties that we demonstrate using approximation ratios.
 
@@ -81,7 +81,7 @@ properties that we demonstrate using approximation ratios.
   recommendations can be generated using a random number generator on
   the fly. While this might seem trivial at first, for sufficient (and
   often real-world) values of $c$ and $a$ we show that this can be
-  optimal. Furthermore, while we omit this result for brevity, our
+  optimal. Also, this method is very easy to adapt to the case when the underlying graph is dynamic with both nodes and edges changing over time. Furthermore, while we omit this result for brevity, our
   approach can be extended to the case where the recommendation edges
   have weights.
 

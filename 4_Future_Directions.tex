@@ -1,9 +1,11 @@
 \vspace{-0.1in}
 \section{Summary and Future Work}
 We have presented a new class of structural recommendation problems
-cast as subgraph selection problems, and analyzed three algorithmic
-strategies to solve these problems because graph matching algorithms can be
-prohibitive to implement in real-world scenarios. The sampling method is most
+cast as computationally hard subgraph selection problems, and analyzed three algorithmic
+strategies to solve these problems.
+% because graph matching algorithms can be
+%prohibitive to implement in real-world scenarios. 
+The sampling method is most
 efficient, the greedy approach trades off computational cost with
 quality, and the partition method is effective for smaller problem
 sizes. We have proved effective theoretical bounds on the quality
@@ -13,6 +15,7 @@ retail web sites. Our findings have been very useful in the
 deployment of effective structural recommendations in web relevance
 engines that drive many of the leading websites of popular retailers. \vs
 
+\iffalse
 Our sampling method and its analysis extends to more general
 models of random graphs: in one version, we can consider
 hierarchical models that take into account the product hierarchy
@@ -28,10 +31,11 @@ certain minimum amount of recommended traffic. Validating these
 more general models by fitting real life data to them as well as
 corroborating the performance of various methods in simulated and
 real data for these models could yield an even better understanding
-of our suggested algorithmic strategies for the 
+of our suggested algorithmic strategies for the
 recommendation subgraph problem.\vs
+\fi
 
 {\bf Acknowledgments:} We thank Alan Frieze and Ashutosh Garg for helpful
 discussions.
 
-\vspace{-.05in}
+\vspace{-.05in} 

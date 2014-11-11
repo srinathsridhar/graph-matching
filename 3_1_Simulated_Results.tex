@@ -1,8 +1,9 @@
 \section{Experimental Results}
+\label{expsec}
 
 \subsection{Simulated Data}
 We simulated performance of our algorithms on random graphs generated
-by the graph models we outlined. 
+by the graph models we outlined.
 %Arda: We mention fixed degree and Erdos-Renyi above - which one are you talking about here in the experiments?
 In the following figures, each data
 point is obtained by averaging the measurements over 100 random
@@ -11,7 +12,7 @@ solving a $(10,3)$-recommendation subgraph problem in different sized graphs.
 In all our charts, error bars are present, but too small to be noticeable.
 Note that varying the value of $a$ and $c$ would only change space and time
 usage by a constant, so these two graphs are indicative of time and space
-usage over all ranges of parameters. The code used conduct these experiments 
+usage over all ranges of parameters. The code used conduct these experiments
 can be found at \url{https://github.com/srinathsridhar/graph-matching-source} \vs
 
 \begin{figure}
@@ -31,10 +32,10 @@ can be found at \url{https://github.com/srinathsridhar/graph-matching-source} \v
 \caption{Space needed to solve a (10,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:space_graph}
 \end{minipage}
 \vspace{-0.2in}
-\end{figure} 
+\end{figure}
 
 Recall that the partition algorithm split the graph into multiple graphs
-and found matchings (using an implementation of Hopcroft-Karp ~\cite{HopcroftKarp}) 
+and found matchings (using an implementation of Hopcroft-Karp ~\cite{HopcroftKarp})
 in these smaller graphs which were then combined into
 a recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
@@ -44,7 +45,7 @@ sampling or greedy algorithms. It also takes significantly more memory as can be
 Compare this to greedy and sampling which both require a single pass over
 the graph, and no advanced data structures. In fact, if the edges
 of $G$ is pre-sorted by the edge's endpoint in $L$, then the sampling algorithm can be
-implemented as an online algorithm with constant space and in constant time 
+implemented as an online algorithm with constant space and in constant time
 per link selection. Similarly, if the edges of $G$
 is pre-sorted by the edge's endpoint in $R$, then the greedy algorithm can
 be implemented so that the entire graph does not have to be kept in memory. In this
@@ -140,4 +141,4 @@ $a$ is low the quality of the solution is more important than anything else. \vs
 It only requires a single pass over the data thus very quickly,  and uses
 relatively little amounts of space enabling it run completely in memory for graphs with
 as many as tens of millions of edges. It is not as fast as sampling or accurate as partition
-when $a$ is small, but it has very good performance over all parameter ranges. 
+when $a$ is small, but it has very good performance over all parameter ranges.

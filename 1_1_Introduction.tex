@@ -40,21 +40,20 @@ for each discovered page using relevance metrics. In this work, we assume $d$
 such related candidates are available per page creating a candidate recommendation bipartite graph
 (with degree $d$ at each discovered page node).
 Our goal is to analyze how to prune this set to $c < d$ recommendations such that
-globally we ensure that the number of undiscovered pages that have at least $a \geq 1$ recommendations to them in the chosen subgraph. This gives the $(c,a)$-recommendation subgraph introduced in Section~\ref{recsub}.\vs
+globally we ensure that the number of undiscovered pages that have at least $a \geq 1$ recommendations to them in the chosen subgraph. This gives the $(c,a)$-recommendation subgraph introduced in Section~\ref{recsub}. Even though the case of $a=1$ reduces to a polynomially solvable version of a matching problems, the more usual cases of $a > 1$ are most likely NP-hard prohibiting exact solution methods at scale. Even the simple versions that reduce to matching are too computational expensive on memory and processing to run on real-life instances \vs
 %the resulting recommendation subgraph can be navigated efficiently by the user to enable better discovery. \vs
 
 \subsection{Our Contributions}
 
-While optimal solutions to some versions of the recommendation subgraph problem can be obtained by using a maximum matching algorithm, such algorithms are too costly to run on real-life instances. We introduce three simple alternate methods that can be implemented in linear or near-linear time and examine their properties.
-In particular, we delineate when
-each method will work effectively on popular random graph models, and when a practitioner will need to employ a more sophisticated algorithm.
-We then evaluate how these simple methods perform on simulated data, both in terms of solution quality and  running time.
-Finally, we show the deployment of these methods on BloomReach's real-world client link graph and measure their
-actual performance in terms of running-times, memory usage and accuracy. \vs
+%While optimal solutions to some versions of the recommendation subgraph problem can be obtained by using a maximum matching algorithm, such algorithms are too costly to run on real-life instances. 
+We introduce three simple heuristic methods that can be implemented in linear or near-linear time and examine their theoretical performance.
+In particular, we delineate when each method will work effectively on popular random graph models, and when a practitioner will need to employ a more sophisticated algorithm. We then evaluate how these simple methods perform on simulated data, both in terms of solution quality and  running time.
+Finally, we show the deployment of these methods on BloomReach's real-world client link graph and measure their actual performance in terms of running-times, memory usage and accuracy. It is worthwhile to note that the simplest of the three methods that we propose (sampling) can be easily adapted to the incremental dynamic setting when the set of pages and candidate recommendations is changing rapidly.
+\vs
 
 To summarize, our contributions are as follows.
 \begin{enumerate}
-\item The development of a new structural model for recommendation systems as a subgraph selection problem for maximizing discoverability,
-\item The proposal of three methods with increasing sophistication to solve the problem at scale along with associated theoretical performance guarantee analysis for each method, and
-\item An empirical validation of our conclusions with simulated and real-life data.
+\item The development of a new structural model for recommendation systems as a subgraph selection problem for maximizing discoverability (Section~\ref{modelsec}).
+\item The proposal of three methods with increasing sophistication to solve the problem at scale along with associated theoretical performance guarantee analysis for each method (Section~\ref{methodsec}). In particular, we show very strong theoretical lower bounds on the size of the discoverable set for the sampling algorithm in the fixed degree random graph model (Theorem~\ref{original_result}); in the Erd\"os-Renyi model for the greedy algorithm (Theorem~\ref{greed-is-good}) and for a partition-based algorithm (Theorem~\ref{perfect}).
+\item An empirical validation of our conclusions with simulated and real-life data (Section~\ref{expsec}). Our simulations show that sampling is the least resource intensive and performs satisfactorily, while partition is the most resource intensive but performs better for small values of discoverability threshold $a$; Greedy is the overall best-performer using a single pass over the data and producing good results over a variety of parameters. In the tests with real retailer data, we see these trends broadly reflected in the results: Greedy performs well when $c$ gets moderately large giving almost optimal starting from $a=2$. The partition method is promising when the targeted $a$ value is low. Sampling is typically worse than greedy, but unlike the partition algorithm, its performance improves dramatically as $c$ becomes larger, and does not worsen as quickly when $a$ gets larger.
 \end{enumerate}
