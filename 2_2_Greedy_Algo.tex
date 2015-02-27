@@ -40,35 +40,35 @@ approximation property of this algorithm.
 The greedy algorithm gives a $1/(a+1)$-approximation to the $(c,a)$-graph
 recommendation problem.
 \end{thm}
-\begin{proof}
-Let $R_{GREEDY}, R_{OPT}\subseteq R$ be the set of vertices that have
-degree $\geq a$ in the greedy and optimal solutions respectively. Note
-that any $v \in R_{OPT}$ along with neighbors $\{u_1,\ldots u_a\}$
-forms a set of candidate edges that can be used by the greedy
-algorithm.
+%\begin{proof}
+%Let $R_{GREEDY}, R_{OPT}\subseteq R$ be the set of vertices that have
+%degree $\geq a$ in the greedy and optimal solutions respectively. Note
+%that any $v \in R_{OPT}$ along with neighbors $\{u_1,\ldots u_a\}$
+%forms a set of candidate edges that can be used by the greedy
+%algorithm.
 %So we can consider $R_{OPT}$ as a candidate pool for $R_{GREEDY}$.
-Each selection of the greedy algorithm might result in
-some candidates becoming infeasible, but it can continue as long as the candidate pool is not depleted.
-Each time the greedy algorithm selects some vertex $v\in
-R$ with edges to $\{u_1,\ldots, u_a\}$, we remove $v$ from the candidate pool.
-Furthermore each $u_i$ could have degree $c$ in the optimal solution and used each of its edges to make a neighbor attain degree $a$. The greedy choice of an edge to $u_i$ requires us to remove such an edge to an arbitrary vertex $v_i\in R$ adjacent to $u_i$ in the optimal
-solution, and thus remove $v_i$ from further consideration in the candidate pool.
+%Each selection of the greedy algorithm might result in
+%some candidates becoming infeasible, but it can continue as long as the candidate pool is not depleted.
+%Each time the greedy algorithm selects some vertex $v\in
+%R$ with edges to $\{u_1,\ldots, u_a\}$, we remove $v$ from the candidate pool.
+%Furthermore each $u_i$ could have degree $c$ in the optimal solution and used each of its edges to make a neighbor attain degree $a$. The greedy choice of an edge to $u_i$ requires us to remove such an edge to an arbitrary vertex $v_i\in R$ adjacent to $u_i$ in the optimal
+%solution, and thus remove $v_i$ from further consideration in the candidate pool.
 %In other words, by using an edge of $u_i$, we force it to
 %not use an edge it used to some other $v_i$, which might cause the
 %degree of $v_i$ to go below $a$.
-Therefore, at each step of
-the greedy algorithm, we may remove at most $a+1$ vertices from
-the candidate pool as illustrated in Figure 4. Since our candidate pool has size $OPT$, the
-greedy algorithm can not stop before it has added $OPT/(a+1)$
-vertices to the solution.
-\end{proof}
-
-\begin{figure}[H]
-\label{fig:greedy}
-\centering
-\includegraphics[width=.39\textwidth]{images/greedy.png}
-\caption{One step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it can remove $v_1,\ldots, v_a$ from the pool of candidates that are available. The potentially invalidated edges are shown in red.}
-\end{figure}
+%Therefore, at each step of
+%the greedy algorithm, we may remove at most $a+1$ vertices from
+%the candidate pool as illustrated in Figure 4. Since our candidate pool has size $OPT$, the
+%greedy algorithm can not stop before it has added $OPT/(a+1)$
+%vertices to the solution.
+%\end{proof}
+%
+%\begin{figure}[H]
+%\label{fig:greedy}
+%\centering
+%\includegraphics[width=.39\textwidth]{images/greedy.png}
+%\caption{One step of the greedy algorithm. When $v$ selects edges to $u_1,\ldots, u_a$, it can remove $v_1,\ldots, v_a$ from the pool of candidates that are available. The potentially invalidated edges are shown in red.}
+%\end{figure}
 
 This approximation guarantee is as good as we can expect,
 since for $a=1$ we recover the familiar $1/2$-approximation
@@ -89,56 +89,56 @@ Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $lp \geq 1$. If $S$ 
 \end{thm}
 
 When the underlying random graph is sufficiently dense, Theorem~\ref{simple-thm} shows that the above guarantee is asymptotically optimal. \vs
-
-\begin{proof}
-Note that if edges are generated uniformly, we can consider the
-graph as being revealed to us one vertex at a time as the greedy
-algorithm runs. In particular, consider the event $X_{i+1}$ that the
-greedy algorithm matches the $(i+1)^{st}$ vertex it inspects. While,
-$X_{i+1}$ is dependent on $X_1,\ldots, X_i$, the worst condition for
-$X_{i+1}$ is when all the previous $i$ vertices were from the same
-vertices in $L$, which are now not available for matching the
-$(i+1)^{st}$ vertex. The maximum number of such invalidated vertices
-is at most $\lceil ia/c \rceil$. Therefore, the bad event
-is that we have fewer than $a$ of the at least $l-\lceil ia/c \rceil$
-available vertices having an edge to this vertex. The probability of this
-bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the
-probability that a Binomial random variable with $l - \frac{ia}{c}$
-trials of probability $p$ of success for each trial has less than $a$
-successes. We can bound this probability by using a union bound and
-upper-bounding $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]$ for each
-$0 \leq t \leq a-1$. By using the trivial estimate that
-$\binom{n}{i} \leq n^i$ for all $n$ and $i$, we obtain:
-
-\begin{align*}
-      \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]
-&=    \binom{l-\frac{ia}{c}}{t} (1-p)^{l-\frac{ia}{c}-t}p^{t} \\
-&\leq \left(l-\frac{ia}{c}\right)^t (1-p)^{l-\frac{ia}{c}-t} p^{t} \\
-&\leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}
-\end{align*}
-
-Notice that the largest exponent $lp$ can take within the bounds of
-our sum is $a-1$. Similarly, the smallest exponent $(1-p)$ can take
-within the bounds of our sum is $l-\frac{ia}{c}-a+1$. Now applying
-the union bound gives:
-
-\begin{align*}
-&           \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \\
-&\leq  \sum_{t=0}^{a-1} \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t] \\
-&\leq  \sum_{t=0}^{a-1} (lp)^t (1-p)^{l-\frac{ia}{c}-t} \\
-&=     a(lp)^{a-1} (1-p)^{l-\frac{ia}{c}-a+1}
-\end{align*}
-
-Finally, summing over all the $X_i$ using the linearity of
-expectation and this upper bound, we obtain
-
-\begin{align*}
-      \E[S]
-&\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
-&\geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-\frac{ia}{c},p): Y < a] \\
-&\geq r - a(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1}
-\end{align*}
-\end{proof}
+%
+%\begin{proof}
+%Note that if edges are generated uniformly, we can consider the
+%graph as being revealed to us one vertex at a time as the greedy
+%algorithm runs. In particular, consider the event $X_{i+1}$ that the
+%greedy algorithm matches the $(i+1)^{st}$ vertex it inspects. While,
+%$X_{i+1}$ is dependent on $X_1,\ldots, X_i$, the worst condition for
+%$X_{i+1}$ is when all the previous $i$ vertices were from the same
+%vertices in $L$, which are now not available for matching the
+%$(i+1)^{st}$ vertex. The maximum number of such invalidated vertices
+%is at most $\lceil ia/c \rceil$. Therefore, the bad event
+%is that we have fewer than $a$ of the at least $l-\lceil ia/c \rceil$
+%available vertices having an edge to this vertex. The probability of this
+%bad event is at most $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a]$, the
+%probability that a Binomial random variable with $l - \frac{ia}{c}$
+%trials of probability $p$ of success for each trial has less than $a$
+%successes. We can bound this probability by using a union bound and
+%upper-bounding $\Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]$ for each
+%$0 \leq t \leq a-1$. By using the trivial estimate that
+%$\binom{n}{i} \leq n^i$ for all $n$ and $i$, we obtain:
+%
+%\begin{align*}
+%      \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t]
+%&=    \binom{l-\frac{ia}{c}}{t} (1-p)^{l-\frac{ia}{c}-t}p^{t} \\
+%&\leq \left(l-\frac{ia}{c}\right)^t (1-p)^{l-\frac{ia}{c}-t} p^{t} \\
+%&\leq (lp)^t (1-p)^{l-\frac{ia}{c}-t}
+%\end{align*}
+%
+%Notice that the largest exponent $lp$ can take within the bounds of
+%our sum is $a-1$. Similarly, the smallest exponent $(1-p)$ can take
+%within the bounds of our sum is $l-\frac{ia}{c}-a+1$. Now applying
+%the union bound gives:
+%
+%\begin{align*}
+%&           \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y < a] \\
+%&\leq  \sum_{t=0}^{a-1} \Pr[Y\sim Bin(l-\frac{ia}{c},p): Y = t] \\
+%&\leq  \sum_{t=0}^{a-1} (lp)^t (1-p)^{l-\frac{ia}{c}-t} \\
+%&=     a(lp)^{a-1} (1-p)^{l-\frac{ia}{c}-a+1}
+%\end{align*}
+%
+%Finally, summing over all the $X_i$ using the linearity of
+%expectation and this upper bound, we obtain
+%
+%\begin{align*}
+%      \E[S]
+%&\geq r - \sum_{i=0}^{r-1} \E[\lnot X_i] \\
+%&\geq r - \sum_{i=0}^{r-1} \Pr[Y \sim Bin(l-\frac{ia}{c},p): Y < a] \\
+%&\geq r - a(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}-a+1}
+%\end{align*}
+%\end{proof}
 
 Asymptotically, this result explains why the greedy
 algorithm does much better in expectation than $1/(a+1)$ guarantee we

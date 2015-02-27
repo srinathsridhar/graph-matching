@@ -103,17 +103,18 @@ approximation ratio that holds in expectation.
 \begin{thm}
 The above sampling algorithm gives a $\left(1-\frac1e\right)$-factor approximation to the $(c,1)$-graph recommendation problem in expectation.
 \end{thm}
-\begin{proof}
-The size of the optimal solution is bounded above by both the number
-of edges in the graph and the number of vertices in $R$. The former of
-these is $cl=ckr$ and the latter is $r$, which shows that the optimal solution size
-$OPT \leq
-r\min(ck,1)$. Therefore, by simple case analysis the approximation ratio
-in expectation is at least $({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
-\end{proof}
+%\begin{proof}
+%The size of the optimal solution is bounded above by both the number
+%of edges in the graph and the number of vertices in $R$. The former of
+%these is $cl=ckr$ and the latter is $r$, which shows that the optimal solution size
+%$OPT \leq
+%r\min(ck,1)$. Therefore, by simple case analysis the approximation ratio
+%in expectation is at least $({1-\exp(-ck)})/\min(ck,1) \geq 1-\frac{1}{e} $
+%\end{proof}
 
 
-For the $(c, 1)$-recommendation subgraph problem the approximation obtained by this sampling approach can be much better for certain values of $ck$. In particular,
+For the $(c, 1)$-recommendation subgraph problem the approximation obtained by this
+sampling approach can be much better for certain values of $ck$. In particular,
 if $ck>1$, then the approximation ratio is $1-\exp(-ck)$, which
 approaches 1 as $ck\to\infty$. When $ck=3$, then the
 solution will be at least 95\% as good as the optimal solution even

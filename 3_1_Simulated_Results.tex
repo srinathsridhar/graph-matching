@@ -73,23 +73,33 @@ this drop that affects both the greedy and the sampling algorithms,
 but comes with the cost of higher time and space utilization.\vs
 
 \begin{figure}
-\centering
-\begin{minipage}[h]{0.48\textwidth}
-\centering
-\includegraphics[width=0.99\textwidth]{images/l=25000,r=100000_Greedy_vs_Naive_error.png}
-\vspace{-1cm}
-\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=25$k, $|R|=100$k, $d=20$}\label{fig:a=1:1}
-\end{minipage}
-\vspace{.2cm}
-\hspace{0cm}
-\begin{minipage}[h]{0.48\textwidth}
-\centering
-\includegraphics[width=0.99\textwidth]{images/l=50000,r=100000_Greedy_vs_Naive_error.png}
-\vspace{-1cm}
-\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=1:2}
-\end{minipage}
-\vspace{-.8cm}
+\begin{tabular}{cc}
+  \includegraphics[width=40mm]{images/l=25000,r=100000_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000_Greedy_vs_Naive_error.png} \\
+(a) first & (b) second \\[6pt]
+ \includegraphics[width=40mm]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}\\
+(c) third & (d) fourth \\[6pt]
+\end{tabular}
 \end{figure}
+
+
+%\begin{figure}
+%\centering
+%\begin{minipage}[h]{0.48\textwidth}
+%\centering
+%\includegraphics[width=0.99\textwidth]{images/l=25000,r=100000_Greedy_vs_Naive_error.png}
+%\vspace{-1cm}
+%\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=25$k, $|R|=100$k, $d=20$}\label{fig:a=1:1}
+%\end{minipage}
+%\vspace{.2cm}
+%\hspace{0cm}
+%\begin{minipage}[h]{0.48\textwidth}
+%\centering
+%\includegraphics[width=0.99\textwidth]{}
+%\vspace{-1cm}
+%\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=1:2}
+%\end{minipage}
+%\vspace{-.8cm}
+%\end{figure}
 
 In contrast to the case when $a=1$, the sampling algorithm
 performs worse when $a>1$ but performs increasingly better with $c$ as
@@ -104,24 +114,24 @@ requirements we initially laid out for deployment in large-scale real
 systems in practice.
 
 
-\begin{figure}
-\centering
-\begin{minipage}[h]{0.48\textwidth}
-\centering
-\includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png}
-\vspace{-1cm}
-\caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=2}
-\end{minipage}
-\vspace{.2cm}
-\hspace{0cm}
-\begin{minipage}[h]{0.48\textwidth}
-\centering
-\includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}
-\vspace{-1cm}
-\caption{Solution quality for the $(c, 4)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=4}
-\end{minipage}
-\vspace{-.8cm}
-\end{figure}
+%\begin{figure}
+%\centering
+%\begin{minipage}[h]{0.48\textwidth}
+%\centering
+%\includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png}
+%\vspace{-1cm}
+%\caption{Solution quality for the $(c, 2)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=2}
+%\end{minipage}
+%\vspace{.2cm}
+%\hspace{0cm}
+%\begin{minipage}[h]{0.48\textwidth}
+%\centering
+%\includegraphics[width=0.99\textwidth]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}
+%\vspace{-1cm}
+%\caption{Solution quality for the $(c, 4)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=4}
+%\end{minipage}
+%\vspace{-.8cm}
+%\end{figure}
 
 To summarize, our synthetic experiments show the following strengths of each algorithm: \vs
 
