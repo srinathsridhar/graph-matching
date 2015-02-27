@@ -48,10 +48,7 @@ globally we ensure that the number of undiscovered pages that have at least $a \
 \subsection{Our Contributions}
 
 %While optimal solutions to some versions of the recommendation subgraph problem can be obtained by using a maximum matching algorithm, such algorithms are too costly to run on real-life instances. 
-We introduce three simple heuristic methods that can be implemented in linear or near-linear time and thoroughly investigate their theoretical performance. We delineate when each method will work effectively on popular random graph models, and evaluate how these simple methods perform on simulated and real data, both in terms of solution quality and resource use.
-\vs
-
-To summarize, our contributions are as follows.
+Our three key contributions to the recommendation problem are as follows.
 \begin{enumerate}
 \item The development of a new structural model for recommendation systems as a subgraph selection problem for maximizing discoverability (Section~\ref{modelsec}).
 \item The proposal of three methods (sampling, greedy and partition) with increasing sophistication to solve the problem at scale along with associated theoretical performance guarantee analyses (Section~\ref{methodsec}). In particular, we show very strong theoretical bounds on the size of the discoverable set for the sampling algorithm in the fixed degree random graph model (Theorem~\ref{original_result}); in the Erd\"os-Renyi model for the greedy algorithm (Theorem~\ref{greed-is-good}) and for a partition-based algorithm (Theorem~\ref{perfect}).
