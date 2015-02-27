@@ -10,13 +10,7 @@ at each page is a critical task performed by dedicated backend
 software systems. \vs
 
 We formalize the concept of recommendations used for discovery as a natural graph optimization
-problem on a bipartite graph: the left partition represent highly visited pages while the right 
-represents rarely visited ones, and the edges are candidate recommendation links that can be used. 
-The goal is to pick at most a fixed number of out-links from each left node to maximize the number of 
-right nodes that are in-linked redundantly. The allowed out-degree of left nodes and minimum redundancy
- of coverage of right nodes are parameters defining the problem.
-
-We propose three methods for solving the problem in increasing order
+problem on a bipartite graph and propose three methods for solving the problem in increasing order
 of sophistication: a local random sampling algorithm, a greedy algorithm
 and a more involved partitioning based algorithm. 
 We first theoretically analyze the performance of these three methods
