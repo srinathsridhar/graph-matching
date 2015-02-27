@@ -123,15 +123,15 @@ Let $G$ be drawn from $G_{l,r,p}$ where $p \geq a\frac{\log l - \log\log l}{l}$.
 Then Algorithm 3 finds a $(1-\epsilon)$-approximation
 in $O(\frac{|E|}{\epsilon})$ time with probability $1-o(1)$.
 \end{thm}
-\begin{proof}
-Using the previous theorem, we know that each of the graphs $G_i$ has a
-perfect matching with high probability. These perfect matchings
-can be approximated to a $1-\epsilon/c$ factor by finding matchings
-that do not have augmenting paths of length $\geq 2c/\epsilon$
-~\cite{LovaszPlummer1986}. This can be done for each $G_i$ in
-$O(|E|c/\epsilon)$ time. Furthermore, the union of unmatched vertices
-makes up an at most $c(\epsilon/c)$ fraction of $R'$, which proves the claim.
-\end{proof}
+%\begin{proof}
+%Using the previous theorem, we know that each of the graphs $G_i$ has a
+%perfect matching with high probability. These perfect matchings
+%can be approximated to a $1-\epsilon/c$ factor by finding matchings
+%that do not have augmenting paths of length $\geq 2c/\epsilon$
+%~\cite{LovaszPlummer1986}. This can be done for each $G_i$ in
+%$O(|E|c/\epsilon)$ time. Furthermore, the union of unmatched vertices
+%makes up an at most $c(\epsilon/c)$ fraction of $R'$, which proves the claim.
+%\end{proof}
 
 Notice that if we were to run the augmenting paths algorithm to completeness
 for each matching $M_i$, then this algorithm would take $O(|E||L|)$ time. We
