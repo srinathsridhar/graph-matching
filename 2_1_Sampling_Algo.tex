@@ -19,18 +19,18 @@ We present the sampling algorithm for the $(c,a)$-recommendation subgraph formal
   \Return $H$\;
   \caption{The sampling algorithm}
   \label{sampling-algo}
-\end{algorithm} \vs
+\end{algorithm}  
 
 Given a bipartite graph $G$, the algorithm has runtime complexity of
 $O(|E|)$ since every edge is considered at most once. The space
 complexity can be taken to be $O(1)$, since the adjacency representation
-of $G$ can be assumed to be pre-sorted by the endpoint of each edge in $L$.\vs
+of $G$ can be assumed to be pre-sorted by the endpoint of each edge in $L$. 
 
 We next introduce a simple random graph model for the supergraph from
 which we are allowed to choose recommendations and present a bound on
 its expected performance when the underlying supergraph $G=(L,R,E)$ is
 chosen probabilistically according to this model.
-\vs
+ 
 
 {\bf Fixed Degree Model:} In this model for generating the candidate
 recommendation graph, each vertex $u\in L$ uniformly and independently
@@ -55,7 +55,7 @@ $\deg_{H}(v)\geq a$ in the fixed-degree model. Then
 \end{thm}
 
 To get a quick sense of the very good performance bounds reflected in this theorem, please see Figure~\ref{fig:simple_approx} that plots the approximation ratio as a function of $ck$ for the $(c,1)$-recommendation subgraph problem, as well as Figure~\ref{a-values} that shows how large $c$ needs to be (in terms of $k$) for the
-solution to be 95\% optimal for different values of $a$, both in the fixed degree model.\vs
+solution to be 95\% optimal for different values of $a$, both in the fixed degree model. 
 
 %\begin{proof}
 %We will analyze the sampling algorithm as if it picks the neighbors of
@@ -63,7 +63,7 @@ solution to be 95\% optimal for different values of $a$, both in the fixed degre
 %generates $G$. This variant would obviously waste some edges, and perform
 %worse than the variant which samples neighbors without replacement. This
 %means that any performance guarantee we prove for this variant holds
-%for our original statement of the algorithm as well. \vs
+%for our original statement of the algorithm as well.  
 %
 %To prove the claim let $X_{v}$ be the random variable that represents
 %the degree of the vertex $v\in R$ in our chosen subgraph $H$. Because our
@@ -124,7 +124,7 @@ particular, if $ck=0.1$ then the solution will be at 95\% as good as
 the optimal solution. The case when $ck=1$ represents the
 worst case outcome for this model where we only guarantee 63\%
 optimality. Figure~\ref{fig:simple_approx} shows the approximation ratio as a
-function of $ck$ for the $(c,1)$-recommendation subgraph problem in the fixed degree model.\vs
+function of $ck$ for the $(c,1)$-recommendation subgraph problem in the fixed degree model. 
 
 \begin{figure}[H]
   \centering
@@ -140,10 +140,10 @@ compensates for the polynomial in $ck$ next to it. However, in the
 more realistic case, the undiscovered pages in $R$ too numerous to be all covered even if we used the full set of budgeted links allowed out of $L$, i.e. $cl < ra$ or rearranging, $ck<a$; in this case, we need to use the trivial estimate of
 $ckr/a$, and the analysis for $a=1$ does not extend here. For practical purposes, the table
 in Figure~\ref{a-values} shows how large $c$ needs to be (in terms of $k$) for the
-solution to be 95\% optimal for different values of $a$, again in the fixed degree model.\vs
+solution to be 95\% optimal for different values of $a$, again in the fixed degree model. 
 
 \begin{figure}[H]
-  %\vspace{.2cm}
+  % pace{.2cm}
   \centering
   \begin{tabular}{ |c|c|c|c|c|c| }
     \hline

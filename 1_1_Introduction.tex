@@ -1,7 +1,7 @@
 \section{Introduction}
 
 \subsection{Web Relevance Engines}
-The digital discovery divide~\cite{WebRelevanceEngine} refers to the problem of companies not being able to present users with what they seek in the short time they spend looking for this information. The problem is prevalent not only in e-commerce websites but also in social networks and micro-blogging sites where surfacing relevant content quickly is important for user engagement. \vs
+The digital discovery divide~\cite{WebRelevanceEngine} refers to the problem of companies not being able to present users with what they seek in the short time they spend looking for this information. The problem is prevalent not only in e-commerce websites but also in social networks and micro-blogging sites where surfacing relevant content quickly is important for user engagement.  
 
 BloomReach is a big-data marketing company that uses the client's content as well as web-wide data to optimize both customer acquisition and satisfaction for e-retailers.
 BloomReach's clients include popular retailers like Nieman Marcus, Crate \& Barrel, Williams-Sonoma and Staples besides many others. In this paper, we describe the structure optimizer component of BloomReach's Web Relevance Engine. This component works on top of the recommendation engine so as to carefully add a set of links across pages that ensures that users can efficiently navigate the entire website.
@@ -15,7 +15,7 @@ BloomReach's clients include popular retailers like Nieman Marcus, Crate \& Barr
 %Bush~\cite{Bush45aswe}, it continues to persist even today.
 %Recent estimates~\cite{big-data-book13} attribute up to a third of the %sales
 %on Amazon and three-quarters of new orders on Netflix to users that are
-%influenced by the carefully chosen recommendations provided to them. \vs
+%influenced by the carefully chosen recommendations provided to them.  
 
 %Even though recommendations exist across the entire web, we provide some simple concrete examples. First, YouTube has a section that displays all the related videos for every main video being viewed.
 %Quora has a section for questions related to the main question that is displayed. These recommendations are critical in determining how the traffic across all of YouTube or Quora is going to flow.
@@ -25,13 +25,13 @@ An important concern of retail website owners is whether a significant fraction 
 %with the above example, if a large fraction of the YouTube videos were not recommended from any (or few) other videos, then millions of great videos will lie undiscovered. 
 One way to address this
 problem is to try to ensure that every page will obtain at least a baseline number of links from popular pages so that great content does not remain undiscovered, and thus bridge the discovery divide mentioned above. If the website
-remains connected, this also ensures a simple conductance for the underlying link graph. \vs
+remains connected, this also ensures a simple conductance for the underlying link graph.  
 
-%This baseline number of links is also an important parameter used by search engine crawlers to include in their indexes of these retail sites.\vs
+%This baseline number of links is also an important parameter used by search engine crawlers to include in their indexes of these retail sites. 
 
 We use this criterion of discoverability as the objective for the choice of the links to recommend. 
-We start with a small set of already discovered or popular nodes available at a site, and want to use this set to make as many new nodes discoverable as possible. This objective leads to a new structural formulation of the recommendation selection problem. The problem of choosing a limited number of pages to recommend at each discovered page can be cast with the objective of maximizing the number of peripheral non-visited pages that are redundantly linked. We formulate this as a recommendation subgraph problem, and study practical algorithms for solving these problems at scale with real-life data.\vs
-%We start with a small set of already discovered nodes, and want to grow this set of nodes as quickly as possible. This process may then be iterated as necessary to facilitate the discovery of more and more items. This new objective leads to a new formulation of the recommendation selection problem that is structural. In particular, we think of commonly visited pages in a site as the already discovered pages, from which there are a large number of possible recommendations available to related but less visited peripheral pages. The problem of choosing a limited number of pages to recommend at each discovered page can be cast with the objective of maximizing the number of peripheral non-visited pages that are linked. We formulate this as a recommendation subgraph problem, and study practical algorithms for solving these problems in real-life data. \vs
+We start with a small set of already discovered or popular nodes available at a site, and want to use this set to make as many new nodes discoverable as possible. This objective leads to a new structural formulation of the recommendation selection problem. The problem of choosing a limited number of pages to recommend at each discovered page can be cast with the objective of maximizing the number of peripheral non-visited pages that are redundantly linked. We formulate this as a recommendation subgraph problem, and study practical algorithms for solving these problems at scale with real-life data. 
+%We start with a small set of already discovered nodes, and want to grow this set of nodes as quickly as possible. This process may then be iterated as necessary to facilitate the discovery of more and more items. This new objective leads to a new formulation of the recommendation selection problem that is structural. In particular, we think of commonly visited pages in a site as the already discovered pages, from which there are a large number of possible recommendations available to related but less visited peripheral pages. The problem of choosing a limited number of pages to recommend at each discovered page can be cast with the objective of maximizing the number of peripheral non-visited pages that are linked. We formulate this as a recommendation subgraph problem, and study practical algorithms for solving these problems in real-life data.  
 
 \subsection{Recommendation Systems as a Subgraph Selection Problem}
 
@@ -42,8 +42,8 @@ for each discovered page using relevance metrics. In this work, we assume $d$
 such related candidates are available per page creating a candidate recommendation bipartite graph
 (with degree $d$ at each discovered page node).
 Our goal is to analyze how to prune this set to $c < d$ recommendations such that
-globally we ensure that the number of undiscovered pages that have at least $a \geq 1$ recommendations to them in the chosen subgraph. This gives the $(c,a)$-recommendation subgraph introduced in Section~\ref{recsub}. Even though the case of $a=1$ reduces to a polynomially solvable version of a matching problem, the more usual cases of $a > 1$ are most likely NP-hard prohibiting exact solution methods at scale. Even the simple versions that reduce to matching are too computational expensive on memory and processing to run on real-life instances \vs
-%the resulting recommendation subgraph can be navigated efficiently by the user to enable better discovery. \vs
+globally we ensure that the number of undiscovered pages that have at least $a \geq 1$ recommendations to them in the chosen subgraph. This gives the $(c,a)$-recommendation subgraph introduced in Section~\ref{recsub}. Even though the case of $a=1$ reduces to a polynomially solvable version of a matching problem, the more usual cases of $a > 1$ are most likely NP-hard prohibiting exact solution methods at scale. Even the simple versions that reduce to matching are too computational expensive on memory and processing to run on real-life instances  
+%the resulting recommendation subgraph can be navigated efficiently by the user to enable better discovery.  
 
 \subsection{Our Contributions}
 

@@ -9,18 +9,7 @@ features such as keywords, color, brand, gender (where applicable) as
 well as user browsing patterns to determine the similarity between
 pairs of products. Such algorithms are commonly used in e-commerce websites
 such as Amazon, Overstock, eBay etc to display the most related products 
-to the user when they are browsing a specific product. \vs
-
-Two of the client merchants of BloomReach presented here had
-moderate-sized relation graphs with about $10^5$ vertices and $10^6$
-input edges (candidate recommendations); the remaining merchants (3, 4
-and 5) have on the order of $10^6$ vertices and $10^7$ input edges
-between them.  We estimated an upper bound on the optimum solution by
-taking the minimum of $|L|c/a$ and the number of vertices in $R$ of
-degree at least $a$. Figure~\ref{fig:real_combo} plots the average
-of the optimality percentage of the sampling, greedy and partition
-algorithms across all the merchants respectively. Note that we could
-only run the partition algorithm for the first two merchants due to memory constraints. \vs
+to the user when they are browsing a specific product.  
 
 \begin{figure}
 \begin{tabular}{cc}
@@ -32,6 +21,18 @@ only run the partition algorithm for the first two merchants due to memory const
 \caption{Solution quality for the $(c, a)$-recommendation subgraph problem in retailer data}
 \label{fig:real_combo}
 \end{figure}
+
+
+Two of the client merchants of BloomReach presented here had
+moderate-sized relation graphs with about $10^5$ vertices and $10^6$
+input edges (candidate recommendations); the remaining merchants (3, 4
+and 5) have on the order of $10^6$ vertices and $10^7$ input edges
+between them.  We estimated an upper bound on the optimum solution by
+taking the minimum of $|L|c/a$ and the number of vertices in $R$ of
+degree at least $a$. Figure~\ref{fig:real_combo} plots the average
+of the optimality percentage of the sampling, greedy and partition
+algorithms across all the merchants respectively. Note that we could
+only run the partition algorithm for the first two merchants due to memory constraints.  
 
 
 %\begin{figure}[h]
@@ -62,13 +63,13 @@ only run the partition algorithm for the first two merchants due to memory const
 %\label{fig:real_a=3}
 %\end{minipage}
 %\vspace{-.3cm}
-%\end{figure} \vs
+%\end{figure}  
 
 From these results, we can see that that greedy performs exceptionally
 well when $c$ gets even moderately large.  For the realistic value of
 $c=6$, the greedy algorithm produced a solution that was 85\% optimal
 for all the merchants we tested. For several of the merchants, its
-results were almost optimal starting from $a=2$. \vs
+results were almost optimal starting from $a=2$. 
 
 The partition method is also promising, especially when the $a$ value
 that is targeted is low. Indeed, when $a=1$ or $a=2$, its performance

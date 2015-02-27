@@ -13,14 +13,14 @@ In all our charts, error bars are present, but too small to be noticeable.
 Note that varying the value of $a$ and $c$ would only change space and time
 usage by a constant, so these two graphs are indicative of time and space
 usage over all ranges of parameters. The code used conduct these experiments
-can be found at \url{https://github.com/srinathsridhar/graph-matching-source} \vs
+can be found at \url{https://github.com/srinathsridhar/graph-matching-source}  
 
 \begin{figure}
 \centering
 \begin{minipage}[h]{.48\textwidth}
 \centering
 \includegraphics[width=.99\textwidth]{images/time1_error.png}
-\vspace{-0.2in}
+ pace{-0.2in}
 \caption{Time needed to solve a (10,3)-recommendation problem in random graphs where $|R|/|L|=4$ (Notice the log-log scale.)}\label{fig:time_graph}
 \end{minipage}
 \vspace{.2cm}
@@ -39,7 +39,7 @@ and found matchings (using an implementation of Hopcroft-Karp ~\cite{HopcroftKar
 in these smaller graphs which were then combined into
 a recommendation subgraph. For this reason, a run of the partition
 algorithm takes much longer to solve a problem instance than either the
-sampling or greedy algorithms. It also takes significantly more memory as can be seen in Figures 5 and 6.
+sampling or greedy algorithms. It also takes significantly more memory as can be seen in Figures 4 and 5.
 %Arda: What is the relation of the size of R to that of L in these figures? Say it in the captions!!
 %Arda: In both these figures, change the annotation of three algorithms to the corresponding type of point in the series (triangle, circle etc.) as in the later figures.
 Compare this to greedy and sampling which both require a single pass over
@@ -49,7 +49,18 @@ implemented as an online algorithm with constant space and in constant time
 per link selection. Similarly, if the edges of $G$
 is pre-sorted by the edge's endpoint in $R$, then the greedy algorithm can
 be implemented so that the entire graph does not have to be kept in memory. In this
-event, greedy uses only $O(|L|)$ memory. \vs
+event, greedy uses only $O(|L|)$ memory.  
+
+\begin{figure}
+\begin{tabular}{cc}
+  \includegraphics[width=40mm]{images/l=25000,r=100000_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000_Greedy_vs_Naive_error.png} \\
+(a) $a=1$, $L=25k$, $R=100k$ & (b) $a=1$, $L=50k$, $R=100k$ \\[6pt]
+ \includegraphics[width=40mm]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}\\
+(c) $a=2$, $L=50k$, $R=100k$ & (d) $a=4$, $L=50k$, $R=100k$ \\[6pt]
+\end{tabular}
+\caption{The approximation performance of our algorithms when solving the $(c,a)$-recommendation subgraph problem. In each plot, $c$ varies along the $x$-axis and the settings of $a$ and $L$ and $R$ are fixed}
+\label{fig:sim_combo}
+\end{figure}
 
 Next, we analyze the relative qualities of the solutions each method
 produces. Note that in all of the plots, the purple, red and green lines depict the 
@@ -72,18 +83,7 @@ $c=4$ in plot (a) and $c=2$ in plot (b) of Figure~\ref{fig:sim_combo}
 expected and was previously demonstrated in
 Figure~\ref{fig:simple_approx}.  The partition algorithm is immune to
 this drop that affects both the greedy and the sampling algorithms,
-but comes with the cost of higher time and space utilization.\vs
-
-\begin{figure}
-\begin{tabular}{cc}
-  \includegraphics[width=40mm]{images/l=25000,r=100000_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000_Greedy_vs_Naive_error.png} \\
-(a) $a=1$, $L=25k$, $R=100k$ & (b) $a=1$, $L=50k$, $R=100k$ \\[6pt]
- \includegraphics[width=40mm]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}\\
-(c) $a=2$, $L=50k$, $R=100k$ & (d) $a=4$, $L=50k$, $R=100k$ \\[6pt]
-\end{tabular}
-\label{fig:sim_combo}
-\caption{The approximation performance of our algorithms when solving the $(c,a)$-recommendation subgraph problem. In each plot, $c$ varies along the $x$-axis and the settings of $a$ and $L$ and $R$ are fixed}
-\end{figure}
+but comes with the cost of higher time and space utilization. 
 
 
 %\begin{figure}
@@ -94,12 +94,12 @@ but comes with the cost of higher time and space utilization.\vs
 %\vspace{-1cm}
 %\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=25$k, $|R|=100$k, $d=20$}\label{fig:a=1:1}
 %\end{minipage}
-%\vspace{.2cm}
+% pace{.2cm}
 %\hspace{0cm}
 %\begin{minipage}[h]{0.48\textwidth}
 %\centering
 %\includegraphics[width=0.99\textwidth]{}
-%\vspace{-1cm}
+% pace{-1cm}
 %\caption{Solution quality for the $(c, 1)$-recommendation subgraph problem in graphs with $|L|=50$k, $|R|=100$k, $d=20$}\label{fig:a=1:2}
 %\end{minipage}
 %\vspace{-.8cm}
@@ -138,19 +138,16 @@ systems in practice.
 %\vspace{-.8cm}
 %\end{figure}
 
-To summarize, our synthetic experiments show the following strengths of each algorithm: \vs
+To summarize, our synthetic experiments show the following strengths of each algorithm:  
 
 \textbf{Sampling Algorithm:} Sampling uses little to no memory and can
 be implemented as an online algorithm. If keeping the underlying graph in
 memory is an issue, then chances are this algorithm will do well while only needing
-a fraction of the resources the other two algorithms would need. \vs
+a fraction of the resources the other two algorithms would need.  
 
 \textbf{Partition Algorithm:} This algorithm does well, but only when $a$ is small.
 In particular, when $a=1$ or 2, partition seems to be the best algorithm, but the quality
-of the solutions degrade quickly after that point. However this performance comes at
-expense of significant runtime and space. Since greedy performs almost as well without
-requiring large amounts of space or time, partition is best suited for instances where
-$a$ is low the quality of the solution is more important than anything else. \vs
+of the solutions degrade quickly after that point.  
 
 \textbf{Greedy Algorithm:} This algorithm is the all-round best performing algorithm we tested.
 It only requires a single pass over the data thus very quickly,  and uses
