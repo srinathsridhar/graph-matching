@@ -82,10 +82,8 @@ properties that we demonstrate using approximation ratios.
   recommendations can be generated using a random number generator on
   the fly. While this might seem trivial at first, for sufficient (and
   often real-world) values of $c$ and $a$ we show that this can be
-  optimal. Also, this method is very easy to adapt to the case when the underlying graph is dynamic with both nodes and edges changing over time. Furthermore, our
-  approach can be extended to the case where the recommendation edges
-  have weights representing varying strengths of association as is typically provided by the traditional methods that generate candidate recommendation links\footnote{We omit a full description of this result for brevity.}.
-
+  optimal. 
+  
 \item {\bf Greedy:} The second solution we propose is a greedy
   algorithm that chooses the recommendation links so as to maximize
   the number of nodes in $R$ that can accumulate $a$ in-links. In
@@ -102,11 +100,8 @@ properties that we demonstrate using approximation ratios.
   of the matchings so found will thus result in most nodes in $R$
   achieving the target degree $a$. We require the number of edges in
   the underlying graph to be significantly large for this method to
-  work very well; moreover, we need to run a (near-)perfect matching
-  algorithm in each of the edge-subsets which is also a computationally
-  expensive subroutine. Hence, even though this method works very well
-  in dense graphs, its resource requirements may not scale well in terms of running
-  time and space.
+  work very well; moreover, while the approximation quality is good, the
+  scaling properties are the worst of these three algorithms.
 \end{itemize}
 
 As a summary, the table below shows the time and space complexity
