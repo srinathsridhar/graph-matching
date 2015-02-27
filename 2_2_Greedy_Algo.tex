@@ -152,30 +152,30 @@ Let $G=(L,R,E)$ be a graph drawn from the $G_{l,r,p}$ where $p = \frac{\gamma \l
 
 \[ \E[S] \geq r - o(r) \]
 \end{thm}
-\begin{proof}
-We will prove this claim by applying Theorem \ref{greed-is-good}. Note that it suffices to prove that $(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}} = o(r)$ since the other terms are just constants. We first bound the elements of this summation. Using the facts that $p = \frac{\gamma \log l}{l}$, $lc/a = (1+\epsilon)r$ and that $i<r$ throughout the summation, we get the following bound on each term:
-
-\begin{align*}
-       (1-p)^{l-\frac{ia}{c}}
-&\leq  \left(1-\frac{\gamma \log l}{l}\right)^{l-\frac{ia}{c}} \\
-&\leq  \exp\left(-\frac{\gamma \log l}{l}\left(l-\frac{ia}{c}\right)\right) \\
-&=     \exp\left((-\log l)\left(\gamma - \frac{ia}{lc}\right)\right) \\
-&=     l^{-\gamma+\frac{ia}{lc}} = l^{-\gamma+\frac{i}{(1+\epsilon)r}} \\
-&\leq  l^{-1+\frac{1}{1+\epsilon}} = l^{-\frac{\epsilon}{1+\epsilon}}
-\end{align*}
-
-Finally, we can evaluate the whole sum:
-
-\begin{align*}
-       (lp)^{a-1}  \sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}}
-&\leq  \left(\log^{a-1}l\right) \sum_{i=0}^{r-1}l^{-\frac{\epsilon}{1+\epsilon}}\\
-&\leq  \left(\log^{a-1}l\right) rl^{-\frac{\epsilon}{1+\epsilon}}\\
-&=     \left(\log^{a-1}l\right) \frac{c}{(1+\epsilon)a}l^{1-\frac{\epsilon}{1+\epsilon}} = o(l)\\
-\end{align*}
-
-However, since $r$ is a constant times $l$, any function that is $o(l)$ is also $o(r)$ and this proves the claim.
-
-\end{proof}
+%\begin{proof}
+%We will prove this claim by applying Theorem \ref{greed-is-good}. Note that it suffices to prove that $(lp)^{a-1}\sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}} = o(r)$ since the other terms are just constants. We first bound the elements of this summation. Using the facts that $p = \frac{\gamma \log l}{l}$, $lc/a = (1+\epsilon)r$ and that $i<r$ throughout the summation, we get the following bound on each term:
+%
+%\begin{align*}
+%       (1-p)^{l-\frac{ia}{c}}
+%&\leq  \left(1-\frac{\gamma \log l}{l}\right)^{l-\frac{ia}{c}} \\
+%&\leq  \exp\left(-\frac{\gamma \log l}{l}\left(l-\frac{ia}{c}\right)\right) \\
+%&=     \exp\left((-\log l)\left(\gamma - \frac{ia}{lc}\right)\right) \\
+%&=     l^{-\gamma+\frac{ia}{lc}} = l^{-\gamma+\frac{i}{(1+\epsilon)r}} \\
+%&\leq  l^{-1+\frac{1}{1+\epsilon}} = l^{-\frac{\epsilon}{1+\epsilon}}
+%\end{align*}
+%
+%Finally, we can evaluate the whole sum:
+%
+%\begin{align*}
+%       (lp)^{a-1}  \sum_{i=0}^{r-1}(1-p)^{l-\frac{ia}{c}}
+%&\leq  \left(\log^{a-1}l\right) \sum_{i=0}^{r-1}l^{-\frac{\epsilon}{1+\epsilon}}\\
+%&\leq  \left(\log^{a-1}l\right) rl^{-\frac{\epsilon}{1+\epsilon}}\\
+%&=     \left(\log^{a-1}l\right) \frac{c}{(1+\epsilon)a}l^{1-\frac{\epsilon}{1+\epsilon}} = o(l)\\
+%\end{align*}
+%
+%However, since $r$ is a constant times $l$, any function that is $o(l)$ is also $o(r)$ and this proves the claim.
+%
+%\end{proof}
 
 
 
