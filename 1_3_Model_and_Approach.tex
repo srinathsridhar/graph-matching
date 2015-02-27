@@ -46,31 +46,10 @@ typically ranges from $1$ to $5$.\vs
 %reflects the amount of coverage required by web-crawlers for the page
 %to include it in the searchable index of the crawler. \vs
 
-\subsection{Practical Requirements}
-
-There are two key requirements in making graph algorithms
-practical. The first is that the method used must be very simple to
-implement, debug, deploy and most importantly maintain long-term. The second is that the method must scale
-gracefully with larger sizes. \vs
-
-Graph matching algorithms require linear memory and super-linear run-time
-which does not scale well. For example, an e-commerce website of a
-client of BloomReach with 1M product pages and 100 recommendation
-candidates per product would require easily over 160GB in main memory to store the graph
-and run exact matching algorithms; this can be reduced by using graph
-compression techniques but that adds more technical difficulties in
-development and maintenance. Algorithms that are time intensive
-can sometimes be sped-up by using distributed computing techniques such as
-map-reduce~\cite{DeanGhemawat2004}. However, efficient map-reduce
-algorithms for graph problems are notoriously difficult. Finally, all of these methods apply only to the special case of our problem when $a=1$, leaving open the question of solving the more interesting and typical cases of redundant coverage when $a > 1$.\vs
-
 \subsection{Simple Approximation Algorithms}
 
-To satisfy these practical requirements,
-%the time and space complexity of implementing optimal
-%graph algorithms for the recommendation subgraph problem,
-we propose
-the study of three simple approximate solutions strategies that not only can be shown to scale well in practice but also have good theoretical
+To satisfy these practical requirements of solving an optimization problem on a graph too large to fit in memory,
+we propose the study of three simple approximate solutions strategies that not only can be shown to scale well in practice but also have good theoretical
 properties that we demonstrate using approximation ratios.
 
 \begin{itemize}
