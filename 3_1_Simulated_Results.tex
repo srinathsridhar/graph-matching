@@ -52,7 +52,9 @@ be implemented so that the entire graph does not have to be kept in memory. In t
 event, greedy uses only $O(|L|)$ memory. \vs
 
 Next, we analyze the relative qualities of the solutions each method
-produces.  Figures~\ref{fig:a=1:1} and \ref{fig:a=1:2} plot the
+produces. Note that in all of the plots, the purple, red and green lines depict the 
+greedy, partition and sampling algorithms respectively.
+ Plots (a) and (b) of Figure~\ref{fig:sim_combo} depict the
 average performance ratio of the three methods compared to the trivial
 upper bounds as the value of $c$, the number of recommendations
 allowed is varied, while keeping $a = 1$.
@@ -66,7 +68,7 @@ sampling algorithm does well, both when $c$ is low and high, but
 falters when $ck=1$. The greedy algorithm outperforms the
 sampling algorithm in all cases, but its advantage vanishes as
 $c$ gets larger. Note that the dip in the graphs when $cl=ar$, at
-$c=4$ in Figure~\ref{fig:a=1:1} and $c=2$ in Figure~\ref{fig:a=1:2} is
+$c=4$ in plot (a) and $c=2$ in plot (b) of Figure~\ref{fig:sim_combo}
 expected and was previously demonstrated in
 Figure~\ref{fig:simple_approx}.  The partition algorithm is immune to
 this drop that affects both the greedy and the sampling algorithms,
@@ -75,10 +77,12 @@ but comes with the cost of higher time and space utilization.\vs
 \begin{figure}
 \begin{tabular}{cc}
   \includegraphics[width=40mm]{images/l=25000,r=100000_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000_Greedy_vs_Naive_error.png} \\
-(a) first & (b) second \\[6pt]
+(a) $a=1$, $L=25k$, $R=100k$ & (b) $a=1$, $L=50k$, $R=100k$ \\[6pt]
  \includegraphics[width=40mm]{images/l=50000,r=100000,a=2_Greedy_vs_Naive_error.png} &   \includegraphics[width=40mm]{images/l=50000,r=100000,a=4_Greedy_vs_Naive_error.png}\\
-(c) third & (d) fourth \\[6pt]
+(c) $a=2$, $L=50k$, $R=100k$ & (d) $a=4$, $L=50k$, $R=100k$ \\[6pt]
 \end{tabular}
+\label{fig:sim_combo}
+\caption{The approximation performance of our algorithms when solving the $(c,a)$-recommendation subgraph problem. In each plot, $c$ varies along the $x$-axis and the settings of $a$ and $L$ and $R$ are fixed}
 \end{figure}
 
 
@@ -103,11 +107,12 @@ but comes with the cost of higher time and space utilization.\vs
 
 In contrast to the case when $a=1$, the sampling algorithm
 performs worse when $a>1$ but performs increasingly better with $c$ as
-demonstrated by Figures~\ref{fig:a=2} and \ref{fig:a=4}. The greedy
+demonstrated by plots (b) and (d) in Figure~\ref{fig:sim_combo}. The greedy
 algorithm continues to produce solutions that are nearly optimal,
 regardless of the settings of $c$ and $a$, even beating the
 partition algorithm with increasing values of $a$. Our simulations
-suggest that in most cases, one can simply use our sampling method for solving the $(c, a)$-recommendation subgraph problem. In cases where the sampling is not suitable as flagged
+suggest that in most cases, one can simply use our sampling method for
+solving the $(c, a)$-recommendation subgraph problem. In cases where the sampling is not suitable as flagged
 by our analysis, we still find that the greedy performs adequately and
 is also simple to implement. These two algorithms thus confirm to our
 requirements we initially laid out for deployment in large-scale real
