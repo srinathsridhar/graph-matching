@@ -188,10 +188,4 @@ $ S \leq r(1-2\exp(-ck))$ with probability at most $(e/4)^{r(1-\exp(-ck))}$.
 
 For realistic scenarios where $r$ is very large, the above theorem gives very tight bounds on the size of the solution, also explaining the effectiveness of the simple sampling algorithm in such instances.
 
-The results presented in this section can be naturally extended to weighted models as shown by the theorem below. The proof is left out due to space constraints.
-
-\begin{thm}
-\label{wtd-thm}
-Let $G=K_{l,r}$ be a complete bipartite graph where the edges have i.i.d. weights and come from a distribution with mean $\mu$ that is supported on $[0,b]$; Assume that $ck\mu \geq 1+\epsilon$ for some $\epsilon > 0$. If the algorithm from Section \ref{fixed-degree} is used to sample a subgraph $H$ from $G$ and $S$ is the set of vertices in $R$ of incident weight at least one, then
-\[ \emph{\E}[S] = \sum_{v\in R} \emph{\E}[X_v] = r\left(1-\exp\left(-\frac{2l\epsilon^2}{b^2}\right)\right) \]
-\end{thm}
+The results presented in this section can be naturally extended to weighted models and more structurally complicated random graph models. \footnote{Please refer to the full version of the paper for details}
