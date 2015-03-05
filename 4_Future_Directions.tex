@@ -21,7 +21,7 @@ more precise or complex models can be used. This would require an empirical vali
 the proposed graph model and the adaptation of our methods to different random graph models.
 We have made some initial progress on this front, which can be found in the full version of the paper.
 
-The second is that most of our algorithms aren't particularly suited for the weighted setting. While our sampling result carries over to the weighted regime as seen in Theorem \ref{wtd-thm}, our other algorithms don't, and even this result is weak compared to the unweighted result we presented in full. It would be very valuable to prove strong approximation guarantees in the weighted regime as well. \vs
+The second is that most of our algorithms aren't particularly suited for the weighted setting. While our sampling result carries over to the weighted regime as seen in Theorem \ref{wtd-thm}, our other algorithms don't, and even this result is weak compared to the unweighted result we presented in full. The problem presented by ignoring weights is that some really high value recommendations might be ignored by the randomness of the algorithm by chance. In practice, it's possible to mitigate this issue by hardcoding in the really desirable edges, and using seeding either the greedy or sampling algorithm with these edges. While this can work well in practice, it would be nonetheless be valuable to prove strong approximation guarantees in the weighted regime as well. \vs
 
 \iffalse
 Our sampling method and its analysis extends to more general
