@@ -1,8 +1,13 @@
-\documentclass{sig-alternate}
+\documentclass{sig-alternate-2013}
+
 \newcommand{\E}{\text{E}}
 \usepackage{amsmath, amsthm-alt, graphicx, cite, float, hyperref}
 \usepackage[lined,boxed]{algorithm2e}
-\usepackage[labelfont=bf,font=small]{caption}
+  \usepackage{caption}
+  \DeclareCaptionType{copyrightbox}
+  \usepackage{subcaption}
+\clubpenalty=10000 
+\widowpenalty=10000
 
 \setlength{\abovecaptionskip}{6pt}
 \setlength{\belowcaptionskip}{2pt}
@@ -14,11 +19,12 @@
 \newtheorem*{rem}{Remark}
 \newcommand{\vs}{\vspace{0.1cm}}
 
-\makeatletter
-\def\@copyrightspace{\relax}
-\makeatother
+\permission{Copyright is held by the International World Wide Web Conference Committee (IW3C2). IW3C2 reserves the right to provide a hyperlink to the author's site if the Material is used in electronic media.}
+\conferenceinfo{WWW 2015,}{May 18--22, 2015, Florence, Italy.} 
+\copyrightetc{ACM \the\acmcopyr}
+\crdata{978-1-4503-3469-3/15/05.}
 
-\begin{document}\sloppy
+\begin{document}
 \title{Recommendation Subgraphs for Web Discovery\thanks{This work was supported in part by an internship at BloomReach Inc.}}
 
 \numberofauthors{3}
@@ -40,8 +46,8 @@ Srinath Sridhar \\
 }
 
 \maketitle
+
 \input{0_Abstract.tex}
-\setcounter{page}{1}
 \input{1_1_Introduction.tex}
 \input{1_2_Related_Work.tex}
 \input{1_3_Model_and_Approach.tex}
