@@ -13,7 +13,15 @@ of these methods, and also substantiated them with experimental
 validation both from simulated data and real data from
 retail web sites. Our findings have been very useful in the
 deployment of effective structural recommendations in web relevance
-engines that drive many of the leading websites of popular retailers. \vs
+engines that drive many of the leading websites of popular retailers.
+
+We believe that our work lends itself to promising future work in two directions.
+The first is that through a better understanding of the underlying graph's topology,
+more precise or complex models can be used. This would require an empirical validation of
+the proposed graph model and the adaptation of our methods to different random graph models.
+We have made some initial progress on this front, which can be found in the full version of the paper.
+
+The second is that most of our algorithms aren't particularly suited for the weighted setting. While our sampling result carries over to the weighted regime as seen in Theorem \ref{wtd-thm}, our other algorithms don't, and even this result is weak compared to the unweighted result we presented in full. It would be very valuable to prove strong approximation guarantees in the weighted regime as well. \vs
 
 \iffalse
 Our sampling method and its analysis extends to more general
